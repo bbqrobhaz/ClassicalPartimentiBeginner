@@ -192,11 +192,13 @@ export default function PartimentiTrainer() {
                       `}
                     >
                       <Icon className="w-5 h-5 flex-shrink-0" />
-                      <div className="text-left flex-1">
-                        <div className="font-semibold text-sm">{module.name}</div>
-                        <div className="text-xs text-muted-foreground line-clamp-2">{module.description}</div>
+                      <div className="text-left flex-1 min-w-0 overflow-hidden">
+                        <div className="font-semibold text-sm break-words">{module.name}</div>
+                        <div className="text-xs text-muted-foreground line-clamp-2 break-words">
+                          {module.description}
+                        </div>
                       </div>
-                      <Badge variant="outline" className="text-xs">
+                      <Badge variant="outline" className="text-xs flex-shrink-0">
                         {module.difficulty}
                       </Badge>
                     </Button>
