@@ -105,7 +105,7 @@ export const GALANT_SCHEMATA: GalantSchemaPattern[] = [
     name: "quieszenza",
     description: "Resting pattern with suspension resolution",
     bassLine: ["2", "1"],
-    figures: [["7/5/3"], ["5/3"]],
+    figures: [["5/3"], ["5/3"]],
     difficulty: "beginner",
   },
 ]
