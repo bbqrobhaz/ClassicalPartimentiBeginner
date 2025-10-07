@@ -104,9 +104,23 @@ export const GALANT_SCHEMATA: GalantSchemaPattern[] = [
   {
     name: "quieszenza",
     description: "Resting pattern with suspension resolution",
-    bassLine: ["2", "1"],
-    figures: [["5/3"], ["5/3"]],
+    bassLine: ["1", "2", "1"],
+    figures: [["8/5/3"], ["7/5/3", "6/3"], ["5/3"]],
     difficulty: "beginner",
+  },
+  {
+    name: "meyer",
+    description: "Pattern with characteristic appoggiaturas",
+    bassLine: ["1", "2", "3", "4"],
+    figures: [["6/3"], ["6/3"], ["6/3"], ["6/3"]],
+    difficulty: "advanced",
+  },
+  {
+    name: "jupiter",
+    description: "Pattern with characteristic passing notes",
+    bassLine: ["1", "2", "3", "4"],
+    figures: [["5/3"], ["6/3"], ["5/3"], ["6/3"]],
+    difficulty: "advanced",
   },
 ]
 
@@ -153,6 +167,20 @@ export const CADENCE_PATTERNS: CadencePattern[] = [
     bassLine: ["5", "6", "4", "5"],
     figures: [["5/3"], ["5/3"], ["6/3"], ["5/3"]],
     difficulty: "advanced",
+  },
+  {
+    type: "phrygian",
+    description: "Cadence with characteristic phrygian mode approach",
+    bassLine: ["2", "1", "5"],
+    figures: [["6/3"], ["6/3"], ["5/3"]],
+    difficulty: "advanced",
+  },
+  {
+    type: "plagal",
+    description: "IV-I cadence",
+    bassLine: ["4", "1"],
+    figures: [["6/3"], ["5/3"]],
+    difficulty: "beginner",
   },
 ]
 
