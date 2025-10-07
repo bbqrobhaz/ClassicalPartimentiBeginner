@@ -199,7 +199,7 @@ export default function PartimentiTrainer() {
                             {module.difficulty}
                           </Badge>
                         </div>
-                        <div className="text-xs text-muted-foreground line-clamp-2 break-words">
+                        <div className="text-xs text-muted-foreground line-clamp-2 break-words w-full whitespace-normal overflow-wrap-anywhere">
                           {module.description}
                         </div>
                       </div>
