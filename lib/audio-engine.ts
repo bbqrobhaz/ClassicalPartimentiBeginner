@@ -59,31 +59,11 @@ class AdvancedAudioEngine {
 
     console.log(`[v0] Playing chord with REAL samples: ${frequencies.map((f) => f.toFixed(1)).join(", ")}Hz`)
 
-    const noteData = frequencies.map((freq) => {
-      const { note, octave } = this.frequencyToNote(freq)
-      return { note, octave, frequency: freq }
-    })
-
-    // Load all samples first
-    console.log(`[v0] Pre-loading ${noteData.length} samples for synchronized playback...`)
-    const bufferPromises = noteData.map(({ note, octave }) => this.realSamples!.getPianoSample(note, octave))
-
-    let buffers: AudioBuffer[]
-    try {
-      buffers = await Promise.all(bufferPromises)
-      console.log(`[v0] ✓ All ${buffers.length} samples loaded, starting synchronized playback`)
-    } catch (error) {
-      console.error(`[v0] ✗ Failed to load one or more samples:`, error)
-      return
-    }
-
-    // Now play all notes at the exact same time
-    const startTime = this.audioContext.currentTime + 0.01 // Small delay to ensure all are scheduled
-    const playbackPromises = buffers.map((buffer, index) => {
-      return this.playBufferAtTime(buffer, startTime, duration * 0.9, 0.6, noteData[index].note, noteData[index].octave)
-    })
-
-    const results = await Promise.allSettled(playbackPromises)
+    const results = await Promise.allSettled(
+      frequencies.map((freq) => {
+        return this.playRealPianoNote(freq, duration * 0.9, 0.6)
+      }),
+    )
 
     const succeeded = results.filter((r) => r.status === "fulfilled").length
     const failed = results.filter((r) => r.status === "rejected").length
@@ -177,47 +157,6 @@ class AdvancedAudioEngine {
       const { note, octave } = this.frequencyToNote(frequency)
       console.error(`[v0] ✗✗✗ FAILED to play ${note}${octave} (${frequency.toFixed(1)}Hz) ✗✗✗`)
       console.error(`[v0] Error details:`, error)
-      throw error
-    }
-  }
-
-  private async playBufferAtTime(
-    buffer: AudioBuffer,
-    startTime: number,
-    duration: number,
-    velocity: number,
-    note: string,
-    octave: number,
-  ): Promise<void> {
-    if (!this.audioContext) return
-
-    try {
-      const source = this.audioContext.createBufferSource()
-      source.buffer = buffer
-
-      const gainNode = this.audioContext.createGain()
-      gainNode.gain.setValueAtTime(velocity, startTime)
-      gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration)
-
-      source.connect(gainNode)
-      gainNode.connect(this.audioContext.destination)
-
-      this.activeAudioNodes.push(source, gainNode)
-
-      source.start(startTime)
-      source.stop(startTime + duration)
-
-      source.onended = () => {
-        try {
-          source.disconnect()
-          gainNode.disconnect()
-        } catch (e) {}
-        this.activeAudioNodes = this.activeAudioNodes.filter((node) => node !== source && node !== gainNode)
-      }
-
-      console.log(`[v0] ✓ Scheduled ${note}${octave} to start at ${startTime.toFixed(3)}s`)
-    } catch (error) {
-      console.error(`[v0] ✗ Failed to schedule ${note}${octave}:`, error)
       throw error
     }
   }
