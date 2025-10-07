@@ -76,42 +76,36 @@ export default function PartimentiTrainer() {
       name: "Interval Recognition",
       description: "Master interval identification with harmonic and melodic exercises",
       icon: Music2,
-      difficulty: "Beginner",
     },
     {
       id: "rule-of-octave",
       name: "Rule of the Octave",
       description: "Learn the fundamental bass harmonization pattern of baroque music",
       icon: BookOpen,
-      difficulty: "Beginner",
     },
     {
       id: "galant-schemata",
       name: "Galant Schemata",
       description: "Practice Prinner, Romanesca, Monte, Fonte, Fenaroli, and Quieszenza",
       icon: Sparkles,
-      difficulty: "Intermediate",
     },
     {
       id: "cadences",
       name: "Cadence Recognition",
       description: "Identify simple, compound, deceptive, and evaded cadences",
       icon: Target,
-      difficulty: "Intermediate",
     },
     {
       id: "suspensions",
       name: "Suspension Training",
       description: "Train your ear for 7-6, 9-8, 4-3, and 2-3 suspensions",
       icon: TrendingUp,
-      difficulty: "Advanced",
     },
     {
       id: "diminutions",
       name: "Diminutions & Decorations",
       description: "Recognize turns, appoggiaturas, passing notes, and baroque ornaments",
       icon: Award,
-      difficulty: "Advanced",
     },
   ]
 
@@ -192,16 +186,9 @@ export default function PartimentiTrainer() {
                       `}
                     >
                       <Icon className="w-5 h-5 flex-shrink-0" />
-                      <div className="flex-1 min-w-0 space-y-1">
-                        <div className="flex items-center justify-between gap-2">
-                          <div className="font-semibold text-sm break-words flex-1">{module.name}</div>
-                          <Badge variant="outline" className="text-xs flex-shrink-0">
-                            {module.difficulty}
-                          </Badge>
-                        </div>
-                        <div className="text-xs text-muted-foreground line-clamp-2 break-words w-full whitespace-normal overflow-wrap-anywhere">
-                          {module.description}
-                        </div>
+                      <div className="flex-1 min-w-0 space-y-1 text-left">
+                        <div className="font-semibold text-sm break-words">{module.name}</div>
+                        <div className="text-xs text-muted-foreground break-words">{module.description}</div>
                       </div>
                     </Button>
                   )
