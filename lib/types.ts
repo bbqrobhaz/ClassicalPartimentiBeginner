@@ -82,4 +82,5 @@ export interface Exercise {
   correctAnswer: string | string[]
   options?: string[]
   hints?: string[]
+  audioPattern?: string[] // note names to play for listen/identify exercises
 }

@@ -121,6 +121,7 @@ export const CURRICULUM: Lesson[] = [
           prompt: "Listen to the scale degree and identify it",
           correctAnswer: "3",
           options: ["1", "2", "3", "4", "5"],
+          audioPattern: ["E4"],
         },
       ],
       historicalContext:

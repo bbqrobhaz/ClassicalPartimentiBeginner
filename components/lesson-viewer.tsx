@@ -191,6 +191,34 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [showResult, setShowResult] = useState(false)
   const [showHint, setShowHint] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const playExerciseAudio = async () => {
+    if (!exercise.audioPattern || isPlaying) return
+
+    setIsPlaying(true)
+    try {
+      for (const note of exercise.audioPattern) {
+        let noteName: string
+        let octave: number
+
+        if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
+          noteName = note.slice(0, -1)
+          octave = Number.parseInt(note[note.length - 1])
+        } else {
+          noteName = note
+          octave = 4
+        }
+
+        await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
+        await new Promise((resolve) => setTimeout(resolve, 600))
+      }
+    } catch (error) {
+      console.error("[v0] Failed to play exercise audio:", error)
+    } finally {
+      setIsPlaying(false)
+    }
+  }
 
   const handleSubmit = () => {
     if (!selectedAnswer) return
@@ -207,6 +235,15 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
   return (
     <div className="space-y-6">
       <div className="text-lg font-semibold">{exercise.prompt}</div>
+
+      {(exercise.type === "listen" || exercise.type === "identify") && exercise.audioPattern && (
+        <div className="flex justify-center">
+          <Button onClick={playExerciseAudio} disabled={isPlaying} size="lg" className="w-full max-w-xs">
+            <Play className="w-5 h-5 mr-2" />
+            {isPlaying ? "Playing..." : "Play Scale Degree"}
+          </Button>
+        </div>
+      )}
 
       {exercise.type === "identify" && exercise.options && (
         <div className="grid grid-cols-2 gap-3">
