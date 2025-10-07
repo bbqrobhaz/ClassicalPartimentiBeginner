@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Lato } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Suspense } from "react"
+import { ProgressProvider } from "@/lib/progress-context"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -32,10 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${cormorant.variable} ${lato.variable} antialiased`}>
-        <Suspense fallback={<div>Loading...</div>}>
-          {children}
-          <Analytics />
-        </Suspense>
+        <ProgressProvider>
+          <Suspense fallback={<div>Loading...</div>}>
+            {children}
+            <Analytics />
+          </Suspense>
+        </ProgressProvider>
       </body>
     </html>
   )
