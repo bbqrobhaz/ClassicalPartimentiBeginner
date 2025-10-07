@@ -186,9 +186,11 @@ export default function PartimentiTrainer() {
                       `}
                     >
                       <Icon className="w-5 h-5 flex-shrink-0" />
-                      <div className="flex-1 min-w-0 space-y-1 text-left">
-                        <div className="font-semibold text-sm break-words">{module.name}</div>
-                        <div className="text-xs text-muted-foreground break-words">{module.description}</div>
+                      <div className="flex-1 min-w-0 space-y-1 text-left w-full">
+                        <div className="font-semibold text-sm break-words whitespace-normal">{module.name}</div>
+                        <div className="text-xs text-muted-foreground break-words whitespace-normal w-full">
+                          {module.description}
+                        </div>
                       </div>
                     </Button>
                   )
