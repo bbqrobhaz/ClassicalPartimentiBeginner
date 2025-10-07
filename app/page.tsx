@@ -11,48 +11,20 @@ import { GalantSchemataTrainer } from "@/components/galant-schemata-trainer"
 import { CadenceTrainer } from "@/components/cadence-trainer"
 import { SuspensionTrainer } from "@/components/suspension-trainer"
 import { DiminutionTrainer } from "@/components/diminution-trainer"
-import { AchievementNotification } from "@/components/achievement-notification"
-import { LevelUpNotification } from "@/components/level-up-notification"
-import { XPProgressBar } from "@/components/xp-progress-bar"
-import { LessonBrowser } from "@/components/lesson-browser"
-import { LessonViewer } from "@/components/lesson-viewer"
-import { PracticeModeSelector, type PracticeMode } from "@/components/practice-mode-selector"
-import { ListenMode } from "@/components/listen-mode"
-import { IdentifyMode } from "@/components/identify-mode"
-import { ComposeMode } from "@/components/compose-mode"
 import { audioEngine } from "@/lib/audio-engine"
-import { ProgressDashboard } from "@/components/progress-dashboard"
-import {
-  Music2,
-  BookOpen,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Award,
-  Headphones,
-  Clock,
-  Flame,
-  GraduationCap,
-  BarChart3,
-} from "lucide-react"
-import { useProgress } from "@/lib/progress-context"
-import { CURRICULUM, getNextLesson } from "@/lib/curriculum"
-import type { Lesson } from "@/lib/types"
+import { Music2, BookOpen, Sparkles, Target, TrendingUp, Award, Headphones, Clock } from "lucide-react"
 
 export default function PartimentiTrainer() {
-  const [activeTab, setActiveTab] = useState("lessons")
+  const [activeTab, setActiveTab] = useState("intervals")
   const [isInitialized, setIsInitialized] = useState(false)
   const [initError, setInitError] = useState<string | null>(null)
-  const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null)
-  const [practiceMode, setPracticeMode] = useState<PracticeMode | null>(null)
-  const {
-    progress,
-    checkAndUnlockAchievements,
-    newAchievement,
-    newLevel,
-    clearAchievementNotification,
-    clearLevelNotification,
-  } = useProgress()
+  const [userProgress, setUserProgress] = useState({
+    totalSessions: 0,
+    totalCorrect: 0,
+    totalAttempts: 0,
+    streakRecord: 0,
+    lastSessionDate: null as Date | null,
+  })
 
   useEffect(() => {
     const initializeAudio = async () => {
@@ -60,7 +32,10 @@ export default function PartimentiTrainer() {
         if (typeof window !== "undefined") {
           await audioEngine.initialize()
           setIsInitialized(true)
-          checkAndUnlockAchievements()
+          const savedProgress = localStorage.getItem("partimentiTrainerProgress")
+          if (savedProgress) {
+            setUserProgress(JSON.parse(savedProgress))
+          }
         }
       } catch (error) {
         console.error("Audio initialization failed:", error)
@@ -70,7 +45,19 @@ export default function PartimentiTrainer() {
     }
 
     initializeAudio()
-  }, [checkAndUnlockAchievements])
+  }, [])
+
+  const updateUserProgress = (correct: number, total: number, streak: number) => {
+    const newProgress = {
+      totalSessions: userProgress.totalSessions + 1,
+      totalCorrect: userProgress.totalCorrect + correct,
+      totalAttempts: userProgress.totalAttempts + total,
+      streakRecord: Math.max(userProgress.streakRecord, streak),
+      lastSessionDate: new Date(),
+    }
+    setUserProgress(newProgress)
+    localStorage.setItem("partimentiTrainerProgress", JSON.stringify(newProgress))
+  }
 
   if (!isInitialized) {
     return (
@@ -83,54 +70,7 @@ export default function PartimentiTrainer() {
     )
   }
 
-  const totalCompleted = progress.lessonsCompleted.reduce((sum, lp) => sum + (lp.completed ? 1 : 0), 0)
-  const completedLessonIds = progress.lessonsCompleted.filter((lp) => lp.completed).map((lp) => lp.lessonId)
-
-  const handleLessonComplete = () => {
-    checkAndUnlockAchievements()
-  }
-
-  const handleNextLesson = () => {
-    if (!selectedLesson) return
-    const nextLesson = getNextLesson(selectedLesson.id, completedLessonIds)
-    if (nextLesson) {
-      setSelectedLesson(nextLesson)
-    }
-  }
-
-  const handlePreviousLesson = () => {
-    if (!selectedLesson) return
-    const currentIndex = CURRICULUM.findIndex((l) => l.id === selectedLesson.id)
-    if (currentIndex > 0) {
-      setSelectedLesson(CURRICULUM[currentIndex - 1])
-    }
-  }
-
-  const hasNextLesson = selectedLesson ? getNextLesson(selectedLesson.id, completedLessonIds) !== null : false
-  const hasPreviousLesson = selectedLesson ? CURRICULUM.findIndex((l) => l.id === selectedLesson.id) > 0 : false
-
   const trainingModules = [
-    {
-      id: "dashboard",
-      name: "Progress Dashboard",
-      description: "View your learning analytics and achievements",
-      icon: BarChart3,
-      difficulty: "Overview",
-    },
-    {
-      id: "lessons",
-      name: "Structured Lessons",
-      description: "Follow the complete curriculum from foundations to mastery",
-      icon: GraduationCap,
-      difficulty: "All Levels",
-    },
-    {
-      id: "practice",
-      name: "Practice Modes",
-      description: "Listen, identify, play, and compose with learned patterns",
-      icon: Headphones,
-      difficulty: "All Levels",
-    },
     {
       id: "intervals",
       name: "Interval Recognition",
@@ -177,9 +117,6 @@ export default function PartimentiTrainer() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AchievementNotification achievement={newAchievement} onDismiss={clearAchievementNotification} />
-      <LevelUpNotification newLevel={newLevel} onDismiss={clearLevelNotification} />
-
       {initError && (
         <div className="bg-destructive/10 border-b border-destructive/20">
           <div className="container mx-auto px-4 py-3">
@@ -188,52 +125,48 @@ export default function PartimentiTrainer() {
         </div>
       )}
 
+      {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="font-serif text-4xl font-bold text-foreground mb-1 flex items-center gap-3">
                 <Music2 className="w-8 h-8 text-primary" />
-                Baroque Improvisation Academy
+                Partimenti Ear Trainer
                 <Badge variant="secondary" className="text-xs">
-                  {progress.currentLevel.name}
+                  Pro
                 </Badge>
               </h1>
               <p className="text-muted-foreground">
-                Master Renaissance & Baroque improvisation from foundations to virtuosity
+                Master baroque improvisation with advanced ear training and interactive practice tools
               </p>
             </div>
 
             <div className="flex gap-6">
               <div className="text-center">
-                <div className="text-sm text-muted-foreground mb-1">Level</div>
-                <div className="text-2xl font-bold text-primary">{progress.currentLevel.level}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-sm text-muted-foreground mb-1">XP</div>
-                <div className="text-2xl font-bold text-secondary">{progress.totalXP}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-sm text-muted-foreground mb-1 flex items-center gap-1 justify-center">
-                  <Flame className="w-3 h-3" />
-                  Streak
+                <div className="text-sm text-muted-foreground mb-1">Overall Accuracy</div>
+                <div className="text-2xl font-bold text-primary">
+                  {userProgress.totalAttempts > 0
+                    ? `${Math.round((userProgress.totalCorrect / userProgress.totalAttempts) * 100)}%`
+                    : "0%"}
                 </div>
-                <div className="text-2xl font-bold text-orange-500">{progress.streak}</div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-muted-foreground mb-1">Lessons</div>
-                <div className="text-2xl font-bold text-accent">{totalCompleted}</div>
+                <div className="text-sm text-muted-foreground mb-1">Sessions</div>
+                <div className="text-2xl font-bold text-secondary">{userProgress.totalSessions}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-sm text-muted-foreground mb-1">Best Streak</div>
+                <div className="text-2xl font-bold text-accent">{userProgress.streakRecord}</div>
               </div>
             </div>
-          </div>
-          <div className="mt-4">
-            <XPProgressBar currentLevel={progress.currentLevel} totalXP={progress.totalXP} />
           </div>
         </div>
       </header>
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             <Card>
               <CardHeader>
@@ -245,12 +178,7 @@ export default function PartimentiTrainer() {
                   return (
                     <Button
                       key={module.id}
-                      onClick={() => {
-                        setActiveTab(module.id)
-                        if (module.id === "lessons") {
-                          setSelectedLesson(null)
-                        }
-                      }}
+                      onClick={() => setActiveTab(module.id)}
                       variant="ghost"
                       className={`
                         w-full justify-start gap-3 p-4 h-auto
@@ -291,71 +219,23 @@ export default function PartimentiTrainer() {
                 </div>
                 <div className="flex gap-2">
                   <Clock className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
-                  <span>Practice daily for 15-20 minutes to maintain your streak</span>
+                  <span>Start with slower tempos and gradually increase speed as you improve</span>
                 </div>
                 <div className="flex gap-2">
                   <Target className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
-                  <span>Complete lessons in order to build a solid foundation</span>
+                  <span>Practice regularly for 15-20 minutes daily for optimal results</span>
                 </div>
                 <div className="flex gap-2">
                   <BookOpen className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
-                  <span>Study historical treatises by Fenaroli, Furno, and Ortiz for deeper understanding</span>
+                  <span>Study historical treatises by Fenaroli, Furno, and Mattei for deeper understanding</span>
                 </div>
               </div>
             </Card>
           </div>
 
+          {/* Main Content */}
           <div className="lg:col-span-3">
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsContent value="dashboard" className="mt-0">
-                <ProgressDashboard />
-              </TabsContent>
-
-              <TabsContent value="lessons" className="mt-0">
-                {selectedLesson ? (
-                  <LessonViewer
-                    lesson={selectedLesson}
-                    onComplete={handleLessonComplete}
-                    onNext={handleNextLesson}
-                    onPrevious={handlePreviousLesson}
-                    hasNext={hasNextLesson}
-                    hasPrevious={hasPreviousLesson}
-                  />
-                ) : (
-                  <LessonBrowser onSelectLesson={setSelectedLesson} />
-                )}
-              </TabsContent>
-
-              <TabsContent value="practice" className="mt-0">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="font-serif text-2xl">Practice Modes</CardTitle>
-                    <CardDescription className="text-base">
-                      Choose a practice mode to reinforce your learning with interactive exercises
-                    </CardDescription>
-                  </CardHeader>
-                  <div className="p-6">
-                    {!practiceMode ? (
-                      <PracticeModeSelector onSelectMode={setPracticeMode} />
-                    ) : (
-                      <div className="space-y-4">
-                        <Button variant="outline" onClick={() => setPracticeMode(null)}>
-                          ← Back to Practice Modes
-                        </Button>
-                        {practiceMode === "listen" && <ListenMode lessons={CURRICULUM} />}
-                        {practiceMode === "identify" && <IdentifyMode lessons={CURRICULUM} />}
-                        {practiceMode === "compose" && <ComposeMode lessons={CURRICULUM} />}
-                        {practiceMode === "play" && (
-                          <div className="text-center py-12 text-muted-foreground">
-                            Play Mode coming soon - practice playing patterns with real-time feedback
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              </TabsContent>
-
               <TabsContent value="intervals" className="mt-0">
                 <Card>
                   <CardHeader>
@@ -366,7 +246,7 @@ export default function PartimentiTrainer() {
                     </CardDescription>
                   </CardHeader>
                   <div className="p-6">
-                    <IntervalTrainer />
+                    <IntervalTrainer onProgressUpdate={updateUserProgress} />
                   </div>
                 </Card>
               </TabsContent>
@@ -381,7 +261,7 @@ export default function PartimentiTrainer() {
                     </CardDescription>
                   </CardHeader>
                   <div className="p-6">
-                    <RuleOfOctaveTrainer />
+                    <RuleOfOctaveTrainer onProgressUpdate={updateUserProgress} />
                   </div>
                 </Card>
               </TabsContent>
@@ -396,7 +276,7 @@ export default function PartimentiTrainer() {
                     </CardDescription>
                   </CardHeader>
                   <div className="p-6">
-                    <GalantSchemataTrainer />
+                    <GalantSchemataTrainer onProgressUpdate={updateUserProgress} />
                   </div>
                 </Card>
               </TabsContent>
@@ -411,7 +291,7 @@ export default function PartimentiTrainer() {
                     </CardDescription>
                   </CardHeader>
                   <div className="p-6">
-                    <CadenceTrainer />
+                    <CadenceTrainer onProgressUpdate={updateUserProgress} />
                   </div>
                 </Card>
               </TabsContent>
@@ -426,7 +306,7 @@ export default function PartimentiTrainer() {
                     </CardDescription>
                   </CardHeader>
                   <div className="p-6">
-                    <SuspensionTrainer />
+                    <SuspensionTrainer onProgressUpdate={updateUserProgress} />
                   </div>
                 </Card>
               </TabsContent>
@@ -441,7 +321,7 @@ export default function PartimentiTrainer() {
                     </CardDescription>
                   </CardHeader>
                   <div className="p-6">
-                    <DiminutionTrainer />
+                    <DiminutionTrainer onProgressUpdate={updateUserProgress} />
                   </div>
                 </Card>
               </TabsContent>
