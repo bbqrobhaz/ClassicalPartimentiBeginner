@@ -1,0 +1,874 @@
+import type { Lesson, Achievement } from "./types"
+
+export const ACHIEVEMENTS: Achievement[] = [
+  {
+    id: "first-lesson",
+    name: "First Steps",
+    description: "Complete your first lesson",
+    icon: "🎵",
+    progress: 0,
+    target: 1,
+  },
+  {
+    id: "week-streak",
+    name: "Dedicated Student",
+    description: "Practice for 7 days in a row",
+    icon: "🔥",
+    progress: 0,
+    target: 7,
+  },
+  {
+    id: "month-streak",
+    name: "Committed Scholar",
+    description: "Practice for 30 days in a row",
+    icon: "🌟",
+    progress: 0,
+    target: 30,
+  },
+  {
+    id: "rule-master",
+    name: "Rule of the Octave Master",
+    description: "Complete all Rule of the Octave lessons",
+    icon: "📐",
+    progress: 0,
+    target: 8,
+  },
+  {
+    id: "schema-collector",
+    name: "Schema Collector",
+    description: "Learn all 18 galant schemata",
+    icon: "🎼",
+    progress: 0,
+    target: 18,
+  },
+  {
+    id: "diminution-expert",
+    name: "Diminution Expert",
+    description: "Master all historical diminution techniques",
+    icon: "✨",
+    progress: 0,
+    target: 20,
+  },
+  {
+    id: "german-master",
+    name: "German Tradition Master",
+    description: "Complete all German Griffe and patterns",
+    icon: "🇩🇪",
+    progress: 0,
+    target: 15,
+  },
+  {
+    id: "italian-master",
+    name: "Italian Tradition Master",
+    description: "Complete all Italian partimenti",
+    icon: "🇮🇹",
+    progress: 0,
+    target: 25,
+  },
+  {
+    id: "improviser",
+    name: "Baroque Improviser",
+    description: "Complete a free improvisation exercise",
+    icon: "🎹",
+    progress: 0,
+    target: 1,
+  },
+  {
+    id: "virtuoso",
+    name: "Virtuoso",
+    description: "Reach level 7 (Virtuoso)",
+    icon: "👑",
+    progress: 0,
+    target: 1,
+  },
+]
+
+export const CURRICULUM: Lesson[] = [
+  // ============================================
+  // LEVEL 1: FOUNDATIONS (Beginner)
+  // ============================================
+  {
+    id: "found-1-scale-degrees",
+    title: "Introduction to Scale Degrees",
+    description: "Learn to think in numbers: 1, 2, 3 represent Do, Re, Mi",
+    category: "foundations",
+    tradition: "both",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: [],
+    xpReward: 10,
+    content: {
+      theory:
+        "In baroque improvisation, we use numbers to represent scale degrees. 1 is the tonic (Do), 2 is the supertonic (Re), 3 is the mediant (Mi), 4 is the subdominant (Fa), 5 is the dominant (Sol), 6 is the submediant (La), 7 is the leading tone (Ti), and 8 is the octave. This system makes it easy to transpose and understand patterns in any key.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Ascending scale in C major",
+          notation: "1, 2, 3, 4, 5, 6, 7, 8",
+          audioPattern: ["C", "D", "E", "F", "G", "A", "B", "C"],
+        },
+        {
+          id: "ex-2",
+          description: "Descending scale in C major",
+          notation: "8, 7, 6, 5, 4, 3, 2, 1",
+          audioPattern: ["C", "B", "A", "G", "F", "E", "D", "C"],
+        },
+      ],
+      exercises: [
+        {
+          id: "ex1-1",
+          type: "identify",
+          prompt: "Listen to the scale degree and identify it",
+          correctAnswer: "3",
+          options: ["1", "2", "3", "4", "5"],
+        },
+      ],
+      historicalContext:
+        "The solfège system (Do, Re, Mi) was developed by Guido of Arezzo in the 11th century and became the foundation of all musical pedagogy.",
+    },
+  },
+  {
+    id: "found-2-figured-bass-53",
+    title: "Simple Figured Bass: 5/3",
+    description: "Learn the most basic figured bass symbol - the root position triad",
+    category: "foundations",
+    tradition: "both",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-1-scale-degrees"],
+    xpReward: 15,
+    content: {
+      theory:
+        "5/3 (or just 5, or often left blank) indicates a root position triad. The numbers mean intervals above the bass: 5th and 3rd. In C major, bass note 1 with 5/3 = C-E-G. This is the most common chord and is often left unfigured.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "I chord (1 with 5/3)",
+          notation: "Bass: 1, Figures: 5/3",
+          audioPattern: ["C", "E", "G"],
+          figuredBass: "5/3",
+        },
+        {
+          id: "ex-2",
+          description: "V chord (5 with 5/3)",
+          notation: "Bass: 5, Figures: 5/3",
+          audioPattern: ["G", "B", "D"],
+          figuredBass: "5/3",
+        },
+      ],
+      exercises: [],
+      historicalContext:
+        "Figured bass (basso continuo) was the universal notation system for baroque music, allowing keyboardists to improvise harmonies from a bass line with numbers.",
+    },
+  },
+  {
+    id: "found-3-figured-bass-63",
+    title: "First Inversion: 6/3",
+    description: "Learn the 6/3 chord - first inversion triad",
+    category: "foundations",
+    tradition: "both",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-2-figured-bass-53"],
+    xpReward: 15,
+    content: {
+      theory:
+        "6/3 (or just 6) indicates first inversion. The bass has the 3rd of the chord. In C major, bass note 3 with 6 = E-G-C. The 6/3 chord is smoother and more melodic than 5/3.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "I6 chord (3 with 6)",
+          notation: "Bass: 3, Figures: 6",
+          audioPattern: ["E", "G", "C"],
+          figuredBass: "6",
+        },
+      ],
+      exercises: [],
+    },
+  },
+  {
+    id: "found-4-figured-bass-64",
+    title: "Second Inversion: 6/4",
+    description: "Learn the 6/4 chord - second inversion triad",
+    category: "foundations",
+    tradition: "both",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-3-figured-bass-63"],
+    xpReward: 15,
+    content: {
+      theory:
+        "6/4 indicates second inversion. The bass has the 5th of the chord. In C major, bass note 5 with 6/4 = G-C-E. The 6/4 is unstable and usually resolves to 5/3.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "found-5-three-cadences",
+    title: "The Three Basic Cadences",
+    description: "Master authentic, plagal, and half cadences",
+    category: "foundations",
+    tradition: "both",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-4-figured-bass-64"],
+    xpReward: 20,
+    content: {
+      theory:
+        "Cadences are musical punctuation. Authentic (V-I or 5-1) ends strongly. Plagal (IV-I or 4-1) is the 'Amen' cadence. Half (ending on V or 5) leaves the phrase open and unresolved.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Cadences were the first patterns taught in baroque pedagogy. Fenaroli's method begins with mastering the three cadences before anything else.",
+    },
+  },
+  {
+    id: "found-6-rule-octave-asc-1",
+    title: "Rule of the Octave - Ascending (1-4)",
+    description: "Learn degrees 1-4 ascending with proper harmonization",
+    category: "foundations",
+    tradition: "italian",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-5-three-cadences"],
+    xpReward: 25,
+    content: {
+      theory:
+        "The Rule of the Octave is THE fundamental pattern of baroque harmony. Ascending: 1(5/3), 2(6/3), 3(6/3), 4(5/3). Each scale degree has its standard harmonization.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "First codified by François Campion (1716), the Rule of the Octave became the foundation of all baroque keyboard training. Every student memorized this pattern in all keys.",
+    },
+  },
+  {
+    id: "found-7-rule-octave-asc-2",
+    title: "Rule of the Octave - Ascending (5-8)",
+    description: "Complete the ascending Rule with degrees 5-8",
+    category: "foundations",
+    tradition: "italian",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-6-rule-octave-asc-1"],
+    xpReward: 25,
+    content: {
+      theory:
+        "Ascending continued: 5(5/3), 6(6/3 or 5/3), 7(6/3 or 6/5/3), 8(5/3). The dominant (5) and tonic (8) are always 5/3.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "found-8-rule-octave-desc",
+    title: "Rule of the Octave - Descending",
+    description: "Learn the descending Rule with different harmonizations",
+    category: "foundations",
+    tradition: "italian",
+    difficulty: "beginner",
+    level: 1,
+    prerequisites: ["found-7-rule-octave-asc-2"],
+    xpReward: 30,
+    content: {
+      theory:
+        "Descending: 8(5/3), 7(6/3), 6(6/3), 5(5/3), 4(6/3), 3(6/3), 2(7/5/3 or 6/5), 1(5/3). Note that degree 2 descending uses 7/5/3 (seventh chord), different from ascending!",
+      examples: [],
+      exercises: [],
+    },
+  },
+
+  // ============================================
+  // LEVEL 2: BASIC PATTERNS (Elementary)
+  // ============================================
+  {
+    id: "basic-1-simple-suspensions",
+    title: "Simple Suspensions: 4-3",
+    description: "Learn the most common suspension pattern",
+    category: "patterns",
+    tradition: "both",
+    difficulty: "elementary",
+    level: 2,
+    prerequisites: ["found-8-rule-octave-desc"],
+    xpReward: 30,
+    content: {
+      theory:
+        "A suspension delays resolution. The 4-3 suspension: prepare the 4th, suspend it over a new bass, then resolve down to the 3rd. Pattern: preparation - suspension - resolution.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "basic-2-romanesca",
+    title: "Galant Schema: Romanesca",
+    description: "Learn the descending tetrachord pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "elementary",
+    level: 2,
+    prerequisites: ["basic-1-simple-suspensions"],
+    xpReward: 35,
+    content: {
+      theory:
+        "Romanesca: 1-7-6-5 in the bass with specific upper voice patterns. One of the oldest and most common patterns in baroque music.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "The Romanesca appears in countless baroque compositions from Corelli to Handel. It was one of the first patterns taught to composition students.",
+    },
+  },
+  {
+    id: "basic-3-do-re-mi",
+    title: "Galant Schema: Do-Re-Mi",
+    description: "Master the ascending 1-2-3 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "elementary",
+    level: 2,
+    prerequisites: ["basic-2-romanesca"],
+    xpReward: 35,
+    content: {
+      theory:
+        "Do-Re-Mi: 1-2-3 in the bass, often with 5-6-7 in the soprano. A simple but elegant opening pattern used in countless pieces.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "basic-4-sol-fa-mi",
+    title: "Galant Schema: Sol-Fa-Mi",
+    description: "Learn the descending 5-4-3 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "elementary",
+    level: 2,
+    prerequisites: ["basic-3-do-re-mi"],
+    xpReward: 35,
+    content: {
+      theory: "Sol-Fa-Mi: 5-4-3 in the bass, often used as a closing pattern or to approach a cadence.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "basic-5-furno-partimenti-1",
+    title: "Furno's Method: First Partimenti",
+    description: "Begin with Giovanni Furno's clear, easy partimenti",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "elementary",
+    level: 2,
+    prerequisites: ["basic-4-sol-fa-mi"],
+    xpReward: 40,
+    content: {
+      theory:
+        "Furno's partimenti are the perfect introduction. They combine the Rule of the Octave with simple cadences and suspensions.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Giovanni Furno (1748-1837) created the clearest and most pedagogical partimenti method, with written-out realizations for students to study.",
+    },
+  },
+  {
+    id: "basic-6-diminution-2to1",
+    title: "Simple Diminutions: 2:1 Ratio",
+    description: "Learn to add two notes for every one (Ortiz style)",
+    category: "diminutions",
+    tradition: "both",
+    difficulty: "elementary",
+    level: 2,
+    prerequisites: ["basic-5-furno-partimenti-1"],
+    xpReward: 35,
+    content: {
+      theory:
+        "2:1 diminution: For every note, play two. Use passing tones (stepwise motion) or neighbor tones (step away and back).",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Diego Ortiz (1553) systematized diminution pedagogy, starting with simple 2:1 ratios before progressing to more complex divisions.",
+    },
+  },
+
+  // ============================================
+  // LEVEL 3: INTERMEDIATE PATTERNS
+  // ============================================
+  {
+    id: "inter-1-prinner",
+    title: "Galant Schema: Prinner",
+    description: "Master the descending 6-5-4-3 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["basic-6-diminution-2to1"],
+    xpReward: 45,
+    content: {
+      theory:
+        "Prinner: 6-5-4-3 in the bass with alternating 5/3 and 6/3 chords. One of the most common opening patterns in galant music.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Named after Johann Jakob Prinner (1624-1694), this pattern appears in thousands of 18th-century compositions.",
+    },
+  },
+  {
+    id: "inter-2-meyer",
+    title: "Galant Schema: Meyer",
+    description: "Learn the 1-7-4-3 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-1-prinner"],
+    xpReward: 45,
+    content: {
+      theory: "Meyer: 1-7-4-3 in the bass, often used as an opening riposte to the Prinner.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "inter-3-fonte",
+    title: "Galant Schema: Fonte",
+    description: "Master the sequential descending pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-2-meyer"],
+    xpReward: 50,
+    content: {
+      theory:
+        "Fonte: A descending sequence, typically 4-3-2-1 with specific voice leading. Creates a sense of gentle descent.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "inter-4-monte",
+    title: "Galant Schema: Monte",
+    description: "Learn the ascending sequential pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-3-fonte"],
+    xpReward: 50,
+    content: {
+      theory: "Monte: An ascending sequence, the opposite of Fonte. Creates energy and forward motion.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "inter-5-ponte",
+    title: "Galant Schema: Ponte",
+    description: "Master the dominant pedal pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-4-monte"],
+    xpReward: 50,
+    content: {
+      theory:
+        "Ponte: A dominant pedal (sustained 5 in bass) with upper voice motion. Creates anticipation and tension.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "inter-6-german-griffe-1",
+    title: "German Griffe: Basic Hand Positions",
+    description: "Learn fundamental German keyboard grip patterns",
+    category: "patterns",
+    tradition: "german",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-5-ponte"],
+    xpReward: 55,
+    content: {
+      theory:
+        "Griffe (grips) are specific hand positions for common chord progressions. Learn the basic I-IV-V-I grip pattern.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Friedrich Erhardt Niedt's 'Musicalische Handleitung' (1700-1721) systematized Griffe as the foundation of German keyboard pedagogy.",
+    },
+  },
+  {
+    id: "inter-7-diminution-4to1",
+    title: "Intermediate Diminutions: 4:1 Ratio",
+    description: "Add four notes for every one (Ortiz/Bovicelli style)",
+    category: "diminutions",
+    tradition: "both",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-6-german-griffe-1"],
+    xpReward: 50,
+    content: {
+      theory:
+        "4:1 diminution: Combine passing tones, neighbor tones, and small leaps. Use consonant notes on strong beats.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "inter-8-fenaroli-book1",
+    title: "Fenaroli Book I: Simple Figured Basses",
+    description: "Begin Fenaroli's systematic partimenti method",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "intermediate",
+    level: 3,
+    prerequisites: ["inter-7-diminution-4to1"],
+    xpReward: 60,
+    content: {
+      theory:
+        "Fenaroli Book I introduces simple figured basses without complex dissonances. Focus on smooth voice leading and proper doubling.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Fedele Fenaroli (1730-1818) created the most thorough and detailed partimenti method, used throughout Europe for over a century.",
+    },
+  },
+
+  // ============================================
+  // LEVEL 4: ADVANCED PATTERNS
+  // ============================================
+  {
+    id: "adv-1-fenaroli-schema",
+    title: "Galant Schema: Fenaroli",
+    description: "Master the 7-1-7-1 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["inter-8-fenaroli-book1"],
+    xpReward: 65,
+    content: {
+      theory: "Fenaroli: 7-1-7-1 in the bass with specific upper voice patterns. A sophisticated cadential approach.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-2-indugio",
+    title: "Galant Schema: Indugio",
+    description: "Learn the pedal point delay pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-1-fenaroli-schema"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Indugio: A pedal point on 4 with 6 or 6/5 chord, delaying the cadence. Creates suspense and anticipation.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-3-jupiter",
+    title: "Galant Schema: Jupiter",
+    description: "Master the 1-2-4-3 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-2-indugio"],
+    xpReward: 65,
+    content: {
+      theory: "Jupiter: 1-2-4-3 in the bass, named after Mozart's Jupiter Symphony. A majestic opening pattern.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-4-aprile",
+    title: "Galant Schema: Aprile",
+    description: "Learn the 4-3-7-1 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-3-jupiter"],
+    xpReward: 65,
+    content: {
+      theory: "Aprile: 4-3-7-1 in the bass, a sophisticated cadential pattern.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-5-pastorella",
+    title: "Galant Schema: Pastorella",
+    description: "Master the pastoral 1-5-1 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-4-aprile"],
+    xpReward: 65,
+    content: {
+      theory: "Pastorella: 1-5-1 with drone bass, evoking pastoral scenes. Often in 6/8 or 12/8 time.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-6-quieszenza",
+    title: "Galant Schema: Quieszenza",
+    description: "Learn the 4-3-2-1 closing pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-5-pastorella"],
+    xpReward: 65,
+    content: {
+      theory: "Quieszenza: 4-3-2-1 in the bass, a gentle closing pattern. Creates a sense of peaceful resolution.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-7-deceptive-cadence",
+    title: "Galant Schema: Deceptive Cadence",
+    description: "Master the V-vi surprise resolution",
+    category: "schemata",
+    tradition: "both",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-6-quieszenza"],
+    xpReward: 60,
+    content: {
+      theory: "Deceptive Cadence: 5-6 instead of expected 5-1. Creates surprise and extends the phrase.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-8-evaded-cadence",
+    title: "Galant Schema: Evaded Cadence",
+    description: "Learn cadential evasion techniques",
+    category: "schemata",
+    tradition: "both",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-7-deceptive-cadence"],
+    xpReward: 60,
+    content: {
+      theory: "Evaded Cadence: The expected cadence is avoided through various techniques, extending the phrase.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-9-passo-indietro",
+    title: "Galant Schema: Passo Indietro",
+    description: "Master the backward step pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-8-evaded-cadence"],
+    xpReward: 65,
+    content: {
+      theory: "Passo Indietro: A step backward in the bass before moving forward, creating rhythmic interest.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "adv-10-german-griffe-2",
+    title: "German Griffe: Sequential Patterns",
+    description: "Learn Adlung's 28 sequential voice-leading patterns",
+    category: "patterns",
+    tradition: "german",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-9-passo-indietro"],
+    xpReward: 70,
+    content: {
+      theory:
+        "Adlung's patterns: scalar, sequential, and cadential modules. Learn to vary and recombine these formulas.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Jacob Adlung's 'Anweisung zum Fantasieren' (c. 1726-27) provides 28 sequential patterns with embellishments, forming the core of German improvisational training.",
+    },
+  },
+  {
+    id: "adv-11-diminution-8to1",
+    title: "Advanced Diminutions: 8:1 Ratio",
+    description: "Master complex diminutions (Ganassi/Bovicelli style)",
+    category: "diminutions",
+    tradition: "both",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-10-german-griffe-2"],
+    xpReward: 70,
+    content: {
+      theory:
+        "8:1 diminution: Complex rhythmic divisions with high proportional use. Requires advanced technique and musical taste.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Sylvestro Ganassi's 'La Fontegara' (1535) features the most complex diminutions of the Renaissance, with intricate rhythmic patterns.",
+    },
+  },
+  {
+    id: "adv-12-fenaroli-book2-3",
+    title: "Fenaroli Books II-III: Complex Figured Basses",
+    description: "Progress to more sophisticated partimenti",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-11-diminution-8to1"],
+    xpReward: 75,
+    content: {
+      theory:
+        "Fenaroli Books II-III introduce complex suspensions, seventh chords, and chromatic passages. Requires mastery of voice leading.",
+      examples: [],
+      exercises: [],
+    },
+  },
+
+  // ============================================
+  // LEVEL 5: MASTERY
+  // ============================================
+  {
+    id: "mast-1-fenaroli-book4",
+    title: "Fenaroli Book IV: Advanced Partimenti",
+    description: "Master the most challenging partimenti",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["adv-12-fenaroli-book2-3"],
+    xpReward: 100,
+    content: {
+      theory:
+        "Fenaroli Book IV: The pinnacle of partimenti pedagogy. Complex modulations, chromatic harmony, and sophisticated voice leading.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "mast-2-fugal-exposition",
+    title: "Fugal Improvisation: Exposition",
+    description: "Learn to improvise fugal expositions",
+    category: "improvisation",
+    tradition: "german",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-1-fenaroli-book4"],
+    xpReward: 120,
+    content: {
+      theory:
+        "Fugal exposition: Subject, answer, countersubject. Learn the rules of tonal answers and invertible counterpoint.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "John Mortensen's 'Improvising Fugue' (2023) revives the lost art of fugal improvisation, once a required skill for all organists.",
+    },
+  },
+  {
+    id: "mast-3-fugal-episodes",
+    title: "Fugal Improvisation: Episodes",
+    description: "Master sequential episodes and modulations",
+    category: "improvisation",
+    tradition: "german",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-2-fugal-exposition"],
+    xpReward: 120,
+    content: {
+      theory: "Episodes: Sequential passages that modulate to new keys. Use fragments of the subject in sequence.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "mast-4-imitazione",
+    title: "Imitazione: Imitative Counterpoint",
+    description: "Learn Italian imitative improvisation techniques",
+    category: "improvisation",
+    tradition: "italian",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-3-fugal-episodes"],
+    xpReward: 120,
+    content: {
+      theory:
+        "Imitazione: Free imitative counterpoint without strict fugal rules. More flexible and expressive than German fugue.",
+      examples: [],
+      exercises: [],
+    },
+  },
+  {
+    id: "mast-5-free-improvisation",
+    title: "Free Improvisation: Combining All Elements",
+    description: "Improvise freely using all learned patterns and techniques",
+    category: "improvisation",
+    tradition: "both",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-4-imitazione"],
+    xpReward: 150,
+    content: {
+      theory:
+        "Free improvisation: Combine schemata, diminutions, Griffe, and fugal techniques into coherent musical statements. The ultimate goal of baroque training.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "In the baroque era, all professional musicians were expected to improvise. Handel, Bach, Mozart, and Beethoven were renowned for their improvisational abilities.",
+    },
+  },
+]
+
+export const SKILL_LEVELS = [
+  { level: 1, name: "Novice", xp: 0, xpRequired: 100 },
+  { level: 2, name: "Apprentice", xp: 0, xpRequired: 300 },
+  { level: 3, name: "Student", xp: 0, xpRequired: 600 },
+  { level: 4, name: "Practitioner", xp: 0, xpRequired: 1200 },
+  { level: 5, name: "Journeyman", xp: 0, xpRequired: 2400 },
+  { level: 6, name: "Master", xp: 0, xpRequired: 4800 },
+  { level: 7, name: "Virtuoso", xp: 0, xpRequired: 9600 },
+]
+
+// Helper functions for curriculum navigation
+export function getLessonById(id: string): Lesson | undefined {
+  return CURRICULUM.find((lesson) => lesson.id === id)
+}
+
+export function getLessonsByLevel(level: number): Lesson[] {
+  return CURRICULUM.filter((lesson) => lesson.level === level)
+}
+
+export function getLessonsByTradition(tradition: "italian" | "german" | "both"): Lesson[] {
+  return CURRICULUM.filter((lesson) => lesson.tradition === tradition || lesson.tradition === "both")
+}
+
+export function getNextLesson(currentLessonId: string, completedLessonIds: string[]): Lesson | null {
+  const currentIndex = CURRICULUM.findIndex((l) => l.id === currentLessonId)
+  if (currentIndex === -1) return CURRICULUM[0] // Start from beginning
+
+  // Find next lesson where all prerequisites are completed
+  for (let i = currentIndex + 1; i < CURRICULUM.length; i++) {
+    const lesson = CURRICULUM[i]
+    const allPrereqsMet = lesson.prerequisites.every((prereq) => completedLessonIds.includes(prereq))
+    if (allPrereqsMet) return lesson
+  }
+
+  return null // No more lessons available
+}
+
+export function getAvailableLessons(completedLessonIds: string[]): Lesson[] {
+  return CURRICULUM.filter((lesson) => {
+    const allPrereqsMet = lesson.prerequisites.every((prereq) => completedLessonIds.includes(prereq))
+    const notCompleted = !completedLessonIds.includes(lesson.id)
+    return allPrereqsMet && notCompleted
+  })
+}
