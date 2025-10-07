@@ -97,8 +97,8 @@ export const GALANT_SCHEMATA: GalantSchemaPattern[] = [
   {
     name: "fenaroli",
     description: "Ascending pattern with characteristic 7-6 suspension",
-    bassLine: ["1", "7", "1", "2"],
-    figures: [["5/3"], ["7/5/3"], ["6/3"], ["5/3"]],
+    bassLine: ["1", "2", "3", "4"],
+    figures: [["5/3"], ["7/5/3", "6/3"], ["7/5/3", "6/3"], ["5/3"]],
     difficulty: "intermediate",
   },
   {
