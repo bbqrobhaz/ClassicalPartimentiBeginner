@@ -26,54 +26,77 @@ export function degreeToNote(degree: string, key = "C"): string {
 }
 
 /**
- * Interprets figured bass notation and returns the intervals above the bass
- * Examples:
- * - "5/3" = root position triad (3rd and 5th above bass)
- * - "6/3" = first inversion (3rd and 6th above bass)
- * - "6/4" = second inversion (4th and 6th above bass)
- * - "7/5/3" = seventh chord (3rd, 5th, and 7th above bass)
+ * Gets the diatonic note at a given interval above a bass note in C major
+ * This respects the key signature, so intervals are diatonic, not chromatic
  */
-export function interpretFiguredBass(figures: string): number[] {
-  // Map common figured bass notations to intervals (in semitones)
-  const figureMap: Record<string, number[]> = {
-    "5/3": [4, 7], // Major/minor triad: 3rd (4 semitones) + 5th (7 semitones)
-    "6/3": [4, 9], // First inversion: 3rd + 6th
-    "6/4": [5, 9], // Second inversion: 4th + 6th
-    "7/5/3": [4, 7, 10], // Dominant 7th: 3rd + 5th + minor 7th
-    "6/5/3": [4, 8, 10], // 7th chord, first inversion
-    "6/4/3": [3, 5, 9], // 7th chord, second inversion
-    "6/4/2": [2, 5, 9], // 7th chord, third inversion
-    "9/5/3": [4, 7, 14], // 9th chord
-    "8/5/3": [4, 7, 12], // Octave + 5th + 3rd
+function getDiatonicNote(bassNote: string, intervalNumber: number): { note: string; semitones: number } {
+  // C major scale notes
+  const cMajorScale = ["C", "D", "E", "F", "G", "A", "B"]
+
+  // Find the bass note in the scale
+  const bassIndex = cMajorScale.indexOf(bassNote)
+  if (bassIndex === -1) {
+    console.error(`[v0] Bass note ${bassNote} not in C major scale`)
+    return { note: bassNote, semitones: 0 }
   }
 
-  return figureMap[figures] || [4, 7] // Default to root position triad
+  // Calculate the target note diatonically (wrapping around the scale)
+  const targetIndex = (bassIndex + intervalNumber - 1) % 7
+  const targetNote = cMajorScale[targetIndex]
+
+  // Calculate the actual semitone distance
+  const chromaticScale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+  const bassChromatic = chromaticScale.indexOf(bassNote)
+  const targetChromatic = chromaticScale.indexOf(targetNote)
+
+  // Calculate semitones, accounting for octave wrapping
+  let semitones = targetChromatic - bassChromatic
+  if (semitones < 0) semitones += 12
+
+  // If we've gone past an octave in the diatonic scale, add 12 semitones
+  const octaveOffset = Math.floor((bassIndex + intervalNumber - 1) / 7)
+  semitones += octaveOffset * 12
+
+  return { note: targetNote, semitones }
+}
+
+/**
+ * Interprets figured bass notation and returns the intervals above the bass
+ * Now returns diatonic intervals for C major
+ */
+export function interpretFiguredBass(figures: string): Array<{ intervalNumber: number }> {
+  // Map figured bass to interval numbers (1=unison, 3=third, 5=fifth, etc.)
+  const figureMap: Record<string, number[]> = {
+    "5/3": [3, 5], // Triad: 3rd and 5th
+    "6/3": [3, 6], // First inversion: 3rd and 6th
+    "6/4": [4, 6], // Second inversion: 4th and 6th
+    "7/5/3": [3, 5, 7], // Seventh chord: 3rd, 5th, and 7th
+    "6/5/3": [3, 5, 6], // 7th chord, first inversion
+    "6/4/3": [3, 4, 6], // 7th chord, second inversion
+    "6/4/2": [2, 4, 6], // 7th chord, third inversion
+    "9/5/3": [3, 5, 9], // 9th chord
+    "8/5/3": [3, 5, 8], // Octave + 5th + 3rd
+  }
+
+  const intervals = figureMap[figures] || [3, 5] // Default to root position triad
+  return intervals.map((num) => ({ intervalNumber: num }))
 }
 
 /**
  * Builds a complete chord voicing from a bass note and figured bass notation
+ * Now uses diatonic intervals in C major
  */
 export function buildChordFromFiguredBass(bassNote: string, bassOctave: number, figures: string): ChordNote[] {
   const intervals = interpretFiguredBass(figures)
 
-  const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-  const bassIndex = noteNames.indexOf(bassNote)
-
-  if (bassIndex === -1) {
-    console.error(`[v0] Invalid bass note: ${bassNote}`)
-    return [{ note: bassNote, octave: bassOctave }]
-  }
-
   const chord: ChordNote[] = [{ note: bassNote, octave: bassOctave }]
 
-  // Add each interval above the bass
+  // Add each diatonic interval above the bass
   for (const interval of intervals) {
-    const targetIndex = (bassIndex + interval) % 12
-    const targetNote = noteNames[targetIndex]
+    const { note: targetNote, semitones } = getDiatonicNote(bassNote, interval.intervalNumber)
 
     // Calculate which octave the note should be in
-    // If the note index wrapped around, we need to go up an octave
-    const octaveOffset = Math.floor((bassIndex + interval) / 12)
+    const octaveOffset = Math.floor(semitones / 12)
     const targetOctave = bassOctave + octaveOffset
 
     chord.push({ note: targetNote, octave: targetOctave })
