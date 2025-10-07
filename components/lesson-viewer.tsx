@@ -53,7 +53,20 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
   const playExample = async (audioPattern: string[]) => {
     try {
       for (const note of audioPattern) {
-        await audioEngine.playNote(audioEngine.noteToFrequency(note, 4), 0.5)
+        let noteName: string
+        let octave: number
+
+        if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
+          // Note includes octave number (e.g., "C4", "C#5")
+          noteName = note.slice(0, -1)
+          octave = Number.parseInt(note[note.length - 1])
+        } else {
+          // Legacy format without octave, default to 4
+          noteName = note
+          octave = 4
+        }
+
+        await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
         await new Promise((resolve) => setTimeout(resolve, 600))
       }
     } catch (error) {

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Play, Check, X } from "lucide-react"
 import type { Lesson } from "@/lib/types"
 import { useProgress } from "@/lib/progress-context"
+import { audioEngine } from "@/lib/audio-engine"
 
 interface IdentifyModeProps {
   lessons: Lesson[]
@@ -34,9 +35,35 @@ export function IdentifyMode({ lessons }: IdentifyModeProps) {
     setIsCorrect(null)
   }, [currentIndex, lessons, currentLesson])
 
-  const handlePlay = () => {
-    // TODO: Play the audio for the current lesson
-    console.log("[v0] Playing audio for:", currentLesson.title)
+  const handlePlay = async () => {
+    if (!currentLesson.content.examples || currentLesson.content.examples.length === 0) {
+      console.log("[v0] No examples available for:", currentLesson.title)
+      return
+    }
+
+    const firstExample = currentLesson.content.examples[0]
+    console.log("[v0] Playing audio for:", currentLesson.title, "Example:", firstExample.description)
+
+    try {
+      for (const note of firstExample.audioPattern) {
+        // Parse note with octave (e.g., "C4") or default to octave 4
+        let noteName: string
+        let octave: number
+
+        if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
+          noteName = note.slice(0, -1)
+          octave = Number.parseInt(note[note.length - 1])
+        } else {
+          noteName = note
+          octave = 4
+        }
+
+        await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
+        await new Promise((resolve) => setTimeout(resolve, 600))
+      }
+    } catch (error) {
+      console.error("[v0] Failed to play example:", error)
+    }
   }
 
   const handleAnswer = (lessonId: string) => {

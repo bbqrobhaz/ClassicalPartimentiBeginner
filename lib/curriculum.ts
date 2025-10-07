@@ -105,13 +105,13 @@ export const CURRICULUM: Lesson[] = [
           id: "ex-1",
           description: "Ascending scale in C major",
           notation: "1, 2, 3, 4, 5, 6, 7, 8",
-          audioPattern: ["C", "D", "E", "F", "G", "A", "B", "C"],
+          audioPattern: ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"],
         },
         {
           id: "ex-2",
           description: "Descending scale in C major",
           notation: "8, 7, 6, 5, 4, 3, 2, 1",
-          audioPattern: ["C", "B", "A", "G", "F", "E", "D", "C"],
+          audioPattern: ["C5", "B4", "A4", "G4", "F4", "E4", "D4", "C4"],
         },
       ],
       exercises: [
