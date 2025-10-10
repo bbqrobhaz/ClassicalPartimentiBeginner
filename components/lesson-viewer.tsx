@@ -7,9 +7,10 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Textarea } from "@/components/ui/textarea"
 import { ChevronRight, ChevronLeft, BookOpen, Play, CheckCircle2, Mic, Square, PlayCircle } from "lucide-react"
-import type { Lesson, Exercise } from "@/lib/types"
+import type { Lesson } from "@/lib/types"
 import { useProgress } from "@/lib/progress-context"
 import { audioEngine } from "@/lib/audio-engine"
+import PlayAlongExercise from "@/components/play-along-exercise" // Import the new component
 
 interface LessonViewerProps {
   lesson: Lesson
@@ -21,6 +22,17 @@ interface LessonViewerProps {
 }
 
 export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, hasPrevious }: LessonViewerProps) {
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+  const [showResult, setShowResult] = useState(false)
+  const [showHint, setShowHint] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [textAnswer, setTextAnswer] = useState("")
+  const [isRecording, setIsRecording] = useState(false)
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
+  const [audioUrl, setAudioUrl] = useState<string | null>(null)
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const audioChunksRef = useRef<Blob[]>([])
+
   const randomizedExercises = useMemo(() => {
     const exercises = [...lesson.content.exercises]
     // Fisher-Yates shuffle algorithm
@@ -84,6 +96,111 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
       console.error("[v0] Failed to play example:", error)
     }
   }
+
+  const playExerciseAudio = async () => {
+    if (!currentExercise?.audioPattern || isPlaying) return
+
+    setIsPlaying(true)
+    try {
+      for (const note of currentExercise.audioPattern) {
+        let noteName: string
+        let octave: number
+
+        if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
+          noteName = note.slice(0, -1)
+          octave = Number.parseInt(note[note.length - 1])
+        } else {
+          noteName = note
+          octave = 4
+        }
+
+        await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
+        await new Promise((resolve) => setTimeout(resolve, 600))
+      }
+    } catch (error) {
+      console.error("[v0] Failed to play exercise audio:", error)
+    } finally {
+      setIsPlaying(false)
+    }
+  }
+
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const mediaRecorder = new MediaRecorder(stream)
+      mediaRecorderRef.current = mediaRecorder
+      audioChunksRef.current = []
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data)
+        }
+      }
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(audioChunksRef.current, { type: "audio/webm" })
+        setAudioBlob(blob)
+        const url = URL.createObjectURL(blob)
+        setAudioUrl(url)
+        stream.getTracks().forEach((track) => track.stop())
+      }
+
+      mediaRecorder.start()
+      setIsRecording(true)
+    } catch (error) {
+      console.error("[v0] Failed to start recording:", error)
+      alert("Could not access microphone. Please check your browser permissions.")
+    }
+  }
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop()
+      setIsRecording(false)
+    }
+  }
+
+  const playRecording = () => {
+    if (audioUrl) {
+      const audio = new Audio(audioUrl)
+      audio.play()
+    }
+  }
+
+  const handleSubmit = () => {
+    if (currentExercise?.type === "play") {
+      // For play exercises, always mark as correct (it's creative/practice)
+      setShowResult(true)
+      setTimeout(() => {
+        handleExerciseComplete(true)
+        setTextAnswer("")
+        setAudioBlob(null)
+        setAudioUrl(null)
+        setShowResult(false)
+        setShowHint(false)
+      }, 2000)
+    } else {
+      if (!selectedAnswer) return
+      const correct = selectedAnswer === currentExercise?.correctAnswer
+      setShowResult(true)
+      setTimeout(() => {
+        handleExerciseComplete(correct)
+        setSelectedAnswer(null)
+        setShowResult(false)
+        setShowHint(false)
+      }, 2000)
+    }
+  }
+
+  const randomizedOptions = useMemo(() => {
+    if (!currentExercise?.options) return []
+    const options = [...currentExercise.options]
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[options[i], options[j]] = [options[j], options[i]]
+    }
+    return options
+  }, [currentExercise?.id])
 
   return (
     <div className="space-y-6">
@@ -179,7 +296,148 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
             <Progress value={(completedExercises / totalExercises) * 100} className="h-2" />
           </CardHeader>
           <CardContent>
-            {currentExercise && <ExerciseComponent exercise={currentExercise} onComplete={handleExerciseComplete} />}
+            {currentExercise && (
+              <div className="space-y-6">
+                <div className="text-lg font-semibold">{currentExercise.prompt}</div>
+
+                {(currentExercise.type === "listen" || currentExercise.type === "identify") &&
+                  currentExercise.audioPattern && (
+                    <div className="flex justify-center">
+                      <Button onClick={playExerciseAudio} disabled={isPlaying} size="lg" className="w-full max-w-xs">
+                        <Play className="w-5 h-5 mr-2" />
+                        {isPlaying ? "Playing..." : "Play Scale Degree"}
+                      </Button>
+                    </div>
+                  )}
+
+                {currentExercise.type === "play" && currentExercise.bassPattern ? (
+                  <PlayAlongExercise
+                    prompt={currentExercise.prompt}
+                    bassPattern={currentExercise.bassPattern}
+                    beatsPerNote={currentExercise.beatsPerNote || 4}
+                    tempo={currentExercise.tempo || 80}
+                    onComplete={() => handleExerciseComplete(true)}
+                  />
+                ) : (
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">
+                        Write the notes you played (e.g., "G B D G C E G C")
+                      </label>
+                      <Textarea
+                        value={textAnswer}
+                        onChange={(e) => setTextAnswer(e.target.value)}
+                        placeholder="Enter note names separated by spaces..."
+                        className="min-h-[100px] font-mono"
+                        disabled={showResult}
+                      />
+                    </div>
+
+                    <div className="border rounded-lg p-4 space-y-3 bg-muted/30">
+                      <div className="text-sm font-medium">Optional: Record your performance</div>
+                      <div className="flex gap-2">
+                        {!isRecording && !audioUrl && (
+                          <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
+                            <Mic className="w-4 h-4 mr-2" />
+                            Start Recording
+                          </Button>
+                        )}
+                        {isRecording && (
+                          <Button onClick={stopRecording} variant="destructive" className="flex-1">
+                            <Square className="w-4 h-4 mr-2" />
+                            Stop Recording
+                          </Button>
+                        )}
+                        {audioUrl && !isRecording && (
+                          <>
+                            <Button onClick={playRecording} variant="outline" className="flex-1 bg-transparent">
+                              <PlayCircle className="w-4 h-4 mr-2" />
+                              Play Recording
+                            </Button>
+                            <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
+                              <Mic className="w-4 h-4 mr-2" />
+                              Re-record
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                      {isRecording && (
+                        <div className="text-sm text-red-500 animate-pulse flex items-center gap-2">
+                          <div className="w-2 h-2 bg-red-500 rounded-full" />
+                          Recording in progress...
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {currentExercise.type === "identify" && currentExercise.options && (
+                  <div className="grid grid-cols-2 gap-3">
+                    {randomizedOptions.map((option) => (
+                      <Button
+                        key={option}
+                        onClick={() => setSelectedAnswer(option)}
+                        variant={selectedAnswer === option ? "default" : "outline"}
+                        className="h-16 text-lg"
+                        disabled={showResult}
+                      >
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+
+                {currentExercise.hints && currentExercise.hints.length > 0 && !showResult && (
+                  <Button variant="ghost" size="sm" onClick={() => setShowHint(!showHint)}>
+                    {showHint ? "Hide" : "Show"} Hint
+                  </Button>
+                )}
+
+                {showHint && currentExercise.hints && (
+                  <div className="bg-blue-500/10 border border-blue-500/30 p-4 rounded-lg">
+                    <div className="text-sm text-blue-600 dark:text-blue-400">{currentExercise.hints[0]}</div>
+                  </div>
+                )}
+
+                {showResult && (
+                  <div
+                    className={`p-4 rounded-lg border ${
+                      currentExercise.type === "play" || selectedAnswer === currentExercise.correctAnswer
+                        ? "bg-green-500/10 border-green-500/30"
+                        : "bg-red-500/10 border-red-500/30"
+                    }`}
+                  >
+                    <div
+                      className={`font-semibold ${
+                        currentExercise.type === "play" || selectedAnswer === currentExercise.correctAnswer
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-red-600 dark:text-red-400"
+                      }`}
+                    >
+                      {currentExercise.type === "play"
+                        ? "Great work!"
+                        : selectedAnswer === currentExercise.correctAnswer
+                          ? "Correct!"
+                          : "Incorrect"}
+                    </div>
+                    {currentExercise.type !== "play" && selectedAnswer !== currentExercise.correctAnswer && (
+                      <div className="text-sm mt-1">The correct answer was: {currentExercise.correctAnswer}</div>
+                    )}
+                  </div>
+                )}
+
+                {!showResult && (
+                  <Button
+                    onClick={handleSubmit}
+                    disabled={currentExercise.type === "play" ? !textAnswer.trim() : !selectedAnswer}
+                    className="w-full"
+                    size="lg"
+                  >
+                    Submit Answer
+                  </Button>
+                )}
+              </div>
+            )}
           </CardContent>
         </Card>
       )}
@@ -194,257 +452,6 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
           <ChevronRight className="w-4 h-4 ml-1" />
         </Button>
       </div>
-    </div>
-  )
-}
-
-function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onComplete: (correct: boolean) => void }) {
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
-  const [showResult, setShowResult] = useState(false)
-  const [showHint, setShowHint] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-
-  const [textAnswer, setTextAnswer] = useState("")
-  const [isRecording, setIsRecording] = useState(false)
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
-  const [audioUrl, setAudioUrl] = useState<string | null>(null)
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
-  const audioChunksRef = useRef<Blob[]>([])
-
-  const randomizedOptions = useMemo(() => {
-    if (!exercise.options) return []
-    const options = [...exercise.options]
-    for (let i = options.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[options[i], options[j]] = [options[j], options[i]]
-    }
-    return options
-  }, [exercise.id])
-
-  const playExerciseAudio = async () => {
-    if (!exercise.audioPattern || isPlaying) return
-
-    setIsPlaying(true)
-    try {
-      for (const note of exercise.audioPattern) {
-        let noteName: string
-        let octave: number
-
-        if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
-          noteName = note.slice(0, -1)
-          octave = Number.parseInt(note[note.length - 1])
-        } else {
-          noteName = note
-          octave = 4
-        }
-
-        await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
-        await new Promise((resolve) => setTimeout(resolve, 600))
-      }
-    } catch (error) {
-      console.error("[v0] Failed to play exercise audio:", error)
-    } finally {
-      setIsPlaying(false)
-    }
-  }
-
-  const startRecording = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-      const mediaRecorder = new MediaRecorder(stream)
-      mediaRecorderRef.current = mediaRecorder
-      audioChunksRef.current = []
-
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          audioChunksRef.current.push(event.data)
-        }
-      }
-
-      mediaRecorder.onstop = () => {
-        const blob = new Blob(audioChunksRef.current, { type: "audio/webm" })
-        setAudioBlob(blob)
-        const url = URL.createObjectURL(blob)
-        setAudioUrl(url)
-        stream.getTracks().forEach((track) => track.stop())
-      }
-
-      mediaRecorder.start()
-      setIsRecording(true)
-    } catch (error) {
-      console.error("[v0] Failed to start recording:", error)
-      alert("Could not access microphone. Please check your browser permissions.")
-    }
-  }
-
-  const stopRecording = () => {
-    if (mediaRecorderRef.current && isRecording) {
-      mediaRecorderRef.current.stop()
-      setIsRecording(false)
-    }
-  }
-
-  const playRecording = () => {
-    if (audioUrl) {
-      const audio = new Audio(audioUrl)
-      audio.play()
-    }
-  }
-
-  const handleSubmit = () => {
-    if (exercise.type === "play") {
-      // For play exercises, always mark as correct (it's creative/practice)
-      setShowResult(true)
-      setTimeout(() => {
-        onComplete(true)
-        setTextAnswer("")
-        setAudioBlob(null)
-        setAudioUrl(null)
-        setShowResult(false)
-        setShowHint(false)
-      }, 2000)
-    } else {
-      if (!selectedAnswer) return
-      const correct = selectedAnswer === exercise.correctAnswer
-      setShowResult(true)
-      setTimeout(() => {
-        onComplete(correct)
-        setSelectedAnswer(null)
-        setShowResult(false)
-        setShowHint(false)
-      }, 2000)
-    }
-  }
-
-  return (
-    <div className="space-y-6">
-      <div className="text-lg font-semibold">{exercise.prompt}</div>
-
-      {(exercise.type === "listen" || exercise.type === "identify") && exercise.audioPattern && (
-        <div className="flex justify-center">
-          <Button onClick={playExerciseAudio} disabled={isPlaying} size="lg" className="w-full max-w-xs">
-            <Play className="w-5 h-5 mr-2" />
-            {isPlaying ? "Playing..." : "Play Scale Degree"}
-          </Button>
-        </div>
-      )}
-
-      {exercise.type === "play" && (
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium">Write the notes you played (e.g., "G B D G C E G C")</label>
-            <Textarea
-              value={textAnswer}
-              onChange={(e) => setTextAnswer(e.target.value)}
-              placeholder="Enter note names separated by spaces..."
-              className="min-h-[100px] font-mono"
-              disabled={showResult}
-            />
-          </div>
-
-          <div className="border rounded-lg p-4 space-y-3 bg-muted/30">
-            <div className="text-sm font-medium">Optional: Record your performance</div>
-            <div className="flex gap-2">
-              {!isRecording && !audioUrl && (
-                <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
-                  <Mic className="w-4 h-4 mr-2" />
-                  Start Recording
-                </Button>
-              )}
-              {isRecording && (
-                <Button onClick={stopRecording} variant="destructive" className="flex-1">
-                  <Square className="w-4 h-4 mr-2" />
-                  Stop Recording
-                </Button>
-              )}
-              {audioUrl && !isRecording && (
-                <>
-                  <Button onClick={playRecording} variant="outline" className="flex-1 bg-transparent">
-                    <PlayCircle className="w-4 h-4 mr-2" />
-                    Play Recording
-                  </Button>
-                  <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
-                    <Mic className="w-4 h-4 mr-2" />
-                    Re-record
-                  </Button>
-                </>
-              )}
-            </div>
-            {isRecording && (
-              <div className="text-sm text-red-500 animate-pulse flex items-center gap-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full" />
-                Recording in progress...
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {exercise.type === "identify" && exercise.options && (
-        <div className="grid grid-cols-2 gap-3">
-          {randomizedOptions.map((option) => (
-            <Button
-              key={option}
-              onClick={() => setSelectedAnswer(option)}
-              variant={selectedAnswer === option ? "default" : "outline"}
-              className="h-16 text-lg"
-              disabled={showResult}
-            >
-              {option}
-            </Button>
-          ))}
-        </div>
-      )}
-
-      {exercise.hints && exercise.hints.length > 0 && !showResult && (
-        <Button variant="ghost" size="sm" onClick={() => setShowHint(!showHint)}>
-          {showHint ? "Hide" : "Show"} Hint
-        </Button>
-      )}
-
-      {showHint && exercise.hints && (
-        <div className="bg-blue-500/10 border border-blue-500/30 p-4 rounded-lg">
-          <div className="text-sm text-blue-600 dark:text-blue-400">{exercise.hints[0]}</div>
-        </div>
-      )}
-
-      {showResult && (
-        <div
-          className={`p-4 rounded-lg border ${
-            exercise.type === "play" || selectedAnswer === exercise.correctAnswer
-              ? "bg-green-500/10 border-green-500/30"
-              : "bg-red-500/10 border-red-500/30"
-          }`}
-        >
-          <div
-            className={`font-semibold ${
-              exercise.type === "play" || selectedAnswer === exercise.correctAnswer
-                ? "text-green-600 dark:text-green-400"
-                : "text-red-600 dark:text-red-400"
-            }`}
-          >
-            {exercise.type === "play"
-              ? "Great work!"
-              : selectedAnswer === exercise.correctAnswer
-                ? "Correct!"
-                : "Incorrect"}
-          </div>
-          {exercise.type !== "play" && selectedAnswer !== exercise.correctAnswer && (
-            <div className="text-sm mt-1">The correct answer was: {exercise.correctAnswer}</div>
-          )}
-        </div>
-      )}
-
-      {!showResult && (
-        <Button
-          onClick={handleSubmit}
-          disabled={exercise.type === "play" ? !textAnswer.trim() : !selectedAnswer}
-          className="w-full"
-          size="lg"
-        >
-          Submit Answer
-        </Button>
-      )}
     </div>
   )
 }

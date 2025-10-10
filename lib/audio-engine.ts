@@ -200,6 +200,79 @@ class AdvancedAudioEngine {
     this.activeAudioNodes = []
     console.log("[v0] All audio stopped")
   }
+
+  async playMetronomeClick(isAccent = false): Promise<void> {
+    if (!this.audioContext) return
+
+    const oscillator = this.audioContext.createOscillator()
+    const gainNode = this.audioContext.createGain()
+
+    // Accent clicks are higher pitched and louder
+    oscillator.frequency.value = isAccent ? 1200 : 800
+    gainNode.gain.setValueAtTime(isAccent ? 0.3 : 0.2, this.audioContext.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.1)
+
+    oscillator.connect(gainNode)
+    gainNode.connect(this.audioContext.destination)
+
+    oscillator.start(this.audioContext.currentTime)
+    oscillator.stop(this.audioContext.currentTime + 0.1)
+
+    console.log(`[v0] Metronome click: ${isAccent ? "ACCENT" : "normal"}`)
+  }
+
+  async playBassPatternWithMetronome(bassNotes: string[], beatsPerNote = 4, tempo = 80): Promise<void> {
+    if (!this.audioContext || !this.realSamples) return
+
+    const beatDuration = 60 / tempo // Duration of one beat in seconds
+    const noteDuration = beatDuration * beatsPerNote
+
+    console.log(
+      `[v0] Starting play-along: ${bassNotes.length} bass notes, ${beatsPerNote} beats each, tempo ${tempo} BPM`,
+    )
+
+    // Play 4 metronome clicks as count-in
+    console.log("[v0] Count-in: 4 metronome clicks")
+    for (let i = 0; i < 4; i++) {
+      await this.playMetronomeClick(i === 0) // First click is accented
+      await new Promise((resolve) => setTimeout(resolve, beatDuration * 1000))
+    }
+
+    // Play each bass note for the specified duration with metronome clicks
+    for (let i = 0; i < bassNotes.length; i++) {
+      const note = bassNotes[i]
+      console.log(`[v0] Playing bass note ${i + 1}/${bassNotes.length}: ${note} for ${beatsPerNote} beats`)
+
+      // Parse note (e.g., "C3" -> note: "C", octave: 3)
+      const noteName = note.slice(0, -1)
+      const octave = Number.parseInt(note.slice(-1))
+      const frequency = this.noteToFrequency(noteName, octave)
+
+      // Start the bass note
+      const bassPromise = this.playRealPianoNote(frequency, noteDuration, 0.5)
+
+      // Play metronome clicks during the bass note
+      const clickPromises: Promise<void>[] = []
+      for (let beat = 0; beat < beatsPerNote; beat++) {
+        clickPromises.push(
+          (async () => {
+            await new Promise((resolve) => setTimeout(resolve, beat * beatDuration * 1000))
+            await this.playMetronomeClick(beat === 0) // First beat of each note is accented
+          })(),
+        )
+      }
+
+      // Wait for bass note and all clicks to complete
+      await Promise.all([bassPromise, ...clickPromises])
+
+      // Small gap between notes
+      if (i < bassNotes.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 100))
+      }
+    }
+
+    console.log("[v0] ✓ Play-along completed")
+  }
 }
 
 export const audioEngine = new AdvancedAudioEngine()

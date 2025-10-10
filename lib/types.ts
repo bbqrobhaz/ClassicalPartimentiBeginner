@@ -83,4 +83,7 @@ export interface Exercise {
   options?: string[]
   hints?: string[]
   audioPattern?: string[] // note names to play for listen/identify exercises
+  bassPattern?: string // e.g., "G3-G3-C3" for melodic improvisation exercises
+  beatsPerNote?: number // beats per bass note (default 4)
+  tempo?: number // BPM (default 80)
 }

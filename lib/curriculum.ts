@@ -232,15 +232,22 @@ export const CURRICULUM: Lesson[] = [
           prompt: "KEYBOARD: Realize this bass line with 5/3 chords in the right hand: C-F-G-C",
           correctAnswer:
             "Play bass notes C-F-G-C with left hand, and complete triads (C-E-G, F-A-C, G-B-D, C-E-G) with right hand",
-          hint: "Keep your right hand in a comfortable position. Use smooth voice leading - move each voice to the nearest chord tone.",
+          hints: [
+            "Keep your right hand in a comfortable position. Use smooth voice leading - move each voice to the nearest chord tone.",
+          ],
         },
         {
           id: "ex2-8-melodic",
           type: "play",
-          prompt: "MELODIC INSTRUMENT: Create a melodic line over this progression: I-IV-V-I (bass: C-F-G-C)",
+          prompt: "MELODIC INSTRUMENT: Create a melodic line over this progression: I-IV-V-I",
           correctAnswer:
             "Improvise a melody using notes from each chord (C-E-G over I, F-A-C over IV, G-B-D over V, C-E-G over I)",
-          hint: "Start on C (scale degree 1), move stepwise when possible, and end on C. Use chord tones on strong beats.",
+          hints: [
+            "Start on C (scale degree 1), move stepwise when possible, and end on C. Use chord tones on strong beats.",
+          ],
+          bassPattern: "C3-F3-G3-C3",
+          beatsPerNote: 4,
+          tempo: 80,
         },
       ],
       historicalContext:
@@ -339,7 +346,9 @@ export const CURRICULUM: Lesson[] = [
           type: "play",
           prompt: "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
           correctAnswer: "Play bass C-D-E-F with left hand, right hand plays: C-E-G, D-F-A, E-G-C, F-A-C",
-          hint: "The 6/3 chords create smooth stepwise motion. Keep the right hand close together, moving each voice by step when possible.",
+          hints: [
+            "The 6/3 chords create smooth stepwise motion. Keep the right hand close together, moving each voice by step when possible.",
+          ],
         },
         {
           id: "ex3-8-melodic",
@@ -347,7 +356,12 @@ export const CURRICULUM: Lesson[] = [
           prompt: "MELODIC INSTRUMENT: Create a melodic line over this bass: C-D-E-F (I-ii6-I6-IV)",
           correctAnswer:
             "Improvise a melody using chord tones, emphasizing stepwise motion to match the smooth bass line",
-          hint: "Try starting on G (5), moving to F (over D), E (over E), then C or F (over F). Stepwise motion works beautifully with 6/3 chords.",
+          hints: [
+            "Try starting on G (5), moving to F (over D), E (over E), then C or F (over F). Stepwise motion works beautifully with 6/3 chords.",
+          ],
+          bassPattern: "C3-D3-E3-F3",
+          beatsPerNote: 4,
+          tempo: 80,
         },
       ],
       historicalContext:
@@ -446,15 +460,22 @@ export const CURRICULUM: Lesson[] = [
           prompt: "KEYBOARD: Realize a cadential 6/4: Bass G-G (figures: 6/4-5/3), then resolve to C",
           correctAnswer:
             "Play bass G in bass twice, right hand plays C-E-G (6/4) then B-D-G (5/3), then resolve to C-E-G over bass C",
-          hint: "The 6/4 chord (C-E over bass G) resolves down by step: C→B and E→D, creating the V chord before final resolution to I.",
+          hints: [
+            "The 6/4 chord (C-E over bass G) resolves down by step: C→B and E→D, creating the V chord before final resolution to I.",
+          ],
         },
         {
           id: "ex4-8-melodic",
           type: "play",
-          prompt: "MELODIC INSTRUMENT: Create a melodic cadence using the cadential 6/4 pattern over bass G-G-C",
+          prompt: "MELODIC INSTRUMENT: Create a melodic cadence using the cadential 6/4 pattern",
           correctAnswer:
             "Improvise a melody that emphasizes the resolution: use C or E over the first G (6/4), resolve to B or D over the second G (V), then end on C",
-          hint: "Try: E (over G 6/4) → D (over G V) → C (over C I). The stepwise descent creates a strong cadential feeling.",
+          hints: [
+            "Try: E (over G 6/4) → D (over G V) → C (over C I). The stepwise descent creates a strong cadential feeling.",
+          ],
+          bassPattern: "G3-G3-C3",
+          beatsPerNote: 4,
+          tempo: 80,
         },
       ],
       historicalContext:
