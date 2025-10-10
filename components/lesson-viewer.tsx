@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { ChevronRight, ChevronLeft, BookOpen, Play, CheckCircle2 } from "lucide-react"
+import { Textarea } from "@/components/ui/textarea"
+import { ChevronRight, ChevronLeft, BookOpen, Play, CheckCircle2, Mic, Square, PlayCircle } from "lucide-react"
 import type { Lesson, Exercise } from "@/lib/types"
 import { useProgress } from "@/lib/progress-context"
 import { audioEngine } from "@/lib/audio-engine"
@@ -203,6 +204,13 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
   const [showHint, setShowHint] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
 
+  const [textAnswer, setTextAnswer] = useState("")
+  const [isRecording, setIsRecording] = useState(false)
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
+  const [audioUrl, setAudioUrl] = useState<string | null>(null)
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const audioChunksRef = useRef<Blob[]>([])
+
   const randomizedOptions = useMemo(() => {
     if (!exercise.options) return []
     const options = [...exercise.options]
@@ -240,16 +248,72 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
     }
   }
 
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const mediaRecorder = new MediaRecorder(stream)
+      mediaRecorderRef.current = mediaRecorder
+      audioChunksRef.current = []
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data)
+        }
+      }
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(audioChunksRef.current, { type: "audio/webm" })
+        setAudioBlob(blob)
+        const url = URL.createObjectURL(blob)
+        setAudioUrl(url)
+        stream.getTracks().forEach((track) => track.stop())
+      }
+
+      mediaRecorder.start()
+      setIsRecording(true)
+    } catch (error) {
+      console.error("[v0] Failed to start recording:", error)
+      alert("Could not access microphone. Please check your browser permissions.")
+    }
+  }
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop()
+      setIsRecording(false)
+    }
+  }
+
+  const playRecording = () => {
+    if (audioUrl) {
+      const audio = new Audio(audioUrl)
+      audio.play()
+    }
+  }
+
   const handleSubmit = () => {
-    if (!selectedAnswer) return
-    const correct = selectedAnswer === exercise.correctAnswer
-    setShowResult(true)
-    setTimeout(() => {
-      onComplete(correct)
-      setSelectedAnswer(null)
-      setShowResult(false)
-      setShowHint(false)
-    }, 2000)
+    if (exercise.type === "play") {
+      // For play exercises, always mark as correct (it's creative/practice)
+      setShowResult(true)
+      setTimeout(() => {
+        onComplete(true)
+        setTextAnswer("")
+        setAudioBlob(null)
+        setAudioUrl(null)
+        setShowResult(false)
+        setShowHint(false)
+      }, 2000)
+    } else {
+      if (!selectedAnswer) return
+      const correct = selectedAnswer === exercise.correctAnswer
+      setShowResult(true)
+      setTimeout(() => {
+        onComplete(correct)
+        setSelectedAnswer(null)
+        setShowResult(false)
+        setShowHint(false)
+      }, 2000)
+    }
   }
 
   return (
@@ -262,6 +326,57 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
             <Play className="w-5 h-5 mr-2" />
             {isPlaying ? "Playing..." : "Play Scale Degree"}
           </Button>
+        </div>
+      )}
+
+      {exercise.type === "play" && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Write the notes you played (e.g., "G B D G C E G C")</label>
+            <Textarea
+              value={textAnswer}
+              onChange={(e) => setTextAnswer(e.target.value)}
+              placeholder="Enter note names separated by spaces..."
+              className="min-h-[100px] font-mono"
+              disabled={showResult}
+            />
+          </div>
+
+          <div className="border rounded-lg p-4 space-y-3 bg-muted/30">
+            <div className="text-sm font-medium">Optional: Record your performance</div>
+            <div className="flex gap-2">
+              {!isRecording && !audioUrl && (
+                <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
+                  <Mic className="w-4 h-4 mr-2" />
+                  Start Recording
+                </Button>
+              )}
+              {isRecording && (
+                <Button onClick={stopRecording} variant="destructive" className="flex-1">
+                  <Square className="w-4 h-4 mr-2" />
+                  Stop Recording
+                </Button>
+              )}
+              {audioUrl && !isRecording && (
+                <>
+                  <Button onClick={playRecording} variant="outline" className="flex-1 bg-transparent">
+                    <PlayCircle className="w-4 h-4 mr-2" />
+                    Play Recording
+                  </Button>
+                  <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
+                    <Mic className="w-4 h-4 mr-2" />
+                    Re-record
+                  </Button>
+                </>
+              )}
+            </div>
+            {isRecording && (
+              <div className="text-sm text-red-500 animate-pulse flex items-center gap-2">
+                <div className="w-2 h-2 bg-red-500 rounded-full" />
+                Recording in progress...
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -296,28 +411,37 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
       {showResult && (
         <div
           className={`p-4 rounded-lg border ${
-            selectedAnswer === exercise.correctAnswer
+            exercise.type === "play" || selectedAnswer === exercise.correctAnswer
               ? "bg-green-500/10 border-green-500/30"
               : "bg-red-500/10 border-red-500/30"
           }`}
         >
           <div
             className={`font-semibold ${
-              selectedAnswer === exercise.correctAnswer
+              exercise.type === "play" || selectedAnswer === exercise.correctAnswer
                 ? "text-green-600 dark:text-green-400"
                 : "text-red-600 dark:text-red-400"
             }`}
           >
-            {selectedAnswer === exercise.correctAnswer ? "Correct!" : "Incorrect"}
+            {exercise.type === "play"
+              ? "Great work!"
+              : selectedAnswer === exercise.correctAnswer
+                ? "Correct!"
+                : "Incorrect"}
           </div>
-          {selectedAnswer !== exercise.correctAnswer && (
+          {exercise.type !== "play" && selectedAnswer !== exercise.correctAnswer && (
             <div className="text-sm mt-1">The correct answer was: {exercise.correctAnswer}</div>
           )}
         </div>
       )}
 
       {!showResult && (
-        <Button onClick={handleSubmit} disabled={!selectedAnswer} className="w-full" size="lg">
+        <Button
+          onClick={handleSubmit}
+          disabled={exercise.type === "play" ? !textAnswer.trim() : !selectedAnswer}
+          className="w-full"
+          size="lg"
+        >
           Submit Answer
         </Button>
       )}
