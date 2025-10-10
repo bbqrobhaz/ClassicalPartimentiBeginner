@@ -243,17 +243,84 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 15,
     content: {
       theory:
-        "6/3 (or just 6) indicates first inversion. The bass has the 3rd of the chord. In C major, bass note 3 with 6 = E-G-C. The 6/3 chord is smoother and more melodic than 5/3.",
+        "6/3 (or just 6) indicates first inversion. The bass has the 3rd of the chord. In C major, bass note 3 with 6 = E-G-C. The 6/3 chord is smoother and more melodic than 5/3, perfect for stepwise bass motion.",
       examples: [
         {
           id: "ex-1",
           description: "I6 chord (3 with 6)",
           notation: "Bass: 3, Figures: 6",
-          audioPattern: ["E", "G", "C"],
+          audioPattern: ["E3", "G4", "C5"],
+          figuredBass: "6",
+        },
+        {
+          id: "ex-2",
+          description: "V6 chord (7 with 6)",
+          notation: "Bass: 7, Figures: 6",
+          audioPattern: ["B3", "D5", "G5"],
+          figuredBass: "6",
+        },
+        {
+          id: "ex-3",
+          description: "IV6 chord (6 with 6)",
+          notation: "Bass: 6, Figures: 6",
+          audioPattern: ["A3", "C5", "F5"],
           figuredBass: "6",
         },
       ],
-      exercises: [],
+      exercises: [
+        {
+          id: "ex3-1",
+          type: "identify",
+          prompt: "Which bass note creates a I6 chord?",
+          correctAnswer: "3",
+          options: ["1", "2", "3", "4", "5"],
+        },
+        {
+          id: "ex3-2",
+          type: "identify",
+          prompt: "Listen to this chord. Is it in root position (5/3) or first inversion (6)?",
+          correctAnswer: "First inversion (6)",
+          options: ["Root position (5/3)", "First inversion (6)"],
+          audioPattern: ["E3", "G4", "C5"],
+        },
+        {
+          id: "ex3-3",
+          type: "identify",
+          prompt: "What intervals are above the bass in a 6/3 chord?",
+          correctAnswer: "3rd and 6th",
+          options: ["3rd and 5th", "3rd and 6th", "4th and 6th", "2nd and 6th"],
+        },
+        {
+          id: "ex3-4",
+          type: "identify",
+          prompt: "Listen to this chord. Which bass note is it?",
+          correctAnswer: "7",
+          options: ["5", "6", "7", "1"],
+          audioPattern: ["B3", "D5", "G5"],
+        },
+        {
+          id: "ex3-5",
+          type: "identify",
+          prompt: "Why is 6/3 smoother than 5/3 for stepwise bass motion?",
+          correctAnswer: "The bass moves by step, not leap",
+          options: [
+            "The bass moves by step, not leap",
+            "It has more notes",
+            "It's louder",
+            "It's in a higher register",
+          ],
+        },
+        {
+          id: "ex3-6",
+          type: "identify",
+          prompt: "Listen to this progression. Which is it?",
+          correctAnswer: "I-I6-V",
+          options: ["I-IV-V", "I-I6-V", "I-V-I"],
+          audioPattern: ["C3", "E4", "G4", "C5", "E3", "G4", "C5", "G3", "B4", "D5"],
+        },
+      ],
+      historicalContext:
+        "First inversion chords (6/3) were essential for creating smooth, stepwise bass lines in baroque music. The Rule of the Octave uses 6/3 chords on scale degrees 2, 3, 6, and 7 ascending.",
     },
   },
   {
