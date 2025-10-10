@@ -26,7 +26,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     target: 30,
   },
   {
-    id: "rule-master",
+    id: "rule-of-the-octave-master",
     name: "Rule of the Octave Master",
     description: "Complete all Rule of the Octave lessons",
     icon: "📐",
@@ -226,6 +226,22 @@ export const CURRICULUM: Lesson[] = [
           options: ["I-IV-I", "I-V-I", "IV-V-I"],
           audioPattern: ["C3", "E4", "G4", "C5", "G3", "B4", "D5", "G5", "C3", "E4", "G4", "C5"],
         },
+        {
+          id: "ex2-7-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Realize this bass line with 5/3 chords in the right hand: C-F-G-C",
+          correctAnswer:
+            "Play bass notes C-F-G-C with left hand, and complete triads (C-E-G, F-A-C, G-B-D, C-E-G) with right hand",
+          hint: "Keep your right hand in a comfortable position. Use smooth voice leading - move each voice to the nearest chord tone.",
+        },
+        {
+          id: "ex2-8-melodic",
+          type: "play",
+          prompt: "MELODIC INSTRUMENT: Create a melodic line over this progression: I-IV-V-I (bass: C-F-G-C)",
+          correctAnswer:
+            "Improvise a melody using notes from each chord (C-E-G over I, F-A-C over IV, G-B-D over V, C-E-G over I)",
+          hint: "Start on C (scale degree 1), move stepwise when possible, and end on C. Use chord tones on strong beats.",
+        },
       ],
       historicalContext:
         "Figured bass (basso continuo) was the universal notation system for baroque music, allowing keyboardists to improvise harmonies from a bass line with numbers. It was invented around 1600 and remained standard practice until 1800.",
@@ -318,6 +334,21 @@ export const CURRICULUM: Lesson[] = [
           options: ["I-IV-V", "I-I6-V", "I-V-I"],
           audioPattern: ["C3", "E4", "G4", "C5", "E3", "G4", "C5", "G3", "B4", "D5"],
         },
+        {
+          id: "ex3-7-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
+          correctAnswer: "Play bass C-D-E-F with left hand, right hand plays: C-E-G, D-F-A, E-G-C, F-A-C",
+          hint: "The 6/3 chords create smooth stepwise motion. Keep the right hand close together, moving each voice by step when possible.",
+        },
+        {
+          id: "ex3-8-melodic",
+          type: "play",
+          prompt: "MELODIC INSTRUMENT: Create a melodic line over this bass: C-D-E-F (I-ii6-I6-IV)",
+          correctAnswer:
+            "Improvise a melody using chord tones, emphasizing stepwise motion to match the smooth bass line",
+          hint: "Try starting on G (5), moving to F (over D), E (over E), then C or F (over F). Stepwise motion works beautifully with 6/3 chords.",
+        },
       ],
       historicalContext:
         "First inversion chords (6/3) were essential for creating smooth, stepwise bass lines in baroque music. The Rule of the Octave uses 6/3 chords on scale degrees 2, 3, 6, and 7 ascending.",
@@ -379,10 +410,10 @@ export const CURRICULUM: Lesson[] = [
           id: "ex4-3",
           type: "identify",
           prompt: "Why is the 6/4 chord considered unstable?",
-          correctAnswer: "The bass has the 5th, creating dissonance",
+          correctAnswer: "The 4th above a bass was traditionally considered a dissonance",
           options: [
             "It has too many notes",
-            "The bass has the 5th, creating dissonance",
+            "The 4th above a bass was traditionally considered a dissonance",
             "It's too high",
             "It's too quiet",
           ],
@@ -409,9 +440,25 @@ export const CURRICULUM: Lesson[] = [
           correctAnswer: "G-C-E",
           options: ["C-E-G", "E-G-C", "G-C-E", "G-B-D"],
         },
+        {
+          id: "ex4-7-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Realize a cadential 6/4: Bass G-G (figures: 6/4-5/3), then resolve to C",
+          correctAnswer:
+            "Play bass G in bass twice, right hand plays C-E-G (6/4) then B-D-G (5/3), then resolve to C-E-G over bass C",
+          hint: "The 6/4 chord (C-E over bass G) resolves down by step: C→B and E→D, creating the V chord before final resolution to I.",
+        },
+        {
+          id: "ex4-8-melodic",
+          type: "play",
+          prompt: "MELODIC INSTRUMENT: Create a melodic cadence using the cadential 6/4 pattern over bass G-G-C",
+          correctAnswer:
+            "Improvise a melody that emphasizes the resolution: use C or E over the first G (6/4), resolve to B or D over the second G (V), then end on C",
+          hint: "Try: E (over G 6/4) → D (over G V) → C (over C I). The stepwise descent creates a strong cadential feeling.",
+        },
       ],
       historicalContext:
-        "The cadential 6/4 is one of the most important patterns in baroque music. It appears in virtually every piece and was one of the first patterns taught to students. The 6/4 chord's instability and need for resolution makes it perfect for creating strong cadences.",
+        "The cadential 6/4 is one of the most important patterns in baroque music. It appears in virtually every piece and was one of the first patterns taught to students. The 6/4 chord's instability (due to the dissonant 4th above the bass) and need for resolution makes it perfect for creating strong cadences.",
     },
   },
   {
