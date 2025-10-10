@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -20,6 +20,16 @@ interface LessonViewerProps {
 }
 
 export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, hasPrevious }: LessonViewerProps) {
+  const randomizedExercises = useMemo(() => {
+    const exercises = [...lesson.content.exercises]
+    // Fisher-Yates shuffle algorithm
+    for (let i = exercises.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[exercises[i], exercises[j]] = [exercises[j], exercises[i]]
+    }
+    return exercises
+  }, [lesson.id]) // Re-randomize when lesson changes
+
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0)
   const [exerciseResults, setExerciseResults] = useState<boolean[]>([])
   const [showTheory, setShowTheory] = useState(true)
@@ -27,8 +37,8 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
   const { progress, recordLessonCompletion, addExperience, checkAndUnlockAchievements } = useProgress()
 
   const isCompleted = progress.lessonsCompleted.find((lp) => lp.lessonId === lesson.id)?.completed || false
-  const currentExercise = lesson.content.exercises[currentExerciseIndex]
-  const totalExercises = lesson.content.exercises.length
+  const currentExercise = randomizedExercises[currentExerciseIndex]
+  const totalExercises = randomizedExercises.length
   const completedExercises = exerciseResults.filter(Boolean).length
 
   const handleExerciseComplete = (correct: boolean) => {
@@ -193,6 +203,16 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
   const [showHint, setShowHint] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
 
+  const randomizedOptions = useMemo(() => {
+    if (!exercise.options) return []
+    const options = [...exercise.options]
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[options[i], options[j]] = [options[j], options[i]]
+    }
+    return options
+  }, [exercise.id])
+
   const playExerciseAudio = async () => {
     if (!exercise.audioPattern || isPlaying) return
 
@@ -247,7 +267,7 @@ function ExerciseComponent({ exercise, onComplete }: { exercise: Exercise; onCom
 
       {exercise.type === "identify" && exercise.options && (
         <div className="grid grid-cols-2 gap-3">
-          {exercise.options.map((option) => (
+          {randomizedOptions.map((option) => (
             <Button
               key={option}
               onClick={() => setSelectedAnswer(option)}
