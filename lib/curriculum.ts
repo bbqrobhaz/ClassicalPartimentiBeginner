@@ -123,9 +123,25 @@ export const CURRICULUM: Lesson[] = [
           options: ["1", "2", "3", "4", "5"],
           audioPattern: ["E4"],
         },
+        {
+          id: "ex1-2",
+          type: "identify",
+          prompt: "Listen to the scale degree and identify it",
+          correctAnswer: "5",
+          options: ["3", "4", "5", "6", "7"],
+          audioPattern: ["G4"],
+        },
+        {
+          id: "ex1-3",
+          type: "identify",
+          prompt: "Listen to the scale degree and identify it",
+          correctAnswer: "7",
+          options: ["5", "6", "7", "8"],
+          audioPattern: ["B4"],
+        },
       ],
       historicalContext:
-        "The solfège system (Do, Re, Mi) was developed by Guido of Arezzo in the 11th century and became the foundation of all musical pedagogy.",
+        "The solfège system (Do, Re, Mi) was developed by Guido of Arezzo in the 11th century and became the foundation of all musical pedagogy. In the Neapolitan conservatories, students learned to sing scale degrees before touching an instrument.",
     },
   },
   {
@@ -146,20 +162,35 @@ export const CURRICULUM: Lesson[] = [
           id: "ex-1",
           description: "I chord (1 with 5/3)",
           notation: "Bass: 1, Figures: 5/3",
-          audioPattern: ["C", "E", "G"],
+          audioPattern: ["C3", "E4", "G4", "C5"],
           figuredBass: "5/3",
         },
         {
           id: "ex-2",
           description: "V chord (5 with 5/3)",
           notation: "Bass: 5, Figures: 5/3",
-          audioPattern: ["G", "B", "D"],
+          audioPattern: ["G3", "B4", "D5", "G5"],
+          figuredBass: "5/3",
+        },
+        {
+          id: "ex-3",
+          description: "IV chord (4 with 5/3)",
+          notation: "Bass: 4, Figures: 5/3",
+          audioPattern: ["F3", "A4", "C5", "F5"],
           figuredBass: "5/3",
         },
       ],
-      exercises: [],
+      exercises: [
+        {
+          id: "ex2-1",
+          type: "identify",
+          prompt: "Which bass note creates a V chord with 5/3?",
+          correctAnswer: "5",
+          options: ["1", "4", "5", "6"],
+        },
+      ],
       historicalContext:
-        "Figured bass (basso continuo) was the universal notation system for baroque music, allowing keyboardists to improvise harmonies from a bass line with numbers.",
+        "Figured bass (basso continuo) was the universal notation system for baroque music, allowing keyboardists to improvise harmonies from a bass line with numbers. It was invented around 1600 and remained standard practice until 1800.",
     },
   },
   {
@@ -216,11 +247,39 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 20,
     content: {
       theory:
-        "Cadences are musical punctuation. Authentic (V-I or 5-1) ends strongly. Plagal (IV-I or 4-1) is the 'Amen' cadence. Half (ending on V or 5) leaves the phrase open and unresolved.",
-      examples: [],
-      exercises: [],
+        "Cadences are musical punctuation. Authentic (V-I or 5-1) ends strongly. Plagal (IV-I or 4-1) is the 'Amen' cadence. Half (ending on V or 5) leaves the phrase open and unresolved. Every baroque piece is built from these three cadences.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Authentic Cadence (V-I)",
+          notation: "Bass: 5-1, Figures: 5/3-5/3",
+          audioPattern: ["G3", "B4", "D5", "C3", "E4", "G4", "C5"],
+        },
+        {
+          id: "ex-2",
+          description: "Plagal Cadence (IV-I)",
+          notation: "Bass: 4-1, Figures: 5/3-5/3",
+          audioPattern: ["F3", "A4", "C5", "C3", "E4", "G4", "C5"],
+        },
+        {
+          id: "ex-3",
+          description: "Half Cadence (I-V)",
+          notation: "Bass: 1-5, Figures: 5/3-5/3",
+          audioPattern: ["C3", "E4", "G4", "G3", "B4", "D5"],
+        },
+      ],
+      exercises: [
+        {
+          id: "ex5-1",
+          type: "identify",
+          prompt: "Listen to the cadence. Which type is it?",
+          correctAnswer: "Authentic",
+          options: ["Authentic", "Plagal", "Half"],
+          audioPattern: ["G3", "B4", "D5", "C3", "E4", "G4", "C5"],
+        },
+      ],
       historicalContext:
-        "Cadences were the first patterns taught in baroque pedagogy. Fenaroli's method begins with mastering the three cadences before anything else.",
+        "Cadences were the first patterns taught in baroque pedagogy. Fenaroli's method begins with mastering the three cadences before anything else. As he wrote: 'Without cadences, there is no music.'",
     },
   },
   {
@@ -361,11 +420,40 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 40,
     content: {
       theory:
-        "Furno's partimenti are the perfect introduction. They combine the Rule of the Octave with simple cadences and suspensions.",
-      examples: [],
-      exercises: [],
+        "Furno's partimenti are the perfect introduction. They combine the Rule of the Octave with simple cadences and suspensions. Each partimento is a complete musical phrase that teaches specific patterns. Start by playing the bass line, then add the right hand using the figures.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Furno Partimento No. 1 - Simple ascending scale",
+          notation: "Bass: C D E F G A B C | Figures: - 6 6 - - 6 6 -",
+          audioPattern: ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"],
+          figuredBass: "- 6 6 - - 6 6 -",
+        },
+        {
+          id: "ex-2",
+          description: "Furno Partimento No. 2 - Descending with cadence",
+          notation: "Bass: C B A G F E D C | Figures: - 6 6 - 6 6 7 -",
+          audioPattern: ["C4", "B3", "A3", "G3", "F3", "E3", "D3", "C3"],
+          figuredBass: "- 6 6 - 6 6 7 -",
+        },
+        {
+          id: "ex-3",
+          description: "Furno Partimento No. 3 - With authentic cadence",
+          notation: "Bass: C D E F G C | Figures: - 6 6 - 7 -",
+          audioPattern: ["C3", "D3", "E3", "F3", "G3", "C3"],
+          figuredBass: "- 6 6 - 7 -",
+        },
+      ],
+      exercises: [
+        {
+          id: "ex-furno-1",
+          type: "play",
+          prompt: "Realize this Furno partimento: Bass C-D-E-F-G-C with figures - 6 6 - 7 -",
+          correctAnswer: "Correct realization with proper voice leading",
+        },
+      ],
       historicalContext:
-        "Giovanni Furno (1748-1837) created the clearest and most pedagogical partimenti method, with written-out realizations for students to study.",
+        "Giovanni Furno (1748-1837) created the clearest and most pedagogical partimenti method, with written-out realizations for students to study. His 'Metodo facile, breve e chiaro' (Easy, Brief, and Clear Method) was used throughout Europe. Available at partimenti.org/partimenti/collections/furno/",
     },
   },
   {
@@ -524,11 +612,40 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 60,
     content: {
       theory:
-        "Fenaroli Book I introduces simple figured basses without complex dissonances. Focus on smooth voice leading and proper doubling.",
-      examples: [],
-      exercises: [],
+        "Fenaroli Book I introduces simple figured basses without complex dissonances. Focus on smooth voice leading and proper doubling. These partimenti teach you to think harmonically while maintaining melodic lines in all voices. Prerequisites: You must know the three cadences and the Rule of the Octave before attempting Fenaroli.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Fenaroli Book I, No. 1 - Simple ascending bass",
+          notation: "Bass: C D E F G A B C | Figures: - 6 6 5 - 6 6 5",
+          audioPattern: ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"],
+          figuredBass: "- 6 6 5 - 6 6 5",
+        },
+        {
+          id: "ex-2",
+          description: "Fenaroli Book I, No. 2 - With passing seventh",
+          notation: "Bass: C D E F G C | Figures: - 6 6 - 7 -",
+          audioPattern: ["C3", "D3", "E3", "F3", "G3", "C3"],
+          figuredBass: "- 6 6 - 7 -",
+        },
+        {
+          id: "ex-3",
+          description: "Fenaroli Book I, No. 5 - Introducing suspensions",
+          notation: "Bass: C F G C | Figures: - 4-3 7 -",
+          audioPattern: ["C3", "F3", "G3", "C3"],
+          figuredBass: "- 4-3 7 -",
+        },
+      ],
+      exercises: [
+        {
+          id: "ex-fen1-1",
+          type: "play",
+          prompt: "Realize Fenaroli Book I, No. 1 with proper voice leading",
+          correctAnswer: "Correct realization",
+        },
+      ],
       historicalContext:
-        "Fedele Fenaroli (1730-1818) created the most thorough and detailed partimenti method, used throughout Europe for over a century.",
+        "Fedele Fenaroli (1730-1818) created the most thorough and detailed partimenti method, used throughout Europe for over a century. His four-book series progresses from simple figured basses to complex fugal partimenti. Book I is the foundation. Complete collection at partimenti.org/partimenti/collections/fenaroli/",
     },
   },
 
@@ -730,9 +847,33 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 75,
     content: {
       theory:
-        "Fenaroli Books II-III introduce complex suspensions, seventh chords, and chromatic passages. Requires mastery of voice leading.",
-      examples: [],
+        "Fenaroli Books II-III introduce complex suspensions, seventh chords, and chromatic passages. Requires mastery of voice leading. Book II focuses on more elaborate suspensions and dissonances. Book III introduces modulation and chromatic harmony. These partimenti prepare you for fugal writing.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Fenaroli Book II, No. 1 - Chain of suspensions",
+          notation: "Bass: C F G C | Figures: - 9-8 4-3 7 -",
+          audioPattern: ["C3", "F3", "G3", "C3"],
+          figuredBass: "- 9-8 4-3 7 -",
+        },
+        {
+          id: "ex-2",
+          description: "Fenaroli Book II, No. 10 - Seventh chords",
+          notation: "Bass: C D E F G C | Figures: 7 6/5 7 6/5 7 -",
+          audioPattern: ["C3", "D3", "E3", "F3", "G3", "C3"],
+          figuredBass: "7 6/5 7 6/5 7 -",
+        },
+        {
+          id: "ex-3",
+          description: "Fenaroli Book III, No. 1 - Modulation to dominant",
+          notation: "Bass: C C# D Eb E F F# G | Figures: - #6 6 b6 6 6 #6 -",
+          audioPattern: ["C3", "C#3", "D3", "Eb3", "E3", "F3", "F#3", "G3"],
+          figuredBass: "- #6 6 b6 6 6 #6 -",
+        },
+      ],
       exercises: [],
+      historicalContext:
+        "Books II and III represent the intermediate stage of Neapolitan training. Students would spend months mastering these partimenti before progressing to Book IV. Many professional musicians never went beyond Book III.",
     },
   },
 
@@ -751,9 +892,26 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 100,
     content: {
       theory:
-        "Fenaroli Book IV: The pinnacle of partimenti pedagogy. Complex modulations, chromatic harmony, and sophisticated voice leading.",
-      examples: [],
+        "Fenaroli Book IV: The pinnacle of partimenti pedagogy. Complex modulations, chromatic harmony, and sophisticated voice leading. These partimenti are essentially fugues in bass-line form. Book IV was intended only for advanced students preparing for professional careers as composers and maestri di cappella.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Fenaroli Book IV, No. 1 - Fugal partimento",
+          notation: "Bass: C G C D E F G C | Figures: - - - 6 6 6/5 7 -",
+          audioPattern: ["C3", "G3", "C3", "D3", "E3", "F3", "G3", "C3"],
+          figuredBass: "- - - 6 6 6/5 7 -",
+        },
+        {
+          id: "ex-2",
+          description: "Fenaroli Book IV, No. 5 - Chromatic modulation",
+          notation: "Bass: C C# D Eb E F F# G | Figures: - #6 6 b6 6 6 #6 -",
+          audioPattern: ["C3", "C#3", "D3", "Eb3", "E3", "F3", "F#3", "G3"],
+          figuredBass: "- #6 6 b6 6 6 #6 -",
+        },
+      ],
       exercises: [],
+      historicalContext:
+        "Book IV represents the highest level of Neapolitan pedagogy. Students who mastered this book were considered ready to compose operas and sacred music. Bellini, Mercadante, and other great composers studied from this book.",
     },
   },
   {
@@ -825,6 +983,71 @@ export const CURRICULUM: Lesson[] = [
       exercises: [],
       historicalContext:
         "In the baroque era, all professional musicians were expected to improvise. Handel, Bach, Mozart, and Beethoven were renowned for their improvisational abilities.",
+    },
+  },
+  {
+    id: "mast-6-durante-partimenti",
+    title: "Durante's Diminished Partimenti",
+    description: "Master Francesco Durante's sophisticated partimenti",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-1-fenaroli-book4"],
+    xpReward: 120,
+    content: {
+      theory:
+        "Francesco Durante (1684-1755) was the most influential teacher at the Neapolitan conservatories. His partimenti are more sophisticated and chromatic than Fenaroli's, with extensive use of diminished harmonies and complex voice leading. Durante taught Pergolesi, Paisiello, Piccinni, and many other great composers.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Durante Partimento - Diminished seventh chains",
+          notation: "Bass: C B Bb A Ab G | Figures: - 6/5 6/5 6/5 6/5 -",
+          audioPattern: ["C3", "B2", "Bb2", "A2", "Ab2", "G2"],
+          figuredBass: "- 6/5 6/5 6/5 6/5 -",
+        },
+      ],
+      exercises: [],
+      historicalContext:
+        "Durante's partimenti represent the highest level of Neapolitan sophistication. Available at partimenti.org/partimenti/collections/durante/. His students dominated Italian opera for generations.",
+    },
+  },
+  {
+    id: "mast-7-insanguine-rules",
+    title: "Insanguine's Rules and Partimenti",
+    description: "Study Giacomo Insanguine's systematic approach",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-6-durante-partimenti"],
+    xpReward: 120,
+    content: {
+      theory:
+        "Giacomo Insanguine (1728-1795), known as 'Monopoli', created a comprehensive rulebook that systematizes all the patterns of Neapolitan pedagogy. His partimenti are clear and methodical, making them excellent for understanding the underlying principles.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Insanguine's rulebook is recommended by partimenti.org as essential reading after Furno and before Fenaroli. His systematic approach helps students understand WHY patterns work, not just HOW to play them. Collection at partimenti.org/partimenti/collections/insanguine/",
+    },
+  },
+  {
+    id: "mast-8-sala-rules",
+    title: "Nicola Sala's Theoretical Rules",
+    description: "Master the theoretical foundations with Sala",
+    category: "patterns",
+    tradition: "italian",
+    difficulty: "mastery",
+    level: 5,
+    prerequisites: ["mast-7-insanguine-rules"],
+    xpReward: 120,
+    content: {
+      theory:
+        "Nicola Sala (1713-1801) wrote the most comprehensive theoretical treatise on partimenti. His 'Regole del Contrappunto Pratico' (Rules of Practical Counterpoint) explains the theoretical basis for all the patterns you've learned.",
+      examples: [],
+      exercises: [],
+      historicalContext:
+        "Sala's treatise was the standard textbook at the Neapolitan conservatories. It explains the 'why' behind every rule and pattern. Essential reading for serious students. Available at partimenti.org/partimenti/collections/sala/",
     },
   },
 ]
