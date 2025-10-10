@@ -335,9 +335,83 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 15,
     content: {
       theory:
-        "6/4 indicates second inversion. The bass has the 5th of the chord. In C major, bass note 5 with 6/4 = G-C-E. The 6/4 is unstable and usually resolves to 5/3.",
-      examples: [],
-      exercises: [],
+        "6/4 indicates second inversion. The bass has the 5th of the chord. In C major, bass note 5 with 6/4 = G-C-E. The 6/4 is unstable and usually resolves to 5/3. The most important use is the cadential 6/4: I6/4 on a strong beat resolves to V on the next beat, creating a powerful cadence.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Cadential 6/4 (I6/4 resolving to V)",
+          notation: "Bass: 5-5, Figures: 6/4-5/3",
+          audioPattern: ["G3", "C5", "E5", "G3", "B4", "D5"],
+          figuredBass: "6/4-5/3",
+        },
+        {
+          id: "ex-2",
+          description: "Passing 6/4 (between I and I6)",
+          notation: "Bass: 1-2-3, Figures: 5/3-6/4-6",
+          audioPattern: ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5"],
+          figuredBass: "5/3-6/4-6",
+        },
+        {
+          id: "ex-3",
+          description: "Pedal 6/4 (over sustained bass)",
+          notation: "Bass: 1-1-1, Figures: 5/3-6/4-5/3",
+          audioPattern: ["C3", "E4", "G4", "C3", "F4", "A4", "C3", "E4", "G4"],
+          figuredBass: "5/3-6/4-5/3",
+        },
+      ],
+      exercises: [
+        {
+          id: "ex4-1",
+          type: "identify",
+          prompt: "What intervals are above the bass in a 6/4 chord?",
+          correctAnswer: "4th and 6th",
+          options: ["3rd and 5th", "3rd and 6th", "4th and 6th", "2nd and 6th"],
+        },
+        {
+          id: "ex4-2",
+          type: "identify",
+          prompt: "Listen to this cadential 6/4. What does it resolve to?",
+          correctAnswer: "V (5/3)",
+          options: ["I (5/3)", "V (5/3)", "IV (5/3)", "vi (5/3)"],
+          audioPattern: ["G3", "C5", "E5", "G3", "B4", "D5"],
+        },
+        {
+          id: "ex4-3",
+          type: "identify",
+          prompt: "Why is the 6/4 chord considered unstable?",
+          correctAnswer: "The bass has the 5th, creating dissonance",
+          options: [
+            "It has too many notes",
+            "The bass has the 5th, creating dissonance",
+            "It's too high",
+            "It's too quiet",
+          ],
+        },
+        {
+          id: "ex4-4",
+          type: "identify",
+          prompt: "In a cadential 6/4, which bass note is most common?",
+          correctAnswer: "5 (dominant)",
+          options: ["1 (tonic)", "4 (subdominant)", "5 (dominant)", "6 (submediant)"],
+        },
+        {
+          id: "ex4-5",
+          type: "identify",
+          prompt: "Listen to this progression. Which type of 6/4 is it?",
+          correctAnswer: "Passing 6/4",
+          options: ["Cadential 6/4", "Passing 6/4", "Pedal 6/4"],
+          audioPattern: ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5"],
+        },
+        {
+          id: "ex4-6",
+          type: "identify",
+          prompt: "In C major, bass note 5 with 6/4 creates which notes?",
+          correctAnswer: "G-C-E",
+          options: ["C-E-G", "E-G-C", "G-C-E", "G-B-D"],
+        },
+      ],
+      historicalContext:
+        "The cadential 6/4 is one of the most important patterns in baroque music. It appears in virtually every piece and was one of the first patterns taught to students. The 6/4 chord's instability and need for resolution makes it perfect for creating strong cadences.",
     },
   },
   {
