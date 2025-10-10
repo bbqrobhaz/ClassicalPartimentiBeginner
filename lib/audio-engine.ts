@@ -249,9 +249,9 @@ class AdvancedAudioEngine {
       // Play the bass note for its full duration
       await this.playRealPianoNote(frequency, noteDuration, 0.5)
 
-      // Small gap between notes
+      // This ensures each bass note sustains for the full 4 beats
       if (i < bassNotes.length - 1) {
-        await new Promise((resolve) => setTimeout(resolve, 100))
+        await new Promise((resolve) => setTimeout(resolve, noteDuration * 1000))
       }
     }
 

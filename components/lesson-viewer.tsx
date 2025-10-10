@@ -351,7 +351,7 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                             key={option}
                             onClick={() => setSelectedAnswer(option)}
                             variant={selectedAnswer === option ? "default" : "outline"}
-                            className="h-16 text-lg"
+                            className="h-auto min-h-16 text-lg whitespace-normal text-wrap py-3 px-4"
                             disabled={showResult}
                           >
                             {option}
