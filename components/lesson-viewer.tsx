@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useMemo, useRef } from "react"
+import { useState, useMemo, useRef, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Textarea } from "@/components/ui/textarea"
-import { ChevronRight, ChevronLeft, BookOpen, Play, CheckCircle2, Mic, Square, PlayCircle } from "lucide-react"
+import { ChevronRight, ChevronLeft, BookOpen, Play, CheckCircle2 } from "lucide-react"
 import type { Lesson } from "@/lib/types"
 import { useProgress } from "@/lib/progress-context"
 import { audioEngine } from "@/lib/audio-engine"
@@ -202,6 +202,15 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
     return options
   }, [currentExercise?.id])
 
+  useEffect(() => {
+    setTextAnswer("")
+    setSelectedAnswer(null)
+    setShowResult(false)
+    setShowHint(false)
+    setAudioBlob(null)
+    setAudioUrl(null)
+  }, [currentExerciseIndex])
+
   return (
     <div className="space-y-6">
       <Card>
@@ -318,7 +327,7 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                     tempo={currentExercise.tempo || 80}
                     onComplete={() => handleExerciseComplete(true)}
                   />
-                ) : (
+                ) : currentExercise.type === "play" ? (
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">
@@ -332,58 +341,24 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                         disabled={showResult}
                       />
                     </div>
-
-                    <div className="border rounded-lg p-4 space-y-3 bg-muted/30">
-                      <div className="text-sm font-medium">Optional: Record your performance</div>
-                      <div className="flex gap-2">
-                        {!isRecording && !audioUrl && (
-                          <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
-                            <Mic className="w-4 h-4 mr-2" />
-                            Start Recording
-                          </Button>
-                        )}
-                        {isRecording && (
-                          <Button onClick={stopRecording} variant="destructive" className="flex-1">
-                            <Square className="w-4 h-4 mr-2" />
-                            Stop Recording
-                          </Button>
-                        )}
-                        {audioUrl && !isRecording && (
-                          <>
-                            <Button onClick={playRecording} variant="outline" className="flex-1 bg-transparent">
-                              <PlayCircle className="w-4 h-4 mr-2" />
-                              Play Recording
-                            </Button>
-                            <Button onClick={startRecording} variant="outline" className="flex-1 bg-transparent">
-                              <Mic className="w-4 h-4 mr-2" />
-                              Re-record
-                            </Button>
-                          </>
-                        )}
-                      </div>
-                      {isRecording && (
-                        <div className="text-sm text-red-500 animate-pulse flex items-center gap-2">
-                          <div className="w-2 h-2 bg-red-500 rounded-full" />
-                          Recording in progress...
-                        </div>
-                      )}
-                    </div>
                   </div>
-                )}
-
-                {currentExercise.type === "identify" && currentExercise.options && (
-                  <div className="grid grid-cols-2 gap-3">
-                    {randomizedOptions.map((option) => (
-                      <Button
-                        key={option}
-                        onClick={() => setSelectedAnswer(option)}
-                        variant={selectedAnswer === option ? "default" : "outline"}
-                        className="h-16 text-lg"
-                        disabled={showResult}
-                      >
-                        {option}
-                      </Button>
-                    ))}
+                ) : (
+                  <div className="space-y-4">
+                    {currentExercise.type === "identify" && currentExercise.options && (
+                      <div className="grid grid-cols-2 gap-3">
+                        {randomizedOptions.map((option) => (
+                          <Button
+                            key={option}
+                            onClick={() => setSelectedAnswer(option)}
+                            variant={selectedAnswer === option ? "default" : "outline"}
+                            className="h-16 text-lg"
+                            disabled={showResult}
+                          >
+                            {option}
+                          </Button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
 
