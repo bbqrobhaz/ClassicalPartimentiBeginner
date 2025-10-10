@@ -239,7 +239,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex2-8-melodic",
           type: "play",
-          prompt: "MELODIC INSTRUMENT: Create a melodic line over this progression: I-IV-V-I",
+          prompt: "MELODIES: Create a melodic line over this progression: I-IV-V-I",
           correctAnswer:
             "Improvise a melody using notes from each chord (C-E-G over I, F-A-C over IV, G-B-D over V, C-E-G over I)",
           hints: [
@@ -353,7 +353,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex3-8-melodic",
           type: "play",
-          prompt: "MELODIC INSTRUMENT: Create a melodic line over this bass: C-D-E-F (I-ii6-I6-IV)",
+          prompt: "MELODIES: Create a melodic line over this bass: C-D-E-F (I-ii6-I6-IV)",
           correctAnswer:
             "Improvise a melody using chord tones, emphasizing stepwise motion to match the smooth bass line",
           hints: [
@@ -467,7 +467,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex4-8-melodic",
           type: "play",
-          prompt: "MELODIC INSTRUMENT: Create a melodic cadence using the cadential 6/4 pattern",
+          prompt: "MELODIES: Create a melodic cadence using the cadential 6/4 pattern",
           correctAnswer:
             "Improvise a melody that emphasizes the resolution: use C or E over the first G (6/4), resolve to B or D over the second G (V), then end on C",
           hints: [

@@ -39,8 +39,8 @@ export default function PlayAlongExercise({
     setIsPlaying(true)
 
     try {
-      const stopFn = await audioEngine.playBassPatternWithMetronome(bassNotes, tempo, beatsPerNote)
-      stopPlaybackRef.current = stopFn
+      await audioEngine.playBassPatternWithMetronome(bassNotes, beatsPerNote, tempo)
+      setIsPlaying(false)
     } catch (error) {
       console.error("[v0] Failed to start playback:", error)
       setIsPlaying(false)
