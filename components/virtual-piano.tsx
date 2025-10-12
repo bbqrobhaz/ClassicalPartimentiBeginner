@@ -10,7 +10,6 @@ interface PianoKey {
   note: string
   isBlack: boolean
   keyboardKey?: string
-  whiteKeyIndex?: number // Added to track position for black keys
 }
 
 interface VirtualPianoProps {
@@ -34,32 +33,18 @@ export default function VirtualPiano({
     const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
     const keyboardKeys = ["A", "W", "S", "E", "D", "F", "T", "G", "Y", "H", "U", "J", "K", "O", "L", "P", ";"]
 
-    // Map of black keys to their position relative to white keys
-    // C# is after C (0), D# is after D (1), F# is after F (3), G# is after G (4), A# is after A (5)
-    const blackKeyPositions: Record<string, number> = {
-      "C#": 0,
-      "D#": 1,
-      "F#": 3,
-      "G#": 4,
-      "A#": 5,
-    }
-
     let keyIndex = 0
-    let whiteKeyCount = 0
 
     for (let octave = startOctave; octave < startOctave + numOctaves; octave++) {
       for (const noteName of noteNames) {
         const isBlack = noteName.includes("#")
-        const whiteKeyIndex = isBlack ? whiteKeyCount - 1 + (blackKeyPositions[noteName] || 0) / 7 : undefined
 
         keys.push({
           note: `${noteName}${octave}`,
           isBlack,
           keyboardKey: keyIndex < keyboardKeys.length ? keyboardKeys[keyIndex] : undefined,
-          whiteKeyIndex,
         })
 
-        if (!isBlack) whiteKeyCount++
         keyIndex++
       }
     }
@@ -73,6 +58,7 @@ export default function VirtualPiano({
     async (note: string) => {
       if (isMuted) return
 
+      console.log("[v0] Playing note:", note)
       setActiveNotes((prev) => new Set(prev).add(note))
       await audioEngine.playNote(note)
 
@@ -150,14 +136,21 @@ export default function VirtualPiano({
 
         <div className="absolute top-0 left-0 right-0 flex pointer-events-none" style={{ height: "60%" }}>
           {blackKeys.map((key) => {
-            // Find the white key this black key comes after
-            const noteWithoutSharp = key.note.replace("#", "")
+            // Extract note name and octave properly
+            // For "C#4": noteName = "C#", octave = "4"
             const octave = key.note.slice(-1)
-            const baseWhiteNote = noteWithoutSharp + octave
+            const noteName = key.note.slice(0, -1)
+            const baseNoteName = noteName.replace("#", "")
+            const baseWhiteNote = baseNoteName + octave
+
+            console.log("[v0] Black key:", key.note, "-> base white:", baseWhiteNote)
 
             const whiteKeyIndex = whiteKeys.findIndex((wk) => wk.note === baseWhiteNote)
 
-            if (whiteKeyIndex === -1) return null
+            if (whiteKeyIndex === -1) {
+              console.log("[v0] ⚠️ Could not find white key for", key.note)
+              return null
+            }
 
             const whiteKeyWidth = 100 / whiteKeys.length
             const leftPosition = (whiteKeyIndex + 0.75) * whiteKeyWidth
@@ -169,9 +162,9 @@ export default function VirtualPiano({
                 className={`
                   absolute rounded-b-lg border-2 border-border pointer-events-auto
                   transition-all duration-150 ease-out
-                  hover:bg-muted active:bg-muted/80
-                  ${activeNotes.has(key.note) ? "bg-primary/40 scale-95" : "bg-foreground"}
-                  z-10 group
+                  hover:bg-gray-700 active:bg-gray-600
+                  ${activeNotes.has(key.note) ? "bg-gray-600 scale-95" : "bg-gray-900"}
+                  z-10 group shadow-lg
                 `}
                 style={{
                   width: compact ? "24px" : "32px",
@@ -181,7 +174,7 @@ export default function VirtualPiano({
                 }}
               >
                 {showLabels && key.keyboardKey && (
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] px-1 py-0.5 rounded bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] px-1 py-0.5 rounded bg-white/90 text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                     {key.keyboardKey}
                   </span>
                 )}
