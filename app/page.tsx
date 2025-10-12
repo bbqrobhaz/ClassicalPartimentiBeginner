@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, lazy, Suspense } from "react"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -34,10 +34,13 @@ import {
   Flame,
   GraduationCap,
   BarChart3,
+  Piano,
 } from "lucide-react"
 import { useProgress } from "@/lib/progress-context"
 import { CURRICULUM, getNextLesson } from "@/lib/curriculum"
 import type { Lesson } from "@/lib/types"
+
+const VirtualPiano = lazy(() => import("@/components/virtual-piano"))
 
 export default function PartimentiTrainer() {
   const [activeTab, setActiveTab] = useState("lessons")
@@ -122,6 +125,13 @@ export default function PartimentiTrainer() {
       name: "Structured Lessons",
       description: "Follow the complete curriculum from foundations to mastery",
       icon: GraduationCap,
+      difficulty: "All Levels",
+    },
+    {
+      id: "piano",
+      name: "Virtual Piano",
+      description: "Interactive piano for practicing and testing intervals",
+      icon: Piano,
       difficulty: "All Levels",
     },
     {
@@ -326,6 +336,59 @@ export default function PartimentiTrainer() {
                 ) : (
                   <LessonBrowser onSelectLesson={setSelectedLesson} />
                 )}
+              </TabsContent>
+
+              <TabsContent value="piano" className="mt-0">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="font-serif text-2xl">Virtual Piano</CardTitle>
+                    <CardDescription className="text-base">
+                      Practice playing notes, test intervals, and explore the keyboard. Click keys with your mouse or
+                      use your computer keyboard (A-; keys map to piano keys).
+                    </CardDescription>
+                  </CardHeader>
+                  <div className="p-6 space-y-6">
+                    <Suspense
+                      fallback={<div className="text-center py-12 text-muted-foreground">Loading virtual piano...</div>}
+                    >
+                      <VirtualPiano startOctave={3} numOctaves={2} showLabels={true} />
+                    </Suspense>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Card className="bg-muted/30">
+                        <CardHeader>
+                          <CardTitle className="text-lg">Keyboard Shortcuts</CardTitle>
+                        </CardHeader>
+                        <div className="p-4 space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">White keys:</span>
+                            <span className="font-mono">A S D F G H J K L ;</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">Black keys:</span>
+                            <span className="font-mono">W E T Y U O P</span>
+                          </div>
+                        </div>
+                      </Card>
+
+                      <Card className="bg-muted/30">
+                        <CardHeader>
+                          <CardTitle className="text-lg">Practice Ideas</CardTitle>
+                        </CardHeader>
+                        <div className="p-4 space-y-2 text-sm text-muted-foreground">
+                          <div>• Play scales and arpeggios</div>
+                          <div>• Test intervals you're learning</div>
+                          <div>• Practice cadence patterns</div>
+                          <div>• Experiment with melodic lines</div>
+                        </div>
+                      </Card>
+                    </div>
+
+                    <Suspense fallback={<div className="text-center py-6 text-muted-foreground">Loading...</div>}>
+                      <VirtualPiano startOctave={4} numOctaves={1} showLabels={false} compact={true} />
+                    </Suspense>
+                  </div>
+                </Card>
               </TabsContent>
 
               <TabsContent value="practice" className="mt-0">
