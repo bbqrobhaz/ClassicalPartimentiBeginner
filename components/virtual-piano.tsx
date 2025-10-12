@@ -63,10 +63,10 @@ export default function VirtualPiano({
 
       if (isMuted) return
 
+      console.log("[v0] Playing piano note:", note)
       setActiveNotes((prev) => new Set(prev).add(note))
       await audioEngine.playNote(note)
 
-      // Remove active state after a short delay
       setTimeout(() => {
         setActiveNotes((prev) => {
           const next = new Set(prev)
@@ -108,7 +108,7 @@ export default function VirtualPiano({
         </Button>
       </div>
 
-      <div className="relative" style={{ height: compact ? "120px" : "180px" }}>
+      <div className="relative" style={{ height: compact ? "140px" : "200px" }}>
         {/* White keys */}
         <div className="flex gap-0.5 h-full">
           {whiteKeys.map((key) => (
@@ -122,11 +122,13 @@ export default function VirtualPiano({
                 ${activeNotes.has(key.note) ? "bg-primary/20 scale-95" : "bg-background"}
                 relative group
               `}
-              style={{ minWidth: compact ? "32px" : "48px" }}
+              style={{ minWidth: compact ? "36px" : "52px" }}
             >
               {showLabels && (
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-                  <span className="text-xs font-medium text-muted-foreground">{key.note}</span>
+                  <span className={`${compact ? "text-[10px]" : "text-xs"} font-medium text-muted-foreground`}>
+                    {key.note}
+                  </span>
                   {key.keyboardKey && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                       {key.keyboardKey}
@@ -138,10 +140,8 @@ export default function VirtualPiano({
           ))}
         </div>
 
-        <div className="absolute top-0 left-0 right-0 flex pointer-events-none" style={{ height: "60%" }}>
+        <div className="absolute top-0 left-0 right-0 h-[60%] pointer-events-none">
           {blackKeys.map((key) => {
-            // Extract note name and octave properly
-            // For "C#4": noteName = "C#", octave = "4"
             const octave = key.note.slice(-1)
             const noteName = key.note.slice(0, -1)
             const baseNoteName = noteName.replace("#", "")
@@ -150,25 +150,31 @@ export default function VirtualPiano({
             const whiteKeyIndex = whiteKeys.findIndex((wk) => wk.note === baseWhiteNote)
 
             if (whiteKeyIndex === -1) {
+              console.warn("[v0] Could not find white key for black key:", key.note)
               return null
             }
 
+            // Calculate position: start at the white key position, then add 70% of one white key width
+            // This positions the black key between the base white key and the next one
             const whiteKeyWidth = 100 / whiteKeys.length
-            const leftPosition = (whiteKeyIndex + 0.66) * whiteKeyWidth
+            const leftPosition = whiteKeyIndex * whiteKeyWidth + 0.7 * whiteKeyWidth
 
             return (
               <button
                 key={key.note}
-                onClick={() => playNote(key.note)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  playNote(key.note)
+                }}
                 className={`
-                  absolute rounded-b-lg border-2 border-border pointer-events-auto
+                  absolute rounded-b-lg border-2 border-gray-800 pointer-events-auto
                   transition-all duration-150 ease-out
                   hover:bg-gray-700 active:bg-gray-600
                   ${activeNotes.has(key.note) ? "bg-gray-600 scale-95" : "bg-gray-900"}
                   z-10 group shadow-lg
                 `}
                 style={{
-                  width: compact ? "24px" : "32px",
+                  width: compact ? "28px" : "36px",
                   height: "100%",
                   left: `${leftPosition}%`,
                   transform: "translateX(-50%)",
