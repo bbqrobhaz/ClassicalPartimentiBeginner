@@ -55,22 +55,38 @@ export default function VirtualPiano({
   const [keys] = useState<PianoKey[]>(generateKeys())
 
   const playNote = useCallback(
-    async (note: string) => {
-      if (!note || typeof note !== "string" || note === "undefined" || note.includes("undefined")) {
-        console.warn("[v0] Invalid note attempted:", note)
+    async (noteString: string) => {
+      if (
+        !noteString ||
+        typeof noteString !== "string" ||
+        noteString === "undefined" ||
+        noteString.includes("undefined")
+      ) {
+        console.warn("[v0] Invalid note attempted:", noteString)
         return
       }
 
       if (isMuted) return
 
-      console.log("[v0] Playing piano note:", note)
-      setActiveNotes((prev) => new Set(prev).add(note))
-      await audioEngine.playNote(note)
+      const octave = Number.parseInt(noteString.slice(-1))
+      const noteName = noteString.slice(0, -1)
+
+      if (isNaN(octave) || !noteName) {
+        console.warn("[v0] Invalid note format:", noteString)
+        return
+      }
+
+      console.log("[v0] Playing piano note:", noteString)
+      setActiveNotes((prev) => new Set(prev).add(noteString))
+
+      // Convert note string to frequency before calling playNote
+      const frequency = audioEngine.noteToFrequency(noteName, octave)
+      await audioEngine.playNote(frequency)
 
       setTimeout(() => {
         setActiveNotes((prev) => {
           const next = new Set(prev)
-          next.delete(note)
+          next.delete(noteString)
           return next
         })
       }, 300)

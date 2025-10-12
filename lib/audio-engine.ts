@@ -161,7 +161,7 @@ class AdvancedAudioEngine {
     }
   }
 
-  private noteToFrequency(note: string, octave: number): number {
+  noteToFrequency(note: string, octave: number): number {
     const A4 = 440
     const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
     const noteIndex = notes.indexOf(note)
