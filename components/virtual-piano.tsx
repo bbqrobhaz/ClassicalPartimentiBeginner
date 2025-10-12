@@ -10,6 +10,7 @@ interface PianoKey {
   note: string
   isBlack: boolean
   keyboardKey?: string
+  whiteKeyIndex?: number // Added to track position for black keys
 }
 
 interface VirtualPianoProps {
@@ -28,20 +29,37 @@ export default function VirtualPiano({
   const [activeNotes, setActiveNotes] = useState<Set<string>>(new Set())
   const [isMuted, setIsMuted] = useState(false)
 
-  // Generate piano keys for the specified range
   const generateKeys = useCallback((): PianoKey[] => {
     const keys: PianoKey[] = []
     const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
     const keyboardKeys = ["A", "W", "S", "E", "D", "F", "T", "G", "Y", "H", "U", "J", "K", "O", "L", "P", ";"]
 
+    // Map of black keys to their position relative to white keys
+    // C# is after C (0), D# is after D (1), F# is after F (3), G# is after G (4), A# is after A (5)
+    const blackKeyPositions: Record<string, number> = {
+      "C#": 0,
+      "D#": 1,
+      "F#": 3,
+      "G#": 4,
+      "A#": 5,
+    }
+
     let keyIndex = 0
+    let whiteKeyCount = 0
+
     for (let octave = startOctave; octave < startOctave + numOctaves; octave++) {
       for (const noteName of noteNames) {
+        const isBlack = noteName.includes("#")
+        const whiteKeyIndex = isBlack ? whiteKeyCount - 1 + (blackKeyPositions[noteName] || 0) / 7 : undefined
+
         keys.push({
           note: `${noteName}${octave}`,
-          isBlack: noteName.includes("#"),
+          isBlack,
           keyboardKey: keyIndex < keyboardKeys.length ? keyboardKeys[keyIndex] : undefined,
+          whiteKeyIndex,
         })
+
+        if (!isBlack) whiteKeyCount++
         keyIndex++
       }
     }
@@ -130,21 +148,19 @@ export default function VirtualPiano({
           ))}
         </div>
 
-        {/* Black keys */}
         <div className="absolute top-0 left-0 right-0 flex pointer-events-none" style={{ height: "60%" }}>
-          {keys.map((key, index) => {
-            if (!key.isBlack)
-              return <div key={key.note} className="flex-1" style={{ minWidth: compact ? "32px" : "48px" }} />
+          {blackKeys.map((key) => {
+            // Find the white key this black key comes after
+            const noteWithoutSharp = key.note.replace("#", "")
+            const octave = key.note.slice(-1)
+            const baseWhiteNote = noteWithoutSharp + octave
 
-            // Calculate position for black key (between white keys)
-            const whiteKeyIndex = whiteKeys.findIndex((wk) => {
-              const noteWithoutOctave = key.note.slice(0, -1)
-              const nextNote = noteWithoutOctave.replace("#", "")
-              return (
-                wk.note.startsWith(nextNote) &&
-                Number.parseInt(wk.note.slice(-1)) === Number.parseInt(key.note.slice(-1))
-              )
-            })
+            const whiteKeyIndex = whiteKeys.findIndex((wk) => wk.note === baseWhiteNote)
+
+            if (whiteKeyIndex === -1) return null
+
+            const whiteKeyWidth = 100 / whiteKeys.length
+            const leftPosition = (whiteKeyIndex + 0.75) * whiteKeyWidth
 
             return (
               <button
@@ -160,7 +176,8 @@ export default function VirtualPiano({
                 style={{
                   width: compact ? "24px" : "32px",
                   height: "100%",
-                  left: `${(whiteKeyIndex * (100 / whiteKeys.length)) + (100 / whiteKeys.length / 2) - (compact ? 1.5 : 2)}%`,
+                  left: `${leftPosition}%`,
+                  transform: "translateX(-50%)",
                 }}
               >
                 {showLabels && key.keyboardKey && (
