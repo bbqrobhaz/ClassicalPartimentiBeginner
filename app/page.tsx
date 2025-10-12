@@ -368,6 +368,12 @@ export default function PartimentiTrainer() {
                             <span className="text-muted-foreground">Black keys:</span>
                             <span className="font-mono">W E T Y U O P</span>
                           </div>
+                          <div className="pt-2 mt-2 border-t border-border">
+                            <p className="text-xs text-muted-foreground italic">
+                              Note: Computer keyboard hardware limitations may prevent some key combinations from
+                              registering simultaneously, which can affect chord playing.
+                            </p>
+                          </div>
                         </div>
                       </Card>
 

@@ -56,9 +56,13 @@ export default function VirtualPiano({
 
   const playNote = useCallback(
     async (note: string) => {
+      if (!note || typeof note !== "string" || note === "undefined" || note.includes("undefined")) {
+        console.warn("[v0] Invalid note attempted:", note)
+        return
+      }
+
       if (isMuted) return
 
-      console.log("[v0] Playing note:", note)
       setActiveNotes((prev) => new Set(prev).add(note))
       await audioEngine.playNote(note)
 
@@ -143,17 +147,14 @@ export default function VirtualPiano({
             const baseNoteName = noteName.replace("#", "")
             const baseWhiteNote = baseNoteName + octave
 
-            console.log("[v0] Black key:", key.note, "-> base white:", baseWhiteNote)
-
             const whiteKeyIndex = whiteKeys.findIndex((wk) => wk.note === baseWhiteNote)
 
             if (whiteKeyIndex === -1) {
-              console.log("[v0] ⚠️ Could not find white key for", key.note)
               return null
             }
 
             const whiteKeyWidth = 100 / whiteKeys.length
-            const leftPosition = (whiteKeyIndex + 0.75) * whiteKeyWidth
+            const leftPosition = (whiteKeyIndex + 0.66) * whiteKeyWidth
 
             return (
               <button
