@@ -57,13 +57,16 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
   const correctExercises = exerciseResults.filter(Boolean).length
 
   const handleExerciseComplete = (correct: boolean) => {
+    console.log("[v0] handleExerciseComplete called:", { correct, currentExerciseIndex, totalExercises })
     const newResults = [...exerciseResults]
     newResults[currentExerciseIndex] = correct
     setExerciseResults(newResults)
 
     if (currentExerciseIndex < totalExercises - 1) {
+      console.log("[v0] Advancing to next exercise:", currentExerciseIndex + 1)
       setCurrentExerciseIndex(currentExerciseIndex + 1)
     } else {
+      console.log("[v0] Lesson complete! Calculating score...")
       const score = (newResults.filter(Boolean).length / totalExercises) * 100
       const timeSpent = Math.floor((Date.now() - startTime) / 1000)
       recordLessonCompletion(lesson.id, score, timeSpent)
@@ -170,25 +173,36 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
   }
 
   const handleSubmit = () => {
+    console.log("[v0] handleSubmit called:", {
+      exerciseType: currentExercise?.type,
+      hasBassPattern: !!currentExercise?.bassPattern,
+    })
+
     if (currentExercise?.type === "play") {
       if (!currentExercise.bassPattern) {
         // Keyboard realization exercise - validate the answer
+        console.log("[v0] Validating keyboard exercise answer:", textAnswer)
         const userNotes = textAnswer
           .toUpperCase()
-          .replace(/[^A-G#\s]/g, "") // Remove everything except note names
+          .replace(/[^A-G#\s]/g, "")
           .split(/\s+/)
           .filter(Boolean)
-          .map((note) => note.replace(/\d+/g, "")) // Remove octave numbers for flexible validation
+          .map((note) => note.replace(/\d+/g, ""))
 
-        // Extract expected notes from correctAnswer (looking for note names like C, E, G, etc.)
         const expectedNotes = (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
-
-        // Check if user included most of the expected notes (allow some flexibility)
         const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
-        const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7 // 70% match threshold
+        const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
+
+        console.log("[v0] Validation result:", {
+          isCorrect,
+          matchedNotes: matchedNotes.length,
+          expectedNotes: expectedNotes.length,
+        })
 
         setShowResult(true)
+        console.log("[v0] Setting timeout for keyboard exercise (1000ms)")
         setTimeout(() => {
+          console.log("[v0] Timeout fired for keyboard exercise")
           handleExerciseComplete(isCorrect)
           setTextAnswer("")
           setAudioBlob(null)
@@ -198,8 +212,11 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
         }, 1000)
       } else {
         // Melodic improvisation exercise (with bassPattern) - always mark as correct (it's creative)
+        console.log("[v0] Melodic improvisation exercise - marking as correct")
         setShowResult(true)
+        console.log("[v0] Setting timeout for melodic exercise (1000ms)")
         setTimeout(() => {
+          console.log("[v0] Timeout fired for melodic exercise")
           handleExerciseComplete(true)
           setTextAnswer("")
           setAudioBlob(null)
@@ -211,8 +228,15 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
     } else {
       if (!selectedAnswer) return
       const correct = selectedAnswer === currentExercise?.correctAnswer
+      console.log("[v0] Identify/listen exercise:", {
+        correct,
+        selectedAnswer,
+        correctAnswer: currentExercise?.correctAnswer,
+      })
       setShowResult(true)
+      console.log("[v0] Setting timeout for identify exercise (1000ms)")
       setTimeout(() => {
+        console.log("[v0] Timeout fired for identify exercise")
         handleExerciseComplete(correct)
         setSelectedAnswer(null)
         setShowResult(false)
