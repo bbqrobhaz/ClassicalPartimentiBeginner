@@ -170,16 +170,43 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
 
   const handleSubmit = () => {
     if (currentExercise?.type === "play") {
-      // For play exercises, always mark as correct (it's creative/practice)
-      setShowResult(true)
-      setTimeout(() => {
-        handleExerciseComplete(true)
-        setTextAnswer("")
-        setAudioBlob(null)
-        setAudioUrl(null)
-        setShowResult(false)
-        setShowHint(false)
-      }, 1000)
+      if (!currentExercise.bassPattern) {
+        // Keyboard realization exercise - validate the answer
+        const userNotes = textAnswer
+          .toUpperCase()
+          .replace(/[^A-G#\s]/g, "") // Remove everything except note names
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((note) => note.replace(/\d+/g, "")) // Remove octave numbers for flexible validation
+
+        // Extract expected notes from correctAnswer (looking for note names like C, E, G, etc.)
+        const expectedNotes = (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
+
+        // Check if user included most of the expected notes (allow some flexibility)
+        const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
+        const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7 // 70% match threshold
+
+        setShowResult(true)
+        setTimeout(() => {
+          handleExerciseComplete(isCorrect)
+          setTextAnswer("")
+          setAudioBlob(null)
+          setAudioUrl(null)
+          setShowResult(false)
+          setShowHint(false)
+        }, 1000)
+      } else {
+        // Melodic improvisation exercise (with bassPattern) - always mark as correct (it's creative)
+        setShowResult(true)
+        setTimeout(() => {
+          handleExerciseComplete(true)
+          setTextAnswer("")
+          setAudioBlob(null)
+          setAudioUrl(null)
+          setShowResult(false)
+          setShowHint(false)
+        }, 1000)
+      }
     } else {
       if (!selectedAnswer) return
       const correct = selectedAnswer === currentExercise?.correctAnswer
@@ -387,24 +414,92 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                 {showResult && (
                   <div
                     className={`p-4 rounded-lg border ${
-                      currentExercise.type === "play" || selectedAnswer === currentExercise.correctAnswer
-                        ? "bg-green-500/10 border-green-500/30"
-                        : "bg-red-500/10 border-red-500/30"
+                      currentExercise.type === "play" && currentExercise.bassPattern
+                        ? "bg-green-500/10 border-green-500/30" // Melodic improvisation - always green
+                        : currentExercise.type === "play"
+                          ? textAnswer.trim()
+                            ? (() => {
+                                // Validate keyboard exercise answer
+                                const userNotes = textAnswer
+                                  .toUpperCase()
+                                  .replace(/[^A-G#\s]/g, "")
+                                  .split(/\s+/)
+                                  .filter(Boolean)
+                                  .map((note) => note.replace(/\d+/g, ""))
+                                const expectedNotes =
+                                  (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
+                                const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
+                                const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
+                                return isCorrect
+                                  ? "bg-green-500/10 border-green-500/30"
+                                  : "bg-red-500/10 border-red-500/30"
+                              })()
+                            : "bg-red-500/10 border-red-500/30"
+                          : selectedAnswer === currentExercise.correctAnswer
+                            ? "bg-green-500/10 border-green-500/30"
+                            : "bg-red-500/10 border-red-500/30"
                     }`}
                   >
                     <div
                       className={`font-semibold ${
-                        currentExercise.type === "play" || selectedAnswer === currentExercise.correctAnswer
+                        currentExercise.type === "play" && currentExercise.bassPattern
                           ? "text-green-600 dark:text-green-400"
-                          : "text-red-600 dark:text-red-400"
+                          : currentExercise.type === "play"
+                            ? (() => {
+                                const userNotes = textAnswer
+                                  .toUpperCase()
+                                  .replace(/[^A-G#\s]/g, "")
+                                  .split(/\s+/)
+                                  .filter(Boolean)
+                                  .map((note) => note.replace(/\d+/g, ""))
+                                const expectedNotes =
+                                  (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
+                                const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
+                                const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
+                                return isCorrect
+                                  ? "text-green-600 dark:text-green-400"
+                                  : "text-red-600 dark:text-red-400"
+                              })()
+                            : selectedAnswer === currentExercise.correctAnswer
+                              ? "text-green-600 dark:text-green-400"
+                              : "text-red-600 dark:text-red-400"
                       }`}
                     >
-                      {currentExercise.type === "play"
+                      {currentExercise.type === "play" && currentExercise.bassPattern
                         ? "Great work!"
-                        : selectedAnswer === currentExercise.correctAnswer
-                          ? "Correct!"
-                          : "Incorrect"}
+                        : currentExercise.type === "play"
+                          ? (() => {
+                              const userNotes = textAnswer
+                                .toUpperCase()
+                                .replace(/[^A-G#\s]/g, "")
+                                .split(/\s+/)
+                                .filter(Boolean)
+                                .map((note) => note.replace(/\d+/g, ""))
+                              const expectedNotes =
+                                (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
+                              const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
+                              const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
+                              return isCorrect ? "Correct!" : "Incorrect"
+                            })()
+                          : selectedAnswer === currentExercise.correctAnswer
+                            ? "Correct!"
+                            : "Incorrect"}
                     </div>
+                    {currentExercise.type === "play" &&
+                      !currentExercise.bassPattern &&
+                      (() => {
+                        const userNotes = textAnswer
+                          .toUpperCase()
+                          .replace(/[^A-G#\s]/g, "")
+                          .split(/\s+/)
+                          .filter(Boolean)
+                          .map((note) => note.replace(/\d+/g, ""))
+                        const expectedNotes =
+                          (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
+                        const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
+                        const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
+                        return !isCorrect
+                      })() && <div className="text-sm mt-1">Expected notes: {currentExercise.correctAnswer}</div>}
                     {currentExercise.type !== "play" && selectedAnswer !== currentExercise.correctAnswer && (
                       <div className="text-sm mt-1">The correct answer was: {currentExercise.correctAnswer}</div>
                     )}
