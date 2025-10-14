@@ -494,25 +494,25 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 20,
     content: {
       theory:
-        "In partimenti pedagogy, cadences are classified by how long the dominant lasts, not by their harmonic function. The THREE BASIC CADENCES are: (1) SIMPLE CADENCE (Cadenza Semplice): dominant lasts ONE beat with a single sonority (5/3 or 7/3). (2) COMPOUND CADENCE (Cadenza Composta): dominant lasts TWO beats with two sonorities, often including a 4-3 suspension. (3) DOUBLE CADENCE (Cadenza Doppia): dominant lasts FOUR beats with four successive sonorities above V: 5/3 (or 7/3), 6/4, 5/4, and 5/3 (or 7/3). These cadences are the foundation of all baroque music and must be memorized in all keys.",
+        "In partimenti pedagogy, cadences are classified by how long the dominant lasts, not by their harmonic function. The THREE BASIC CADENCES are: (1) SIMPLE CADENCE (Cadenza Semplice): dominant lasts ONE BAR (4 beats) with a single sonority (5/3 or 7/3). (2) COMPOUND CADENCE (Cadenza Composta): dominant lasts TWO BARS (8 beats) with two sonorities, often including a 4-3 suspension. (3) DOUBLE CADENCE (Cadenza Doppia): dominant lasts FOUR BARS (16 beats) with four successive sonorities above V: 5/3 (or 7/3), 6/4, 5/4, and 5/3 (or 7/3). These cadences are the foundation of all baroque music and must be memorized in all keys.",
       examples: [
         {
           id: "ex-1",
-          description: "Simple Cadence (Cadenza Semplice) - V lasts 1 beat",
+          description: "Simple Cadence (Cadenza Semplice) - V lasts 1 bar (4 beats)",
           notation: "Bass: 5-1, Figures: 7/3-5/3 (or 5/3-5/3)",
           audioPattern: ["G3", "B4", "D5", "F5", "C3", "E4", "G4", "C5"],
           figuredBass: "7/3-5/3",
         },
         {
           id: "ex-2",
-          description: "Compound Cadence (Cadenza Composta) - V lasts 2 beats with 4-3 suspension",
+          description: "Compound Cadence (Cadenza Composta) - V lasts 2 bars (8 beats) with 4-3 suspension",
           notation: "Bass: 5-5-1, Figures: 5/4-5/3-5/3",
           audioPattern: ["G3", "C5", "D5", "G3", "B4", "D5", "C3", "E4", "G4", "C5"],
           figuredBass: "5/4-5/3-5/3",
         },
         {
           id: "ex-3",
-          description: "Double Cadence (Cadenza Doppia) - V lasts 4 beats with four sonorities",
+          description: "Double Cadence (Cadenza Doppia) - V lasts 4 bars (16 beats) with four sonorities",
           notation: "Bass: 5-5-5-5-1, Figures: 5/3-6/4-5/4-5/3-5/3",
           audioPattern: [
             "G3",
@@ -567,9 +567,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex5-1",
           type: "identify",
-          prompt: "Listen to this cadence. How many beats does the dominant last?",
-          correctAnswer: "1 beat (Simple Cadence)",
-          options: ["1 beat (Simple Cadence)", "2 beats (Compound Cadence)", "4 beats (Double Cadence)"],
+          prompt: "Listen to this cadence. How many bars does the dominant last?",
+          correctAnswer: "1 bar (Simple Cadence)",
+          options: ["1 bar (Simple Cadence)", "2 bars (Compound Cadence)", "4 bars (Double Cadence)"],
           audioPattern: ["G3", "B4", "D5", "F5", "C3", "E4", "G4", "C5"],
         },
         {
@@ -664,7 +664,7 @@ export const CURRICULUM: Lesson[] = [
           id: "ex5-10-melodic",
           type: "play",
           prompt:
-            "MELODIES: Create a melodic line over a Simple Cadence. The bass plays G (1 beat) then C (1 beat). Your melody should emphasize the resolution.",
+            "MELODIES: Create a melodic line over a Simple Cadence. The bass plays G (1 bar) then C (1 bar). Your melody should emphasize the resolution.",
           correctAnswer: "Melodic line using chord tones, emphasizing the resolution from V to I",
           hints: [
             "Try: D (over G) → C (over C), or F (over G) → E (over C). The stepwise descent creates a strong cadential feeling. You can also use B → C for the leading tone resolution.",
@@ -677,10 +677,10 @@ export const CURRICULUM: Lesson[] = [
           id: "ex5-11-melodic",
           type: "play",
           prompt:
-            "MELODIES: Create a melodic line over a Compound Cadence. The bass plays G (2 beats) then C (1 beat). Use the 4-3 suspension in your melody.",
+            "MELODIES: Create a melodic line over a Compound Cadence. The bass plays G (2 bars) then C (1 bar). Use the 4-3 suspension in your melody.",
           correctAnswer: "Melodic line featuring a 4-3 suspension (C→B) over the dominant",
           hints: [
-            "Try: C (over first G, held for 2 beats) → B (over second G) → C (over C). This creates the characteristic 4-3 suspension of the Compound Cadence. The C is prepared, suspended, then resolved down to B.",
+            "Try: C (over first G, held for 2 bars) → B (over second G) → C (over C). This creates the characteristic 4-3 suspension of the Compound Cadence. The C is prepared, suspended, then resolved down to B.",
           ],
           bassPattern: "G3-G3-C3",
           beatsPerNote: 4,
@@ -690,10 +690,10 @@ export const CURRICULUM: Lesson[] = [
           id: "ex5-12-melodic",
           type: "play",
           prompt:
-            "MELODIES: Create a melodic line over a Double Cadence. The bass plays G (4 beats) then C (1 beat). Your melody should elaborate the four sonorities.",
+            "MELODIES: Create a melodic line over a Double Cadence. The bass plays G (4 bars) then C (1 bar). Your melody should elaborate the four sonorities.",
           correctAnswer: "Melodic line that follows the four sonorities: 5/3, 6/4, 5/4, 7/3, then resolves to I",
           hints: [
-            "Try: D (beat 1) → E (beat 2) → D (beat 3) → D or F (beat 4) → C (final). This follows the harmonic progression while creating a melodic line. You can also try: B → C → B → B → C for a simpler approach.",
+            "Try: D (bar 1) → E (bar 2) → D (bar 3) → D or F (bar 4) → C (final). This follows the harmonic progression while creating a melodic line. You can also try: B → C → B → B → C for a simpler approach.",
           ],
           bassPattern: "G3-G3-G3-G3-C3",
           beatsPerNote: 4,
