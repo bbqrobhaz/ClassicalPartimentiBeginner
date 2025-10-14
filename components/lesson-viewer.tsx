@@ -53,7 +53,8 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
   const isCompleted = progress.lessonsCompleted.find((lp) => lp.lessonId === lesson.id)?.completed || false
   const currentExercise = randomizedExercises[currentExerciseIndex]
   const totalExercises = randomizedExercises.length
-  const completedExercises = exerciseResults.filter(Boolean).length
+  const attemptedExercises = exerciseResults.length
+  const correctExercises = exerciseResults.filter(Boolean).length
 
   const handleExerciseComplete = (correct: boolean) => {
     const newResults = [...exerciseResults]
@@ -330,7 +331,18 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                 Review Theory
               </Button>
             </div>
-            <Progress value={(completedExercises / totalExercises) * 100} className="h-2" />
+            <div className="space-y-2">
+              <Progress value={(attemptedExercises / totalExercises) * 100} className="h-2" />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>
+                  {attemptedExercises} of {totalExercises} completed
+                </span>
+                <span>
+                  Score: {correctExercises}/{attemptedExercises || 1} (
+                  {Math.round((correctExercises / (attemptedExercises || 1)) * 100)}%)
+                </span>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
             {currentExercise && (
@@ -417,24 +429,21 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                       currentExercise.type === "play" && currentExercise.bassPattern
                         ? "bg-green-500/10 border-green-500/30" // Melodic improvisation - always green
                         : currentExercise.type === "play"
-                          ? textAnswer.trim()
-                            ? (() => {
-                                // Validate keyboard exercise answer
-                                const userNotes = textAnswer
-                                  .toUpperCase()
-                                  .replace(/[^A-G#\s]/g, "")
-                                  .split(/\s+/)
-                                  .filter(Boolean)
-                                  .map((note) => note.replace(/\d+/g, ""))
-                                const expectedNotes =
-                                  (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
-                                const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
-                                const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
-                                return isCorrect
-                                  ? "bg-green-500/10 border-green-500/30"
-                                  : "bg-red-500/10 border-red-500/30"
-                              })()
-                            : "bg-red-500/10 border-red-500/30"
+                          ? (() => {
+                              const userNotes = textAnswer
+                                .toUpperCase()
+                                .replace(/[^A-G#\s]/g, "")
+                                .split(/\s+/)
+                                .filter(Boolean)
+                                .map((note) => note.replace(/\d+/g, ""))
+                              const expectedNotes =
+                                (currentExercise.correctAnswer || "").toUpperCase().match(/[A-G](#|b)?/g) || []
+                              const matchedNotes = expectedNotes.filter((note) => userNotes.includes(note))
+                              const isCorrect = matchedNotes.length >= expectedNotes.length * 0.7
+                              return isCorrect
+                                ? "bg-green-500/10 border-green-500/30"
+                                : "bg-red-500/10 border-red-500/30"
+                            })()
                           : selectedAnswer === currentExercise.correctAnswer
                             ? "bg-green-500/10 border-green-500/30"
                             : "bg-red-500/10 border-red-500/30"
