@@ -179,7 +179,7 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
         setAudioUrl(null)
         setShowResult(false)
         setShowHint(false)
-      }, 2000)
+      }, 1000)
     } else {
       if (!selectedAnswer) return
       const correct = selectedAnswer === currentExercise?.correctAnswer
@@ -189,7 +189,7 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
         setSelectedAnswer(null)
         setShowResult(false)
         setShowHint(false)
-      }, 2000)
+      }, 1000)
     }
   }
 
@@ -384,12 +384,6 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                   </Button>
                 )}
 
-                {showHint && currentExercise.hints && (
-                  <div className="bg-blue-500/10 border border-blue-500/30 p-4 rounded-lg">
-                    <div className="text-sm text-blue-600 dark:text-blue-400">{currentExercise.hints[0]}</div>
-                  </div>
-                )}
-
                 {showResult && (
                   <div
                     className={`p-4 rounded-lg border ${
@@ -413,6 +407,9 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                     </div>
                     {currentExercise.type !== "play" && selectedAnswer !== currentExercise.correctAnswer && (
                       <div className="text-sm mt-1">The correct answer was: {currentExercise.correctAnswer}</div>
+                    )}
+                    {currentExerciseIndex < totalExercises - 1 && (
+                      <div className="text-sm mt-2 text-muted-foreground">Loading next exercise...</div>
                     )}
                   </div>
                 )}
