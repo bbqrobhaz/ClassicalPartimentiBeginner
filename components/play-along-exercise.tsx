@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Play, Square, Mic, PlayCircle, Pause } from "lucide-react"
 import { audioEngine } from "@/lib/audio-engine"
+import VirtualPiano from "@/components/virtual-piano"
 
 interface PlayAlongExerciseProps {
   prompt: string
@@ -140,7 +141,7 @@ export default function PlayAlongExercise({
         </div>
 
         <div className="text-xs text-muted-foreground">
-          The bass pattern will loop continuously with a metronome click. Play along and improvise!
+          The bass pattern will play with a metronome count-in. Play along and improvise!
         </div>
       </div>
 
@@ -153,6 +154,23 @@ export default function PlayAlongExercise({
           placeholder="Enter note names separated by spaces..."
           className="min-h-[100px] font-mono"
           disabled={showResult}
+        />
+      </div>
+
+      {/* Virtual Piano for note input */}
+      <div className="border-t pt-4">
+        <p className="text-sm text-muted-foreground mb-3">
+          Click piano keys to add notes to your answer, or type them directly above.
+        </p>
+        <VirtualPiano
+          startOctave={3}
+          numOctaves={2}
+          showLabels={true}
+          compact={true}
+          onNoteClick={(note) => {
+            // Append clicked note to text answer
+            setTextAnswer((prev) => (prev ? `${prev} ${note}` : note))
+          }}
         />
       </div>
 
