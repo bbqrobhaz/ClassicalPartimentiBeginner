@@ -17,6 +17,7 @@ interface VirtualPianoProps {
   numOctaves?: number
   showLabels?: boolean
   compact?: boolean
+  onNoteClick?: (note: string) => void
 }
 
 export default function VirtualPiano({
@@ -24,6 +25,7 @@ export default function VirtualPiano({
   numOctaves = 2,
   showLabels = true,
   compact = false,
+  onNoteClick,
 }: VirtualPianoProps) {
   const [activeNotes, setActiveNotes] = useState<Set<string>>(new Set())
   const [isMuted, setIsMuted] = useState(false)
@@ -79,6 +81,10 @@ export default function VirtualPiano({
       console.log("[v0] Playing piano note:", noteString)
       setActiveNotes((prev) => new Set(prev).add(noteString))
 
+      if (onNoteClick) {
+        onNoteClick(noteString)
+      }
+
       // Convert note string to frequency before calling playNote
       const frequency = audioEngine.noteToFrequency(noteName, octave)
       await audioEngine.playNote(frequency)
@@ -91,7 +97,7 @@ export default function VirtualPiano({
         })
       }, 300)
     },
-    [isMuted],
+    [isMuted, onNoteClick],
   )
 
   // Keyboard event handlers

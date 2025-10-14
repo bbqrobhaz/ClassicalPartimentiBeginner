@@ -11,6 +11,7 @@ import type { Lesson } from "@/lib/types"
 import { useProgress } from "@/lib/progress-context"
 import { audioEngine } from "@/lib/audio-engine"
 import PlayAlongExercise from "@/components/play-along-exercise" // Import the new component
+import VirtualPiano from "@/components/virtual-piano" // Import VirtualPiano for exercise integration
 
 interface LessonViewerProps {
   lesson: Lesson
@@ -339,6 +340,21 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
                         placeholder="Enter note names separated by spaces..."
                         className="min-h-[100px] font-mono"
                         disabled={showResult}
+                      />
+                    </div>
+                    <div className="border-t pt-4">
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Click piano keys to add notes to your answer, or type them directly above.
+                      </p>
+                      <VirtualPiano
+                        startOctave={3}
+                        numOctaves={2}
+                        showLabels={true}
+                        compact={true}
+                        onNoteClick={(note) => {
+                          // Append clicked note to text answer
+                          setTextAnswer((prev) => (prev ? `${prev} ${note}` : note))
+                        }}
                       />
                     </div>
                   </div>
