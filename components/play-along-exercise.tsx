@@ -100,10 +100,12 @@ export default function PlayAlongExercise({
   }
 
   const handleSubmit = () => {
+    console.log("[v0] PlayAlongExercise handleSubmit called")
     setShowResult(true)
     setTimeout(() => {
+      console.log("[v0] PlayAlongExercise timeout fired, calling onComplete")
       onComplete()
-    }, 2000)
+    }, 1000) // Reduced from 2000ms to 1000ms for consistency
   }
 
   // Cleanup on unmount
@@ -215,6 +217,7 @@ export default function PlayAlongExercise({
       {showResult && (
         <div className="p-4 rounded-lg border bg-green-500/10 border-green-500/30">
           <div className="font-semibold text-green-600 dark:text-green-400">Great work!</div>
+          <div className="text-sm text-muted-foreground mt-1">Loading next exercise...</div>
         </div>
       )}
 
