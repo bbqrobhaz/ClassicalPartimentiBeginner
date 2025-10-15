@@ -647,7 +647,7 @@ export const CURRICULUM: Lesson[] = [
             "KEYBOARD: Realize a Compound Cadence in C major. Bass: G-G-C with figures 5/4-5/3-5/3. The 4-3 suspension creates the compound effect.",
           correctAnswer: "Correct realization: G-C-D over first G, then G-B-D over second G, then C-E-G-C",
           hints: [
-            "Prepare the C in the first chord, suspend it over the second G (creating the 4th), then resolve it down to B (the 3rd). This is the characteristic 4-3 suspension of the Compound Cadence.",
+            "The C is prepared, suspended over the second G (creating the 4th), then resolved down to B (the 3rd). This is the characteristic 4-3 suspension of the Compound Cadence.",
           ],
         },
         {
@@ -1248,9 +1248,150 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 30,
     content: {
       theory:
-        "A suspension delays resolution. The 4-3 suspension: prepare the 4th, suspend it over a new bass, then resolve down to the 3rd. Pattern: preparation - suspension - resolution.",
-      examples: [],
-      exercises: [],
+        "A suspension is a dissonance created by DELAYING the resolution of a note. The 4-3 suspension is the most common and important suspension in baroque music. THREE STAGES: (1) PREPARATION: The 4th appears as a consonance in the previous chord. (2) SUSPENSION: The bass moves, but the upper voice HOLDS the same note, creating a dissonant 4th above the new bass. (3) RESOLUTION: The suspended note resolves DOWN BY STEP to the 3rd. The 4-3 suspension creates tension and release, making cadences more expressive. It appears in the Compound Cadence and throughout baroque music. RULE: The suspended note must be TIED or held from the previous beat - it cannot be re-struck.",
+      examples: [
+        {
+          id: "ex-1",
+          description: "Simple 4-3 suspension over V-I (G-C)",
+          notation: "Bass: G-C, Upper voice: C (held) - B, Figures: 4-3",
+          audioPattern: ["G3", "C5", "D5", "C3", "B4", "E5"],
+          figuredBass: "4-3",
+        },
+        {
+          id: "ex-2",
+          description: "4-3 suspension in Compound Cadence",
+          notation: "Bass: G-G-C, Figures: 5/4-5/3-5/3",
+          audioPattern: ["G3", "C5", "D5", "G3", "B4", "D5", "C3", "E4", "G4", "C5"],
+          figuredBass: "5/4-5/3-5/3",
+        },
+        {
+          id: "ex-3",
+          description: "Chain of 4-3 suspensions (sequence)",
+          notation: "Bass: C-D-E-F, Figures: 5/3-4/3-4/3-5/3",
+          audioPattern: ["C3", "E4", "G4", "C5", "D3", "G4", "A4", "E3", "A4", "B4", "F3", "A4", "C5", "F5"],
+          figuredBass: "5/3-4/3-4/3-5/3",
+        },
+        {
+          id: "ex-4",
+          description: "4-3 suspension with seventh (9-8 4-3)",
+          notation: "Bass: F-G-C, Figures: 9-8 4-3 5/3",
+          audioPattern: ["F3", "D5", "C5", "G3", "C5", "B4", "C3", "E4", "G4", "C5"],
+          figuredBass: "9-8 4-3 5/3",
+        },
+      ],
+      exercises: [
+        {
+          id: "ex-susp-1",
+          type: "identify",
+          prompt: "Listen to this suspension. Which type is it?",
+          correctAnswer: "4-3 suspension",
+          options: ["4-3 suspension", "7-6 suspension", "9-8 suspension", "2-3 suspension"],
+          audioPattern: ["G3", "C5", "D5", "C3", "B4", "E5"],
+        },
+        {
+          id: "ex-susp-2",
+          type: "identify",
+          prompt: "In a 4-3 suspension, which direction does the suspended note resolve?",
+          correctAnswer: "Down by step",
+          options: ["Down by step", "Up by step", "Down by leap", "Up by leap"],
+        },
+        {
+          id: "ex-susp-3",
+          type: "identify",
+          prompt: "What are the THREE stages of a suspension?",
+          correctAnswer: "Preparation, Suspension, Resolution",
+          options: [
+            "Preparation, Suspension, Resolution",
+            "Attack, Sustain, Release",
+            "Beginning, Middle, End",
+            "Consonance, Dissonance, Consonance",
+          ],
+        },
+        {
+          id: "ex-susp-4",
+          type: "identify",
+          prompt: "Listen to this progression. How many 4-3 suspensions are there?",
+          correctAnswer: "2 suspensions",
+          options: ["1 suspension", "2 suspensions", "3 suspensions", "No suspensions"],
+          audioPattern: ["C3", "E4", "G4", "C5", "D3", "G4", "A4", "E3", "A4", "B4", "F3", "A4", "C5", "F5"],
+        },
+        {
+          id: "ex-susp-5",
+          type: "identify",
+          prompt: "Why must the suspended note be TIED or held (not re-struck)?",
+          correctAnswer: "Re-striking would destroy the suspension effect",
+          options: [
+            "Re-striking would destroy the suspension effect",
+            "It's easier to play",
+            "It sounds better",
+            "It's traditional",
+          ],
+        },
+        {
+          id: "ex-susp-6",
+          type: "identify",
+          prompt: "In which cadence did we already encounter the 4-3 suspension?",
+          correctAnswer: "Compound Cadence",
+          options: ["Simple Cadence", "Compound Cadence", "Double Cadence", "Deceptive Cadence"],
+        },
+        {
+          id: "ex-susp-7-keyboard",
+          type: "play",
+          prompt:
+            "KEYBOARD: Realize a 4-3 suspension over G-C. Bass: G-C, right hand: prepare C over G, suspend it (creating 4th), then resolve to B (3rd).",
+          correctAnswer:
+            "Correct realization: G-C-D over first G, then C-B-E over C (C is held/tied from previous chord)",
+          hints: [
+            "The C in the right hand must be HELD from the first chord (preparation) through the second chord (suspension), then resolve down to B (resolution). Don't re-strike the C!",
+          ],
+        },
+        {
+          id: "ex-susp-8-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Realize a Compound Cadence with 4-3 suspension. Bass: G-G-C with figures 5/4-5/3-5/3.",
+          correctAnswer: "Correct realization: G-C-D over first G, G-B-D over second G (C resolves to B), then C-E-G-C",
+          hints: [
+            "This is the Compound Cadence you learned earlier! The C is prepared in the first chord, suspended over the second G (creating the 4th), then resolves to B (the 3rd).",
+          ],
+        },
+        {
+          id: "ex-susp-9-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Create a chain of 4-3 suspensions. Bass: C-D-E-F with figures 5/3-4/3-4/3-5/3.",
+          correctAnswer: "Correct realization with each suspension prepared, suspended, and resolved in sequence",
+          hints: [
+            "Each 4-3 suspension prepares the next one. Over C: C-E-G. Over D: G (held from C) resolves to F#, creating D-F#-A. Over E: A (held) resolves to G#, creating E-G#-B. Over F: B (held) resolves to A, creating F-A-C.",
+          ],
+        },
+        {
+          id: "ex-susp-10-melodic",
+          type: "play",
+          prompt:
+            "MELODIES: Create a melodic line over a 4-3 suspension. Bass: G-C. Emphasize the suspension and resolution.",
+          correctAnswer: "Melodic line that features the 4-3 suspension (C held over G, resolving to B over C)",
+          hints: [
+            "Try: C (over first G, held for 2 beats) → B (over C). This creates the characteristic 4-3 suspension. You can embellish with passing tones, but the C→B resolution should be clear.",
+          ],
+          bassPattern: "G3-C3",
+          beatsPerNote: 4,
+          tempo: 80,
+        },
+        {
+          id: "ex-susp-11-melodic",
+          type: "play",
+          prompt:
+            "MELODIES: Create a melodic line over a chain of suspensions. Bass: C-D-E-F. Use the 4-3 pattern throughout.",
+          correctAnswer: "Melodic line featuring multiple 4-3 suspensions in sequence",
+          hints: [
+            "Try: G (over C) → F# (over D) → G# (over E) → A (over F). Each note is held from the previous chord and resolves down by step, creating a chain of suspensions.",
+          ],
+          bassPattern: "C3-D3-E3-F3",
+          beatsPerNote: 4,
+          tempo: 80,
+        },
+      ],
+      historicalContext:
+        "The 4-3 suspension is the foundation of baroque counterpoint and appears in virtually every composition. It was one of the first dissonances taught to students because it follows clear rules: prepare, suspend, resolve. Fenaroli wrote: 'The student must master the 4-3 suspension before attempting any other dissonance.' The suspension creates expressive tension and was used extensively in opera, sacred music, and instrumental works. Chains of suspensions (as in Example 3) create beautiful sequential passages that appear throughout baroque music. The 4-3 suspension is also the basis for more complex suspensions like 9-8 and 7-6, which you'll learn later.",
     },
   },
   {
