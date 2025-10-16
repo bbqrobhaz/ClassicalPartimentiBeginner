@@ -1413,7 +1413,7 @@ export const CURRICULUM: Lesson[] = [
           description: "The fundamental bass pattern with simple harmonization",
           bassPattern: "C3-B2-A2-G2",
           figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: "C3-B2-A2-G2",
+          audioPattern: ["C3", "B2", "A2", "G2"],
           beatsPerNote: 4,
         },
         {
@@ -1421,7 +1421,7 @@ export const CURRICULUM: Lesson[] = [
           description: "Adding a flowing soprano line over the descending bass",
           bassPattern: "C3-B2-A2-G2",
           figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: "C3-B2-A2-G2",
+          audioPattern: ["C3", "B2", "A2", "G2"],
           beatsPerNote: 4,
         },
         {
@@ -1429,7 +1429,7 @@ export const CURRICULUM: Lesson[] = [
           description: "The pattern takes on a more melancholic character in minor",
           bassPattern: "A2-G2-F2-E2",
           figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: "A2-G2-F2-E2",
+          audioPattern: ["A2", "G2", "F2", "E2"],
           beatsPerNote: 4,
         },
         {
@@ -1437,7 +1437,7 @@ export const CURRICULUM: Lesson[] = [
           description: "Continuing the pattern: 1-7-6-5-4-3-2-1 for a complete descent",
           bassPattern: "C3-B2-A2-G2-F2-E2-D2-C2",
           figuredBass: "5/3 - 6/3 - 5/3 - 5/3 - 6/3 - 5/3 - 7/5/3 - 5/3",
-          audioPattern: "C3-B2-A2-G2-F2-E2-D2-C2",
+          audioPattern: ["C3", "B2", "A2", "G2", "F2", "E2", "D2", "C2"],
           beatsPerNote: 4,
         },
       ],
