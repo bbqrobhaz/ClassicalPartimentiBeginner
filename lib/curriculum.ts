@@ -494,7 +494,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 20,
     content: {
       theory:
-        "In partimenti pedagogy, cadences are classified by how long the dominant lasts, not by their harmonic function. The THREE BASIC CADENCES are: (1) SIMPLE CADENCE (Cadenza Semplice): dominant lasts ONE BAR (4 beats) with a single sonority (5/3 or 7/3). (2) COMPOUND CADENCE (Cadenza Composta): dominant lasts TWO BARS (8 beats) with two sonorities, often including a 4-3 suspension. (3) DOUBLE CADENCE (Cadenza Doppia): dominant lasts FOUR BARS (16 beats) with four successive sonorities above V: 5/3 (or 7/3), 6/4, 5/4, and 5/3 (or 7/3). These cadences are the foundation of all baroque music and must be memorized in all keys.",
+        "Cadences are classified by how long the dominant lasts. The THREE BASIC CADENCES are: (1) SIMPLE CADENCE (Cadenza Semplice): dominant lasts ONE BAR (4 beats) with a single sonority (5/3 or 7/3). (2) COMPOUND CADENCE (Cadenza Composta): dominant lasts TWO BARS (8 beats) with two sonorities, often including a 4-3 suspension. (3) DOUBLE CADENCE (Cadenza Doppia): dominant lasts FOUR BARS (16 beats) with four successive sonorities above V: 5/3 (or 7/3), 6/4, 5/4, and 5/3 (or 7/3). These cadences are the foundation of all baroque music and must be memorized in all keys.",
       examples: [
         {
           id: "ex-1",
@@ -645,7 +645,7 @@ export const CURRICULUM: Lesson[] = [
           type: "play",
           prompt:
             "KEYBOARD: Realize a Compound Cadence in C major. Bass: G-G-C with figures 5/4-5/3-5/3. The 4-3 suspension creates the compound effect.",
-          correctAnswer: "Correct realization: G-C-D over first G, then G-B-D over second G, then C-E-G-C",
+          correctAnswer: "Correct realization: G-C-D over first G, G-B-D over second G (C resolves to B), then C-E-G-C",
           hints: [
             "The C is prepared, suspended over the second G (creating the 4th), then resolved down to B (the 3rd). This is the characteristic 4-3 suspension of the Compound Cadence.",
           ],
@@ -701,7 +701,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "These three cadences are the foundation of Neapolitan partimenti pedagogy. Fenaroli wrote: 'Before attempting any partimento, the student must know the three cadences perfectly in all keys.' The Simple, Compound, and Double cadences appear in every baroque composition and were the first patterns memorized by students at the conservatories. Partimenti.org provides a dedicated lesson on these cadences: 'Learning Cadences' is recommended as essential study after mastering the Rule of the Octave. The Double Cadence (Cadenza Doppia) is particularly important as it combines elements from both Simple and Compound cadences, creating the most elaborate and satisfying resolution in baroque music.",
+        "These three cadences are the foundation of Neapolitan pedagogy. Fenaroli wrote: 'Before attempting any partimento, the student must know the three cadences perfectly in all keys.' The Simple, Compound, and Double cadences appear in every baroque composition and were the first patterns memorized by students at the conservatories. The Double Cadence (Cadenza Doppia) is particularly important as it combines elements from both Simple and Compound cadences, creating the most elaborate and satisfying resolution in baroque music.",
     },
   },
   {
@@ -716,7 +716,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 25,
     content: {
       theory:
-        "The Rule of the Octave is THE fundamental pattern of baroque harmony - every student must memorize it in all keys. We'll learn it progressively (following fourscoreandmore.org's method): STAGE 1: Start with ALL parallel 6/3 chords (simplest). STAGE 2: Add 5/3 on scale degrees 1 and 5 (tonic and dominant). STAGE 3: Full Rule. Ascending 1-4: 1(5/3), 2(6/3), 3(6/3), 4(5/3 or 6/3). The bass moves stepwise, and the 6/3 chords create smooth voice leading.",
+        "The Rule of the Octave is THE fundamental pattern of baroque harmony - every student must memorize it in all keys. We'll learn it progressively: STAGE 1: Start with ALL parallel 6/3 chords (simplest). STAGE 2: Add 5/3 on scale degrees 1 and 5 (tonic and dominant). STAGE 3: Full Rule. Ascending 1-4: 1(5/3), 2(6/3), 3(6/3), 4(5/3 or 6/3). The bass moves stepwise, and the 6/3 chords create smooth voice leading.",
       examples: [
         {
           id: "ex-1",
@@ -808,7 +808,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "First codified by François Campion (1716), the Rule of the Octave became the foundation of all baroque keyboard training. Every student memorized this pattern in all keys. The progressive approach (starting with parallel 6/3 chords) is recommended by fourscoreandmore.org as the most pedagogically sound method. Partimenti.org provides comprehensive lessons on the Rule of the Octave.",
+        "First codified by François Campion (1716), the Rule of the Octave became the foundation of all baroque keyboard training. Every student memorized this pattern in all keys. The progressive approach (starting with parallel 6/3 chords) is pedagogically sound, allowing students to build complexity gradually.",
     },
   },
   {
@@ -967,7 +967,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The complete ascending Rule of the Octave was memorized by every baroque musician. It appears in thousands of compositions and was the foundation for improvisation. Fourscoreandmore.org emphasizes the progressive approach: master the simple version first, then add nuances. Partimenti.org provides extensive exercises for practicing the Rule in all keys.",
+        "The complete ascending Rule of the Octave was memorized by every baroque musician. It appears in thousands of compositions and was the foundation for improvisation. The progressive approach emphasizes mastering the simple version first, then adding nuances gradually.",
     },
   },
   {
@@ -1229,7 +1229,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The descending Rule of the Octave completes your foundation in baroque harmony. Fenaroli wrote: 'The student who knows the Rule of the Octave in all keys, ascending and descending, possesses the key to all harmony.' This pattern appears in virtually every baroque composition. The use of 7/5/3 on scale degree 2 descending (creating V7-I) is one of the most important harmonic progressions in all of Western music. Fourscoreandmore.org and partimenti.org both emphasize daily practice of the Rule in all keys as the foundation of improvisational fluency.",
+        "The descending Rule of the Octave completes your foundation in baroque harmony. Fenaroli wrote: 'The student who knows the Rule of the Octave in all keys, ascending and descending, possesses the key to all harmony.' This pattern appears in virtually every baroque composition. The use of 7/5/3 on scale degree 2 descending (creating V7-I) is one of the most important harmonic progressions in all of Western music. Daily practice of the Rule in all keys is the foundation of improvisational fluency.",
     },
   },
 
@@ -1491,7 +1491,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Giovanni Furno (1748-1837) created the clearest and most pedagogical partimenti method, with written-out realizations for students to study. His 'Metodo facile, breve e chiaro' (Easy, Brief, and Clear Method) was used throughout Europe. Available at partimenti.org/partimenti/collections/furno/",
+        "Giovanni Furno (1748-1837) created the clearest and most pedagogical partimenti method, with written-out realizations for students to study. His 'Metodo facile, breve e chiaro' (Easy, Brief, and Clear Method) was used throughout Europe.",
     },
   },
   {
@@ -1683,7 +1683,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Fedele Fenaroli (1730-1818) created the most thorough and detailed partimenti method, used throughout Europe for over a century. His four-book series progresses from simple figured basses to complex fugal partimenti. Book I is the foundation. Complete collection at partimenti.org/partimenti/collections/fenaroli/",
+        "Fedele Fenaroli (1730-1818) created the most thorough and detailed partimenti method, used throughout Europe for over a century. His four-book series progresses from simple figured basses to complex fugal partimenti. Book I is the foundation.",
     },
   },
 
@@ -2047,7 +2047,7 @@ export const CURRICULUM: Lesson[] = [
       ],
       exercises: [],
       historicalContext:
-        "Durante's partimenti represent the highest level of Neapolitan sophistication. Available at partimenti.org/partimenti/collections/durante/. His students dominated Italian opera for generations.",
+        "Durante's partimenti represent the highest level of Neapolitan sophistication. His students dominated Italian opera for generations.",
     },
   },
   {
@@ -2066,11 +2066,11 @@ export const CURRICULUM: Lesson[] = [
       examples: [],
       exercises: [],
       historicalContext:
-        "Insanguine's rulebook is recommended by partimenti.org as essential reading after Furno and before Fenaroli. His systematic approach helps students understand WHY patterns work, not just HOW to play them. Collection at partimenti.org/partimenti/collections/insanguine/",
+        "Giacomo Insanguine (1728-1795), known as 'Monopoli', created a comprehensive rulebook that systematizes all the patterns of Neapolitan pedagogy. His systematic approach helps students understand WHY patterns work, not just HOW to play them.",
     },
   },
   {
-    id: "mast-8-sala-rules",
+    id: "mast-8-sala-treatise",
     title: "Nicola Sala's Theoretical Rules",
     description: "Master the theoretical foundations with Sala",
     category: "patterns",
@@ -2085,7 +2085,7 @@ export const CURRICULUM: Lesson[] = [
       examples: [],
       exercises: [],
       historicalContext:
-        "Sala's treatise was the standard textbook at the Neapolitan conservatories. It explains the 'why' behind every rule and pattern. Essential reading for serious students. Available at partimenti.org/partimenti/collections/sala/",
+        "Nicola Sala (1713-1801) wrote the most comprehensive theoretical treatise on partimenti. His 'Regole del Contrappunto Pratico' (Rules of Practical Counterpoint) explains the theoretical basis for all the patterns you've learned. Sala's treatise was the standard textbook at the Neapolitan conservatories and explains the 'why' behind every rule and pattern.",
     },
   },
 ]
