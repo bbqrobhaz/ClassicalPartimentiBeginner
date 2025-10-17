@@ -504,7 +504,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 20,
     content: {
       theory:
-        "Cadences are classified by how long the dominant lasts. The THREE BASIC CADENCES are: (1) SIMPLE CADENCE (Cadenza Semplice): dominant lasts ONE BAR (4 beats) with a single sonority (5/3 or 7/3). (2) COMPOUND CADENCE (Cadenza Composta): dominant lasts TWO BARS (8 beats) with two sonorities, often including a 4-3 suspension. (3) DOUBLE CADENCE (Cadenza Doppia): dominant lasts FOUR BARS (16 beats) with four successive sonorities above V: 5/3 (or 7/3), 6/4, 5/4, and 5/3 (or 7/3). These cadences are the foundation of all baroque music and must be memorized in all keys.",
+        "Cadences are classified by how long the dominant lasts. The THREE BASIC CADENCES are: (1) SIMPLE CADENCE (Cadenza Semplice): dominant lasts ONE BAR (4 beats) with a single sonority (5/3 or 7/3). (2) COMPOUND CADENCE (Cadenza Composta): dominant lasts TWO BARS (8 beats) with two sonorities, often including a 4-3 suspension. (3) DOUBLE CADENCE (Cadenza Doppia): dominant lasts FOUR BARS (16 beats) with four successive sonorities above V: 5/3 (or 7/3), 5/4, 5/4, and 5/3 (or 7/3). These cadences are the foundation of all baroque music and must be memorized in all keys.",
       examples: [
         {
           id: "ex-1",
@@ -1568,7 +1568,7 @@ export const CURRICULUM: Lesson[] = [
           hints": [
             "Follow the same harmonic pattern as in C major",
             "G bass (I): G-B-D triad",
-            "F# bass (V6/3): F#-A-D (first inversion of D major)",
+            "F# bass (V6/3 of D major): F#-A-D (first inversion of D major)",
             "E bass (vi): E-G-B (E minor triad)",
           ],
         },
@@ -2223,8 +2223,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-6-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Realize the Prinner schema in G major. Bass: B-A-G-F#. Harmony: vi (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: D-C#-B-A.",
+          prompt": "KEYBOARD: Realize the Prinner schema in G major. Bass: B-A-G-F#. Harmony: vi (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: D-C#-B-A.",
           correctAnswer": "Left hand: B-A-G-F#. Right hand: D-C#-B-A, with appropriate chord voicings.",
           hints": [
             "B bass (vi in G): Play B-D-F#",
@@ -2243,8 +2242,8 @@ export const CURRICULUM: Lesson[] = [
           tempo: 80,
           correctAnswer": "A lyrical melody that fits the harmony and moves contrary to the bass.",
           hints": [
-            "Try starting on C (1) over A",
-            "Move to B (7) over G",
+            "Try starting on G (5) over C",
+            "Move to A (6) over B",
             "Move to A (6) over F",
             "Resolve to G (5) over E",
             "Ensure the strong beats have consonant notes.",
@@ -2342,7 +2341,7 @@ export const CURRICULUM: Lesson[] = [
           prompt: "What is the characteristic bass motion of the Meyer schema?",
           options: ["Descending stepwise", "Ascending then descending", "Leaping by fourths", "Arpeggiated chords"],
           correctAnswer: "Ascending then descending",
-          hints: ["The first two notes ascend, the last two descend", "Think of the scale degrees 1-7-4-3"],
+          hints: ["The first two notes ascend, the last two descend", "Think about the scale degrees 1-7-4-3"],
         },
         {
           id: "meyer-2",
@@ -2376,12 +2375,11 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "meyer-5-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Realize the Meyer schema in G major. Bass: G-F#-C-B. Harmony: I (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: D-E-G-F#.",
+          prompt": "KEYBOARD: Realize the Meyer schema in G major. Bass: G-F#-C-B. Harmony: I (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: D-E-G-F#.",
           correctAnswer": "Left hand: G-F#-C-B. Right hand: D-E-G-F#, with appropriate chord voicings.",
           hints": [
             "G bass (I): Play G-B-D",
-            "F# bass (V6/3 of D major): Play F#-A#-C# (or F#-A-C#)",
+            "F# bass (V6/3 of D major): Play A-C#-E",
             "C bass (IV in G): Play C-E-G",
             "B bass (V in G): Play B-D#-F# (or B-D-F#)",
           ],
@@ -2389,8 +2387,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "meyer-6-melodic",
           type: "play",
-          prompt":
-            "MELODIES: Create a flowing melody over the Meyer bass in C major (C-B-F-E). Focus on contrary motion to the bass.",
+          prompt": "MELODIES: Create a flowing melody over the Meyer bass in C major (C-B-F-E). Focus on contrary motion to the bass.",
           bassPattern: "C3-B2-F2-E2",
           beatsPerNote: 4,
           tempo: 80,
@@ -2400,7 +2397,7 @@ export const CURRICULUM: Lesson[] = [
             "Move to A (6) over B",
             "Move to C (8) over F",
             "Resolve to B (7) over E",
-            "Ensure smooth stepwise motion where possible.",
+            "Ensure the strong beats have consonant notes.",
           ],
         },
       ],
@@ -2512,8 +2509,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fonte-6-melodic",
           type: "play",
-          prompt":
-            "MELODIES: Create a gentle descending melody over the Fonte bass in C major (F-E-D-C). Focus on stepwise motion and resolution.",
+          prompt": "MELODIES: Create a gentle descending melody over the Fonte bass in C major (F-E-D-C). Focus on stepwise motion and resolution.",
           bassPattern: "F2-E2-D2-C2",
           beatsPerNote: 4,
           tempo: 80,
@@ -2620,8 +2616,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "monte-5-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Realize the Monte schema in G major. Bass: G-A-B-C. Harmony: I (5/3) - V6/3 (6/3) - ii (5/3) - IV (5/3). Soprano: D-E-G-F#.",
+          prompt": "KEYBOARD: Realize the Monte schema in G major. Bass: G-A-B-C. Harmony: I (5/3) - V6/3 (6/3) - ii (5/3) - IV (5/3). Soprano: D-E-G-F#.",
           correctAnswer": "Left hand: G-A-B-C. Right hand: D-E-G-F#, with appropriate chord voicings.",
           hints": [
             "G bass (I): Play G-B-D",
@@ -2633,8 +2628,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "monte-6-melodic",
           type: "play",
-          prompt":
-            "MELODIES: Create an energetic melody over the Monte bass in C major (C-D-E-F). Focus on contrary motion to the bass.",
+          prompt": "MELODIES: Create an energetic melody over the Monte bass in C major (C-D-E-F). Focus on contrary motion to the bass.",
           bassPattern: "C3-D3-E3-F3",
           beatsPerNote: 4,
           tempo: 80,
@@ -2677,7 +2671,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-ex-2",
           title: "Ponte with Suspensions",
-          description: "Bass: G (sustained) | Upper voices create 4-3 suspensions over the pedal point.",
+          description: "Bass: G (sustained) | Upper voices create suspensions over the pedal point.",
           notation: "Bass: 5 (sustained) | Upper voices: suspensions resolving",
           figuredBass: "Pedal point with suspensions",
           audioPattern: ["[G2,G3,B3,D4]", "[G2,G3,C4,E4]", "[G2,G3,B3,D4]", "[G2,G3,B3,D4]"],
@@ -2741,8 +2735,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-5-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Realize the Ponte schema in G major. Bass: D (sustained for 4 beats). Upper voices: V7 - I6/4 - V7 - I. (Example voicing: D-F#-A-C, D-G-B, D-F#-A-C, D-F#-A-D)",
+          prompt": "KEYBOARD: Realize the Ponte schema in G major. Bass: D (sustained for 4 beats). Upper voices: V7 - I6/4 - V7 - I. (Example voicing: D-F#-A-C, D-G-B, D-F#-A-C, D-F#-A-D)",
           correctAnswer": "Left hand: Sustained D. Right hand: D-F#-A-C, D-G-B, D-F#-A-C, D-F#-A-D.",
           hints": [
             "The left hand holds the D (dominant of G).",
@@ -2823,8 +2816,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "griffe1-3-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Practice the basic I-IV-V-I grip pattern in C major. Left hand plays bass notes C-F-G-C. Right hand uses the standard 'grip' for each chord.",
+          prompt": "KEYBOARD: Practice the basic I-IV-V-I grip pattern in C major. Left hand plays bass notes C-F-G-C. Right hand uses the standard 'grip' for each chord.",
           correctAnswer": "Correct realization of the I-IV-V-I progression with standardized grips.",
           hints": [
             "Memorize the specific voicings for each chord (I, IV, V).",
@@ -2859,7 +2851,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 50,
     content: {
       theory:
-        "4:1 diminution: Combine passing tones, neighbor tones, and small leaps. Use consonant notes on strong beats. This involves playing four notes within the duration of a single beat (or original note). The goal is to create a flowing, ornamental line while adhering to the underlying harmony. Typically, the first and third notes of the four-note pattern should be chord tones (consonant), while the second and fourth can be passing tones or neighbor tones (dissonant, but resolving stepwise). Small leaps within the pattern are also permissible, as long as they lead smoothly to consonant notes. This technique requires greater rhythmic control and melodic invention than 2:1 diminution.",
+        "4:1 diminution: Combine passing tones, neighbor tones, and small leaps. Use consonant notes on strong beats. This involves fitting eight notes into the duration of a beat (or original note). The goal is to create a flowing, ornamental line while adhering to the underlying harmony. Typically, the first and third notes of the four-note pattern should be chord tones (consonant), while the second and fourth can be passing tones or neighbor tones (dissonant, but resolving stepwise). Small leaps within the pattern are also permissible, as long as they lead smoothly to consonant notes. This technique requires greater rhythmic control and melodic invention than 2:1 diminution.",
       examples: [
         {
           id: "ex-1",
@@ -2920,8 +2912,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim4-4-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Play a C major chord (C-E-G). Realize it with 4:1 diminution in the soprano. Bass: C. Soprano: C-D-E-F | E-F-G-E.",
+          prompt": "KEYBOARD: Play a C major chord (C-E-G). Realize it with 4:1 diminution in the soprano. Bass: C. Soprano: C-D-E-F | E-F-G-E.",
           correctAnswer": "Left hand: C. Right hand: C-D-E-F, then E-F-G-E.",
           hints": [
             "The bass note C is held.",
@@ -2958,7 +2949,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Advanced diminution techniques, like the 4:1 ratio, were explored by Renaissance and Baroque virtuosos such as Silvestro Ganassi and Bartolomeo Bovicelli. These techniques allowed performers to embellish simple melodies and harmonic progressions with intricate and virtuosic passages. Mastering these diminutions required not only technical skill but also a deep understanding of harmony and melodic construction, enabling improvisers to create elaborate and engaging lines over a given harmonic framework.",
+        "Advanced diminution techniques, like the 4:1 ratio, were explored by Renaissance composers like Silvestro Ganassi and Bartolomeo Bovicelli. These techniques allowed performers to embellish simple melodies and harmonic progressions with intricate and virtuosic passages. Mastering these diminutions required not only technical skill but also a deep understanding of harmony and melodic construction, enabling improvisers to create elaborate and engaging lines over a given harmonic framework.",
     },
   },
   {
@@ -3008,8 +2999,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen1-1",
           type: "play",
-          prompt":
-            "Realize Fenaroli Book I, No. 1 with proper voice leading",
+          prompt": "Realize Fenaroli Book I, No. 1 with proper voice leading",
           correctAnswer": "Correct realization with smooth voice leading and correct harmonies.",
           hints": [
             "Bass: C-D-E-F-G-A-B-C",
@@ -3468,8 +3458,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "quieszenza-4-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Realize the Quieszenza schema in C major. Bass: F-E-D-C. Harmony: IV (5/3) - iii6/3 (6/3) - ii (5/3) - I (5/3). Soprano: A-G-F-E.",
+          prompt": "KEYBOARD: Realize the Quieszenza schema in C major. Bass: F-E-D-C. Harmony: IV (5/3) - iii6/3 (6/3) - ii (5/3) - I (5/3). Soprano: A-G-F-E.",
           correctAnswer": "Left hand: F-E-D-C. Right hand: A-G-F-E, with appropriate chord voicings.",
           hints": [
             "F bass (IV): Play F-A-C",
@@ -3613,7 +3602,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Cadence evasion is a sophisticated compositional technique that adds depth and intrigue to music. By masterfully avoiding predictable resolutions, composers can create harmonic surprise, extend phrases, and guide the listener through more complex harmonic paths. This technique is essential for composers aiming to move beyond simple harmonic formulas and craft more engaging and memorable musical experiences.",
+        "Cadence evasion is a sophisticated compositional technique that adds depth and intrigue to music. By masterfully avoiding predictable resolutions, composers can extend phrases, build tension, and add expressive nuance. This technique is essential for composers aiming to move beyond simple harmonic formulas and craft more engaging and memorable musical experiences.",
     },
   },
   {
@@ -3758,7 +3747,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 70,
     content: {
       theory:
-        "8:1 diminution: Complex rhythmic divisions with high proportional use. Requires advanced technique and musical taste. This level of diminution involves fitting eight notes into the space of a single beat or original note value. It demands exceptional technical facility, precise rhythmic control, and a sophisticated understanding of melodic contour and harmonic implication. The performer must skillfully navigate rapid scalar passages, arpeggios, ornaments, and leaps while ensuring that the underlying harmony is still perceptible and that the musical line maintains coherence and expressive intent. This is the pinnacle of diminution technique, often associated with virtuosic instrumental music.",
+        "8:1 diminution: Complex rhythmic divisions with high proportional use. Requires advanced technique and musical taste. This level of diminution involves fitting eight notes into the space of a single beat or original note value. It demands exceptional technical facility, precise rhythmic control, and a sophisticated understanding of melodic contour and harmonic implication. The performer must skillfully navigate rapid scalar passages, arpeggios, leaps, and ornaments while ensuring that the underlying harmony is still perceptible and that the musical line maintains coherence and expressive intent. This is the pinnacle of diminution technique, often associated with virtuosic instrumental music.",
       examples: [
         {
           id: "ex-1",
@@ -3778,7 +3767,12 @@ export const CURRICULUM: Lesson[] = [
           id: "dim8-1",
           type: "identify",
           prompt: "What is the characteristic of 8:1 diminution?",
-          options: ["One note per beat", "Two notes per beat", "Four notes per beat", "Eight notes per beat"],
+          options: [
+            "One note per beat",
+            "Two notes per beat",
+            "Four notes per beat",
+            "Eight notes per beat",
+          ],
           correctAnswer: "Eight notes per beat",
           hints: ["The ratio is 8:1", "This involves very rapid note values"],
         },
@@ -3870,7 +3864,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen2-1",
           type: "play",
-          prompt": "Realize Fenaroli Book III, No. 1, navigating the modulation to the dominant.",
+          prompt": "Realize Fenaroli Book III, No. 1, demonstrating understanding of modulation to the dominant.",
           correctAnswer": "Correct realization demonstrating understanding of modulation and chromatic harmony.",
           hints": [
             "Bass: C-C#-D-Eb-E-F-F#-G",
@@ -3932,7 +3926,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Book IV represents the highest level of Neapolitan pedagogy. Students who mastered this book were considered ready to compose operas and sacred music. Bellini, Mercadante, and other great composers studied from this book. It is the culmination of the partimenti tradition, demanding not just harmonic realization but also contrapuntal and compositional ingenuity.",
+        "Book IV represents the highest level of Neapolitan pedagogical sophistication. Students who mastered this book were considered ready to compose operas and sacred music. Bellini, Mercadante, and other great composers studied from this book. It is the culmination of the partimenti tradition, demanding not just harmonic realization but also contrapuntal and compositional ingenuity.",
     },
   },
   {
@@ -4610,3 +4604,6 @@ export const CURRICULUM: Lesson[] = [
       ],
       exercises: [
         {
+          id: "quieszenza-1",
+          type: "identify",
+          prompt: "What is the characteristic
