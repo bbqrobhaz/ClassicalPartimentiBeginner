@@ -80,22 +80,46 @@ export function LessonViewer({ lesson, onComplete, onNext, onPrevious, hasNext, 
 
   const playExample = async (audioPattern: string[]) => {
     try {
-      for (const note of audioPattern) {
-        let noteName: string
-        let octave: number
+      for (const item of audioPattern) {
+        if (item.startsWith("[") && item.endsWith("]")) {
+          // Chord notation: play multiple notes simultaneously
+          const chordNotes = item
+            .slice(1, -1)
+            .split(",")
+            .map((n) => n.trim())
+          const playPromises = chordNotes.map((note) => {
+            let noteName: string
+            let octave: number
 
-        if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
-          // Note includes octave number (e.g., "C4", "C#5")
-          noteName = note.slice(0, -1)
-          octave = Number.parseInt(note[note.length - 1])
+            if (note.length > 1 && !isNaN(Number.parseInt(note[note.length - 1]))) {
+              noteName = note.slice(0, -1)
+              octave = Number.parseInt(note[note.length - 1])
+            } else {
+              noteName = note
+              octave = 4
+            }
+
+            return audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
+          })
+
+          await Promise.all(playPromises)
+          await new Promise((resolve) => setTimeout(resolve, 600))
         } else {
-          // Legacy format without octave, default to 4
-          noteName = note
-          octave = 4
-        }
+          // Single note
+          let noteName: string
+          let octave: number
 
-        await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
-        await new Promise((resolve) => setTimeout(resolve, 600))
+          if (item.length > 1 && !isNaN(Number.parseInt(item[item.length - 1]))) {
+            noteName = item.slice(0, -1)
+            octave = Number.parseInt(item[item.length - 1])
+          } else {
+            noteName = item
+            octave = 4
+          }
+
+          await audioEngine.playNote(audioEngine.noteToFrequency(noteName, octave), 0.5)
+          await new Promise((resolve) => setTimeout(resolve, 300))
+        }
       }
     } catch (error) {
       console.error("[v0] Failed to play example:", error)
