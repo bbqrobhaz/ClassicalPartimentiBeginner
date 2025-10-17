@@ -1,4 +1,14 @@
-import type { Lesson, Achievement } from "./types"
+import type { Lesson, Achievement, SkillLevel } from "./types"
+
+export const SKILL_LEVELS: SkillLevel[] = [
+  { level: 1, name: "Novice", xp: 0, xpRequired: 0 },
+  { level: 2, name: "Apprentice", xp: 0, xpRequired: 100 },
+  { level: 3, name: "Journeyman", xp: 0, xpRequired: 300 },
+  { level: 4, name: "Expert", xp: 0, xpRequired: 600 },
+  { level: 5, name: "Master", xp: 0, xpRequired: 1000 },
+  { level: 6, name: "Grandmaster", xp: 0, xpRequired: 1500 },
+  { level: 7, name: "Virtuoso", xp: 0, xpRequired: 2500 },
+]
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
@@ -229,20 +239,20 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex2-7-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize this bass line with 5/3 chords in the right hand: C-F-G-C",
-          correctAnswer:
+          prompt": "KEYBOARD: Realize this bass line with 5/3 chords in the right hand: C-F-G-C",
+          correctAnswer":
             "Play bass notes C-F-G-C with left hand, and complete triads (C-E-G, F-A-C, G-B-D, C-E-G) with right hand",
-          hints: [
+          hints": [
             "Keep your right hand in a comfortable position. Use smooth voice leading - move each voice to the nearest chord tone.",
           ],
         },
         {
           id: "ex2-8-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic line over this progression: I-IV-V-I",
-          correctAnswer:
+          prompt": "MELODIES: Create a melodic line over this progression: I-IV-V-I",
+          correctAnswer":
             "Improvise a melody using notes from each chord (C-E-G over I, F-A-C over IV, G-B-D over V, C-E-G over I)",
-          hints: [
+          hints": [
             "Start on C (scale degree 1), move stepwise when possible, and end on C. Use chord tones on strong beats.",
           ],
           bassPattern: "C3-F3-G3-C3",
@@ -344,19 +354,19 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex3-7-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
-          correctAnswer: "Play bass C-D-E-F with left hand, right hand plays 6/3 chords: C-E-G, D-F-A, E-G-C, F-A-C",
-          hints: [
+          prompt": "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
+          correctAnswer": "Play bass C-D-E-F with left hand, right hand plays 6/3 chords: C-E-G, D-F-A, E-G-C, F-A-C",
+          hints": [
             "The 6/3 chords create smooth stepwise motion. Keep the right hand close together, moving each voice by step when possible.",
           ],
         },
         {
           id: "ex3-8-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic line over this bass: C-D-E-F (I-ii6-I6-IV)",
-          correctAnswer:
+          prompt": "MELODIES: Create a melodic line over this bass: C-D-E-F (I-ii6-I6-IV)",
+          correctAnswer":
             "Improvise a melody using chord tones, emphasizing stepwise motion to match the smooth bass line",
-          hints: [
+          hints": [
             "Try starting on G (5), moving to F (over D), E (over E), then C or F (over F). Stepwise motion works beautifully with 6/3 chords.",
           ],
           bassPattern: "C3-D3-E3-F3",
@@ -457,20 +467,20 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex4-7-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize a cadential 6/4: Bass G-G with figures 6/4-5/3. Then resolve to C.",
-          correctAnswer:
+          prompt": "KEYBOARD: Realize a cadential 6/4: Bass G-G with figures 6/4-5/3. Then resolve to C.",
+          correctAnswer":
             "Play bass G in bass twice, right hand plays C-E-G (6/4) then B-D-G (5/3), then resolve to C-E-G over bass C",
-          hints: [
+          hints": [
             "The 6/4 chord (C-E over bass G) resolves down by step: C→B and E→D, creating the V chord before final resolution to I.",
           ],
         },
         {
           id: "ex4-8-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic cadence using the cadential 6/4 pattern",
-          correctAnswer:
+          prompt": "MELODIES: Create a melodic cadence using the cadential 6/4 pattern",
+          correctAnswer":
             "Improvise a melody that emphasizes the resolution: use C or E over the first G (6/4), resolve to B or D over the second G (V), then end on C",
-          hints: [
+          hints": [
             "Try: E (over G 6/4) → D (over G V) → C (over C I). The stepwise descent creates a strong cadential feeling.",
           ],
           bassPattern: "G3-G3-C3",
@@ -633,40 +643,40 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex5-7-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize a Simple Cadence in C major. Bass: G-C with figures 7/3-5/3. Play the dominant seventh (G-B-D-F) resolving to tonic (C-E-G-C).",
-          correctAnswer: "Correct realization with proper voice leading: F→E, D→C, B→C",
-          hints: [
+          correctAnswer": "Correct realization with proper voice leading: F→E, D→C, B→C",
+          hints": [
             "The seventh (F) must resolve down by step to E. Keep common tones where possible. The leading tone (B) resolves up to C.",
           ],
         },
         {
           id: "ex5-8-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize a Compound Cadence in C major. Bass: G-G-C with figures 5/4-5/3-5/3. The 4-3 suspension creates the compound effect.",
-          correctAnswer: "Correct realization: G-C-D over first G, G-B-D over second G (C resolves to B), then C-E-G-C",
-          hints: [
+          correctAnswer": "Correct realization: G-C-D over first G, G-B-D over second G (C resolves to B), then C-E-G-C",
+          hints": [
             "The C is prepared, suspended over the second G (creating the 4th), then resolved down to B (the 3rd). This is the characteristic 4-3 suspension of the Compound Cadence.",
           ],
         },
         {
           id: "ex5-9-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize a Double Cadence in C major. Bass: G-G-G-G-C with figures 5/3-6/4-5/4-7/3-5/3. This is the most elaborate cadence.",
-          correctAnswer: "Correct realization with all four sonorities: G-B-D, G-C-E, G-C-D, G-B-D-F, then C-E-G-C",
-          hints: [
+          correctAnswer": "Correct realization with all four sonorities: G-B-D, G-C-E, G-C-D, G-B-D-F, then C-E-G-C",
+          hints": [
             "Each sonority lasts one beat. The 6/4 (C-E over G) is the cadential 6/4 we learned earlier. It resolves through 5/4 (C-D) to 7/3 (B-D-F) before final resolution to I.",
           ],
         },
         {
           id: "ex5-10-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a melodic line over a Simple Cadence. The bass plays G (1 bar) then C (1 bar). Your melody should emphasize the resolution.",
-          correctAnswer: "Melodic line using chord tones, emphasizing the resolution from V to I",
-          hints: [
+          correctAnswer": "Melodic line using chord tones, emphasizing the resolution from V to I",
+          hints": [
             "Try: D (over G) → C (over C), or F (over G) → E (over C). The stepwise descent creates a strong cadential feeling. You can also use B → C for the leading tone resolution.",
           ],
           bassPattern: "G3-C3",
@@ -676,10 +686,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex5-11-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a melodic line over a Compound Cadence. The bass plays G (2 bars) then C (1 bar). Use the 4-3 suspension in your melody.",
-          correctAnswer: "Melodic line featuring a 4-3 suspension (C→B) over the dominant",
-          hints: [
+          correctAnswer": "Melodic line featuring a 4-3 suspension (C→B) over the dominant",
+          hints": [
             "Try: C (over first G, held for 2 bars) → B (over second G) → C (over C). This creates the characteristic 4-3 suspension of the Compound Cadence. The C is prepared, suspended, then resolved down to B.",
           ],
           bassPattern: "G3-G3-C3",
@@ -689,10 +699,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex5-12-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a melodic line over a Double Cadence. The bass plays G (4 bars) then C (1 bar). Your melody should elaborate the four sonorities.",
-          correctAnswer: "Melodic line that follows the four sonorities: 5/3, 6/4, 5/4, 7/3, then resolves to I",
-          hints: [
+          correctAnswer": "Melodic line that follows the four sonorities: 5/3, 6/4, 5/4, 7/3, then resolves to I",
+          hints": [
             "Try: D (bar 1) → E (bar 2) → D (bar 3) → D or F (bar 4) → C (final). This follows the harmonic progression while creating a melodic line. You can also try: B → C → B → B → C for a simpler approach.",
           ],
           bassPattern: "G3-G3-G3-G3-C3",
@@ -779,28 +789,28 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex6-5-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play Stage 1 (all parallel 6/3) ascending C-D-E-F",
-          correctAnswer: "Bass C-D-E-F, right hand plays 6/3 chords: C-E-G, D-F-A, E-G-C, F-A-C",
-          hints: [
+          prompt": "KEYBOARD: Play Stage 1 (all parallel 6/3) ascending C-D-E-F",
+          correctAnswer": "Bass C-D-E-F, right hand plays 6/3 chords: C-E-G, D-F-A, E-G-C, F-A-C",
+          hints": [
             "Keep the right hand close together. Each chord is a 6/3 inversion. Move each voice by step when possible.",
           ],
         },
         {
           id: "ex6-6-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play Stage 3 (Full Rule) ascending C-D-E-F with figures 5/3-6-6-5/3",
-          correctAnswer: "Bass C-D-E-F, right hand: C-E-G-C (5/3), D-F-A (6), E-G-C (6), F-A-C-F (5/3)",
-          hints: [
+          prompt": "KEYBOARD: Play Stage 3 (Full Rule) ascending C-D-E-F with figures 5/3-6-6-5/3",
+          correctAnswer": "Bass C-D-E-F, right hand: C-E-G-C (5/3), D-F-A (6), E-G-C (6), F-A-C-F (5/3)",
+          hints": [
             "Start with root position on C (5/3), then 6/3 on D and E, then root position on F (5/3). Smooth voice leading throughout.",
           ],
         },
         {
           id: "ex6-7-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic line over ascending bass C-D-E-F (Stage 3: Full Rule)",
-          correctAnswer: "Melodic line using chord tones, emphasizing stepwise motion",
-          hints: [
-            "Try: C (over C) → D (over D) → E (over E) → F (over F) for a simple ascending line. Or: G (over C) → F (over D) → E (over E) → F (over F) for more variety.",
+          prompt": "MELODIES: Create a melodic line over ascending bass C-D-E-F (Stage 3: Full Rule)",
+          correctAnswer": "Melodic line using chord tones, emphasizing stepwise motion",
+          hints": [
+            "Try starting on C and ascending to the octave C, using chord tones on each bass note. Or create a more elaborate line with passing tones and neighbor notes.",
           ],
           bassPattern: "C3-D3-E3-F3",
           beatsPerNote: 4,
@@ -938,27 +948,27 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex7-5-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play the complete ascending Rule of the Octave in C major (C-D-E-F-G-A-B-C)",
-          correctAnswer: "Correct realization with proper figures: 5/3-6-6-5/3-5/3-6-6-5/3",
-          hints: [
+          prompt": "KEYBOARD: Play the complete ascending Rule of the Octave in C major (C-D-E-F-G-A-B-C)",
+          correctAnswer": "Correct realization with proper figures: 5/3-6-6-5/3-5/3-6-6-5/3",
+          hints": [
             "Remember: 5/3 on 1, 4, 5, 8. All others are 6/3. Keep smooth voice leading throughout. This is the most important pattern in baroque music!",
           ],
         },
         {
           id: "ex7-6-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play ascending 5-8 (G-A-B-C) with the alternative 5/3 on scale degree 6",
-          correctAnswer: "Bass G-A-B-C, figures 5/3-5/3-6-5/3",
-          hints: [
+          prompt": "KEYBOARD: Play ascending 5-8 (G-A-B-C) with the alternative 5/3 on scale degree 6",
+          correctAnswer": "Bass G-A-B-C, figures 5/3-5/3-6-5/3",
+          hints": [
             "Both G and A get root position (5/3) chords. This creates a stronger harmonic progression than using 6/3 on A.",
           ],
         },
         {
           id: "ex7-7-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic line over the complete ascending Rule (C-D-E-F-G-A-B-C)",
-          correctAnswer: "Melodic line following the harmonic progression, emphasizing stepwise motion",
-          hints: [
+          prompt": "MELODIES: Create a melodic line over the complete ascending Rule (C-D-E-F-G-A-B-C)",
+          correctAnswer": "Melodic line following the harmonic progression, emphasizing stepwise motion",
+          hints": [
             "Try starting on C and ascending to the octave C, using chord tones on each bass note. Or create a more elaborate line with passing tones and neighbor notes.",
           ],
           bassPattern: "C3-D3-E3-F3-G3-A3-B3-C4",
@@ -1191,27 +1201,27 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex8-6-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play the complete descending Rule of the Octave in C major (C-B-A-G-F-E-D-C)",
-          correctAnswer: "Correct realization with proper figures: 5/3-6-6-5/3-6-6-7/5/3-5/3",
-          hints: [
+          prompt": "KEYBOARD: Play the complete descending Rule of the Octave in C major (C-B-A-G-F-E-D-C)",
+          correctAnswer": "Correct realization with proper figures: 5/3-6-6-5/3-6-6-7/5/3-5/3",
+          hints": [
             "Remember: 5/3 on 8, 5, 1. Scale degree 2 gets 7/5/3 (dominant seventh). All others are 6/3. The dominant seventh on 2 creates a strong pull to the tonic.",
           ],
         },
         {
           id: "ex8-7-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play descending 5-1 (G-F-E-D-C) emphasizing the V7-I cadence",
-          correctAnswer: "Bass G-F-E-D-C, figures 5/3-6-6-7/5/3-5/3",
-          hints: [
+          prompt": "KEYBOARD: Play descending 5-1 (G-F-E-D-C) emphasizing the V7-I cadence",
+          correctAnswer": "Bass G-F-E-D-C, figures 5/3-6-6-7/5/3-5/3",
+          hints": [
             "The 7/5/3 on D (scale degree 2) is a dominant seventh chord (D-F-A-C) that resolves strongly to the tonic C. This is the foundation of all baroque cadences.",
           ],
         },
         {
           id: "ex8-8-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic line over the complete descending Rule (C-B-A-G-F-E-D-C)",
-          correctAnswer: "Melodic line following the harmonic progression, emphasizing the descent",
-          hints: [
+          prompt": "MELODIES: Create a melodic line over the complete descending Rule (C-B-A-G-F-E-D-C)",
+          correctAnswer": "Melodic line following the harmonic progression, emphasizing the descent",
+          hints": [
             "Try starting on C and descending to the lower C, using chord tones. Or create a more elaborate line that moves contrary to the bass (ascending while the bass descends).",
           ],
           bassPattern: "C4-B3-A3-G3-F3-E3-D3-C3",
@@ -1221,9 +1231,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex8-9-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Play BOTH ascending and descending Rules back-to-back (C up to C, then C down to C)",
-          correctAnswer: "Complete ascending then descending Rule with proper figures",
-          hints: [
+          prompt": "KEYBOARD: Play BOTH ascending and descending Rules back-to-back (C up to C, then C down to C)",
+          correctAnswer": "Complete ascending then descending Rule with proper figures",
+          hints": [
             "This is the ultimate test! Ascending: 5/3-6-6-5/3-5/3-6-6-5/3. Descending: 5/3-6-6-5/3-6-6-7/5/3-5/3. Practice this in all keys until it's automatic.",
           ],
         },
@@ -1337,39 +1347,38 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-susp-7-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize a 4-3 suspension over G-C. Bass: G-C, right hand: prepare C over G, suspend it (creating 4th), then resolve to B (3rd).",
-          correctAnswer:
-            "Correct realization: G-C-D over first G, then C-B-E over C (C is held/tied from previous chord)",
-          hints: [
+          correctAnswer": "Correct realization: G-C-D over first G, then C-B-E over C (C is held/tied from previous chord)",
+          hints": [
             "The C in the right hand must be HELD from the first chord (preparation) through the second chord (suspension), then resolve down to B (resolution). Don't re-strike the C!",
           ],
         },
         {
           id: "ex-susp-8-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize a Compound Cadence with 4-3 suspension. Bass: G-G-C with figures 5/4-5/3-5/3.",
-          correctAnswer: "Correct realization: G-C-D over first G, G-B-D over second G (C resolves to B), then C-E-G-C",
-          hints: [
-            "This is the Compound Cadence you learned earlier! The C is prepared in the first chord, suspended over the second G (creating the 4th), then resolves to B (the 3rd).",
+          prompt": "KEYBOARD: Realize a Compound Cadence with 4-3 suspension. Bass: G-G-C with figures 5/4-5/3-5/3.",
+          correctAnswer": "Correct realization: G-C-D over first G, G-B-D over second G (C resolves to B), then C-E-G-C",
+          hints": [
+            "This is the Compound Cadence you learned earlier! The C is prepared, suspended over the second G (creating the 4th), then resolves to B (the 3rd).",
           ],
         },
         {
           id: "ex-susp-9-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Create a chain of 4-3 suspensions. Bass: C-D-E-F with figures 5/3-4/3-4/3-5/3.",
-          correctAnswer: "Correct realization with each suspension prepared, suspended, and resolved in sequence",
-          hints: [
+          prompt": "KEYBOARD: Create a chain of 4-3 suspensions. Bass: C-D-E-F with figures 5/3-4/3-4/3-5/3.",
+          correctAnswer": "Correct realization with each suspension prepared, suspended, and resolved in sequence",
+          hints": [
             "Each 4-3 suspension prepares the next one. Over C: C-E-G. Over D: G (held from C) resolves to F#, creating D-F#-A. Over E: A (held) resolves to G#, creating E-G#-B. Over F: B (held) resolves to A, creating F-A-C.",
           ],
         },
         {
           id: "ex-susp-10-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a melodic line over a 4-3 suspension. Bass: G-C. Emphasize the suspension and resolution.",
-          correctAnswer: "Melodic line that features the 4-3 suspension (C held over G, resolving to B over C)",
-          hints: [
+          correctAnswer": "Melodic line that features the 4-3 suspension (C held over G, resolving to B over C)",
+          hints": [
             "Try: C (over first G, held for 2 beats) → B (over C). This creates the characteristic 4-3 suspension. You can embellish with passing tones, but the C→B resolution should be clear.",
           ],
           bassPattern: "G3-C3",
@@ -1379,10 +1388,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-susp-11-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a melodic line over a chain of suspensions. Bass: C-D-E-F. Use the 4-3 pattern throughout.",
-          correctAnswer: "Melodic line featuring multiple 4-3 suspensions in sequence",
-          hints: [
+          correctAnswer": "Melodic line featuring multiple 4-3 suspensions in sequence",
+          hints": [
             "Try: G (over C) → F# (over D) → G# (over E) → A (over F). Each note is held from the previous chord and resolves down by step, creating a chain of suspensions.",
           ],
           bassPattern: "C3-D3-E3-F3",
@@ -1427,11 +1436,11 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-ex-3",
           title: "Romanesca with Flowing Soprano (Diminutions)",
-          description:
+          description":
             "A flowing soprano line with passing notes and neighbor notes creates musical interest. Bar 1: G-E-F-G (F is a passing note), Bar 2: G-A-B-G (A is a passing note), Bar 3: A-C-B-C (B is a lower neighbor), Bar 4: B-E-D-E (D is a lower neighbor)",
-          notation: "Bass: C - B - A - G | Soprano: G E F G - G A B G - A C B C - B E D E",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: [
+          notation": "Bass: C - B - A - G | Soprano: G E F G - G A B G - A C B C - B E D E",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": [
             "[C3,C4,E4,G4]",
             "E4",
             "F4",
@@ -1453,10 +1462,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-ex-4",
           title: "Extended Romanesca (Complete Octave Descent)",
-          description: "The pattern continues all the way down: 1-7-6-5-4-3-2-1, creating a complete descending scale",
-          notation: "Bass: C - B - A - G - F - E - D - C",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3 - 6/3 - 5/3 - 7/5/3 - 5/3",
-          audioPattern: [
+          description": "The pattern continues all the way down: 1-7-6-5-4-3-2-1, creating a complete descending scale",
+          notation": "Bass: C - B - A - G - F - E - D - C",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3 - 6/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern": [
             "[C3,C4,E4,G4]",
             "[B2,B3,D4,G4]",
             "[A2,A3,C4,E4]",
@@ -1497,10 +1506,7 @@ export const CURRICULUM: Lesson[] = [
           prompt: "What figured bass symbol typically appears over the second note (7) of the Romanesca?",
           options: ["5/3", "6/3", "6/4", "7/5/3"],
           correctAnswer: "6/3",
-          hints: [
-            "The second bass note (7) usually takes a first inversion chord",
-            "First inversion is indicated by 6/3",
-          ],
+          hints: ["The second bass note (7) usually takes a first inversion chord", "First inversion is indicated by 6/3"],
         },
         {
           id: "rom-4",
@@ -1513,10 +1519,7 @@ export const CURRICULUM: Lesson[] = [
             "It was rarely used",
           ],
           correctAnswer: "Corelli, Handel, and many others across Europe",
-          hints: [
-            "The Romanesca was one of the most popular patterns",
-            "It appears in sonatas, arias, and dance movements throughout Europe",
-          ],
+          hints: ["The Romanesca was one of the most popular patterns", "It appears in sonatas, arias, and dance movements throughout Europe"],
         },
         {
           id: "rom-5",
@@ -1529,10 +1532,7 @@ export const CURRICULUM: Lesson[] = [
             "Ascend back up",
           ],
           correctAnswer: "Continue descending: 4-3-2-1",
-          hints: [
-            "The descending pattern can continue all the way to the tonic",
-            "This creates a complete octave descent: 1-7-6-5-4-3-2-1",
-          ],
+          hints: ["The descending pattern can continue all the way to the tonic", "This creates a complete octave descent: 1-7-6-5-4-3-2-1"],
         },
         {
           id: "rom-6",
@@ -1545,18 +1545,15 @@ export const CURRICULUM: Lesson[] = [
             "Neutral and emotionless",
           ],
           correctAnswer: "Flexible - can be tender, lyrical, bold, or dramatic depending on elaboration",
-          hints: [
-            "The Romanesca's character depends on how it's elaborated",
-            "The same bass pattern can support many different moods",
-          ],
+          hints: ["The Romanesca's character depends on how it's elaborated", "The same bass pattern can support many different moods"],
         },
         {
           id: "rom-7-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Romanesca in C major. Bass: C-B-A-G. Use the harmonization: I (5/3) - V6/3 (6/3) - vi (5/3) - III (5/3).",
-          correctAnswer: "C E G, B D G, A C E, G B E (or similar voicings with these triads)",
-          hints: [
+          correctAnswer": "C E G, B D G, A C E, G B E (or similar voicings with these triads)",
+          hints": [
             "C bass (I): play C-E-G triad",
             "B bass (V6/3): play B-D-G (first inversion of G major)",
             "A bass (vi): play A-C-E (A minor triad)",
@@ -1566,9 +1563,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-8-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Romanesca in G major. Bass: G-F#-E-D. Write the notes you would play in the right hand.",
-          correctAnswer: "G B D, F# A D, E G B, D F# B (or similar voicings)",
-          hints: [
+          prompt": "KEYBOARD: Realize the Romanesca in G major. Bass: G-F#-E-D. Write the notes you would play in the right hand.",
+          correctAnswer": "G B D, F# A D, E G B, D F# B (or similar voicings)",
+          hints": [
             "Follow the same harmonic pattern as in C major",
             "G bass (I): G-B-D triad",
             "F# bass (V6/3): F#-A-D (first inversion of D major)",
@@ -1578,13 +1575,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-9-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a flowing melodic line over the Romanesca bass in C major. The bass plays C (1 bar), B (1 bar), A (1 bar), G (1 bar). Your melody should be lyrical and singable, using mostly stepwise motion with occasional leaps. Think of it as a song melody.",
           bassPattern: "C3-B2-A2-G2",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "Any melodic line that fits the harmony and moves gracefully",
-          hints: [
+          correctAnswer": "Any melodic line that fits the harmony and moves gracefully",
+          hints": [
             "Start on a chord tone (C, E, or G) and create a flowing line",
             "Use mostly stepwise motion for a singable melody",
             "Think of famous songs - many use this pattern!",
@@ -1594,13 +1591,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-10-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a more elaborate melodic variation over the Romanesca. Use faster note values, ornaments, and more dramatic leaps. Think of a virtuoso instrumental solo.",
           bassPattern: "C3-B2-A2-G2",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "Any elaborate melodic line with ornaments and virtuosic elements",
-          hints: [
+          correctAnswer": "Any elaborate melodic line with ornaments and virtuosic elements",
+          hints": [
             "Use faster rhythms - eighth notes or sixteenth notes",
             "Add ornaments like trills or turns",
             "Include some dramatic leaps for excitement",
@@ -1610,19 +1607,19 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-11-composition",
           type: "play",
-          prompt:
+          prompt":
             "COMPOSITION: Create a complete 8-bar phrase using the extended Romanesca (1-7-6-5-4-3-2-1). This is your chance to compose a real piece! Make it musical and expressive.",
           bassPattern: "C3-B2-A2-G2-F2-E2-D2-C2",
           beatsPerNote: 4,
-          tempo: 80,
-          correctAnswer: "Any complete musical phrase that works with the extended Romanesca",
-          hints: [
+          tempo: 80,\
+          correctAnswer": "Any complete musical phrase that works with the extended Romanesca",
+          hints": [
             "Think of this as composing a real piece of music",
             "Create a melody that has a clear shape - perhaps rising then falling",
             "Consider dynamics and expression - where should it be loud or soft?",
             "End with a strong cadence on the final C",
             "Listen to baroque music for inspiration - this pattern is everywhere!",
-          ],
+          ],\
         },
       ],
       historicalContext:
@@ -1719,10 +1716,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "drm-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Do-Re-Mi in C major. Bass: C-D-E. Use the harmony: I (5/3) - V6/3 (6/3) - I6/4 (or V). Soprano: G-A-G.",
-          correctAnswer: "Left hand: C-D-E. Right hand: G-A-G, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: C-D-E. Right hand: G-A-G, with appropriate chord voicings.",
+          hints": [
             "C bass (I): Play C-E-G",
             "D bass (V6/3): Play D-F-A (first inversion of G major)",
             "E bass (I6/4 or V): Play E-G-C (second inversion of C major) or E-G-B (first inversion of G major)",
@@ -1731,9 +1728,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "drm-6-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Do-Re-Mi with leading tone in G major. Bass: G-A-B-G. Soprano: D-E-F#-D.",
-          correctAnswer: "Left hand: G-A-B-G. Right hand: D-E-F#-D, with appropriate chord voicings.",
-          hints: [
+          prompt": "KEYBOARD: Realize the Do-Re-Mi with leading tone in G major. Bass: G-A-B-G. Soprano: D-E-F#-D.",
+          correctAnswer": "Left hand: G-A-B-G. Right hand: D-E-F#-D, with appropriate chord voicings.",
+          hints": [
             "G bass (I): Play G-B-D",
             "A bass (V6/3 of D major): Play A-C#-E (or A-C-E)",
             "B bass (I6/4 or V): Play B-D-G (second inversion of G major) or B-D#-F# (first inversion of D major)",
@@ -1742,13 +1739,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "drm-7-melodic",
           type: "play",
-          prompt:
-            "MELODIES: Create a simple melodic line over the Do-Re-Mi bass in C major (C-D-E). Focus on stepwise motion in the melody.",
+          prompt": "MELODIES: Create a simple melodic line over the Do-Re-Mi bass in C major (C-D-E). Focus on stepwise motion in the melody.",
           bassPattern: "C3-D3-E3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A stepwise melody that fits the harmony",
-          hints: [
+          correctAnswer": "A stepwise melody that fits the harmony",
+          hints": [
             "Start on G (5) over C",
             "Move to A (6) over D",
             "Resolve to G (5) over E",
@@ -1758,13 +1754,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "drm-8-composition",
           type: "play",
-          prompt:
-            "COMPOSITION: Create a short 4-bar phrase using the Do-Re-Mi schema as the opening. Use PASSING NOTES to create smooth melodic lines. A passing note fills the space between two chord tones by stepwise motion (e.g., C-D-E where D connects C and E). This creates flowing, singable melodies.",
+          prompt":
+            "COMPOSITION: Create a short 4-bar phrase that begins with the Do-Re-Mi schema. Use PASSING NOTES to create smooth melodic lines. A passing note fills the space between two chord tones by stepwise motion (e.g., C-D-E where D connects C and E). This creates flowing, singable melodies.",
           bassPattern: "C3-D3-E3-F3-G3-A3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A 4-bar phrase incorporating the Do-Re-Mi with passing notes",
-          hints: [
+          correctAnswer": "A 4-bar phrase incorporating the Do-Re-Mi with passing notes",
+          hints": [
             "Start with C-D-E bass and melody",
             "Use passing notes to connect chord tones smoothly (e.g., G-A-B-C)",
             "Sequence it: F-G-A bass and melody",
@@ -1774,17 +1770,17 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "drm-9-combination",
           type: "play",
-          prompt:
-            "COMBINATION: Create a 16-bar binary form combining Rule of the Octave, Romanesca, and Do-Re-Mi. Structure: Bars 1-4: Rule of the Octave ascending (C-D-E-F-G-A-B-C). Bars 5-8: Romanesca (C-B-A-G) ending with half cadence on G. Bars 9-12: Do-Re-Mi (C-D-E) sequenced to (F-G-A). Bars 13-16: Cadential progression (G-C) with compound cadence. This teaches you to combine patterns into complete musical forms!",
+          prompt":
+            "COMBINATION: Create a 16-bar binary form combining Rule of the Octave, Romanesca, and Do-Re-Mi. Structure: Bars 1-4: Rule of the Octave ascending (C-D-E-F-G-A-B-C). Bars 5-8: Romanesca (C-B-A-G) ending with half cadence on G. Bars 9-12: Do-Re-Mi (C-D-E) sequenced to (F-G-A). Bars 13-16: Cadential progression (G-C) with compound cadence. This creates a complete miniature piece!",
           bassPattern: "C3-D3-E3-F3-G3-A3-B3-C4-C4-B3-A3-G3-C3-D3-E3-F3-G3-A3-G3-C3",
           beatsPerNote: 2,
           tempo: 80,
-          correctAnswer: "A 16-bar binary form combining the three patterns with passing notes",
-          hints: [
+          correctAnswer": "A 16-bar binary form combining the three patterns with passing notes",
+          hints": [
             "Section A (bars 1-8): Rule of Octave + Romanesca creates the opening",
             "Section B (bars 9-16): Do-Re-Mi sequence + cadence creates the closing",
             "Use passing notes throughout to create flowing melodies",
-            "Think of this as a complete miniature piece",
+            "Think of this as a complete miniature dance movement",
             "Listen to how the patterns connect smoothly",
           ],
         },
@@ -1873,10 +1869,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Sol-Fa-Mi in C major. Bass: G-F-E. Use the harmony: V (5/3) - IV6 (6/3) - I (5/3). Soprano: B-A-G.",
-          correctAnswer: "Left hand: G-F-E. Right hand: B-A-G, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: G-F-E. Right hand: B-A-G, with appropriate chord voicings.",
+          hints": [
             "G bass (V): Play G-B-D",
             "F bass (IV6): Play F-A-C (first inversion of F major)",
             "E bass (I): Play E-G-C (or E-G-B)",
@@ -1885,9 +1881,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-6-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Sol-Fa-Mi in G major leading to a cadence. Bass: D-C-B-G. Soprano: F#-E-D-B. Harmony: V (of G) - IV6 (of G) - I (of G) - I (of G).",
-          correctAnswer: "Left hand: D-C-B-G. Right hand: F#-E-D-B, with appropriate chord voicings.",
-          hints: [
+          prompt": "KEYBOARD: Realize the Sol-Fa-Mi in G major leading to a cadence. Bass: D-C-B-G. Soprano: F#-E-D-B. Harmony: V (of G) - IV6 (of G) - I (of G) - I (of G).",
+          correctAnswer": "Left hand: D-C-B-G. Right hand: F#-E-D-B, with appropriate chord voicings.",
+          hints": [
             "D bass (V of G): Play D-F#-A",
             "C bass (IV6 of G): Play C-E-G (first inversion of C major)",
             "B bass (I of G): Play B-D-G",
@@ -1897,13 +1893,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-7-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a simple melodic line over the Sol-Fa-Mi bass in C major (G-F-E). Focus on stepwise motion and fitting the harmony.",
           bassPattern: "G3-F3-E3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A stepwise melody that fits the harmony",
-          hints: [
+          correctAnswer": "A stepwise melody that fits the harmony",
+          hints": [
             "Start on B (7) or D (2) over G",
             "Move to A (6) or C (1) over F",
             "Resolve to G (5) or B (7) over E",
@@ -1913,13 +1909,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-8-composition",
           type: "play",
-          prompt:
+          prompt":
             "COMPOSITION: Create a short 4-bar phrase using the Sol-Fa-Mi schema to end it. Use TURNS to embellish your melody. A turn ornaments a note by moving to the note above, returning to the main note, moving to the note below, and returning again (e.g., G-A-G-F-G). This creates elegant, baroque-style ornamentation.",
           bassPattern: "C3-G3-F3-E3-C3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A 4-bar phrase incorporating the Sol-Fa-Mi with turns",
-          hints: [
+          correctAnswer": "A 4-bar phrase incorporating the Sol-Fa-Mi with turns",
+          hints": [
             "Start with C-G bass for I-V",
             "Then use F-E-C bass for IV6-I-I",
             "Add turns around important melody notes (e.g., G-A-G-F-G)",
@@ -1930,13 +1926,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-9-combination",
           type: "play",
-          prompt:
+          prompt":
             "COMBINATION: Create a 12-bar rounded binary form combining Romanesca, Do-Re-Mi, and Sol-Fa-Mi. Structure: Bars 1-4: Romanesca (C-B-A-G). Bars 5-8: Do-Re-Mi (C-D-E-F-G-A). Bars 9-12: Sol-Fa-Mi (G-F-E) with final cadence to C. This creates a complete ABA' form with opening, development, and return!",
           bassPattern: "C3-B2-A2-G2-C3-D3-E3-F3-G3-A3-G3-F3-E3-C3",
           beatsPerNote: 2,
           tempo: 80,
-          correctAnswer: "A 12-bar rounded binary form combining the three schemas with turns",
-          hints: [
+          correctAnswer": "A 12-bar rounded binary form combining the three schemas with turns",
+          hints": [
             "A section (bars 1-4): Romanesca establishes the key",
             "B section (bars 5-8): Do-Re-Mi provides contrast and motion",
             "A' section (bars 9-12): Sol-Fa-Mi brings closure",
@@ -1989,8 +1985,15 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-furno-1",
           type: "play",
-          prompt: "Realize this Furno partimento: Bass C-D-E-F-G-C with figures - 6 6 - 7 -",
-          correctAnswer: "Correct realization with proper voice leading",
+          prompt":
+            "Realize this Furno partimento: Bass C-D-E-F-G-C with figures - 6 6 - 7 -",
+          correctAnswer": "Correct realization with proper voice leading",
+          hints": [
+            "Bass: C-D-E-F-G-C",
+            "Figures: - 6 6 - 7 -",
+            "Apply the Rule of the Octave and inversion principles.",
+            "Ensure smooth movement between voices.",
+          ],
         },
       ],
       historicalContext:
@@ -2068,10 +2071,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim2-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Play a simple I chord in C major (C-E-G). Now realize it with 2:1 diminution in the soprano. Bass: C. Soprano: C-D-E-C.",
-          correctAnswer: "Left hand: C. Right hand: C-D-E-C, where each note is a quarter note (or eighth note if beat is a half note).",
-          hints: [
+          correctAnswer": "Left hand: C. Right hand: C-D-E-C, where each note is a quarter note (or eighth note if beat is a half note).",
+          hints": [
             "The bass note C is held for the entire measure.",
             "The soprano melody uses chord tones (C, E) and a passing tone (D).",
             "The final C resolves the passing tone.",
@@ -2080,10 +2083,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim2-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Play a V-I cadence in C major. Bass: G-C. Realize the soprano with 2:1 diminution, emphasizing the resolution. Soprano over G: D-E-F-D. Soprano over C: C-B-A-C.",
-          correctAnswer: "Left hand: G-C. Right hand: D-E-F-D over G, then C-B-A-C over C.",
-          hints: [
+          correctAnswer": "Left hand: G-C. Right hand: D-E-F-D over G, then C-B-A-C over C.",
+          hints": [
             "Over G, D is a chord tone, E and F are passing tones, D is a chord tone.",
             "Over C, C is a chord tone, B is a passing tone, A is a passing tone, C is a chord tone.",
             "Listen for the smooth resolution.",
@@ -2092,12 +2095,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim2-6-melodic",
           type: "play",
-          prompt: "MELODIES: Create a 2:1 diminution melody over a sustained C major chord. Use passing tones and neighbor tones.",
+          prompt": "MELODIES: Create a 2:1 diminution melody over a sustained C major chord. Use passing tones and neighbor tones.",
           bassPattern: "C3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A melody with two notes per beat, using chord tones and stepwise motion.",
-          hints: [
+          correctAnswer": "A melody with two notes per beat, using chord tones and stepwise motion.",
+          hints": [
             "Start with C-E-G chord tones.",
             "Add passing tones like D between C and E, or F between E and G.",
             "Add neighbor tones like D above C, or F above E.",
@@ -2207,12 +2210,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Prinner schema in C major. Bass: A-G-F-E. Harmony: vi (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: C-B-A-G.",
-          correctAnswer: "Left hand: A-G-F-E. Right hand: C-B-A-G, with appropriate chord voicings.",
-          hints: [
-            "A bass (vi): Play A-C-E",
-            "G bass (V6/3): Play G-B-D (first inversion of G major)",
+          correctAnswer": "Left hand: A-G-F-E. Right hand: C-B-A-G, with appropriate chord voicings.",
+          hints": [
+            "C bass (I): Play C-E-G",
+            "B bass (V6/3): Play B-D-G (first inversion of G major)",
             "F bass (IV): Play F-A-C",
             "E bass (V): Play E-G-B (or E-G-D)",
           ],
@@ -2220,10 +2223,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-6-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Prinner schema in G major. Bass: B-A-G-F#. Harmony: vi (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: D-C#-B-A.",
-          correctAnswer: "Left hand: B-A-G-F#. Right hand: D-C#-B-A, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: B-A-G-F#. Right hand: D-C#-B-A, with appropriate chord voicings.",
+          hints": [
             "B bass (vi in G): Play B-D-F#",
             "A bass (V6/3 of D major): Play A-C#-E",
             "G bass (IV in G): Play G-B-D",
@@ -2233,13 +2236,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-7-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a lyrical melody over the Prinner bass in C major (A-G-F-E). Focus on contrary motion to the bass.",
           bassPattern: "A2-G2-F2-E2",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A lyrical melody that fits the harmony and moves contrary to the bass.",
-          hints: [
+          correctAnswer": "A lyrical melody that fits the harmony and moves contrary to the bass.",
+          hints": [
             "Try starting on C (1) over A",
             "Move to B (7) over G",
             "Move to A (6) over F",
@@ -2250,13 +2253,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-8-composition",
           type: "play",
-          prompt:
+          prompt":
             "COMPOSITION: Create a 4-bar phrase that begins with the Prinner schema and ends with a simple cadence. Use NOTA CAMBIATA to create interesting melodic motion. The nota cambiata is a four-note pattern: step down, leap down a third, step up (e.g., C-B-G-A). This creates a distinctive baroque melodic gesture.",
           bassPattern: "A2-G2-F2-E2-G3-C3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A 4-bar phrase starting with Prinner using nota cambiata",
-          hints: [
+          correctAnswer": "A 4-bar phrase starting with Prinner using nota cambiata",
+          hints": [
             "Use the Prinner schema for the first 2 bars (A-G-F-E bass)",
             "Follow with a V-I cadence (G-C bass)",
             "Add nota cambiata patterns in your melody (step-leap-step: C-B-G-A)",
@@ -2266,13 +2269,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-9-combination",
           type: "play",
-          prompt:
+          prompt":
             "COMBINATION: Create a 16-bar period combining Rule of the Octave, Prinner, and Romanesca. Structure: Bars 1-4: Rule of the Octave ascending. Bars 5-8: Prinner (A-G-F-E) with half cadence. Bars 9-12: Rule of the Octave descending. Bars 13-16: Romanesca (C-B-A-G) with authentic cadence. This creates a balanced period with question-answer structure!",
           bassPattern: "C3-D3-E3-F3-G3-A3-B3-C4-A3-G3-F3-E3-C4-B3-A3-G3-F3-E3-D3-C3-B2-A2-G2-C3",
           beatsPerNote: 2,
           tempo: 80,
-          correctAnswer: "A 16-bar period combining patterns with nota cambiata",
-          hints: [
+          correctAnswer": "A 16-bar period combining patterns with nota cambiata",
+          hints": [
             "Antecedent (bars 1-8): Rule of Octave + Prinner creates the question",
             "Consequent (bars 9-16): Rule of Octave + Romanesca creates the answer",
             "Use nota cambiata patterns to add melodic interest",
@@ -2360,10 +2363,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "meyer-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Meyer schema in C major. Bass: C-B-F-E. Harmony: I (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: G-A-C-B.",
-          correctAnswer: "Left hand: C-B-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: C-B-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
+          hints": [
             "C bass (I): Play C-E-G",
             "B bass (V6/3): Play B-D-G (first inversion of G major)",
             "F bass (IV): Play F-A-C",
@@ -2373,10 +2376,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "meyer-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Meyer schema in G major. Bass: G-F#-C-B. Harmony: I (5/3) - V6/3 (6/3) - IV (5/3) - V (5/3). Soprano: D-E-G-F#.",
-          correctAnswer: "Left hand: G-F#-C-B. Right hand: D-E-G-F#, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: G-F#-C-B. Right hand: D-E-G-F#, with appropriate chord voicings.",
+          hints": [
             "G bass (I): Play G-B-D",
             "F# bass (V6/3 of D major): Play F#-A#-C# (or F#-A-C#)",
             "C bass (IV in G): Play C-E-G",
@@ -2386,13 +2389,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "meyer-6-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a flowing melody over the Meyer bass in C major (C-B-F-E). Focus on contrary motion to the bass.",
           bassPattern: "C3-B2-F2-E2",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A flowing melody that fits the harmony and moves contrary to the bass.",
-          hints: [
+          correctAnswer": "A flowing melody that fits the harmony and moves contrary to the bass.",
+          hints": [
             "Try starting on G (5) over C",
             "Move to A (6) over B",
             "Move to C (8) over F",
@@ -2484,10 +2487,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fonte-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Fonte schema in C major. Bass: F-E-D-C. Harmony: IV (5/3) - iii6/3 (6/3) - ii (5/3) - V (5/3). Soprano: A-G-F-E.",
-          correctAnswer: "Left hand: F-E-D-C. Right hand: A-G-F-E, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: F-E-D-C. Right hand: A-G-F-E, with appropriate chord voicings.",
+          hints": [
             "F bass (IV): Play F-A-C",
             "E bass (iii6/3): Play E-G-B (first inversion of C major)",
             "D bass (ii): Play D-F-A",
@@ -2497,10 +2500,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fonte-5-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize the Fonte schema in G major. Bass: C-B-A-G. Harmony: IV (5/3) - iii6/3 (6/3) - ii (5/3) - V (5/3). Soprano: E-D-C-B.",
-          correctAnswer: "Left hand: C-B-A-G. Right hand: E-D-C-B, with appropriate chord voicings.",
-          hints: [
+          prompt": "KEYBOARD: Realize the Fonte schema in G major. Bass: C-B-A-G. Harmony: IV (5/3) - iii6/3 (6/3) - ii (5/3) - V (5/3). Soprano: E-D-C-B.",
+          correctAnswer": "Left hand: C-B-A-G. Right hand: E-D-C-B, with appropriate chord voicings.",
+          hints": [
             "C bass (IV in G): Play C-E-G",
             "B bass (iii6/3 in G): Play B-D-F# (first inversion of D major)",
             "A bass (ii in G): Play A-C-E",
@@ -2510,13 +2512,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fonte-6-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create a gentle descending melody over the Fonte bass in C major (F-E-D-C). Focus on stepwise motion and resolution.",
           bassPattern: "F2-E2-D2-C2",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A gentle descending melody that fits the harmony and resolves smoothly.",
-          hints: [
+          correctAnswer": "A gentle descending melody that fits the harmony and resolves smoothly.",
+          hints": [
             "Try starting on A (6) over F",
             "Move to G (5) over E",
             "Move to F (4) over D",
@@ -2598,22 +2600,17 @@ export const CURRICULUM: Lesson[] = [
           id: "monte-3",
           type: "identify",
           prompt: "What feeling does the Monte schema typically evoke?",
-          options: [
-            "Gentle descent and resolution",
-            "Tension and anticipation",
-            "Excitement and forward motion",
-            "Sadness and melancholy",
-          ],
+          options: ["Gentle descent and resolution", "Tension and anticipation", "Excitement and forward motion", "Sadness and melancholy"],
           correctAnswer: "Excitement and forward motion",
           hints: ["The ascending bass creates energy", "It often leads to a climax"],
         },
         {
           id: "monte-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the basic Monte schema in C major. Bass: C-D-E-F. Harmony: I (5/3) - V6/3 (6/3) - ii (5/3) - IV (5/3). Soprano: G-A-C-B.",
-          correctAnswer: "Left hand: C-D-E-F. Right hand: G-A-C-B, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: C-D-E-F. Right hand: G-A-C-B, with appropriate chord voicings.",
+          hints": [
             "C bass (I): Play C-E-G",
             "D bass (V6/3): Play D-F-A (first inversion of G major)",
             "E bass (ii): Play E-G-B",
@@ -2623,10 +2620,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "monte-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Monte schema in G major. Bass: G-A-B-C. Harmony: I (5/3) - V6/3 (6/3) - ii (5/3) - IV (5/3). Soprano: D-E-G-F#.",
-          correctAnswer: "Left hand: G-A-B-C. Right hand: D-E-G-F#, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: G-A-B-C. Right hand: D-E-G-F#, with appropriate chord voicings.",
+          hints": [
             "G bass (I): Play G-B-D",
             "A bass (V6/3 of D major): Play A-C#-E",
             "B bass (ii in G): Play B-D-F#",
@@ -2636,13 +2633,13 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "monte-6-melodic",
           type: "play",
-          prompt:
+          prompt":
             "MELODIES: Create an energetic melody over the Monte bass in C major (C-D-E-F). Focus on contrary motion to the bass.",
           bassPattern: "C3-D3-E3-F3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "An energetic melody that fits the harmony and moves contrary to the bass.",
-          hints: [
+          correctAnswer": "An energetic melody that fits the harmony and moves contrary to the bass.",
+          hints": [
             "Try starting on G (5) over C",
             "Move to A (6) over D",
             "Move to C (8) over E",
@@ -2732,10 +2729,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Ponte schema in C major. Bass: G (sustained for 4 beats). Upper voices create simple chord progression: V7 - I6/4 - V7 - I. (Example voicing: G-B-D-F, G-C-E, G-B-D-F, G-B-D-G)",
-          correctAnswer: "Left hand: Sustained G. Right hand: G-B-D-F, G-C-E, G-B-D-F, G-B-D-G.",
-          hints: [
+          correctAnswer": "Left hand: Sustained G. Right hand: G-B-D-F, G-C-E, G-B-D-F, G-B-D-G.",
+          hints": [
             "The left hand holds the G.",
             "The right hand outlines the chords as described, creating movement above the pedal point.",
             "Listen for the tension and release.",
@@ -2744,10 +2741,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Ponte schema in G major. Bass: D (sustained for 4 beats). Upper voices: V7 - I6/4 - V7 - I. (Example voicing: D-F#-A-C, D-G-B, D-F#-A-C, D-F#-A-D)",
-          correctAnswer: "Left hand: Sustained D. Right hand: D-F#-A-C, D-G-B, D-F#-A-C, D-F#-A-D.",
-          hints: [
+          correctAnswer": "Left hand: Sustained D. Right hand: D-F#-A-C, D-G-B, D-F#-A-C, D-F#-A-D.",
+          hints": [
             "The left hand holds the D (dominant of G).",
             "The right hand outlines the chords: D7, G6/4, D7, G.",
             "Focus on the harmonic tension created by the pedal point.",
@@ -2756,12 +2753,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-6-melodic",
           type: "play",
-          prompt: "MELODIES: Create a melodic line over a Ponte schema in C major. Bass: G (sustained). Melody should move stepwise and create suspensions over the dominant.",
+          prompt": "MELODIES: Create a melodic line over a Ponte schema in C major. Bass: G (sustained). Melody should move stepwise and create suspensions over the dominant.",
           bassPattern: "G2",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A melody that creates suspensions over the sustained G.",
-          hints: [
+          correctAnswer": "A melody that creates suspensions over the sustained G.",
+          hints": [
             "Use notes like C (4th above G) and B (3rd above G) in the melody.",
             "Let the melody create dissonances (like 4-3 or 7-6 suspensions) that resolve.",
             "The melody should feel like it's 'searching' for resolution.",
@@ -2819,17 +2816,17 @@ export const CURRICULUM: Lesson[] = [
           id: "griffe1-2",
           type: "identify",
           prompt: "What is the most fundamental harmonic progression for learning German Griffe?",
-          options: ["I-vi-IV-V", "I-IV-V-I", "I-V-vi-IV", "ii-V-I-IV"],
           correctAnswer: "I-IV-V-I",
+          options: ["I-vi-IV-V", "I-IV-V-I", "I-V-vi-IV", "ii-V-I-IV"],
           hints: ["It's the most common and basic cadence", "It leads to a sense of completion"],
         },
         {
           id: "griffe1-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Practice the basic I-IV-V-I grip pattern in C major. Left hand plays bass notes C-F-G-C. Right hand uses the standard 'grip' for each chord.",
-          correctAnswer: "Correct realization of the I-IV-V-I progression with standardized grips.",
-          hints: [
+          correctAnswer": "Correct realization of the I-IV-V-I progression with standardized grips.",
+          hints": [
             "Memorize the specific voicings for each chord (I, IV, V).",
             "Focus on smooth transitions between the chords.",
             "Listen to examples of German keyboard music from the Baroque era.",
@@ -2838,10 +2835,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "griffe1-4-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Practice the basic I-IV-V-I grip pattern in G major. Left hand plays bass notes G-C-D-G. Right hand uses the standard 'grip' for each chord.",
-          correctAnswer: "Correct realization of the I-IV-V-I progression with standardized grips.",
-          hints: [
+          prompt": "KEYBOARD: Practice the basic I-IV-V-I grip pattern in G major. Left hand plays bass notes G-C-D-G. Right hand uses the standard 'grip' for each chord.",
+          correctAnswer": "Correct realization of the I-IV-V-I progression with standardized grips.",
+          hints": [
             "The key has changed, so adjust the chord voicings accordingly.",
             "G major: I (G-B-D), IV (C-E-G), V (D-F#-A).",
           ],
@@ -2924,10 +2920,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim4-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Play a C major chord (C-E-G). Realize it with 4:1 diminution in the soprano. Bass: C. Soprano: C-D-E-F | E-F-G-E.",
-          correctAnswer: "Left hand: C. Right hand: C-D-E-F, then E-F-G-E.",
-          hints: [
+          correctAnswer": "Left hand: C. Right hand: C-D-E-F, then E-F-G-E.",
+          hints": [
             "The bass note C is held.",
             "The first soprano pattern uses chord tones (C, E) and passing tones (D, F).",
             "The second soprano pattern uses chord tones (E, G) and passing tones (F).",
@@ -2936,10 +2932,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim4-5-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Play a V-I cadence in C major. Bass: G-C. Realize the soprano with 4:1 diminution. Soprano over G: D-E-F-G | D-E-F-D. Soprano over C: C-D-E-F | C-B-A-C.",
-          correctAnswer: "Left hand: G-C. Right hand: D-E-F-G, D-E-F-D over G, then C-D-E-F, C-B-A-C over C.",
-          hints: [
+          correctAnswer": "Left hand: G-C. Right hand: D-E-F-G, D-E-F-D over G, then C-D-E-F, C-B-A-C over C.",
+          hints": [
             "Focus on using chord tones on the first and third notes of each four-note group.",
             "Use passing tones and small leaps for the other notes.",
             "Listen for the smooth connection between the diminished patterns and the harmony.",
@@ -2948,12 +2944,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim4-6-melodic",
           type: "play",
-          prompt: "MELODIES: Create a 4:1 diminution melody over a sustained C major chord. Use a mix of stepwise motion and small leaps.",
+          prompt": "MELODIES: Create a 4:1 diminution melody over a sustained C major chord. Use a mix of stepwise motion and small leaps.",
           bassPattern: "C3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A melody with four notes per beat, using chord tones, passing tones, and small leaps.",
-          hints: [
+          correctAnswer": "A melody with four notes per beat, using chord tones, passing tones, and small leaps.",
+          hints": [
             "Start with chord tones: C, E, G.",
             "Fill in the gaps with passing tones: D, F.",
             "Introduce small leaps: C to E, E to G.",
@@ -3012,9 +3008,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen1-1",
           type: "play",
-          prompt: "Realize Fenaroli Book I, No. 1 with proper voice leading",
-          correctAnswer: "Correct realization with smooth voice leading and correct harmonies.",
-          hints: [
+          prompt":
+            "Realize Fenaroli Book I, No. 1 with proper voice leading",
+          correctAnswer": "Correct realization with smooth voice leading and correct harmonies.",
+          hints": [
             "Bass: C-D-E-F-G-A-B-C",
             "Figures: - 6 6 5 - 6 6 5",
             "Apply the Rule of the Octave and inversion principles.",
@@ -3024,9 +3021,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen1-2",
           type: "play",
-          prompt: "Realize Fenaroli Book I, No. 5, incorporating the 4-3 suspension.",
-          correctAnswer: "Correct realization with the suspension properly prepared, suspended, and resolved.",
-          hints: [
+          prompt": "Realize Fenaroli Book I, No. 5, incorporating the 4-3 suspension.",
+          correctAnswer": "Correct realization with the suspension properly prepared, suspended, and resolved.",
+          hints": [
             "Bass: C-F-G-C",
             "Figures: - 4-3 7 -",
             "Over F, create a 4-3 suspension (e.g., soprano holds Bb, resolves to A over G bass).",
@@ -3036,9 +3033,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen1-3",
           type: "play",
-          prompt: "Realize Fenaroli Book I, No. 8, focusing on the Compound Cadence.",
-          correctAnswer: "Correct realization of the Compound Cadence.",
-          hints: [
+          prompt": "Realize Fenaroli Book I, No. 8, focusing on the Compound Cadence.",
+          correctAnswer": "Correct realization of the Compound Cadence.",
+          hints": [
             "Bass: C-G-G-C",
             "Figures: - 5/4 7 -",
             "The G bass with 5/4 creates the dominant seventh (or similar tension).",
@@ -3111,10 +3108,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fenaroli-schema-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Fenaroli schema in C major. Bass: B-C-B-C. Harmony: V7 - I - V7 - I. Soprano: F-E-F-E.",
-          correctAnswer: "Left hand: B-C-B-C. Right hand: F-E-F-E, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: B-C-B-C. Right hand: F-E-F-E, with appropriate chord voicings.",
+          hints": [
             "Over B, play a G dominant seventh chord (V7).",
             "Over C, play a C major chord (I).",
             "The soprano creates suspensions over the dominant.",
@@ -3176,10 +3173,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "indugio-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Indugio schema in C major. Bass: F (sustained for 4 beats). Upper voices: I6 - V/V - IV. (Example voicing: F-A-C, F-G-B, F-A-C).",
-          correctAnswer: "Left hand: Sustained F. Right hand: F-A-C, F-G-B, F-A-C.",
-          hints: [
+          correctAnswer": "Left hand: Sustained F. Right hand: F-A-C, F-G-B, F-A-C.",
+          hints": [
             "The left hand holds the F.",
             "The right hand outlines the harmonies: F-A-C (F major first inversion), F-G-B (G major first inversion, or altered), F-A-C (F major).",
             "Listen for the harmonic suspension.",
@@ -3249,10 +3246,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "jupiter-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Jupiter schema in C major. Bass: C-D-F-E. Harmony: I (5/3) - V6/3 (6/3) - Cadential 6/4 (6/4) - V (5/3). Soprano: G-A-C-B.",
-          correctAnswer: "Left hand: C-D-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: C-D-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
+          hints": [
             "C bass (I): Play C-E-G",
             "D bass (V6/3): Play D-F-A (first inversion of G major)",
             "F bass (Cadential 6/4): Play F-A-C (second inversion of C major)",
@@ -3320,10 +3317,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "aprile-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Aprile schema in C major. Bass: F-E-B-C. Harmony: IV (5/3) - V6/3 (6/3) - V7 (7/5/3) - I (5/3). Soprano: A-G-D-E.",
-          correctAnswer: "Left hand: F-E-B-C. Right hand: A-G-D-E, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: F-E-B-C. Right hand: A-G-D-E, with appropriate chord voicings.",
+          hints": [
             "F bass (IV): Play F-A-C",
             "E bass (V6/3): Play E-G-B (first inversion of C major)",
             "B bass (V7): Play B-D-F-A",
@@ -3396,9 +3393,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-3-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
-          correctAnswer: "Left hand: Sustained C. Right hand: C-E-G, C-G-C, C-E-G.",
-          hints: [
+          prompt":
+            "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
+          correctAnswer": "Left hand: Sustained C. Right hand: C-E-G, C-G-C, C-E-G.",
+          hints": [
             "The left hand holds the C.",
             "The right hand plays simple, consonant harmonies above the drone.",
             "Focus on creating a calm, pastoral atmosphere.",
@@ -3407,9 +3405,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-4-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
-          correctAnswer: "Left hand: Sustained G. Right hand: G-B-D, G-D-G, G-B-D.",
-          hints: [
+          prompt": "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
+          correctAnswer": "Left hand: Sustained G. Right hand: G-B-D, G-D-G, G-B-D.",
+          hints": [
             "The left hand holds the G.",
             "The right hand plays simple, consonant harmonies above the drone.",
             "Consider using a slightly slower tempo or a lighter touch to enhance the pastoral feel.",
@@ -3437,18 +3435,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "quieszenza-ex-1",
           title: "Basic Quieszenza Schema",
-          description: "Bass: F-E-D-C (in C major). Harmony: IV - V6/3 - ii - I",
-          notation: "Bass: 4-3-2-1 | Harmony: IV - V6/3 - ii - I",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[D2,D3,F3,A3]", "[C2,C3,E3,G3]"],
-        },
-        {
-          id: "quieszenza-ex-2",
-          title: "Quieszenza with Soprano Descent",
-          description: "Bass: F-E-D-C | Soprano: A-G-F-E. Creating parallel descent.",
-          notation: "Bass: 4-3-2-1 | Soprano: 6-5-4-3",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[D2,D3,F3,A3]", "[C2,C3,E3,G3]"],
+          description: "Bass: F-E-D-C (in C major). Harmony: IV-iii-ii-I. The descending bass creates a gentle resolution.",
+          bassPattern: "F3-E3-D3-C3",
+          audioPattern: ["F3", "E3", "D3", "C3"],
         },
       ],
       exercises: [
@@ -3472,24 +3461,19 @@ export const CURRICULUM: Lesson[] = [
           id: "quieszenza-3",
           type: "identify",
           prompt: "What feeling does the Quieszenza schema typically evoke?",
-          options: [
-            "Excitement and energy",
-            "Tension and anticipation",
-            "Peaceful resolution and closure",
-            "Sudden surprise",
-          ],
+          options: ["Excitement and energy", "Tension and anticipation", "Peaceful resolution and closure", "Sudden surprise"],
           correctAnswer: "Peaceful resolution and closure",
           hints: ["It's a closing pattern", "It brings a sense of calm"],
         },
         {
           id: "quieszenza-4-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize the Quieszenza schema in C major. Bass: F-E-D-C. Harmony: IV (5/3) - V6/3 (6/3) - ii (5/3) - I (5/3). Soprano: A-G-F-E.",
-          correctAnswer: "Left hand: F-E-D-C. Right hand: A-G-F-E, with appropriate chord voicings.",
-          hints: [
+          prompt":
+            "KEYBOARD: Realize the Quieszenza schema in C major. Bass: F-E-D-C. Harmony: IV (5/3) - iii6/3 (6/3) - ii (5/3) - I (5/3). Soprano: A-G-F-E.",
+          correctAnswer": "Left hand: F-E-D-C. Right hand: A-G-F-E, with appropriate chord voicings.",
+          hints": [
             "F bass (IV): Play F-A-C",
-            "E bass (V6/3): Play E-G-B (first inversion of C major)",
+            "E bass (iii6/3): Play E-G-B (first inversion of C major)",
             "D bass (ii): Play D-F-A",
             "C bass (I): Play C-E-G",
           ],
@@ -3516,19 +3500,20 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "deceptive-ex-1",
           title: "Basic Deceptive Cadence",
-          description: "In C major: G major (V) resolving to A minor (vi) instead of C major (I).",
-          notation: "Bass: G-A | Harmony: V - vi",
-          figuredBass: "5/3 - 5/3",
-          audioPattern: ["[G2,G3,B3,D4]", "[A2,A3,C4,E4]"],
+          description":
+            "In C major: G major (V) resolving to A minor (vi) instead of C major (I).",
+          notation": "Bass: G-A | Harmony: V - vi",
+          figuredBass": "5/3 - 5/3",
+          audioPattern": ["[G2,G3,B3,D4]", "[A2,A3,C4,E4]"],
         },
         {
           id: "deceptive-ex-2",
           title: "Deceptive Cadence with Leading Tone",
-          description:
+          description":
             "Bass: G-A | Soprano: B-C. The leading tone (B) resolves up to C, but the bass moves to A, creating the vi chord.",
-          notation: "Bass: 7-6 | Soprano: 7-1",
-          figuredBass: "7/3 - 5/3",
-          audioPattern: ["[G2,G3,B3,F4]", "[A2,A3,C4,E4]"],
+          notation": "Bass: 7-6 | Soprano: 7-1",
+          figuredBass": "7/3 - 5/3",
+          audioPattern": ["[G2,G3,B3,F4]", "[A2,A3,C4,E4]"],
         },
       ],
       exercises: [
@@ -3551,10 +3536,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "deceptive-3-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize a deceptive cadence in C major. Bass: G-A. Harmony: V - vi. Soprano: B-C.",
-          correctAnswer:
-            "Left hand: G-A. Right hand: B-C, with appropriate chord voicings (G major triad then A minor triad).",
-          hints: [
+          prompt": "KEYBOARD: Realize a deceptive cadence in C major. Bass: G-A. Harmony: V - vi. Soprano: B-C.",
+          correctAnswer": "Left hand: G-A. Right hand: B-C, with appropriate chord voicings (G major triad then A minor chord).",
+          hints": [
             "Over G, play a G major chord (G-B-D).",
             "Over A, play an A minor chord (A-C-E).",
             "Listen for the unexpected harmonic shift.",
@@ -3577,24 +3561,24 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 60,
     content: {
       theory:
-        "Evaded Cadence: The expected cadence is avoided through various techniques, extending the phrase. Cadence evasion involves disrupting the expected harmonic flow, often by substituting chords, altering voice leading, or using deceptive resolutions in unexpected ways. This technique is used to prolong harmonic tension, create surprise, or guide the listener through more complex harmonic paths. It prevents the music from becoming predictable and adds sophistication to the composition. Common methods include using secondary dominants, altered chords, or unexpected chord progressions.",
+        "Evaded Cadence: The expected cadence is avoided through various techniques, extending the phrase. Cadence evasion involves disrupting the expected harmonic flow, often by substituting chords, altering voice leading, or using deceptive resolutions in unexpected ways. This technique is used to prolong harmonic tension, create surprise, or guide the listener through more complex harmonic paths. It prevents the music from becoming too predictable and adds sophistication to the composition. Common methods include using secondary dominants, altered chords, or unexpected chord progressions.",
       examples: [
         {
           id: "evaded-ex-1",
           title: "Evading V-I with a secondary dominant",
-          description:
+          description":
             "Instead of V-I, use V/V-V-I. The V/V (D7 in C major) leads to G7 (V), which then resolves to C.",
-          notation: "Bass: G-D-G-C | Harmony: V - V/V - V - I",
-          figuredBass: "5/3 - 7 - 7/5/3 - 5/3",
-          audioPattern: ["[G2,G3,B3,D4]", "[D2,D3,F3,A3]", "[G2,G3,B3,F4]", "[C2,C3,E3,G3]"],
+          notation": "Bass: G-D-G-C | Harmony: V - V/V - V - I",
+          figuredBass": "5/3 - 7 - 7/5/3 - 5/3",
+          audioPattern": ["[G2,G3,B3,D4]", "[D2,D3,F3,A3]", "[G2,G3,B3,F4]", "[C2,C3,E3,G3]"],
         },
         {
           id: "evaded-ex-2",
           title: "Evading V-I with altered chords",
-          description: "Using chromatic alterations to delay the resolution.",
-          notation: "Bass: G-G | Harmony: V - altered chord",
-          figuredBass: "5/3 - altered figure",
-          audioPattern: ["[G2,G3,B3,D4]", "[G2,G3,Bb4,Eb4]"],
+          description": "Using chromatic alterations to delay the resolution.",
+          notation": "Bass: G-G | Harmony: V - altered chord",
+          figuredBass": "5/3 - altered figure",
+          audioPattern": ["[G2,G3,B3,D4]", "[G2,G3,Bb4,Eb4]"],
         },
       ],
       exercises: [
@@ -3617,9 +3601,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "evaded-3-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize a cadence evasion in C major. Bass: G-D-G-C. Harmony: V - V/V - V - I. Soprano: B-F-F-E.",
-          correctAnswer: "Left hand: G-D-G-C. Right hand: B-F-F-E, with appropriate chord voicings.",
-          hints: [
+          prompt": "KEYBOARD: Realize a cadence evasion in C major. Bass: G-D-G-C. Harmony: V - V/V - V - I. Soprano: B-F-F-E.",
+          correctAnswer": "Left hand: G-D-G-C. Right hand: B-F-F-E, with appropriate chord voicings.",
+          hints": [
             "Over the first G, play a G major chord (V).",
             "Over D, play a D dominant seventh chord (V/V).",
             "Over the second G, play a G dominant seventh chord (V7).",
@@ -3629,7 +3613,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Cadence evasion is a sophisticated compositional technique that adds depth and intrigue to music. By masterfully avoiding predictable resolutions, composers can create harmonic surprise, extend musical phrases, and guide the listener through more complex harmonic paths. This technique is essential for composers aiming to move beyond simple harmonic formulas and craft more engaging and memorable musical experiences.",
+        "Cadence evasion is a sophisticated compositional technique that adds depth and intrigue to music. By masterfully avoiding predictable resolutions, composers can create harmonic surprise, extend phrases, and guide the listener through more complex harmonic paths. This technique is essential for composers aiming to move beyond simple harmonic formulas and craft more engaging and memorable musical experiences.",
     },
   },
   {
@@ -3649,46 +3633,45 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "passo-indietro-ex-1",
           title: "Basic Passo Indietro",
-          description:
+          description":
             "In C major: G (V) -> F (IV) -> G (V) -> C (I). The step from G back to F before returning to G is the 'passo indietro'.",
-          notation: "Bass: G-F-G-C | Harmony: V - IV - V - I",
-          figuredBass: "5/3 - 5/3 - 5/3 - 5/3",
-          audioPattern: ["[G2,G3,B3,D4]", "[F2,F3,A3,C4]", "[G2,G3,B3,D4]", "[C2,C3,E3,G3]"],
+          notation": "Bass: G-F-G-C | Harmony: V - IV - V - I",
+          figuredBass": "5/3 - 5/3 - 5/3 - 5/3",
+          audioPattern": ["[G2,G3,B3,D4]", "[F2,F3,A3,C4]", "[G2,G3,B3,D4]", "[C2,C3,E3,G3]"],
         },
         {
           id: "passo-indietro-ex-2",
           title: "Passo Indietro with Deceptive Resolution",
-          description:
+          description":
             "Bass: G-A-G-C | Harmony: V - vi - V - I. The step to vi before returning to V is a deceptive resolution.",
-          notation: "Bass: 7-6-7-1 | Harmony: V - vi - V - I",
-          figuredBass: "7/3 - 5/3 - 7/3 - 5/3",
-          audioPattern: ["[G2,G3,B3,F4]", "[A2,A3,C4,E4]", "[G2,G3,B3,D4]", "[C2,C3,E3,G3]"],
+          notation": "Bass: 7-6-7-1 | Harmony: V - vi - V - I",
+          figuredBass": "7/3 - 5/3 - 7/3 - 5/3",
+          audioPattern": ["[G2,G3,B3,F4]", "[A2,A3,C4,E4]", "[G2,G3,B3,D4]", "[C2,C3,E3,G3]"],
         },
       ],
       exercises: [
         {
           id: "passo-indietro-1",
           type: "identify",
-          prompt: "What does 'Passo Indietro' mean in music?",
-          options: ["Forward step", "Backward step", "Leap", "Stasis"],
-          correctAnswer: "Backward step",
-          hints: ["It refers to a momentary retreat in the harmonic progression", "It creates rhythmic interest"],
+          prompt": "What does 'Passo Indietro' mean in music?",
+          options": ["Forward step", "Backward step", "Leap", "Stasis"],
+          correctAnswer": "Backward step",
+          hints": ["It refers to a momentary retreat in the harmonic progression", "It creates rhythmic interest"],
         },
         {
           id: "passo-indietro-2",
           type: "identify",
-          prompt: "What effect does the Passo Indietro schema typically create?",
-          options: ["Predictability", "Rhythmic interest and harmonic surprise", "Sudden ending", "Simple resolution"],
-          correctAnswer: "Rhythmic interest and harmonic surprise",
-          hints: ["It breaks up the expected flow", "It makes the music more engaging"],
+          prompt": "What effect does the Passo Indietro schema typically create?",
+          options": ["Predictability", "Rhythmic interest and harmonic surprise", "Sudden ending", "Simple resolution"],
+          correctAnswer": "Rhythmic interest and harmonic surprise",
+          hints": ["It breaks up the expected flow", "It makes the music more engaging"],
         },
         {
           id: "passo-indietro-3-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize a Passo Indietro in C major. Bass: G-F-G-C. Harmony: V - IV - V - I. Soprano: B-A-B-E.",
-          correctAnswer: "Left hand: G-F-G-C. Right hand: B-A-B-E, with appropriate chord voicings.",
-          hints: [
+          prompt": "KEYBOARD: Realize a Passo Indietro in C major. Bass: G-F-G-C. Harmony: V - IV - V - I. Soprano: B-A-B-E.",
+          correctAnswer": "Left hand: G-F-G-C. Right hand: B-A-B-E, with appropriate chord voicings.",
+          hints": [
             "Over G, play a G major chord (V).",
             "Over F, play an F major chord (IV).",
             "Return to G major (V).",
@@ -3735,8 +3718,8 @@ export const CURRICULUM: Lesson[] = [
           id: "griffe2-1",
           type: "identify",
           prompt: "Who developed the 28 sequential voice-leading patterns for German Griffe?",
-          options: ["Johann Sebastian Bach", "Jacob Adlung", "Dietrich Buxtehude", "Johann Pachelbel"],
           correctAnswer: "Jacob Adlung",
+          options: ["Johann Sebastian Bach", "Jacob Adlung", "Dietrich Buxtehude", "Johann Pachelbel"],
           hints: ["He wrote a treatise on improvisation", "His work systematized these patterns"],
         },
         {
@@ -3750,9 +3733,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "griffe2-3-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Practice one of Adlung's scalar sequential patterns. Choose a pattern and realize it in C major, ensuring smooth voice leading.",
-          correctAnswer: "Correct realization of an Adlung scalar pattern.",
-          hints: [
+          prompt": "KEYBOARD: Practice one of Adlung's scalar sequential patterns. Choose a pattern and realize it in C major, ensuring smooth voice leading.",
+          correctAnswer": "Correct realization of an Adlung scalar pattern.",
+          hints": [
             "Refer to Adlung's 'Anweisung zum Fantasieren' for examples.",
             "Focus on the sequential repetition and smooth voice leading.",
             "Ensure the harmony is consistent with the pattern.",
@@ -3786,8 +3769,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-2",
           description: "8:1 Diminution over a V-I cadence",
-          notation:
-            "Bass: G-C | Soprano over G: rapid arpeggio and scalar figures | Soprano over C: rapid scalar passage",
+          notation: "Bass: G-C | Soprano over G: rapid arpeggio and scalar figures | Soprano over C: rapid scalar passage",
           audioPattern: ["[G3,G4,B4,D5]", "[G4,A4,B4,C5,D5,E5,F5,G5]", "[C3,C4,E4,G4]", "[C4,D4,E4,F4,G4,A4,B4,C5]"],
         },
       ],
@@ -3811,10 +3793,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim8-3-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Attempt to play a C major scale fragment in 8:1 diminution over a sustained C bass note. Bass: C. Soprano: C-D-E-F-G-A-B-C.",
-          correctAnswer: "A rapid scalar passage of eight notes per beat.",
-          hints: [
+          prompt": "KEYBOARD: Attempt to play a C major scale fragment in 8:1 diminution over a sustained C bass note. Bass: C. Soprano: C-D-E-F-G-A-B-C.",
+          correctAnswer": "A rapid scalar passage of eight notes per beat.",
+          hints": [
             "Practice slowly first, gradually increasing speed.",
             "Focus on clarity and evenness of articulation.",
             "Ensure each note is clearly articulated.",
@@ -3863,11 +3844,11 @@ export const CURRICULUM: Lesson[] = [
       ],
       exercises: [
         {
-          id: "ex-fen2-1",
+          id: "ex-fen1-2",
           type: "play",
-          prompt: "Realize Fenaroli Book II, No. 1, focusing on the chain of suspensions.",
-          correctAnswer: "Correct realization with smooth voice leading and properly executed suspensions.",
-          hints: [
+          prompt": "Realize Fenaroli Book II, No. 1, focusing on the chain of suspensions.",
+          correctAnswer": "Correct realization with smooth voice leading and properly executed suspensions.",
+          hints": [
             "Bass: C-F-G-C",
             "Figures: - 9-8 4-3 7 -",
             "Pay close attention to the preparation, suspension, and resolution of each dissonant interval.",
@@ -3875,11 +3856,11 @@ export const CURRICULUM: Lesson[] = [
           ],
         },
         {
-          id: "ex-fen2-2",
+          id: "ex-fen1-3",
           type: "play",
-          prompt: "Realize Fenaroli Book II, No. 10, incorporating seventh chords.",
-          correctAnswer: "Correct realization with appropriate seventh chord voicings and resolutions.",
-          hints: [
+          prompt": "Realize Fenaroli Book II, No. 10, incorporating seventh chords.",
+          correctAnswer": "Correct realization with appropriate seventh chord voicings and resolutions.",
+          hints": [
             "Bass: C-D-E-F-G-C",
             "Figures: 7 6/5 7 6/5 7 -",
             "Understand the function of each seventh chord (e.g., dominant seventh, secondary sevenths).",
@@ -3887,11 +3868,11 @@ export const CURRICULUM: Lesson[] = [
           ],
         },
         {
-          id: "ex-fen3-1",
+          id: "ex-fen2-1",
           type: "play",
-          prompt: "Realize Fenaroli Book III, No. 1, navigating the modulation to the dominant.",
-          correctAnswer: "Correct realization demonstrating understanding of modulation and chromatic harmony.",
-          hints: [
+          prompt": "Realize Fenaroli Book III, No. 1, navigating the modulation to the dominant.",
+          correctAnswer": "Correct realization demonstrating understanding of modulation and chromatic harmony.",
+          hints": [
             "Bass: C-C#-D-Eb-E-F-F#-G",
             "Figures: - #6 6 b6 6 6 #6 -",
             "Identify the pivot chords and the target key (G major).",
@@ -3940,9 +3921,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen4-1",
           type: "play",
-          prompt: "Realize Fenaroli Book IV, No. 1, treating it as a fugal exposition.",
-          correctAnswer: "A realization that effectively presents and develops a fugal subject within the partimento.",
-          hints: [
+          prompt": "Realize Fenaroli Book IV, No. 1, treating it as a fugal exposition.",
+          correctAnswer": "A realization that effectively presents and develops a fugal subject within the partimento.",
+          hints": [
             "Identify the implied subject and answer.",
             "Develop counter-subjects and episodes.",
             "Maintain contrapuntal integrity throughout.",
@@ -3979,9 +3960,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fugue-exp-1",
           type: "play",
-          prompt: "Improvise a fugal exposition in C major. Create a simple subject and a tonal answer.",
-          correctAnswer: "A coherent fugal exposition with a subject, tonal answer, and basic countersubject.",
-          hints: [
+          prompt": "Improvise a fugal exposition in C major. Create a simple subject and a tonal answer.",
+          correctAnswer": "A coherent fugal exposition with a subject, tonal answer, and basic countersubject.",
+          hints": [
             "First, create a memorable subject.",
             "Then, determine a tonal answer (adjusting intervals for the dominant key).",
             "Finally, improvise a simple countersubject.",
@@ -4017,9 +3998,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fugue-ep-1",
           type: "play",
-          prompt: "Improvise a fugal episode following a C major exposition, modulating to G major.",
-          correctAnswer: "A coherent episode that modulates smoothly to the dominant key.",
-          hints: [
+          prompt": "Improvise a fugal episode following a C major exposition, modulating to G major.",
+          correctAnswer": "A coherent episode that modulates smoothly to the dominant key.",
+          hints": [
             "Use fragments of the subject or countersubject.",
             "Employ sequences to facilitate modulation.",
             "Ensure harmonic stability in the new key before further development.",
@@ -4055,9 +4036,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "imitazione-1",
           type: "play",
-          prompt: "Improvise a short imitative passage in C major, introducing a simple melodic idea and imitating it in another voice.",
-          correctAnswer: "A passage demonstrating free imitation with coherent voice leading.",
-          hints: [
+          prompt": "Improvise a short imitative passage in C major, introducing a simple melodic idea and imitating it in another voice.",
+          correctAnswer": "A passage demonstrating free imitation with coherent voice leading.",
+          hints": [
             "Create a short, memorable melodic idea.",
             "Introduce it in one voice, then imitate it in another.",
             "Focus on smooth voice leading and consonant harmony.",
@@ -4084,20 +4065,20 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description:
+          description":
             "Improvise a 1-minute piece in C major, incorporating at least two schemata, one diminution technique, and a clear cadence.",
-          notation: "Free improvisation",
-          audioPattern: ["Improvised music"],
+          notation": "Free improvisation",
+          audioPattern": ["Improvised music"],
         },
       ],
       exercises: [
         {
           id: "free-improvisation-1",
           type: "play",
-          prompt:
+          prompt":
             "Improvise a 1-minute piece in C major, incorporating elements from at least two different Galant schemas, a diminution technique, and a clear cadence.",
-          correctAnswer: "A spontaneous musical creation that demonstrates mastery of combined techniques.",
-          hints: [
+          correctAnswer": "A spontaneous musical creation that demonstrates mastery of combined techniques.",
+          hints": [
             "Choose schemas that contrast or complement each other.",
             "Apply a diminution technique to add embellishment.",
             "Ensure a clear harmonic progression and a satisfying cadence.",
@@ -4142,9 +4123,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-durante-1",
           type: "play",
-          prompt: "Realize a Durante partimento featuring diminished seventh chords.",
-          correctAnswer: "A realization that effectively uses diminished seventh chords and resolves them correctly.",
-          hints: [
+          prompt": "Realize a Durante partimento featuring diminished seventh chords.",
+          correctAnswer": "A realization that effectively uses diminished seventh chords and resolves them correctly.",
+          hints": [
             "Identify the bass line and figures.",
             "Understand the harmonic function of diminished seventh chords.",
             "Pay close attention to voice leading, especially with chromatic movement.",
@@ -4181,9 +4162,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-insanguine-1",
           type: "play",
-          prompt: "Realize an Insanguine partimento that demonstrates the Rule of the Octave.",
-          correctAnswer: "A realization that correctly applies the Rule of the Octave patterns.",
-          hints: [
+          prompt": "Realize an Insanguine partimento that demonstrates the Rule of the Octave.",
+          correctAnswer": "A realization that correctly applies the Rule of the Octave patterns.",
+          hints": [
             "Consult Insanguine's rules for specific voice leading.",
             "Apply the ascending and descending Rule of the Octave accurately.",
             "Ensure smooth transitions and logical harmonic progression.",
@@ -4225,10 +4206,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-sala-1",
           type: "identify",
-          prompt: "What is the primary focus of Nicola Sala's 'Regole del Contrappunto Pratico'?",
-          options: ["Melodic composition", "Instrumental technique", "Theoretical basis of practical counterpoint (partimenti)", "Music history"],
-          correctAnswer: "Theoretical basis of practical counterpoint (partimenti)",
-          hints: ["The title itself gives a clue", "It explains the 'why' behind the patterns"],
+          prompt": "What is the primary focus of Nicola Sala's 'Regole del Contrappunto Pratico'?",
+          options": ["Melodic composition", "Instrumental technique", "Theoretical basis of practical counterpoint (partimenti)", "Music history"],
+          correctAnswer": "Theoretical basis of practical counterpoint (partimenti)",
+          hints": ["The title itself gives a clue", "It explains the 'why' behind the patterns"],
         },
       ],
       historicalContext:
@@ -4295,10 +4276,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fenaroli-schema-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Fenaroli schema in C major. Bass: B-C-B-C. Harmony: V7 - I - V7 - I. Soprano: F-E-F-E.",
-          correctAnswer: "Left hand: B-C-B-C. Right hand: F-E-F-E, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: B-C-B-C. Right hand: F-E-F-E, with appropriate chord voicings.",
+          hints": [
             "Over B, play a G dominant seventh chord (V7).",
             "Over C, play a C major chord (I).",
             "The soprano creates suspensions over the dominant.",
@@ -4360,10 +4341,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "indugio-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Indugio schema in C major. Bass: F (sustained for 4 beats). Upper voices: I6 - V/V - IV. (Example voicing: F-A-C, F-G-B, F-A-C).",
-          correctAnswer: "Left hand: Sustained F. Right hand: F-A-C, F-G-B, F-A-C.",
-          hints: [
+          correctAnswer": "Left hand: Sustained F. Right hand: F-A-C, F-G-B, F-A-C.",
+          hints": [
             "The left hand holds the F.",
             "The right hand outlines the harmonies: F-A-C (F major first inversion), F-G-B (G major first inversion, or altered), F-A-C (F major).",
             "Listen for the harmonic suspension.",
@@ -4433,10 +4414,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "jupiter-4-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Jupiter schema in C major. Bass: C-D-F-E. Harmony: I (5/3) - V6/3 (6/3) - Cadential 6/4 (6/4) - V (5/3). Soprano: G-A-C-B.",
-          correctAnswer: "Left hand: C-D-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: C-D-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
+          hints": [
             "C bass (I): Play C-E-G",
             "D bass (V6/3): Play D-F-A (first inversion of G major)",
             "F bass (Cadential 6/4): Play F-A-C (second inversion of C major)",
@@ -4504,10 +4485,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "aprile-3-keyboard",
           type: "play",
-          prompt:
+          prompt":
             "KEYBOARD: Realize the Aprile schema in C major. Bass: F-E-B-C. Harmony: IV (5/3) - V6/3 (6/3) - V7 (7/5/3) - I (5/3). Soprano: A-G-D-E.",
-          correctAnswer: "Left hand: F-E-B-C. Right hand: A-G-D-E, with appropriate chord voicings.",
-          hints: [
+          correctAnswer": "Left hand: F-E-B-C. Right hand: A-G-D-E, with appropriate chord voicings.",
+          hints": [
             "F bass (IV): Play F-A-C",
             "E bass (V6/3): Play E-G-B (first inversion of C major)",
             "B bass (V7): Play B-D-F-A",
@@ -4580,9 +4561,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-3-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
-          correctAnswer: "Left hand: Sustained C. Right hand: C-E-G, C-G-C, C-E-G.",
-          hints: [
+          prompt":
+            "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
+          correctAnswer": "Left hand: Sustained C. Right hand: C-E-G, C-G-C, C-E-G.",
+          hints": [
             "The left hand holds the C.",
             "The right hand plays simple, consonant harmonies above the drone.",
             "Focus on creating a calm, pastoral atmosphere.",
@@ -4591,9 +4573,9 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-4-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
-          correctAnswer: "Left hand: Sustained G. Right hand: G-B-D, G-D-G, G-B-D.",
-          hints: [
+          prompt": "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
+          correctAnswer": "Left hand: Sustained G. Right hand: G-B-D, G-D-G, G-B-D.",
+          hints": [
             "The left hand holds the G.",
             "The right hand plays simple, consonant harmonies above the drone.",
             "Consider using a slightly slower tempo or a lighter touch to enhance the pastoral feel.",
@@ -4621,4 +4603,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "quieszenza-ex-1",
           title: "Basic Quieszenza Schema",
-          description: \"Bass: F-E-D-C (in C major). Harmony
+          description: "Bass: F-E-D-C (in C major). Harmony: IV-iii-ii-I. The descending bass creates a gentle resolution.",
+          bassPattern: "F3-E3-D3-C3",
+          audioPattern: ["F3", "E3", "D3", "C3"],
+        },
+      ],
+      exercises: [
+        {
