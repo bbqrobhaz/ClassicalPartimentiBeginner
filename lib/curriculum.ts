@@ -239,17 +239,17 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex2-7-keyboard",
           type: "play",
-          prompt": "KEYBOARD: Realize this bass line with 5/3 chords in the right hand: C-F-G-C",
-          correctAnswer":
+          prompt: "KEYBOARD: Realize this bass line with 5/3 chords in the right hand: C-F-G-C",
+          correctAnswer:
             "Play bass notes C-F-G-C with left hand, and complete triads (C-E-G, F-A-C, G-B-D, C-E-G) with right hand",
-          hints": [
+          hints: [
             "Keep your right hand in a comfortable position. Use smooth voice leading - move each voice to the nearest chord tone.",
           ],
         },
         {
           id: "ex2-8-melodic",
           type: "play",
-          prompt": "MELODIES: Create a melodic line over this progression: I-IV-V-I",
+          prompt: "MELODIES: Create a melodic line over this progression: I-IV-V-I",
           correctAnswer":
             "Improvise a melody using notes from each chord (C-E-G over I, F-A-C over IV, G-B-D over V, C-E-G over I)",
           hints": [
@@ -354,7 +354,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex3-7-keyboard",
           type: "play",
-          prompt": "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
+          prompt: "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
           correctAnswer": "Play bass C-D-E-F with left hand, right hand plays 6/3 chords: C-E-G, D-F-A, E-G-C, F-A-C",
           hints": [
             "The 6/3 chords create smooth stepwise motion. Keep the right hand close together, moving each voice by step when possible.",
@@ -394,24 +394,24 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description": "Cadential 6/4 (I6/4 resolving to V)",
-          notation": "Bass: 5-5, Figures: 6/4-5/3",
-          audioPattern": ["G3", "C5", "E5", "G3", "B4", "D5"],
-          figuredBass": "6/4-5/3",
+          description: "Cadential 6/4 (I6/4 resolving to V)",
+          notation: "Bass: 5-5, Figures: 6/4-5/3",
+          audioPattern: ["G3", "C5", "E5", "G3", "B4", "D5"],
+          figuredBass: "6/4-5/3",
         },
         {
           id: "ex-2",
-          description": "Passing 6/4 (between I and I6)",
-          notation": "Bass: 1-2-3, Figures: 5/3-6/4-6",
-          audioPattern": ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5"],
-          figuredBass": "5/3-6/4-6",
+          description: "Passing 6/4 (between I and I6)",
+          notation: "Bass: 1-2-3, Figures: 5/3-6/4-6",
+          audioPattern: ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5"],
+          figuredBass: "5/3-6/4-6",
         },
         {
           id: "ex-3",
-          description": "Pedal 6/4 (over sustained bass)",
-          notation": "Bass: 1-1-1, Figures: 5/3-6/4-5/3",
-          audioPattern": ["C3", "E4", "G4", "C3", "F4", "A4", "C3", "E4", "G4"],
-          figuredBass": "5/3-6/4-5/3",
+          description: "Pedal 6/4 (over sustained bass)",
+          notation: "Bass: 1-1-1, Figures: 5/3-6/4-5/3",
+          audioPattern: ["C3", "E4", "G4", "C3", "F4", "A4", "C3", "E4", "G4"],
+          figuredBass: "5/3-6/4-5/3",
         },
       ],
       exercises: [
@@ -467,7 +467,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex4-7-keyboard",
           type: "play",
-          prompt": "KEYBOARD: Realize a cadential 6/4: Bass G-G with figures 6/4-5/3. Then resolve to C.",
+          prompt: "KEYBOARD: Realize a cadential 6/4: Bass G-G with figures 6/4-5/3. Then resolve to C.",
           correctAnswer": "Play bass G in bass twice, right hand plays C-E-G (6/4) then B-D-G (5/3), then resolve to C-E-G over bass C",
           hints": [
             "The 6/4 chord (C-E over bass G) resolves down by step: C→B and E→D, creating the V chord before final resolution to I.",
@@ -507,23 +507,23 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description": "Simple Cadence (Cadenza Semplice) - V lasts 1 bar (4 beats)",
-          notation": "Bass: 5-1, Figures: 7/3-5/3 (or 5/3-5/3)",
-          audioPattern": ["G3", "B4", "D5", "F5", "C3", "E4", "G4", "C5"],
-          figuredBass": "7/3-5/3",
+          description: "Simple Cadence (Cadenza Semplice) - V lasts 1 bar (4 beats)",
+          notation: "Bass: 5-1, Figures: 7/3-5/3 (or 5/3-5/3)",
+          audioPattern: ["G3", "B4", "D5", "F5", "C3", "E4", "G4", "C5"],
+          figuredBass: "7/3-5/3",
         },
         {
           id: "ex-2",
-          description": "Compound Cadence (Cadenza Composta) - V lasts 2 bars (8 beats) with 4-3 suspension",
-          notation": "Bass: 5-5-1, Figures: 5/4-5/3-5/3",
-          audioPattern": ["G3", "C5", "D5", "G3", "B4", "D5", "C3", "E4", "G4", "C5"],
-          figuredBass": "5/4-5/3-5/3",
+          description: "Compound Cadence (Cadenza Composta) - V lasts 2 bars (8 beats) with 4-3 suspension",
+          notation: "Bass: 5-5-1, Figures: 5/4-5/3-5/3",
+          audioPattern: ["G3", "C5", "D5", "G3", "B4", "D5", "C3", "E4", "G4", "C5"],
+          figuredBass: "5/4-5/3-5/3",
         },
         {
           id: "ex-3",
-          description": "Double Cadence (Cadenza Doppia) - V lasts 4 bars (16 beats) with four sonorities",
-          notation": "Bass: 5-5-5-5-1, Figures: 5/3-6/4-5/4-5/3-5/3",
-          audioPattern": [
+          description: "Double Cadence (Cadenza Doppia) - V lasts 4 bars (16 beats) with four sonorities",
+          notation: "Bass: 5-5-5-5-1, Figures: 5/3-6/4-5/4-5/3-5/3",
+          audioPattern: [
             "G3",
             "B4",
             "D5",
@@ -541,13 +541,13 @@ export const CURRICULUM: Lesson[] = [
             "G4",
             "C5",
           ],
-          figuredBass": "5/3-6/4-5/4-5/3-5/3",
+          figuredBass: "5/3-6/4-5/4-5/3-5/3",
         },
         {
           id: "ex-4",
-          description": "Double Cadence with I-V-I bass (alternative form)",
-          notation": "Bass: 1-5-5-5-5-1, Figures: 5/3-5/3-6/4-5/4-7/3-5/3",
-          audioPattern": [
+          description: "Double Cadence with I-V-I bass (alternative form)",
+          notation: "Bass: 1-5-5-5-5-1, Figures: 5/3-5/3-6/4-5/4-7/3-5/3",
+          audioPattern: [
             "C3",
             "E4",
             "G4",
@@ -569,7 +569,7 @@ export const CURRICULUM: Lesson[] = [
             "G4",
             "C5",
           ],
-          figuredBass": "5/3-5/3-6/4-5/4-7/3-5/3",
+          figuredBass: "5/3-5/3-6/4-5/4-7/3-5/3",
         },
       ],
       exercises: [
@@ -642,7 +642,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex5-7-keyboard",
           type: "play",
-          prompt":
+          prompt:
             "KEYBOARD: Realize a Simple Cadence in C major. Bass: G-C with figures 7/3-5/3. Play the dominant seventh (G-B-D-F) resolving to tonic (C-E-G-C).",
           correctAnswer": "Correct realization with proper voice leading: F→E, D→C, B→C",
           hints": [
@@ -730,23 +730,23 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-1",
           description: "Stage 1: All parallel 6/3 chords (C-D-E-F)",
-          notation": "Bass: 1-2-3-4 (C-D-E-F), Figures: 6-6-6-6",
-          audioPattern": ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5", "F3", "A4", "C5"],
-          figuredBass": "6-6-6-6",
+          notation: "Bass: 1-2-3-4 (C-D-E-F), Figures: 6-6-6-6",
+          audioPattern: ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5", "F3", "A4", "C5"],
+          figuredBass: "6-6-6-6",
         },
         {
           id: "ex-2",
-          description": "Stage 2: Add 5/3 on scale degree 1 (C-D-E-F)",
-          notation": "Bass: 1-2-3-4 (C-D-E-F), Figures: 5/3-6-6-6",
-          audioPattern": ["C3", "E4", "G4", "C5", "D3", "F4", "A4", "E3", "G4", "C5", "F3", "A4", "C5"],
-          figuredBass": "5/3-6-6-6",
+          description: "Stage 2: Add 5/3 on scale degree 1 (C-D-E-F)",
+          notation: "Bass: 1-2-3-4 (C-D-E-F), Figures: 5/3-6-6-6",
+          audioPattern: ["C3", "E4", "G4", "C5", "D3", "F4", "A4", "E3", "G4", "C5", "F3", "A4", "C5"],
+          figuredBass: "5/3-6-6-6",
         },
         {
           id: "ex-3",
-          description": "Stage 3: Full Rule ascending 1-4 (C-D-E-F)",
-          notation": "Bass: 1-2-3-4 (C-D-E-F), Figures: 5/3-6-6-5/3",
-          audioPattern": ["C3", "E4", "G4", "C5", "D3", "F4", "A4", "E3", "G4", "C5", "F3", "A4", "C5", "F5"],
-          figuredBass": "5/3-6-6-5/3",
+          description: "Stage 3: Full Rule ascending 1-4 (C-D-E-F)",
+          notation: "Bass: 1-2-3-4 (C-D-E-F), Figures: 5/3-6-6-5/3",
+          audioPattern: ["C3", "E4", "G4", "C5", "D3", "F4", "A4", "E3", "G4", "C5", "F3", "A4", "C5", "F5"],
+          figuredBass: "5/3-6-6-5/3",
         },
       ],
       exercises: [
@@ -836,9 +836,9 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description": "Full ascending Rule (C-D-E-F-G-A-B-C)",
-          notation": "Bass: 1-2-3-4-5-6-7-8, Figures: 5/3-6-6-5/3-5/3-6-6-5/3",
-          audioPattern": [
+          description: "Full ascending Rule (C-D-E-F-G-A-B-C)",
+          notation: "Bass: 1-2-3-4-5-6-7-8, Figures: 5/3-6-6-5/3-5/3-6-6-5/3",
+          audioPattern: [
             "C3",
             "E4",
             "G4",
@@ -868,21 +868,21 @@ export const CURRICULUM: Lesson[] = [
             "G5",
             "C6",
           ],
-          figuredBass": "5/3-6-6-5/3-5/3-6-6-5/3",
+          figuredBass: "5/3-6-6-5/3-5/3-6-6-5/3",
         },
         {
           id: "ex-2",
-          description": "Ascending 5-8 with alternative 6 (G-A-B-C)",
-          notation": "Bass: 5-6-7-8, Figures: 5/3-5/3-6-5/3",
-          audioPattern": ["G3", "B4", "D5", "G5", "A3", "C5", "E5", "A5", "B3", "D5", "F5", "C4", "E5", "G5", "C6"],
-          figuredBass": "5/3-5/3-6-5/3",
+          description: "Ascending 5-8 with alternative 6 (G-A-B-C)",
+          notation: "Bass: 5-6-7-8, Figures: 5/3-5/3-6-5/3",
+          audioPattern: ["G3", "B4", "D5", "G5", "A3", "C5", "E5", "A5", "B3", "D5", "F5", "C4", "E5", "G5", "C6"],
+          figuredBass: "5/3-5/3-6-5/3",
         },
         {
           id: "ex-3",
-          description": "Ascending 5-8 with diminished seventh on 7 (G-A-B-C)",
-          notation": "Bass: 5-6-7-8, Figures: 5/3-6-6/5/3-5/3",
-          audioPattern": ["G3", "B4", "D5", "G5", "A3", "C5", "E5", "B3", "D5", "F5", "Ab5", "C4", "E5", "G5", "C6"],
-          figuredBass": "5/3-6-6/5/3-5/3",
+          description: "Ascending 5-8 with diminished seventh on 7 (G-A-B-C)",
+          notation: "Bass: 5-6-7-8, Figures: 5/3-6-6/5/3-5/3",
+          audioPattern: ["G3", "B4", "D5", "G5", "A3", "C5", "E5", "B3", "D5", "F5", "Ab5", "C4", "E5", "G5", "C6"],
+          figuredBass: "5/3-6-6/5/3-5/3",
         },
       ],
       exercises: [
@@ -995,8 +995,8 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description": "Full descending Rule (C-B-A-G-F-E-D-C)",
-          notation": "Bass: 8-7-6-5-4-3-2-1, Figures: 5/3-6-6-5/3-6-6-7/5/3-5/3",
+          description: "Full descending Rule (C-B-A-G-F-E-D-C)",
+          notation: "Bass: 8-7-6-5-4-3-2-1, Figures: 5/3-6-6-5/3-6-6-7/5/3-5/3",
           audioPattern": [
             "C4",
             "E5",
@@ -1031,8 +1031,8 @@ export const CURRICULUM: Lesson[] = [
         },
         {
           id: "ex-2",
-          description": "Descending with alternative 6/5 on scale degree 2 (C-B-A-G-F-E-D-C)",
-          notation": "Bass: 8-7-6-5-4-3-2-1, Figures: 5/3-6-6-5/3-6-6-6/5-5/3",
+          description: "Descending with alternative 6/5 on scale degree 2 (C-B-A-G-F-E-D-C)",
+          notation: "Bass: 8-7-6-5-4-3-2-1, Figures: 5/3-6-6-5/3-6-6-6/5-5/3",
           audioPattern": [
             "C4",
             "E5",
@@ -1066,8 +1066,8 @@ export const CURRICULUM: Lesson[] = [
         },
         {
           id: "ex-3",
-          description": "Descending 5-1 (G-F-E-D-C)",
-          notation": "Bass: 5-4-3-2-1, Figures: 5/3-6-6-7/5/3-5/3",
+          description: "Descending 5-1 (G-F-E-D-C)",
+          notation: "Bass: 5-4-3-2-1, Figures: 5/3-6-6-7/5/3-5/3",
           audioPattern": [
             "G3",
             "B4",
@@ -1095,7 +1095,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex8-1",
           type: "identify",
-          prompt: "What is the KEY DIFFERENCE between ascending and descending on scale degree 2?",
+          prompt": "What is the KEY DIFFERENCE between ascending and descending on scale degree 2?",
           correctAnswer": "Descending uses 7/5/3 (dominant seventh), ascending uses 6",
           options": [
             "Descending uses 7/5/3 (dominant seventh), ascending uses 6",
@@ -1163,7 +1163,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex8-5",
           type: "identify",
-          prompt": "Listen to this progression. Is it ascending or descending?",
+          prompt: "Listen to this progression. Is it ascending or descending?",
           correctAnswer": "Descending",
           options": ["Ascending", "Descending"],
           audioPattern": [
@@ -1262,30 +1262,30 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-1",
           description: "Simple 4-3 suspension over V-I (G-C)",
-          notation": "Bass: G-C, Upper voice: C (held) - B, Figures: 4-3",
-          audioPattern": ["G3", "C5", "D5", "C3", "B4", "E5"],
-          figuredBass": "4-3",
+          notation: "Bass: G-C, Upper voice: C (held) - B, Figures: 4-3",
+          audioPattern: ["G3", "C5", "D5", "C3", "B4", "E5"],
+          figuredBass: "4-3",
         },
         {
           id: "ex-2",
-          description": "4-3 suspension in Compound Cadence",
-          notation": "Bass: G-G-C, Figures: 5/4-5/3-5/3",
-          audioPattern": ["G3", "C5", "D5", "G3", "B4", "D5", "C3", "E4", "G4", "C5"],
-          figuredBass": "5/4-5/3-5/3",
+          description: "4-3 suspension in Compound Cadence",
+          notation: "Bass: G-G-C, Figures: 5/4-5/3-5/3",
+          audioPattern: ["G3", "C5", "D5", "G3", "B4", "D5", "C3", "E4", "G4", "C5"],
+          figuredBass: "5/4-5/3-5/3",
         },
         {
           id: "ex-3",
-          description": "Chain of 4-3 suspensions (sequence)",
-          notation": "Bass: C-D-E-F, Figures: 5/3-4/3-4/3-5/3",
-          audioPattern": ["C3", "E4", "G4", "C5", "D3", "G4", "A4", "E3", "A4", "B4", "F3", "A4", "C5", "F5"],
-          figuredBass": "5/3-4/3-4/3-5/3",
+          description: "Chain of 4-3 suspensions (sequence)",
+          notation: "Bass: C-D-E-F, Figures: 5/3-4/3-4/3-5/3",
+          audioPattern: ["C3", "E4", "G4", "C5", "D3", "G4", "A4", "E3", "A4", "B4", "F3", "A4", "C5", "F5"],
+          figuredBass: "5/3-4/3-4/3-5/3",
         },
         {
           id: "ex-4",
-          description": "4-3 suspension with seventh (9-8 4-3)",
-          notation": "Bass: F-G-C, Figures: 9-8 4-3 5/3",
-          audioPattern": ["F3", "D5", "C5", "G3", "C5", "B4", "C3", "E4", "G4", "C5"],
-          figuredBass": "9-8 4-3 5/3",
+          description: "4-3 suspension with seventh (9-8 4-3)",
+          notation: "Bass: F-G-C, Figures: 9-8 4-3 5/3",
+          audioPattern: ["F3", "D5", "C5", "G3", "C5", "B4", "C3", "E4", "G4", "C5"],
+          figuredBass: "9-8 4-3 5/3",
         },
       ],
       exercises: [
@@ -1550,7 +1550,7 @@ export const CURRICULUM: Lesson[] = [
             "Follow the same harmonic pattern as in C major",
             "G bass (I): G-B-D triad",
             "F# bass (V6/3 of D major): F#-A-D (first inversion of D major)",
-            "E bass (vi): E-G-B (E minor triad)",
+            "E bass (vi): E-G-B",
           ],
         },
         {
@@ -1592,7 +1592,7 @@ export const CURRICULUM: Lesson[] = [
             "COMPOSITION: Create a complete 8-bar phrase using the extended Romanesca (1-7-6-5-4-3-2-1). This is your chance to compose a real piece! Make it musical and expressive.",
           bassPattern: "C3-B2-A2-G2-F2-E2-D2-C2",
           beatsPerNote: 4,
-          tempo: 80,\
+          tempo: 80,
           correctAnswer": "Any complete musical phrase that works with the extended Romanesca",
           hints": [
             "Think of this as composing a real piece of music",
@@ -1600,7 +1600,7 @@ export const CURRICULUM: Lesson[] = [
             "Consider dynamics and expression - where should it be loud or soft?",
             "End with a strong cadence on the final C",
             "Listen to baroque music for inspiration - this pattern is everywhere!",
-          ],\
+          ],
         },
       ],
       historicalContext:
@@ -1922,7 +1922,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The Sol-Fa-Mi schema is a cornerstone of cadential patterns in galant and classical music. Its descending bass line provides a strong sense of closure, making it indispensable for phrase endings. Composers like Haydn and Mozart frequently employed this schema to bring their musical ideas to a satisfying conclusion. Its simplicity and effectiveness have ensured its place in the repertoire of composers and improvisers for centuries.",
+        "The Sol-Fa-Mi schema is a cornerstone of galant and classical music. Its descending bass line provides a strong sense of closure, making it indispensable for phrase endings. Composers like Haydn and Mozart frequently employed this schema to bring their musical ideas to a satisfying conclusion. Its simplicity and effectiveness have ensured its place in the repertoire of composers and improvisers for centuries.",
     },
   },
   {
@@ -2008,7 +2008,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-3",
           description": "2:1 Diminution with descending scale fragment",
-          notation": "Bass: C-D-E | Soprano: G-F-E-G | F-E-D-F",
+          notation: "Bass: C-D-E | Soprano: G-F-E-G | F-E-D-F",
           audioPattern": ["[C3,C4,E4,G4]", "[G4,F4,E4,G4]", "[D3,D4,F4,A4]", "[F4,E4,D4,F4]"],
         },
       ],
@@ -2383,7 +2383,7 @@ export const CURRICULUM: Lesson[] = [
   {
     id: "inter-3-fonte",
     title: "Galant Schema: Fonte",
-    description: "Master the sequential descending pattern",
+    description: "Master the descending sequential pattern",
     category: "schemata",
     tradition: "italian",
     difficulty: "intermediate",
@@ -2555,7 +2555,7 @@ export const CURRICULUM: Lesson[] = [
           id: "monte-1",
           type: "identify",
           prompt": "What is the characteristic bass motion of the Monte schema?",
-          options": ["Descending stepwise", "Ascending stepwise", "Leaping by thirds", "Arpeggiated chords"],
+          options": ["Descending stepwise", "Ascending stepwise", "Leaping by fourths", "Arpeggiated chords"],
           correctAnswer": "Ascending stepwise",
           hints": ["Monte means 'mountain' or 'ascent'", "The bass line moves upwards"],
         },
@@ -2571,7 +2571,7 @@ export const CURRICULUM: Lesson[] = [
           id: "monte-3",
           type: "identify",
           prompt": "What feeling does the Monte schema typically evoke?",
-          options": ["Gentle descent and resolution", "Tension and anticipation", "Excitement and forward motion", "Sadness and melancholy"],
+          options": ["Gentle descent and resolution", "Tension and anticipation", "Excitement and forward motion", "Melancholy and sadness"],
           correctAnswer": "Excitement and forward motion",
           hints": ["The ascending bass creates energy", "It often leads to a climax"],
         },
@@ -2638,7 +2638,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-ex-1",
           title: "Basic Ponte Schema",
-          description": "Bass: G (sustained) | Upper voices move through V7, I6/4, V7, I.",
+          description": "Bass: G (sustained) | Upper voices move through V7, I6/4, V7, I. (In C major)",
           notation": "Bass: 5 (sustained) | Upper voices: various chords resolving to V",
           figuredBass": "Pedal point on 5",
           audioPattern": ["[G2,G3,B3,D4]", "[G2,G3,C4,E4]", "[G2,G3,B3,D4]", "[G2,G3,B3,D4]"],
