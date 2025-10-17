@@ -394,24 +394,24 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description: "Cadential 6/4 (I6/4 resolving to V)",
-          notation: "Bass: 5-5, Figures: 6/4-5/3",
-          audioPattern: ["G3", "C5", "E5", "G3", "B4", "D5"],
-          figuredBass: "6/4-5/3",
+          description": "Cadential 6/4 (I6/4 resolving to V)",
+          notation": "Bass: 5-5, Figures: 6/4-5/3",
+          audioPattern": ["G3", "C5", "E5", "G3", "B4", "D5"],
+          figuredBass": "6/4-5/3",
         },
         {
           id: "ex-2",
-          description: "Passing 6/4 (between I and I6)",
-          notation: "Bass: 1-2-3, Figures: 5/3-6/4-6",
-          audioPattern: ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5"],
-          figuredBass: "5/3-6/4-6",
+          description": "Passing 6/4 (between I and I6)",
+          notation": "Bass: 1-2-3, Figures: 5/3-6/4-6",
+          audioPattern": ["C3", "E4", "G4", "D3", "F4", "A4", "E3", "G4", "C5"],
+          figuredBass": "5/3-6/4-6",
         },
         {
           id: "ex-3",
-          description: "Pedal 6/4 (over sustained bass)",
-          notation: "Bass: 1-1-1, Figures: 5/3-6/4-5/3",
-          audioPattern: ["C3", "E4", "G4", "C3", "F4", "A4", "C3", "E4", "G4"],
-          figuredBass: "5/3-6/4-5/3",
+          description": "Pedal 6/4 (over sustained bass)",
+          notation": "Bass: 1-1-1, Figures: 5/3-6/4-5/3",
+          audioPattern": ["C3", "E4", "G4", "C3", "F4", "A4", "C3", "E4", "G4"],
+          figuredBass": "5/3-6/4-5/3",
         },
       ],
       exercises: [
@@ -1439,24 +1439,7 @@ export const CURRICULUM: Lesson[] = [
           description": "A flowing soprano line with passing notes and neighbor notes creates musical interest. Bar 1: G-E-F-G (F is a passing note), Bar 2: G-A-B-G (A is a passing note), Bar 3: A-C-B-C (B is a lower neighbor), Bar 4: B-E-D-E",
           notation": "Bass: C - B - A - G | Soprano: G E F G - G A B G - A C B C - B E D E",
           figuredBass": "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern": [
-            "[C3,C4,E4,G4]",
-            "E4",
-            "F4",
-            "G4",
-            "[B2,B3,D4,G4]",
-            "A4",
-            "B4",
-            "G4",
-            "[A2,A3,C4,A4]",
-            "C5",
-            "B4",
-            "C5",
-            "[G2,G3,B3,B4]",
-            "E4",
-            "D4",
-            "E4",
-          ],
+          audioPattern": ["[C3,C4,E4,G4]", "E4", "F4", "G4", "[B2,B3,D4,G4]", "A4", "B4", "G4", "[A2,A3,C4,A4]", "C5", "B4", "C5", "[G2,G3,B3,B4]", "E4", "D4", "E4"],
         },
         {
           id: "rom-ex-4",
@@ -1628,7 +1611,7 @@ export const CURRICULUM: Lesson[] = [
   {
     id: "basic-3-do-re-mi",
     title: "Galant Schema: Do-Re-Mi",
-    description: "Master the ascending 1-2-3 pattern",
+    description: "Learn the ascending 1-2-3 pattern",
     category: "schemata",
     tradition: "italian",
     difficulty: "elementary",
@@ -3005,7 +2988,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-fen1-2",
           type: "play",
-          prompt": "Realize Fenaroli Book I, No. 5, incorporating the 4-3 suspension.",
+          prompt": "Realize Fenaroli Book I, No. 5, focusing on the 4-3 suspension.",
           correctAnswer": "Correct realization with the suspension properly prepared, suspended, and resolved.",
           hints": [
             "Bass: C-F-G-C",
@@ -3463,7 +3446,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The Quieszenza schema was a common closing gesture in Galant music, providing a gentle and peaceful conclusion to phrases and movements.",
+        "The Quieszenza schema, meaning 'rest' or 'repose' in Italian, was a common closing pattern in Galant music, providing a gentle and peaceful conclusion to phrases and movements.",
     },
   },
   {
@@ -3892,14 +3875,14 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description: "Fenaroli Book IV, No. 1 - Fugal partimento",
+          description": "Fenaroli Book IV, No. 1 - Fugal partimento",
           notation": "Bass: C G C D E F G C | Figures: - - - 6 6 6/5 7 -",
           audioPattern": ["C3", "G3", "C3", "D3", "E3", "F3", "G3", "C3"],
           figuredBass": "- - - 6 6 6/5 7 -",
         },
         {
           id: "ex-2",
-          description: "Fenaroli Book IV, No. 5 - Chromatic modulation",
+          description": "Fenaroli Book IV, No. 5 - Chromatic modulation",
           notation": "Bass: C C# D Eb E F F# G | Figures: - #6 6 b6 6 6 #6 -",
           audioPattern": ["C3", "C#3", "D3", "Eb3", "E3", "F3", "F#3", "G3"],
           figuredBass": "- #6 6 b6 6 6 #6 -",
@@ -4605,4 +4588,5 @@ export const CURRICULUM: Lesson[] = [
           id: "quieszenza-2",
           type: "identify",
           prompt: "In C major, what are the bass notes for the Quieszenza schema?",
-          options: ["C-D-E-F", "G-F-E-D", "A-G-F-E", "F-
+          options: ["C-D-E-F", "G-F-E-D", "A-G-F-E", "F-E-D-C"],
+          correctAnswer: "F-E-D-C",
