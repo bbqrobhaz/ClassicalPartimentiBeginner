@@ -345,7 +345,7 @@ export const CURRICULUM: Lesson[] = [
           id: "ex3-7-keyboard",
           type: "play",
           prompt: "KEYBOARD: Realize this ascending bass line with 6/3 chords: C-D-E-F (figures: - 6 6 -)",
-          correctAnswer: "Play bass C-D-E-F with left hand, right hand plays: C-E-G, D-F-A, E-G-C, F-A-C",
+          correctAnswer: "Play bass C-D-E-F with left hand, right hand plays 6/3 chords: C-E-G, D-F-A, E-G-C, F-A-C",
           hints: [
             "The 6/3 chords create smooth stepwise motion. Keep the right hand close together, moving each voice by step when possible.",
           ],
@@ -457,7 +457,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex4-7-keyboard",
           type: "play",
-          prompt: "KEYBOARD: Realize a cadential 6/4: Bass G-G (figures: 6/4-5/3), then resolve to C",
+          prompt: "KEYBOARD: Realize a cadential 6/4: Bass G-G with figures 6/4-5/3. Then resolve to C.",
           correctAnswer:
             "Play bass G in bass twice, right hand plays C-E-G (6/4) then B-D-G (5/3), then resolve to C-E-G over bass C",
           hints: [
@@ -1229,7 +1229,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The descending Rule of the Octave completes your foundation in baroque harmony. Fenaroli wrote: 'The student who knows the Rule of the Octave in all keys, ascending and descending, possesses the key to all harmony.' This pattern appears in virtually every baroque composition. The use of 7/5/3 on scale degree 2 descending (creating V7-I) is one of the most important harmonic progressions in all of Western music. Daily practice of the Rule in all keys is the foundation of improvisational fluency.",
+        "The descending Rule of the Octave completes your foundation in baroque harmony. Fenaroli wrote: 'The student who knows the Rule of the Octave in all keys, ascending and descending, possesses the key to all harmony.' This pattern appears in virtually every baroque composition and was the foundation for improvisation. The use of 7/5/3 on scale degree 2 descending (creating V7-I) is one of the most important harmonic progressions in all of Western music. Daily practice of the Rule in all keys is the foundation of improvisational fluency.",
     },
   },
 
@@ -1554,11 +1554,11 @@ export const CURRICULUM: Lesson[] = [
           id: "rom-7-keyboard",
           type: "play",
           prompt:
-            "KEYBOARD: Realize the basic Romanesca in C major. Bass: C-B-A-G. Use the harmonization: I (5/3) - V6 (6/3) - vi (5/3) - III (5/3). Write the notes you would play in the right hand for each bass note.",
+            "KEYBOARD: Realize the basic Romanesca in C major. Bass: C-B-A-G. Use the harmonization: I (5/3) - V6/3 (6/3) - vi (5/3) - III (5/3).",
           correctAnswer: "C E G, B D G, A C E, G B E (or similar voicings with these triads)",
           hints: [
             "C bass (I): play C-E-G triad",
-            "B bass (V6): play B-D-G (first inversion of G major)",
+            "B bass (V6/3): play B-D-G (first inversion of G major)",
             "A bass (vi): play A-C-E (A minor triad)",
             "G bass (III): play G-B-E (E major triad, or G-B-D for V)",
           ],
@@ -1566,13 +1566,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-8-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize the Romanesca in G major. Bass: G-F#-E-D. Write the notes you would play in the right hand.",
+          prompt: "KEYBOARD: Realize the Romanesca in G major. Bass: G-F#-E-D. Write the notes you would play in the right hand.",
           correctAnswer: "G B D, F# A D, E G B, D F# B (or similar voicings)",
           hints: [
             "Follow the same harmonic pattern as in C major",
             "G bass (I): G-B-D triad",
-            "F# bass (V6): F#-A-D (first inversion of D major)",
+            "F# bass (V6/3): F#-A-D (first inversion of D major)",
             "E bass (vi): E-G-B (E minor triad)",
           ],
         },
@@ -1642,7 +1641,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 35,
     content: {
       theory:
-        "Do-Re-Mi: 1-2-3 in the bass, often with 5-6-7 in the soprano. A simple but elegant opening pattern used in countless pieces. The basic pattern is: Bass: 1-2-3. Harmony: I - V6/3 - I6/4. Soprano: 5-6-5. A common melodic embellishment is to add a leading tone (7) before the final 1. For example: Bass: C-D-E. Soprano: G-A-G. This creates a sense of forward motion and anticipation. This pattern is often used to begin a phrase or to lead into a more complex section. It's a versatile building block in galant music.",
+        "Do-Re-Mi: 1-2-3 in the bass, often with 5-6-5 in the soprano. A simple but elegant opening pattern used in countless pieces. The basic pattern is: Bass: 1-2-3. Harmony: I - V6/3 - I6/4 (or V). Soprano: 5-6-5. A common melodic embellishment is to add a leading tone (7) before the final 1. For example: Bass: C-D-E. Soprano: G-A-B-C. This creates a sense of forward motion and anticipation. This pattern is often used to begin a phrase or to lead into a more complex section. It's a versatile building block in galant music.",
       examples: [
         {
           id: "drm-ex-1",
@@ -1721,7 +1720,7 @@ export const CURRICULUM: Lesson[] = [
           id: "drm-5-keyboard",
           type: "play",
           prompt:
-            "KEYBOARD: Realize the basic Do-Re-Mi in C major. Bass: C-D-E. Use the harmony: I (5/3) - V6/3 - I6/4 (or V). Soprano: G-A-G.",
+            "KEYBOARD: Realize the basic Do-Re-Mi in C major. Bass: C-D-E. Use the harmony: I (5/3) - V6/3 (6/3) - I6/4 (or V). Soprano: G-A-G.",
           correctAnswer: "Left hand: C-D-E. Right hand: G-A-G, with appropriate chord voicings.",
           hints: [
             "C bass (I): Play C-E-G",
@@ -1760,21 +1759,38 @@ export const CURRICULUM: Lesson[] = [
           id: "drm-8-composition",
           type: "play",
           prompt:
-            "COMPOSITION: Create a short 4-bar phrase using the Do-Re-Mi schema as the opening. Sequence it once if you can. End with a simple cadence.",
+            "COMPOSITION: Create a short 4-bar phrase using the Do-Re-Mi schema as the opening. Use PASSING NOTES to create smooth melodic lines. A passing note fills the space between two chord tones by stepwise motion (e.g., C-D-E where D connects C and E). This creates flowing, singable melodies.",
           bassPattern: "C3-D3-E3-F3-G3-A3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A 4-bar phrase incorporating the Do-Re-Mi and a cadence",
+          correctAnswer: "A 4-bar phrase incorporating the Do-Re-Mi with passing notes",
           hints: [
             "Start with C-D-E bass and melody",
+            "Use passing notes to connect chord tones smoothly (e.g., G-A-B-C)",
             "Sequence it: F-G-A bass and melody",
             "End with a V-I cadence",
-            "Listen to short baroque movements for inspiration",
+          ],
+        },
+        {
+          id: "drm-9-combination",
+          type: "play",
+          prompt:
+            "COMBINATION: Create a 16-bar binary form combining Rule of the Octave, Romanesca, and Do-Re-Mi. Structure: Bars 1-4: Rule of the Octave ascending (C-D-E-F-G-A-B-C). Bars 5-8: Romanesca (C-B-A-G) ending with half cadence on G. Bars 9-12: Do-Re-Mi (C-D-E) sequenced to (F-G-A). Bars 13-16: Cadential progression (G-C) with compound cadence. This teaches you to combine patterns into complete musical forms!",
+          bassPattern: "C3-D3-E3-F3-G3-A3-B3-C4-C4-B3-A3-G3-C3-D3-E3-F3-G3-A3-G3-C3",
+          beatsPerNote: 2,
+          tempo: 80,
+          correctAnswer: "A 16-bar binary form combining the three patterns with passing notes",
+          hints: [
+            "Section A (bars 1-8): Rule of Octave + Romanesca creates the opening",
+            "Section B (bars 9-16): Do-Re-Mi sequence + cadence creates the closing",
+            "Use passing notes throughout to create flowing melodies",
+            "Think of this as a complete miniature piece",
+            "Listen to how the patterns connect smoothly",
           ],
         },
       ],
       historicalContext:
-        "The Do-Re-Mi schema is a fundamental building block of galant and classical music. It appears in countless works by composers like Haydn, Mozart, and Beethoven. Its simple, ascending nature makes it highly recognizable and versatile, serving as an effective opening or transitional device. Its pedagogical value lies in its clear harmonic progression and simple melodic possibilities, making it an ideal starting point for young composers and improvisers.",
+        "The Do-Re-Mi schema is a cornerstone of galant and classical music. It appears in countless works by composers like Haydn, Mozart, and Beethoven. Its simple, ascending nature makes it highly recognizable and versatile, serving as an effective opening or transitional device. Its pedagogical value lies in its clear harmonic progression and simple melodic possibilities, making it an ideal starting point for young composers and improvisers.",
     },
   },
   {
@@ -1869,8 +1885,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-6-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize the Sol-Fa-Mi in G major leading to a cadence. Bass: D-C-B-G. Soprano: F#-E-D-B. Harmony: V (of G) - IV6 (of G) - I (of G) - I (of G).",
+          prompt: "KEYBOARD: Realize the Sol-Fa-Mi in G major leading to a cadence. Bass: D-C-B-G. Soprano: F#-E-D-B. Harmony: V (of G) - IV6 (of G) - I (of G) - I (of G).",
           correctAnswer: "Left hand: D-C-B-G. Right hand: F#-E-D-B, with appropriate chord voicings.",
           hints: [
             "D bass (V of G): Play D-F#-A",
@@ -1899,16 +1914,34 @@ export const CURRICULUM: Lesson[] = [
           id: "sfa-8-composition",
           type: "play",
           prompt:
-            "COMPOSITION: Create a short 4-bar phrase using the Sol-Fa-Mi schema to end it. Start with a simple I-V progression.",
+            "COMPOSITION: Create a short 4-bar phrase using the Sol-Fa-Mi schema to end it. Use TURNS to embellish your melody. A turn ornaments a note by moving to the note above, returning to the main note, moving to the note below, and returning again (e.g., G-A-G-F-G). This creates elegant, baroque-style ornamentation.",
           bassPattern: "C3-G3-F3-E3-C3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A 4-bar phrase incorporating the Sol-Fa-Mi at the end",
+          correctAnswer: "A 4-bar phrase incorporating the Sol-Fa-Mi with turns",
           hints: [
             "Start with C-G bass for I-V",
             "Then use F-E-C bass for IV6-I-I",
-            "Create a simple melody that fits",
+            "Add turns around important melody notes (e.g., G-A-G-F-G)",
+            "Turns work best on longer notes",
             "End with a clear cadence",
+          ],
+        },
+        {
+          id: "sfa-9-combination",
+          type: "play",
+          prompt:
+            "COMBINATION: Create a 12-bar rounded binary form combining Romanesca, Do-Re-Mi, and Sol-Fa-Mi. Structure: Bars 1-4: Romanesca (C-B-A-G). Bars 5-8: Do-Re-Mi (C-D-E-F-G-A). Bars 9-12: Sol-Fa-Mi (G-F-E) with final cadence to C. This creates a complete ABA' form with opening, development, and return!",
+          bassPattern: "C3-B2-A2-G2-C3-D3-E3-F3-G3-A3-G3-F3-E3-C3",
+          beatsPerNote: 2,
+          tempo: 80,
+          correctAnswer: "A 12-bar rounded binary form combining the three schemas with turns",
+          hints: [
+            "A section (bars 1-4): Romanesca establishes the key",
+            "B section (bars 5-8): Do-Re-Mi provides contrast and motion",
+            "A' section (bars 9-12): Sol-Fa-Mi brings closure",
+            "Use turns to ornament important melodic moments",
+            "Think of this as a complete miniature dance movement",
           ],
         },
       ],
@@ -2037,8 +2070,7 @@ export const CURRICULUM: Lesson[] = [
           type: "play",
           prompt:
             "KEYBOARD: Play a simple I chord in C major (C-E-G). Now realize it with 2:1 diminution in the soprano. Bass: C. Soprano: C-D-E-C.",
-          correctAnswer:
-            "Left hand: C. Right hand: C-D-E-C, where each note is a quarter note (or eighth note if beat is a half note).",
+          correctAnswer: "Left hand: C. Right hand: C-D-E-C, where each note is a quarter note (or eighth note if beat is a half note).",
           hints: [
             "The bass note C is held for the entire measure.",
             "The soprano melody uses chord tones (C, E) and a passing tone (D).",
@@ -2060,8 +2092,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim2-6-melodic",
           type: "play",
-          prompt:
-            "MELODIES: Create a 2:1 diminution melody over a sustained C major chord. Use passing tones and neighbor tones.",
+          prompt: "MELODIES: Create a 2:1 diminution melody over a sustained C major chord. Use passing tones and neighbor tones.",
           bassPattern: "C3",
           beatsPerNote: 4,
           tempo: 80,
@@ -2171,10 +2202,7 @@ export const CURRICULUM: Lesson[] = [
             "To introduce a fugue subject",
           ],
           correctAnswer: "As an opening pattern",
-          hints: [
-            "It has a graceful, flowing quality suitable for beginnings",
-            "It's a common way to start a musical phrase",
-          ],
+          hints: ["It has a graceful, flowing quality suitable for beginnings", "It's a common way to start a musical phrase"],
         },
         {
           id: "prinner-5-keyboard",
@@ -2206,7 +2234,7 @@ export const CURRICULUM: Lesson[] = [
           id: "prinner-7-melodic",
           type: "play",
           prompt:
-            "MELODIES: Create a lyrical melody over the Prinner bass in C major (A-G-F-E). Focus on stepwise motion and contrary motion to the bass.",
+            "MELODIES: Create a lyrical melody over the Prinner bass in C major (A-G-F-E). Focus on contrary motion to the bass.",
           bassPattern: "A2-G2-F2-E2",
           beatsPerNote: 4,
           tempo: 80,
@@ -2223,15 +2251,32 @@ export const CURRICULUM: Lesson[] = [
           id: "prinner-8-composition",
           type: "play",
           prompt:
-            "COMPOSITION: Create a 4-bar phrase that begins with the Prinner schema and ends with a simple cadence.",
+            "COMPOSITION: Create a 4-bar phrase that begins with the Prinner schema and ends with a simple cadence. Use NOTA CAMBIATA to create interesting melodic motion. The nota cambiata is a four-note pattern: step down, leap down a third, step up (e.g., C-B-G-A). This creates a distinctive baroque melodic gesture.",
           bassPattern: "A2-G2-F2-E2-G3-C3",
           beatsPerNote: 4,
           tempo: 80,
-          correctAnswer: "A 4-bar phrase starting with Prinner and ending with a cadence.",
+          correctAnswer: "A 4-bar phrase starting with Prinner using nota cambiata",
           hints: [
-            "Use the Prinner schema for the first 2 bars (A-G-F-E bass).",
-            "Follow with a V-I cadence (G-C bass).",
-            "Create a melody that flows throughout.",
+            "Use the Prinner schema for the first 2 bars (A-G-F-E bass)",
+            "Follow with a V-I cadence (G-C bass)",
+            "Add nota cambiata patterns in your melody (step-leap-step: C-B-G-A)",
+            "This pattern adds rhythmic and melodic interest",
+          ],
+        },
+        {
+          id: "prinner-9-combination",
+          type: "play",
+          prompt:
+            "COMBINATION: Create a 16-bar period combining Rule of the Octave, Prinner, and Romanesca. Structure: Bars 1-4: Rule of the Octave ascending. Bars 5-8: Prinner (A-G-F-E) with half cadence. Bars 9-12: Rule of the Octave descending. Bars 13-16: Romanesca (C-B-A-G) with authentic cadence. This creates a balanced period with question-answer structure!",
+          bassPattern: "C3-D3-E3-F3-G3-A3-B3-C4-A3-G3-F3-E3-C4-B3-A3-G3-F3-E3-D3-C3-B2-A2-G2-C3",
+          beatsPerNote: 2,
+          tempo: 80,
+          correctAnswer: "A 16-bar period combining patterns with nota cambiata",
+          hints: [
+            "Antecedent (bars 1-8): Rule of Octave + Prinner creates the question",
+            "Consequent (bars 9-16): Rule of Octave + Romanesca creates the answer",
+            "Use nota cambiata patterns to add melodic interest",
+            "The structure creates a balanced, complete musical statement",
           ],
         },
       ],
@@ -2292,7 +2337,7 @@ export const CURRICULUM: Lesson[] = [
           id: "meyer-1",
           type: "identify",
           prompt: "What is the characteristic bass motion of the Meyer schema?",
-          options: ["Descending stepwise", "Ascending then descending", "Leaping by fifths", "Arpeggiated chords"],
+          options: ["Descending stepwise", "Ascending then descending", "Leaping by fourths", "Arpeggiated chords"],
           correctAnswer: "Ascending then descending",
           hints: ["The first two notes ascend, the last two descend", "Think of the scale degrees 1-7-4-3"],
         },
@@ -2421,7 +2466,7 @@ export const CURRICULUM: Lesson[] = [
           prompt: "In C major, what are the bass notes for the basic Fonte schema?",
           options: ["C-D-E-F", "G-F-E-D", "A-G-F-E", "F-E-D-C"],
           correctAnswer: "F-E-D-C",
-          hints: ["Starts on scale degree 4", "Descends to scale degree 1"],
+          hints: ["Starts on scale degree 4", "Descends stepwise to scale degree 1"],
         },
         {
           id: "fonte-3",
@@ -2592,7 +2637,7 @@ export const CURRICULUM: Lesson[] = [
           id: "monte-6-melodic",
           type: "play",
           prompt:
-            "MELODIES: Create an energetic melody over the Monte bass in C major (C-D-E-F). Focus on stepwise motion and contrary motion to the bass.",
+            "MELODIES: Create an energetic melody over the Monte bass in C major (C-D-E-F). Focus on contrary motion to the bass.",
           bassPattern: "C3-D3-E3-F3",
           beatsPerNote: 4,
           tempo: 80,
@@ -2607,7 +2652,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The Monte schema, meaning 'mountain' or 'ascent' in Italian, represents the ascending counterpart to the descending Fonte schema. This pattern is frequently used in Baroque and Galant music to build momentum and create a sense of increasing energy. Composers like Haydn and Mozart employed the Monte schema to drive their music forward, often leading to climactic moments or significant cadences. Its predictable yet energetic quality makes it a valuable tool for both composition and improvisation.",
+        "The Monte schema, meaning 'mountain' or 'ascent' in Italian, represents the ascending counterpart to the descending Fonte schema. This pattern is frequently used in Baroque and Galant music to build momentum and create a sense of increasing energy. Composers like Haydn and Mozart frequently employed the Monte schema to drive their music forward, often leading to climactic moments or significant cadences. Its predictable yet energetic quality makes it a valuable tool for both composition and improvisation.",
     },
   },
   {
@@ -2711,8 +2756,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-6-melodic",
           type: "play",
-          prompt:
-            "MELODIES: Create a melodic line over a Ponte schema in C major. Bass: G (sustained). Melody should move stepwise and create suspensions over the dominant.",
+          prompt: "MELODIES: Create a melodic line over a Ponte schema in C major. Bass: G (sustained). Melody should move stepwise and create suspensions over the dominant.",
           bassPattern: "G2",
           beatsPerNote: 4,
           tempo: 80,
@@ -2853,12 +2897,12 @@ export const CURRICULUM: Lesson[] = [
           type: "identify",
           prompt: "What is the basic idea behind 4:1 diminution?",
           options: [
-            "Play one note per beat",
-            "Play two notes per beat",
-            "Play four notes per beat",
-            "Play eight notes per beat",
+            "One note per beat",
+            "Two notes per beat",
+            "Four notes per beat",
+            "Eight notes per beat",
           ],
-          correctAnswer: "Play four notes per beat",
+          correctAnswer: "Four notes per beat",
           hints: ["The ratio is 4:1", "Four notes for the duration of one original note"],
         },
         {
@@ -2904,8 +2948,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim4-6-melodic",
           type: "play",
-          prompt:
-            "MELODIES: Create a 4:1 diminution melody over a sustained C major chord. Use a mix of stepwise motion and small leaps.",
+          prompt: "MELODIES: Create a 4:1 diminution melody over a sustained C major chord. Use a mix of stepwise motion and small leaps.",
           bassPattern: "C3",
           beatsPerNote: 4,
           tempo: 80,
@@ -2919,7 +2962,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Advanced diminution techniques, like the 4:1 ratio, were explored by Renaissance and Baroque virtuosos such as Silvestro Ganassi and Bartolomeo Bovicelli. These techniques allowed performers to embellish simple melodies and harmonic progressions with intricate and virtuosic passages. Mastering these diminutions required not only technical skill but also a deep understanding of harmony and melodic construction, enabling improvisers to create elaborate and engaging musical lines over a given harmonic framework.",
+        "Advanced diminution techniques, like the 4:1 ratio, were explored by Renaissance and Baroque virtuosos such as Silvestro Ganassi and Bartolomeo Bovicelli. These techniques allowed performers to embellish simple melodies and harmonic progressions with intricate and virtuosic passages. Mastering these diminutions required not only technical skill but also a deep understanding of harmony and melodic construction, enabling improvisers to create elaborate and engaging lines over a given harmonic framework.",
     },
   },
   {
@@ -3072,8 +3115,8 @@ export const CURRICULUM: Lesson[] = [
             "KEYBOARD: Realize the Fenaroli schema in C major. Bass: B-C-B-C. Harmony: V7 - I - V7 - I. Soprano: F-E-F-E.",
           correctAnswer: "Left hand: B-C-B-C. Right hand: F-E-F-E, with appropriate chord voicings.",
           hints: [
-            "B bass (V7): Play B-D-F-A (or simplified voicing)",
-            "C bass (I): Play C-E-G",
+            "Over B, play a G dominant seventh chord (V7).",
+            "Over C, play a C major chord (I).",
             "The soprano creates suspensions over the dominant.",
           ],
         },
@@ -3128,10 +3171,7 @@ export const CURRICULUM: Lesson[] = [
           prompt: "What is the typical bass note used for the pedal point in the Indugio schema?",
           options: ["1 (tonic)", "5 (dominant)", "4 (subdominant)", "2 (supertonic)"],
           correctAnswer: "4 (subdominant)",
-          hints: [
-            "This note creates a specific harmonic color when sustained",
-            "It often precedes a dominant preparation",
-          ],
+          hints: ["This note creates a specific harmonic color when sustained", "It often precedes a dominant preparation"],
         },
         {
           id: "indugio-3-keyboard",
@@ -3194,7 +3234,7 @@ export const CURRICULUM: Lesson[] = [
           id: "jupiter-2",
           type: "identify",
           prompt: "In C major, what are the bass notes for the Jupiter schema?",
-          options: ["C-D-E-F", "G-F-E-D", "C-B-F-E", "C-D-F-E"],
+          options: ["C-D-E-F", "G-F-E-D", "A-G-F-E", "C-D-F-E"],
           correctAnswer: "C-D-F-E",
           hints: ["Starts on scale degree 1", "Follows the pattern 1-2-4-3"],
         },
@@ -3202,12 +3242,7 @@ export const CURRICULUM: Lesson[] = [
           id: "jupiter-3",
           type: "identify",
           prompt: "What quality does the Jupiter schema often impart to a musical passage?",
-          options: [
-            "Playfulness and lightness",
-            "Majesty and grandeur",
-            "Tension and suspense",
-            "Melancholy and introspection",
-          ],
+          options: ["Playfulness and lightness", "Majesty and grandeur", "Tension and suspense", "Melancholy and introspection"],
           correctAnswer: "Majesty and grandeur",
           hints: ["It's named after a grand symphony", "It has a strong, confident sound"],
         },
@@ -3241,7 +3276,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 65,
     content: {
       theory:
-        "Aprile: 4-3-7-1 in the bass, a sophisticated cadential pattern. This schema is characterized by its descending bass line (4-3), followed by a strong dominant preparation (7-1). The harmony typically involves a progression that emphasizes the dominant seventh chord, leading to a clear resolution to the tonic. It's a common way to approach the end of a phrase or section, providing a sense of finality and harmonic satisfaction. The upper voices often move in stepwise contrary motion to create smooth voice leading.",
+        "Aprile: 4-3-7-1 in the bass, a sophisticated cadential pattern. This schema is characterized by its descending bass line (4-3), followed by a strong dominant preparation (7-1). The harmony typically involves progressions that emphasize the dominant seventh chord, leading to a clear resolution to the tonic. It's a common way to approach the end of a phrase or section, providing a sense of finality and harmonic satisfaction. The upper voices often move in stepwise contrary motion to create smooth voice leading.",
       examples: [
         {
           id: "aprile-ex-1",
@@ -3361,8 +3396,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-3-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
+          prompt: "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
           correctAnswer: "Left hand: Sustained C. Right hand: C-E-G, C-G-C, C-E-G.",
           hints: [
             "The left hand holds the C.",
@@ -3373,8 +3407,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-4-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
+          prompt: "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
           correctAnswer: "Left hand: Sustained G. Right hand: G-B-D, G-D-G, G-B-D.",
           hints: [
             "The left hand holds the G.",
@@ -3503,19 +3536,16 @@ export const CURRICULUM: Lesson[] = [
           id: "deceptive-1",
           type: "identify",
           prompt: "What is the most common harmonic movement in a deceptive cadence?",
-          options: ["V-I", "V-vi", "IV-V", "I-IV"],
           correctAnswer: "V-vi",
-          hints: [
-            "It's a 'deception' because it doesn't go where expected",
-            "The submediant chord is often the surprise",
-          ],
+          options: ["V-I", "V-vi", "IV-V", "I-IV"],
+          hints: ["It's a 'deception' because it doesn't go where expected", "The submediant chord is often the surprise"],
         },
         {
           id: "deceptive-2",
           type: "identify",
           prompt: "What effect does a deceptive cadence typically create?",
-          options: ["A sense of finality", "Surprise and phrase extension", "Sudden energy", "Calm resolution"],
           correctAnswer: "Surprise and phrase extension",
+          options: ["A sense of finality", "Surprise and phrase extension", "Sudden energy", "Calm resolution"],
           hints: ["It avoids the expected ending", "It often leads to more music"],
         },
         {
@@ -3572,12 +3602,7 @@ export const CURRICULUM: Lesson[] = [
           id: "evaded-1",
           type: "identify",
           prompt: "What is the primary goal of cadence evasion?",
-          options: [
-            "To end the music quickly",
-            "To create predictability",
-            "To avoid the expected resolution and extend the phrase",
-            "To simplify the harmony",
-          ],
+          options: ["To end the music quickly", "To create predictability", "To avoid the expected resolution and extend the phrase", "To simplify the harmony"],
           correctAnswer: "To avoid the expected resolution and extend the phrase",
           hints: ["It's about 'evading' the expected ending", "It keeps the music going"],
         },
@@ -3585,20 +3610,14 @@ export const CURRICULUM: Lesson[] = [
           id: "evaded-2",
           type: "identify",
           prompt: "Which of the following is a common technique used in cadence evasion?",
-          options: [
-            "Using only consonant intervals",
-            "Repeating the tonic chord excessively",
-            "Employing secondary dominants or altered chords",
-            "Ending the phrase on the subdominant",
-          ],
+          options: ["Using only consonant intervals", "Repeating the tonic chord excessively", "Employing secondary dominants or altered chords", "Ending the phrase on the subdominant"],
           correctAnswer: "Employing secondary dominants or altered chords",
           hints: ["These techniques create harmonic twists and turns", "They lead the ear away from the expected path"],
         },
         {
           id: "evaded-3-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Realize a cadence evasion in C major. Bass: G-D-G-C. Harmony: V - V/V - V - I. Soprano: B-F-F-E.",
+          prompt: "KEYBOARD: Realize a cadence evasion in C major. Bass: G-D-G-C. Harmony: V - V/V - V - I. Soprano: B-F-F-E.",
           correctAnswer: "Left hand: G-D-G-C. Right hand: B-F-F-E, with appropriate chord voicings.",
           hints: [
             "Over the first G, play a G major chord (V).",
@@ -3610,7 +3629,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Cadence evasion is a sophisticated compositional technique that adds depth and intrigue to music. By masterfully avoiding predictable resolutions, composers can create harmonic surprise, extend musical phrases, and guide the listener through more complex emotional and structural journeys. This technique is essential for composers aiming to move beyond simple harmonic formulas and craft more engaging and memorable musical experiences.",
+        "Cadence evasion is a sophisticated compositional technique that adds depth and intrigue to music. By masterfully avoiding predictable resolutions, composers can create harmonic surprise, extend musical phrases, and guide the listener through more complex harmonic paths. This technique is essential for composers aiming to move beyond simple harmonic formulas and craft more engaging and memorable musical experiences.",
     },
   },
   {
@@ -3691,7 +3710,7 @@ export const CURRICULUM: Lesson[] = [
     difficulty: "advanced",
     level: 4,
     prerequisites: ["adv-9-passo-indietro"],
-    xpReward: 70,
+    xpReward: 65,
     content: {
       theory:
         "Adlung's patterns: scalar, sequential, and cadential modules. Learn to vary and recombine these formulas. Jacob Adlung's 'Anweisung zum Fantasieren' (c. 1726-27) provides a systematic approach to improvisation through a collection of 28 sequential patterns. These patterns, often based on scalar or sequential movements, provide templates for creating harmonic and melodic material. They are designed to be varied and recombined, allowing for flexibility and creativity within a structured framework. Mastering these patterns is key to fluent improvisation in the German tradition.",
@@ -3724,20 +3743,14 @@ export const CURRICULUM: Lesson[] = [
           id: "griffe2-2",
           type: "identify",
           prompt: "What is the purpose of Adlung's 28 patterns?",
-          options: [
-            "To dictate exact compositions",
-            "To provide templates for improvisation",
-            "To teach music theory",
-            "To simplify rhythmic notation",
-          ],
+          options: ["To dictate exact compositions", "To provide templates for improvisation", "To teach music theory", "To simplify rhythmic notation"],
           correctAnswer: "To provide templates for improvisation",
           hints: ["They are designed for creating music spontaneously", "They offer building blocks"],
         },
         {
           id: "griffe2-3-keyboard",
           type: "play",
-          prompt:
-            "KEYBOARD: Practice one of Adlung's scalar sequential patterns. Choose a pattern and realize it in C major, ensuring smooth voice leading.",
+          prompt: "KEYBOARD: Practice one of Adlung's scalar sequential patterns. Choose a pattern and realize it in C major, ensuring smooth voice leading.",
           correctAnswer: "Correct realization of an Adlung scalar pattern.",
           hints: [
             "Refer to Adlung's 'Anweisung zum Fantasieren' for examples.",
@@ -3791,12 +3804,7 @@ export const CURRICULUM: Lesson[] = [
           id: "dim8-2",
           type: "identify",
           prompt: "What skills are essential for mastering 8:1 diminution?",
-          options: [
-            "Slow tempo and simple melodies",
-            "Exceptional technical facility and rhythmic precision",
-            "Basic understanding of harmony",
-            "Limited melodic range",
-          ],
+          options: ["Slow tempo and simple melodies", "Exceptional technical facility and rhythmic precision", "Basic understanding of harmony", "Limited melodic range"],
           correctAnswer: "Exceptional technical facility and rhythmic precision",
           hints: ["This is a highly virtuosic technique", "It requires fine control over speed and rhythm"],
         },
@@ -3814,7 +3822,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Renaissance composers like Silvestro Ganassi and Bartolomeo Bovicelli were pioneers in exploring complex diminutions, pushing the boundaries of instrumental virtuosity. Their treatises showcased intricate scalar passages, arpeggios, and ornaments, laying the groundwork for the highly ornamented styles of the Baroque era. Mastering these advanced diminutions allowed musicians to transform simple melodies into dazzling displays of technical prowess and artistic expression.",
+        "Renaissance composers like Silvestro Ganassi and Bartolomeo Bovicelli were pioneers in exploring complex diminutions, pushing the boundaries of instrumental virtuosity. Their treatises showcased intricate scalar passages, arpeggios, and ornaments, laying the groundwork for the highly ornamented styles of the Baroque era. Mastering these diminutions allowed musicians to transform simple melodies into dazzling displays of technical prowess and artistic expression.",
     },
   },
   {
@@ -3829,7 +3837,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 75,
     content: {
       theory:
-        "Fenaroli Books II-III introduce complex suspensions, seventh chords, and chromatic passages. Requires mastery of voice leading. Book II focuses on more elaborate suspensions and dissonances. Book III introduces modulation and chromatic harmony. These partimenti prepare you for fugal writing. Book II delves into more intricate dissonances, including chains of suspensions and more complex chromatic alterations. Book III expands upon this by introducing modulatory techniques and chromatic harmony, preparing the student for the complexities of fugal composition. The partimenti in these books demand a high level of improvisational skill and theoretical understanding.",
+        "Fenaroli Books II-III introduce complex suspensions, seventh chords, and chromatic passages. Requires mastery of voice leading. Book II focuses on more elaborate suspensions and dissonances. Book III expands upon this by introducing modulation and chromatic harmony. These partimenti prepare you for fugal writing. Book II delves into more intricate dissonances, including chains of suspensions and more complex chromatic alterations. Book III expands upon this by introducing modulatory techniques and chromatic harmony, preparing the student for the complexities of fugal composition. The partimenti in these books demand a high level of improvisational skill and theoretical understanding.",
       examples: [
         {
           id: "ex-1",
@@ -4047,8 +4055,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "imitazione-1",
           type: "play",
-          prompt:
-            "Improvise a short imitative passage in C major, introducing a simple melodic idea and imitating it in another voice.",
+          prompt: "Improvise a short imitative passage in C major, introducing a simple melodic idea and imitating it in another voice.",
           correctAnswer: "A passage demonstrating free imitation with coherent voice leading.",
           hints: [
             "Create a short, memorable melodic idea.",
@@ -4219,12 +4226,7 @@ export const CURRICULUM: Lesson[] = [
           id: "ex-sala-1",
           type: "identify",
           prompt: "What is the primary focus of Nicola Sala's 'Regole del Contrappunto Pratico'?",
-          options: [
-            "Melodic composition",
-            "Instrumental technique",
-            "Theoretical basis of practical counterpoint (partimenti)",
-            "Music history",
-          ],
+          options: ["Melodic composition", "Instrumental technique", "Theoretical basis of practical counterpoint (partimenti)", "Music history"],
           correctAnswer: "Theoretical basis of practical counterpoint (partimenti)",
           hints: ["The title itself gives a clue", "It explains the 'why' behind the patterns"],
         },
@@ -4233,49 +4235,390 @@ export const CURRICULUM: Lesson[] = [
         "Nicola Sala's comprehensive treatise served as the definitive theoretical text for partimenti pedagogy, solidifying the principles that underpinned improvisational and compositional training in the Neapolitan conservatories. His work provided a rigorous academic framework for the practical exercises, ensuring that generations of musicians possessed a deep understanding of musical structure and theory.",
     },
   },
-]
 
-export const SKILL_LEVELS = [
-  { level: 1, name: "Novice", xp: 0, xpRequired: 100 },
-  { level: 2, name: "Apprentice", xp: 0, xpRequired: 300 },
-  { level: 3, name: "Student", xp: 0, xpRequired: 600 },
-  { level: 4, name: "Practitioner", xp: 0, xpRequired: 1200 },
-  { level: 5, name: "Journeyman", xp: 0, xpRequired: 2400 },
-  { level: 6, name: "Master", xp: 0, xpRequired: 4800 },
-  { level: 7, name: "Virtuoso", xp: 0, xpRequired: 9600 },
-]
-
-// Helper functions for curriculum navigation
-export function getLessonById(id: string): Lesson | undefined {
-  return CURRICULUM.find((lesson) => lesson.id === id)
-}
-
-export function getLessonsByLevel(level: number): Lesson[] {
-  return CURRICULUM.filter((lesson) => lesson.level === level)
-}
-
-export function getLessonsByTradition(tradition: "italian" | "german" | "both"): Lesson[] {
-  return CURRICULUM.filter((lesson) => lesson.tradition === tradition || lesson.tradition === "both")
-}
-
-export function getNextLesson(currentLessonId: string, completedLessonIds: string[]): Lesson | null {
-  const currentIndex = CURRICULUM.findIndex((l) => l.id === currentLessonId)
-  if (currentIndex === -1) return CURRICULUM[0] // Start from beginning
-
-  // Find next lesson where all prerequisites are completed
-  for (let i = currentIndex + 1; i < CURRICULUM.length; i++) {
-    const lesson = CURRICULUM[i]
-    const allPrereqsMet = lesson.prerequisites.every((prereq) => completedLessonIds.includes(prereq))
-    if (allPrereqsMet) return lesson
-  }
-
-  return null // No more lessons available
-}
-
-export function getAvailableLessons(completedLessonIds: string[]): Lesson[] {
-  return CURRICULUM.filter((lesson) => {
-    const allPrereqsMet = lesson.prerequisites.every((prereq) => completedLessonIds.includes(prereq))
-    const notCompleted = !completedLessonIds.includes(lesson.id)
-    return allPrereqsMet && notCompleted
-  })
-}
+  // ============================================
+  // LEVEL 4: ADVANCED PATTERNS
+  // ============================================
+  {
+    id: "adv-1-fenaroli-schema",
+    title: "Galant Schema: Fenaroli",
+    description: "Master the 7-1-7-1 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["inter-8-fenaroli-book1"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Fenaroli: 7-1-7-1 in the bass with specific upper voice patterns. A sophisticated cadential approach. This schema is characterized by its ascending bass line (7-1) repeated, creating a sense of harmonic tension and release. The harmony typically involves dominant seventh chords and their resolutions, often leading to a strong cadence. The upper voices create melodic interest by moving in contrary motion or creating suspensions against the sustained bass notes. This schema is highly effective for creating dramatic cadences and phrase extensions.",
+      examples: [
+        {
+          id: "fenaroli-schema-ex-1",
+          title: "Basic Fenaroli Schema",
+          description: "Bass: B-C-B-C (in C major). Harmony: V7 - I - V7 - I",
+          notation: "Bass: 7-1-7-1 | Harmony: V7 - I - V7 - I",
+          figuredBass: "7/5/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern: ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+        },
+        {
+          id: "fenaroli-schema-ex-2",
+          title: "Fenaroli with Soprano Suspensions",
+          description: "Bass: B-C-B-C | Soprano: F-E-F-E (creating suspensions over the dominant).",
+          notation: "Bass: 7-1-7-1 | Soprano: 7-6-7-6",
+          figuredBass: "7/5/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern: ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+        },
+      ],
+      exercises: [
+        {
+          id: "fenaroli-schema-1",
+          type: "identify",
+          prompt: "What is the characteristic bass motion of the Fenaroli schema?",
+          options: [
+            "Descending stepwise",
+            "Ascending then descending",
+            "Alternating between two notes (e.g., 7-1-7-1)",
+            "Leaping by fourths",
+          ],
+          correctAnswer: "Alternating between two notes (e.g., 7-1-7-1)",
+          hints: ["The pattern repeats a short bass figure", "It creates a strong cadential effect"],
+        },
+        {
+          id: "fenaroli-schema-2",
+          type: "identify",
+          prompt: "What type of chord is typically prominent in the Fenaroli schema?",
+          options: ["Major triads", "Minor triads", "Dominant seventh chords", "Diminished seventh chords"],
+          correctAnswer: "Dominant seventh chords",
+          hints: ["This schema builds tension", "Dominant sevenths create strong pull towards the tonic"],
+        },
+        {
+          id: "fenaroli-schema-3-keyboard",
+          type: "play",
+          prompt:
+            "KEYBOARD: Realize the Fenaroli schema in C major. Bass: B-C-B-C. Harmony: V7 - I - V7 - I. Soprano: F-E-F-E.",
+          correctAnswer: "Left hand: B-C-B-C. Right hand: F-E-F-E, with appropriate chord voicings.",
+          hints: [
+            "Over B, play a G dominant seventh chord (V7).",
+            "Over C, play a C major chord (I).",
+            "The soprano creates suspensions over the dominant.",
+          ],
+        },
+      ],
+      historicalContext:
+        "The Fenaroli schema, named after the renowned partimenti theorist Fedele Fenaroli, is a sophisticated cadential pattern used to create harmonic tension and anticipation. Its repeated bass figure (often 7-1-7-1) and emphasis on dominant seventh chords make it highly effective in preparing for a conclusive cadence. This schema demonstrates the Neapolitan focus on building harmonic complexity and dramatic effect within structured frameworks, preparing students for more advanced compositional techniques.",
+    },
+  },
+  {
+    id: "adv-2-indugio",
+    title: "Galant Schema: Indugio",
+    description: "Learn the pedal point delay pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-1-fenaroli-schema"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Indugio: A pedal point on 4 with 6 or 6/5 chord, delaying the cadence. Creates suspense and anticipation. The 'Indugio' (Italian for 'delay' or 'pause') schema utilizes a sustained bass note, typically the subdominant (scale degree 4), over which harmonies shift. Often, a first inversion chord (6/3) or a second inversion dominant seventh chord (6/5) is used above the sustained bass. This creates a sense of harmonic suspension and delays the expected resolution, building anticipation for the final cadence. It effectively stretches out the harmonic progression and adds expressive depth.",
+      examples: [
+        {
+          id: "indugio-ex-1",
+          title: "Basic Indugio Schema",
+          description: "Bass: F (sustained) | Upper voices move through I6 - V/V - IV. (In C major)",
+          notation: "Bass: 4 (sustained) | Upper voices: shifting harmonies",
+          figuredBass: "Pedal point on 4 with 6/3 or 6/5",
+          audioPattern: ["[F2,F3,A3,C4]", "[F2,F3,C4,E4]", "[F2,F3,A3,C4]"],
+        },
+        {
+          id: "indugio-ex-2",
+          title: "Indugio with Suspensions",
+          description: "Bass: F (sustained) | Upper voices create suspensions over the pedal point.",
+          notation: "Bass: 4 (sustained) | Upper voices: suspensions resolving",
+          figuredBass: "Pedal point with suspensions",
+          audioPattern: ["[F2,F3,A3,C4]", "[F2,F3,Bb4,D5]", "[F2,F3,A3,C4]"],
+        },
+      ],
+      exercises: [
+        {
+          id: "indugio-1",
+          type: "identify",
+          prompt: "What does the Italian term 'Indugio' mean in this context?",
+          options: ["Sudden resolution", "Rapid ascent", "Delay or pause", "Harmonic complexity"],
+          correctAnswer: "Delay or pause",
+          hints: ["It refers to stretching out the musical moment", "It creates a sense of waiting"],
+        },
+        {
+          id: "indugio-2",
+          type: "identify",
+          prompt: "What is the typical bass note used for the pedal point in the Indugio schema?",
+          options: ["1 (tonic)", "5 (dominant)", "4 (subdominant)", "2 (supertonic)"],
+          correctAnswer: "4 (subdominant)",
+          hints: ["This note creates a specific harmonic color when sustained", "It often precedes a dominant preparation"],
+        },
+        {
+          id: "indugio-3-keyboard",
+          type: "play",
+          prompt:
+            "KEYBOARD: Realize the Indugio schema in C major. Bass: F (sustained for 4 beats). Upper voices: I6 - V/V - IV. (Example voicing: F-A-C, F-G-B, F-A-C).",
+          correctAnswer: "Left hand: Sustained F. Right hand: F-A-C, F-G-B, F-A-C.",
+          hints: [
+            "The left hand holds the F.",
+            "The right hand outlines the harmonies: F-A-C (F major first inversion), F-G-B (G major first inversion, or altered), F-A-C (F major).",
+            "Listen for the harmonic suspension.",
+          ],
+        },
+      ],
+      historicalContext:
+        "The Indugio schema, or 'delay,' is a sophisticated technique used in Neapolitan partimenti to create harmonic suspense and expressive depth. By sustaining a bass note (often the subdominant) and shifting harmonies above it, composers could prolong harmonic tension and anticipation, making the eventual resolution more impactful. This schema highlights the Neapolitan emphasis on expressive voice leading and the manipulation of harmonic rhythm to achieve specific emotional effects.",
+    },
+  },
+  {
+    id: "adv-3-jupiter",
+    title: "Galant Schema: Jupiter",
+    description: "Master the 1-2-4-3 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-2-indugio"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Jupiter: 1-2-4-3 in the bass, named after Mozart's Jupiter Symphony. A majestic opening pattern. This schema is characterized by its ascending bass line (1-2), followed by a descending leap (2 to 4, which is usually a diminished fifth or augmented fourth depending on the key), and finally a descent to the tonic (4-3). The harmony often involves I - V6/3 - Cadential 6/4 - V. Its majestic quality comes from the strong harmonic progressions and the sense of confident arrival. It's often used to open a grand or important movement.",
+      examples: [
+        {
+          id: "jupiter-ex-1",
+          title: "Basic Jupiter Schema",
+          description: "Bass: C-D-F-E (in C major). Harmony: I - V6/3 - Cadential 6/4 - V",
+          notation: "Bass: 1-2-4-3 | Harmony: I - V6/3 - Cadential 6/4 - V",
+          figuredBass: "5/3 - 6/3 - 6/4 - 5/3",
+          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
+        },
+        {
+          id: "jupiter-ex-2",
+          title: "Jupiter with Descending Soprano",
+          description: "Bass: C-D-F-E | Soprano: G-A-C-B. Creating contrary motion.",
+          notation: "Bass: 1-2-4-3 | Soprano: 5-6-8-7",
+          figuredBass: "5/3 - 6/3 - 6/4 - 5/3",
+          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
+        },
+      ],
+      exercises: [
+        {
+          id: "jupiter-1",
+          type: "identify",
+          prompt: "What is the characteristic bass motion of the Jupiter schema?",
+          options: ["Descending stepwise", "Ascending then leaping down", "Repeating the same note", "Ascending leaps"],
+          correctAnswer: "Ascending then leaping down",
+          hints: ["The bass line moves up, then down", "It has a distinctive leap"],
+        },
+        {
+          id: "jupiter-2",
+          type: "identify",
+          prompt: "In C major, what are the bass notes for the Jupiter schema?",
+          options: ["C-D-E-F", "G-F-E-D", "A-G-F-E", "C-D-F-E"],
+          correctAnswer: "C-D-F-E",
+          hints: ["Starts on scale degree 1", "Follows the pattern 1-2-4-3"],
+        },
+        {
+          id: "jupiter-3",
+          type: "identify",
+          prompt: "What quality does the Jupiter schema often impart to a musical passage?",
+          options: ["Playfulness and lightness", "Majesty and grandeur", "Tension and suspense", "Melancholy and introspection"],
+          correctAnswer: "Majesty and grandeur",
+          hints: ["It's named after a grand symphony", "It has a strong, confident sound"],
+        },
+        {
+          id: "jupiter-4-keyboard",
+          type: "play",
+          prompt:
+            "KEYBOARD: Realize the Jupiter schema in C major. Bass: C-D-F-E. Harmony: I (5/3) - V6/3 (6/3) - Cadential 6/4 (6/4) - V (5/3). Soprano: G-A-C-B.",
+          correctAnswer: "Left hand: C-D-F-E. Right hand: G-A-C-B, with appropriate chord voicings.",
+          hints: [
+            "C bass (I): Play C-E-G",
+            "D bass (V6/3): Play D-F-A (first inversion of G major)",
+            "F bass (Cadential 6/4): Play F-A-C (second inversion of C major)",
+            "E bass (V): Play E-G-B (or E-G-D)",
+          ],
+        },
+      ],
+      historicalContext:
+        "The Jupiter schema, famously featured in the finale of Mozart's Symphony No. 41 ('Jupiter'), exemplifies the majestic and grand character often found in late Galant and early Classical music. Its distinctive bass line (1-2-4-3) combined with strong harmonic progressions allows for powerful openings and climactic moments. The schema's name reflects its regal and triumphant quality, making it a recognizable and impactful pattern for composers and listeners alike.",
+    },
+  },
+  {
+    id: "adv-4-aprile",
+    title: "Galant Schema: Aprile",
+    description: "Learn the 4-3-7-1 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-3-jupiter"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Aprile: 4-3-7-1 in the bass, a sophisticated cadential pattern. This schema is characterized by its descending bass line (4-3), followed by a strong dominant preparation (7-1). The harmony typically involves progressions that emphasize the dominant seventh chord, leading to a clear resolution to the tonic. It's a common way to approach the end of a phrase or section, providing a sense of finality and harmonic satisfaction. The upper voices often move in stepwise contrary motion to create smooth voice leading.",
+      examples: [
+        {
+          id: "aprile-ex-1",
+          title: "Basic Aprile Schema",
+          description: "Bass: F-E-B-C (in C major). Harmony: IV - V6/3 - V7 - I",
+          notation: "Bass: 4-3-7-1 | Harmony: IV - V6/3 - V7 - I",
+          figuredBass: "5/3 - 6/3 - 7/5/3 - 5/3",
+          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+        },
+        {
+          id: "aprile-ex-2",
+          title: "Aprile with Soprano Descent",
+          description: "Bass: F-E-B-C | Soprano: A-G-D-E. Creating contrary motion.",
+          notation: "Bass: 4-3-7-1 | Soprano: 6-5-2-3",
+          figuredBass: "5/3 - 6/3 - 7/5/3 - 5/3",
+          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+        },
+      ],
+      exercises: [
+        {
+          id: "aprile-1",
+          type: "identify",
+          prompt: "What is the characteristic bass motion of the Aprile schema?",
+          options: [
+            "Ascending stepwise",
+            "Descending stepwise, then dominant preparation",
+            "Repeating bass notes",
+            "Leaping bass line",
+          ],
+          correctAnswer: "Descending stepwise, then dominant preparation",
+          hints: ["The first part descends, the second part prepares the tonic", "Think of the scale degrees 4-3-7-1"],
+        },
+        {
+          id: "aprile-2",
+          type: "identify",
+          prompt: "What type of chord is typically prominent in the Aprile schema, leading to the final resolution?",
+          options: ["Tonic chord", "Subdominant chord", "Dominant seventh chord", "Diminished chord"],
+          correctAnswer: "Dominant seventh chord",
+          hints: ["This schema is about preparing a strong cadence", "Dominant seventh chords are key to cadences"],
+        },
+        {
+          id: "aprile-3-keyboard",
+          type: "play",
+          prompt:
+            "KEYBOARD: Realize the Aprile schema in C major. Bass: F-E-B-C. Harmony: IV (5/3) - V6/3 (6/3) - V7 (7/5/3) - I (5/3). Soprano: A-G-D-E.",
+          correctAnswer: "Left hand: F-E-B-C. Right hand: A-G-D-E, with appropriate chord voicings.",
+          hints: [
+            "F bass (IV): Play F-A-C",
+            "E bass (V6/3): Play E-G-B (first inversion of C major)",
+            "B bass (V7): Play B-D-F-A",
+            "C bass (I): Play C-E-G",
+          ],
+        },
+      ],
+      historicalContext:
+        "The Aprile schema, named after the Italian composer Giuseppe Aprile, is a sophisticated cadential pattern commonly found in Galant and Classical music. Its structure, featuring a descending bass line followed by a strong dominant preparation (4-3-7-1), makes it highly effective for creating a sense of harmonic finality. This schema exemplifies the Neapolitan tradition of developing clear, memorable cadential formulas that provide both structural integrity and expressive weight to musical compositions.",
+    },
+  },
+  {
+    id: "adv-5-pastorella",
+    title: "Galant Schema: Pastorella",
+    description: "Master the pastoral 1-5-1 pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-4-aprile"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Pastorella: 1-5-1 with drone bass, evoking pastoral scenes. Often in 6/8 or 12/8 time. This schema is characterized by a sustained or repeated bass note (often the tonic or dominant) while the upper voices create a simple, folk-like melody. The harmony often involves major triads and avoids complex dissonances, contributing to its serene and idyllic character. The drone effect enhances the pastoral atmosphere. It's frequently found in character pieces, operatic interludes, or movements depicting nature.",
+      examples: [
+        {
+          id: "pastorella-ex-1",
+          title: "Basic Pastorella Schema",
+          description: "Bass: C (sustained) | Upper voices: simple melody evoking a drone effect.",
+          notation: "Bass: 1 (sustained) | Upper voices: folk-like melody",
+          figuredBass: "Drone on 1",
+          audioPattern: ["[C3,C4,E4,G4]", "[C3,C4,G4,C5]", "[C3,C4,E4,G4]"],
+        },
+        {
+          id: "pastorella-ex-2",
+          title: "Pastorella with Drone on Dominant",
+          description: "Bass: G (sustained) | Upper voices: simple melody evoking a drone effect.",
+          notation: "Bass: 5 (sustained) | Upper voices: folk-like melody",
+          figuredBass: "Drone on 5",
+          audioPattern: ["[G3,G4,B4,D5]", "[G3,G4,D5,G5]", "[G3,G4,B4,D5]"],
+        },
+      ],
+      exercises: [
+        {
+          id: "pastorella-1",
+          type: "identify",
+          prompt: "What musical character does the Pastorella schema typically evoke?",
+          options: [
+            "Dramatic intensity",
+            "Pastoral serenity and simplicity",
+            "Urban hustle and bustle",
+            "Mysterious suspense",
+          ],
+          correctAnswer: "Pastoral serenity and simplicity",
+          hints: ["The name itself suggests a rural theme", "Simple melodies and harmonies contribute to this"],
+        },
+        {
+          id: "pastorella-2",
+          type: "identify",
+          prompt: "What is a common feature of the bass line in the Pastorella schema?",
+          options: [
+            "Rapid ascending scales",
+            "A sustained or repeated note (drone)",
+            "Complex leaps",
+            "Descending arpeggios",
+          ],
+          correctAnswer: "A sustained or repeated note (drone)",
+          hints: ["This creates a stable foundation", "It allows the upper voices to be more melodic"],
+        },
+        {
+          id: "pastorella-3-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Realize the Pastorella schema in C major. Bass: C (sustained for 4 beats). Upper voices: C-E-G, C-G-C, C-E-G.",
+          correctAnswer: "Left hand: Sustained C. Right hand: C-E-G, C-G-C, C-E-G.",
+          hints: [
+            "The left hand holds the C.",
+            "The right hand plays simple, consonant harmonies above the drone.",
+            "Focus on creating a calm, pastoral atmosphere.",
+          ],
+        },
+        {
+          id: "pastorella-4-keyboard",
+          type: "play",
+          prompt: "KEYBOARD: Realize the Pastorella schema in G major. Bass: G (sustained for 4 beats). Upper voices: G-B-D, G-D-G, G-B-D.",
+          correctAnswer: "Left hand: Sustained G. Right hand: G-B-D, G-D-G, G-B-D.",
+          hints: [
+            "The left hand holds the G.",
+            "The right hand plays simple, consonant harmonies above the drone.",
+            "Consider using a slightly slower tempo or a lighter touch to enhance the pastoral feel.",
+          ],
+        },
+      ],
+      historicalContext:
+        "The Pastorella schema, evoking scenes of rural life, was a popular device in Baroque and Galant music for creating a serene and idyllic atmosphere. Composers like Handel and Bach utilized this schema in arias, instrumental movements, and vocal works to depict pastoral settings or moments of tranquility. Its simplicity, characterized by a drone bass and folk-like melodies, made it highly effective in conveying a sense of peace and innocence.",
+    },
+  },
+  {
+    id: "adv-6-quieszenza",
+    title: "Galant Schema: Quieszenza",
+    description: "Learn the 4-3-2-1 closing pattern",
+    category: "schemata",
+    tradition: "italian",
+    difficulty: "advanced",
+    level: 4,
+    prerequisites: ["adv-5-pastorella"],
+    xpReward: 65,
+    content: {
+      theory:
+        "Quieszenza: 4-3-2-1 in the bass, a gentle closing pattern. Creates a sense of peaceful resolution. This schema is characterized by a descending bass line (4-3-2-1) that leads smoothly to the tonic. The harmony typically involves progressions that resolve directly to the tonic chord, creating a sense of finality and rest. It's often used at the end of a phrase or section to provide a gentle conclusion. The upper voices usually follow the bass in contrary motion or create stepwise resolutions, reinforcing the sense of peace.",
+      examples: [
+        {
+          id: "quieszenza-ex-1",
+          title: "Basic Quieszenza Schema",
+          description: \"Bass: F-E-D-C (in C major). Harmony
