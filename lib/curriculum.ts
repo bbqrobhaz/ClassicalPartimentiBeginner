@@ -1415,7 +1415,7 @@ export const CURRICULUM: Lesson[] = [
     xpReward: 35,
     content: {
       theory:
-        "The ROMANESCA is one of the oldest and most beloved patterns in Western music, appearing in countless songs, dances, and instrumental works from the Renaissance through the Baroque era. The bass descends by step: 1-7-6-5 (in C major: C-B-A-G). Above this descending bass, the upper voices create a series of consonances that give the Romanesca its characteristic sound. The standard harmonization uses: I - V6 - vi - III (or V/vi). This pattern was so common that composers could assume their audience would recognize it immediately. You'll hear it in Corelli's sonatas, Handel's arias, and countless dance movements. The beauty of the Romanesca lies in its flexibility - it can be tender and lyrical, or bold and dramatic, depending on the melodic elaboration above the bass.",
+        "The ROMANESCA is one of the oldest and most beloved patterns in Western music, appearing in countless songs, dances, and instrumental works from the Renaissance through the Baroque era. The bass descends by step: 1-7-6-5 (in C major: C-B-A-G). Above this descending bass, the upper voices create a series of consonances that give the Romanesca its characteristic sound. The standard harmonization uses: I - V6/3 - vi - III (or V/vi). This pattern was so common that composers could assume their audience would recognize it immediately. You'll hear it in Corelli's sonatas, Handel's arias, and countless dance movements. The beauty of the Romanesca lies in its flexibility - it can be tender and lyrical, or bold and dramatic, depending on the melodic elaboration above the bass.",
       examples: [
         {
           id: "rom-ex-1",
@@ -1436,8 +1436,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "rom-ex-3",
           title: "Romanesca with Flowing Soprano (Diminutions)",
-          description":
-            "A flowing soprano line with passing notes and neighbor notes creates musical interest. Bar 1: G-E-F-G (F is a passing note), Bar 2: G-A-B-G (A is a passing note), Bar 3: A-C-B-C (B is a lower neighbor), Bar 4: B-E-D-E (D is a lower neighbor)",
+          description": "A flowing soprano line with passing notes and neighbor notes creates musical interest. Bar 1: G-E-F-G (F is a passing note), Bar 2: G-A-B-G (A is a passing note), Bar 3: A-C-B-C (B is a lower neighbor), Bar 4: B-E-D-E (D is a lower neighbor)",
           notation": "Bass: C - B - A - G | Soprano: G E F G - G A B G - A C B C - B E D E",
           figuredBass": "5/3 - 6/3 - 5/3 - 5/3",
           audioPattern": [
@@ -1659,10 +1658,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "drm-ex-3",
           title: "Extended Do-Re-Mi sequence",
-          description: "The pattern can be sequenced: 1-2-3 | 4-5-6 | 7-8-1...",
-          notation: "Bass: C-D-E | F-G-A | B-C-D",
-          figuredBass: "5/3 - 6/3 - 6/4 | 5/3 - 6/3 - 6/4 | 5/3 - 6/3 - 6/4",
-          audioPattern: [
+          description": "The pattern can be sequenced: 1-2-3 | 4-5-6 | 7-8-1...",
+          notation": "Bass: C-D-E | F-G-A | B-C-D",
+          figuredBass": "5/3 - 6/3 - 6/4 | 5/3 - 6/3 - 6/4 | 5/3 - 6/3 - 6/4",
+          audioPattern": [
             "[C3,C4,E4,G4]",
             "[D3,D4,F4,A4]",
             "[E3,E4,G4,C5]",
@@ -1822,10 +1821,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-ex-3",
           title: "Sol-Fa-Mi leading to Cadence",
-          description: "Bass: G-F-E-C. Harmony: V - IV6 - I - I",
-          notation: "Bass: 5-4-3-1",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: ["[G3,G4,B4,D5]", "[F3,F4,A4,C5]", "[E3,E4,G4,B4]", "[C3,C4,E4,G4]"],
+          description": "Bass: G-F-E-C. Harmony: V - IV6 - I - I",
+          notation": "Bass: 5-4-3-1",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": ["[G3,G4,B4,D5]", "[F3,F4,A4,C5]", "[E3,E4,G4,B4]", "[C3,C4,E4,G4]"],
         },
       ],
       exercises: [
@@ -1893,8 +1892,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "sfa-7-melodic",
           type: "play",
-          prompt":
-            "MELODIES: Create a simple melodic line over the Sol-Fa-Mi bass in C major (G-F-E). Focus on stepwise motion and fitting the harmony.",
+          prompt": "MELODIES: Create a simple melodic line over the Sol-Fa-Mi bass in C major (G-F-E). Focus on stepwise motion and fitting the harmony.",
           bassPattern: "G3-F3-E3",
           beatsPerNote: 4,
           tempo: 80,
@@ -1927,7 +1925,7 @@ export const CURRICULUM: Lesson[] = [
           id: "sfa-9-combination",
           type: "play",
           prompt":
-            "COMBINATION: Create a 12-bar rounded binary form combining Romanesca, Do-Re-Mi, and Sol-Fa-Mi. Structure: Bars 1-4: Romanesca (C-B-A-G). Bars 5-8: Do-Re-Mi (C-D-E-F-G-A). Bars 9-12: Sol-Fa-Mi (G-F-E) with final cadence to C. This creates a complete ABA' form with opening, development, and return!",
+            "COMBINATION: Create a 12-bar rounded binary form combining Romanesca, Do-Re-Mi, and Sol-Fa-Mi. Structure: Bars 1-4: Romanesca (C-B-A-G). Bars 5-8: Do-Re-Mi (C-D-E) sequenced to (F-G-A). Bars 9-12: Sol-Fa-Mi (G-F-E) with final cadence to C.",
           bassPattern: "C3-B2-A2-G2-C3-D3-E3-F3-G3-A3-G3-F3-E3-C3",
           beatsPerNote: 2,
           tempo: 80,
@@ -2071,8 +2069,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim2-4-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Play a simple I chord in C major (C-E-G). Now realize it with 2:1 diminution in the soprano. Bass: C. Soprano: C-D-E-C.",
+          prompt": "KEYBOARD: Play a simple I chord in C major (C-E-G). Now realize it with 2:1 diminution in the soprano. Bass: C. Soprano: C-D-E-C.",
           correctAnswer": "Left hand: C. Right hand: C-D-E-C, where each note is a quarter note (or eighth note if beat is a half note).",
           hints": [
             "The bass note C is held for the entire measure.",
@@ -2083,8 +2080,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "dim2-5-keyboard",
           type: "play",
-          prompt":
-            "KEYBOARD: Play a V-I cadence in C major. Bass: G-C. Realize the soprano with 2:1 diminution, emphasizing the resolution. Soprano over G: D-E-F-D. Soprano over C: C-B-A-C.",
+          prompt": "KEYBOARD: Play a V-I cadence in C major. Bass: G-C. Realize the soprano with 2:1 diminution, emphasizing the resolution. Soprano over G: D-E-F-D. Soprano over C: C-B-A-C.",
           correctAnswer": "Left hand: G-C. Right hand: D-E-F-D over G, then C-B-A-C over C.",
           hints": [
             "Over G, D is a chord tone, E and F are passing tones, D is a chord tone.",
@@ -2149,10 +2145,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-ex-3",
           title: "Sequenced Prinner",
-          description: "The pattern can be sequenced to continue the descent.",
-          notation: "Bass: A-G-F-E | D-C-B-A",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3 | 5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: [
+          description": "The pattern can be sequenced to continue the descent.",
+          notation": "Bass: A-G-F-E | D-C-B-A",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3 | 5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": [
             "[A2,A3,C4,E4]",
             "[G2,G3,B3,D4]",
             "[F2,F3,A3,C4]",
@@ -2235,8 +2231,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "prinner-7-melodic",
           type: "play",
-          prompt":
-            "MELODIES: Create a lyrical melody over the Prinner bass in C major (A-G-F-E). Focus on contrary motion to the bass.",
+          prompt": "MELODIES: Create a lyrical melody over the Prinner bass in C major (A-G-F-E). Focus on contrary motion to the bass.",
           bassPattern: "A2-G2-F2-E2",
           beatsPerNote: 4,
           tempo: 80,
@@ -2319,10 +2314,10 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "meyer-ex-3",
           title: "Sequenced Meyer",
-          description: "The pattern can be sequenced to continue the ascent and descent.",
-          notation: "Bass: C-B-F-E | G-F-C-B",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3 | 5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: [
+          description": "The pattern can be sequenced to continue the ascent and descent.",
+          notation": "Bass: C-B-F-E | G-F-C-B",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3 | 5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": [
             "[C3,C4,E4,G4]",
             "[B2,B3,D4,G4]",
             "[F2,F3,A3,C4]",
@@ -2430,18 +2425,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fonte-ex-2",
           title: "Fonte with Soprano Descent",
-          description: "Bass: F-E-D-C | Soprano: A-G-F-E. Creating parallel descent.",
-          notation: "Bass: 4-3-2-1 | Soprano: 6-5-4-3",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[D2,D3,F3,A3]", "[C2,C3,E3,G3]"],
+          description": "Bass: F-E-D-C | Soprano: A-G-F-E. Creating parallel descent.",
+          notation": "Bass: 4-3-2-1 | Soprano: 6-5-4-3",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[D2,D3,F3,A3]", "[C2,C3,E3,G3]"],
         },
         {
           id: "fonte-ex-3",
           title: "Fonte leading to Cadence",
-          description: "The Fonte schema often resolves to the dominant, leading into a final cadence.",
-          notation: "Bass: F-E-D-C-G-C",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3 - 5/3 - 5/3",
-          audioPattern: [
+          description": "The Fonte schema often resolves to the dominant, leading into a final cadence.",
+          notation": "Bass: F-E-D-C-G-C",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3 - 5/3 - 5/3",
+          audioPattern": [
             "[F2,F3,A3,C4]",
             "[E2,E3,G3,B3]",
             "[D2,D3,F3,A3]",
@@ -2552,18 +2547,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "monte-ex-2",
           title: "Monte with Soprano Ascent",
-          description: "Bass: C-D-E-F | Soprano: G-A-C-B. Creating contrary motion.",
-          notation: "Bass: 1-2-3-4 | Soprano: 5-6-8-7",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[E3,E4,G4,B4]", "[F3,F4,A4,C5]"],
+          description": "Bass: C-D-E-F | Soprano: G-A-C-B. Creating contrary motion.",
+          notation": "Bass: 1-2-3-4 | Soprano: 5-6-8-7",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[E3,E4,G4,B4]", "[F3,F4,A4,C5]"],
         },
         {
           id: "monte-ex-3",
           title: "Sequenced Monte",
-          description: "The pattern can be sequenced to continue the ascent.",
-          notation: "Bass: C-D-E-F | G-A-B-C",
-          figuredBass: "5/3 - 6/3 - 5/3 - 5/3 | 5/3 - 6/3 - 5/3 - 5/3",
-          audioPattern: [
+          description": "The pattern can be sequenced to continue the ascent.",
+          notation": "Bass: C-D-E-F | G-A-B-C",
+          figuredBass": "5/3 - 6/3 - 5/3 - 5/3 | 5/3 - 6/3 - 5/3 - 5/3",
+          audioPattern": [
             "[C3,C4,E4,G4]",
             "[D3,D4,F4,A4]",
             "[E3,E4,G4,B4]",
@@ -2663,26 +2658,26 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ponte-ex-1",
           title: "Basic Ponte Schema",
-          description: "Bass: G (sustained) | Upper voices move through V7, I6/4, V7, I.",
-          notation: "Bass: 5 (sustained) | Upper voices: various chords resolving to V",
-          figuredBass: "Pedal point on 5",
-          audioPattern: ["[G2,G3,B3,D4]", "[G2,G3,C4,E4]", "[G2,G3,B3,D4]", "[G2,G3,B3,D4]"],
+          description": "Bass: G (sustained) | Upper voices move through V7, I6/4, V7, I.",
+          notation": "Bass: 5 (sustained) | Upper voices: various chords resolving to V",
+          figuredBass": "Pedal point on 5",
+          audioPattern": ["[G2,G3,B3,D4]", "[G2,G3,C4,E4]", "[G2,G3,B3,D4]", "[G2,G3,B3,D4]"],
         },
         {
           id: "ponte-ex-2",
           title: "Ponte with Suspensions",
-          description: "Bass: G (sustained) | Upper voices create suspensions over the pedal point.",
-          notation: "Bass: 5 (sustained) | Upper voices: suspensions resolving",
-          figuredBass: "Pedal point with suspensions",
-          audioPattern: ["[G2,G3,B3,D4]", "[G2,G3,C4,E4]", "[G2,G3,B3,D4]", "[G2,G3,B3,D4]"],
+          description": "Bass: G (sustained) | Upper voices create suspensions over the pedal point.",
+          notation": "Bass: 5 (sustained) | Upper voices: suspensions resolving",
+          figuredBass": "Pedal point with suspensions",
+          audioPattern": ["[G2,G3,B3,D4]", "[G2,G3,C4,E4]", "[G2,G3,B3,D4]", "[G2,G3,B3,D4]"],
         },
         {
           id: "ponte-ex-3",
           title: "Ponte leading to Cadence",
-          description: "The Ponte schema typically leads to a strong authentic cadence.",
-          notation: "Bass: G (sustained) - C | Upper voices resolve to V then I",
-          figuredBass: "Pedal point on 5, resolving to V-I",
-          audioPattern: ["[G2,G3,B3,D4]", "[C2,C3,E3,G3]"],
+          description": "The Ponte schema typically leads to a strong authentic cadence.",
+          notation": "Bass: G (sustained) - C | Upper voices resolve to V then I",
+          figuredBass": "Pedal point on 5, resolving to V-I",
+          audioPattern": ["[G2,G3,B3,D4]", "[C2,C3,E3,G3]"],
         },
       ],
       exercises: [
@@ -2779,16 +2774,16 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "griffe1-ex-1",
           title: "I-IV-V-I Grip in C Major",
-          description: "Left hand plays bass notes C-F-G-C. Right hand uses a standardized 'grip' for each chord.",
-          notation: "LH: C-F-G-C | RH: Standardized voicings for I, IV, V, I",
-          audioPattern: ["[C3,C4,E4,G4]", "[F3,F4,A4,C5]", "[G3,G4,B4,D5]", "[C3,C4,E4,G4]"],
+          description": "Left hand plays bass notes C-F-G-C. Right hand uses a standardized 'grip' for each chord.",
+          notation": "LH: C-F-G-C | RH: Standardized voicings for I, IV, V, I",
+          audioPattern": ["[C3,C4,E4,G4]", "[F3,F4,A4,C5]", "[G3,G4,B4,D5]", "[C3,C4,E4,G4]"],
         },
         {
           id: "griffe1-ex-2",
           title: "Variations on the Grip",
-          description: "Slight modifications to the standard grip for smoother voice leading or different textures.",
-          notation: "LH: C-F-G-C | RH: Variations in voicing",
-          audioPattern: ["[C3,C4,E4,G4]", "[F3,F4,A4,C5]", "[G3,G4,B4,D5]", "[C3,C4,E4,G4]"],
+          description": "Slight modifications to the standard grip for smoother voice leading or different textures.",
+          notation": "LH: C-F-G-C | RH: Variations in voicing",
+          audioPattern": ["[C3,C4,E4,G4]", "[F3,F4,A4,C5]", "[G3,G4,B4,D5]", "[C3,C4,E4,G4]"],
         },
       ],
       exercises: [
@@ -2836,7 +2831,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Friedrich Erhardt Niedt's 'Musicalische Handleitung' (c. 1700-1721) was a seminal work in German keyboard pedagogy, systematically developing the concept of 'Griffe' or grips. These standardized hand positions provided a framework for improvising accompaniments and realizing figured bass, making complex harmonic progressions more accessible. Griffe were a cornerstone of German organ and harpsichord training, allowing musicians to improvise fluently within established harmonic conventions.",
+        "Friedrich Erhardt Niedt's 'Musicalische Handleitung' (c. 1700-1721) was a seminal work in German keyboard pedagogy, developing the concept of 'Griffe' or grips. These standardized hand positions provided a framework for improvising accompaniments and realizing figured bass, making complex harmonic progressions more accessible. Griffe were a cornerstone of German organ and harpsichord training, allowing musicians to improvise fluently within established harmonic conventions.",
     },
   },
   {
@@ -3059,18 +3054,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fenaroli-schema-ex-1",
           title: "Basic Fenaroli Schema",
-          description: "Bass: B-C-B-C (in C major). Harmony: V7 - I - V7 - I",
-          notation: "Bass: 7-1-7-1 | Harmony: V7 - I - V7 - I",
-          figuredBass: "7/5/3 - 5/3 - 7/5/3 - 5/3",
-          audioPattern: ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: B-C-B-C (in C major). Harmony: V7 - I - V7 - I",
+          notation": "Bass: 7-1-7-1 | Harmony: V7 - I - V7 - I",
+          figuredBass": "7/5/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern": ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
         {
           id: "fenaroli-schema-ex-2",
           title: "Fenaroli with Soprano Suspensions",
-          description: "Bass: B-C-B-C | Soprano: F-E-F-E (creating suspensions over the dominant).",
-          notation: "Bass: 7-1-7-1 | Soprano: 7-6-7-6",
-          figuredBass: "7/5/3 - 5/3 - 7/5/3 - 5/3",
-          audioPattern: ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: B-C-B-C | Soprano: F-E-F-E (creating suspensions over the dominant).",
+          notation": "Bass: 7-1-7-1 | Soprano: 7-6-7-6",
+          figuredBass": "7/5/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern": ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
       ],
       exercises: [
@@ -3129,18 +3124,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "indugio-ex-1",
           title: "Basic Indugio Schema",
-          description: "Bass: F (sustained) | Upper voices move through I6 - V/V - IV. (In C major)",
-          notation: "Bass: 4 (sustained) | Upper voices: shifting harmonies",
-          figuredBass: "Pedal point on 4 with 6/3 or 6/5",
-          audioPattern: ["[F2,F3,A3,C4]", "[F2,F3,C4,E4]", "[F2,F3,A3,C4]"],
+          description": "Bass: F (sustained) | Upper voices move through I6 - V/V - IV. (In C major)",
+          notation": "Bass: 4 (sustained) | Upper voices: shifting harmonies",
+          figuredBass": "Pedal point on 4 with 6/3 or 6/5",
+          audioPattern": ["[F2,F3,A3,C4]", "[F2,F3,C4,E4]", "[F2,F3,A3,C4]"],
         },
         {
           id: "indugio-ex-2",
           title: "Indugio with Suspensions",
-          description: "Bass: F (sustained) | Upper voices create suspensions over the pedal point.",
-          notation: "Bass: 4 (sustained) | Upper voices: suspensions resolving",
-          figuredBass: "Pedal point with suspensions",
-          audioPattern: ["[F2,F3,A3,C4]", "[F2,F3,Bb4,D5]", "[F2,F3,A3,C4]"],
+          description": "Bass: F (sustained) | Upper voices create suspensions over the pedal point.",
+          notation": "Bass: 4 (sustained) | Upper voices: suspensions resolving",
+          figuredBass": "Pedal point with suspensions",
+          audioPattern": ["[F2,F3,A3,C4]", "[F2,F3,Bb4,D5]", "[F2,F3,A3,C4]"],
         },
       ],
       exercises: [
@@ -3194,18 +3189,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "jupiter-ex-1",
           title: "Basic Jupiter Schema",
-          description: "Bass: C-D-F-E (in C major). Harmony: I - V6/3 - Cadential 6/4 - V",
-          notation: "Bass: 1-2-4-3 | Harmony: I - V6/3 - Cadential 6/4 - V",
-          figuredBass: "5/3 - 6/3 - 6/4 - 5/3",
-          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
+          description": "Bass: C-D-F-E (in C major). Harmony: I - V6/3 - Cadential 6/4 - V",
+          notation": "Bass: 1-2-4-3 | Harmony: I - V6/3 - Cadential 6/4 - V",
+          figuredBass": "5/3 - 6/3 - 6/4 - 5/3",
+          audioPattern": ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
         },
         {
           id: "jupiter-ex-2",
           title: "Jupiter with Descending Soprano",
-          description: "Bass: C-D-F-E | Soprano: G-A-C-B. Creating contrary motion.",
-          notation: "Bass: 1-2-4-3 | Soprano: 5-6-8-7",
-          figuredBass: "5/3 - 6/3 - 6/4 - 5/3",
-          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
+          description": "Bass: C-D-F-E | Soprano: G-A-C-B. Creating contrary motion.",
+          notation": "Bass: 1-2-4-3 | Soprano: 5-6-8-7",
+          figuredBass": "5/3 - 6/3 - 6/4 - 5/3",
+          audioPattern": ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
         },
       ],
       exercises: [
@@ -3268,18 +3263,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "aprile-ex-1",
           title: "Basic Aprile Schema",
-          description: "Bass: F-E-B-C (in C major). Harmony: IV - V6/3 - V7 - I",
-          notation: "Bass: 4-3-7-1 | Harmony: IV - V6/3 - V7 - I",
-          figuredBass: "5/3 - 6/3 - 7/5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: F-E-B-C (in C major). Harmony: IV - V6/3 - V7 - I",
+          notation": "Bass: 4-3-7-1 | Harmony: IV - V6/3 - V7 - I",
+          figuredBass": "5/3 - 6/3 - 7/5/3 - 5/3",
+          audioPattern": ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
         {
           id: "aprile-ex-2",
           title: "Aprile with Soprano Descent",
-          description: "Bass: F-E-B-C | Soprano: A-G-D-E. Creating contrary motion.",
-          notation: "Bass: 4-3-7-1 | Soprano: 6-5-2-3",
-          figuredBass: "5/3 - 6/3 - 7/5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: F-E-B-C | Soprano: A-G-D-E. Creating contrary motion.",
+          notation": "Bass: 4-3-7-1 | Soprano: 6-5-2-3",
+          figuredBass": "5/3 - 6/3 - 7/5/3 - 5/3",
+          audioPattern": ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
       ],
       exercises: [
@@ -3339,18 +3334,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-ex-1",
           title: "Basic Pastorella Schema",
-          description: "Bass: C (sustained) | Upper voices: simple melody evoking a drone effect.",
-          notation: "Bass: 1 (sustained) | Upper voices: folk-like melody",
-          figuredBass: "Drone on 1",
-          audioPattern: ["[C3,C4,E4,G4]", "[C3,C4,G4,C5]", "[C3,C4,E4,G4]"],
+          description": "Bass: C (sustained) | Upper voices: simple melody evoking a drone effect.",
+          notation": "Bass: 1 (sustained) | Upper voices: folk-like melody",
+          figuredBass": "Drone on 1",
+          audioPattern": ["[C3,C4,E4,G4]", "[C3,C4,G4,C5]", "[C3,C4,E4,G4]"],
         },
         {
           id: "pastorella-ex-2",
           title: "Pastorella with Drone on Dominant",
-          description: "Bass: G (sustained) | Upper voices: simple melody evoking a drone effect.",
-          notation: "Bass: 5 (sustained) | Upper voices: folk-like melody",
-          figuredBass: "Drone on 5",
-          audioPattern: ["[G3,G4,B4,D5]", "[G3,G4,D5,G5]", "[G3,G4,B4,D5]"],
+          description": "Bass: G (sustained) | Upper voices: simple melody evoking a drone effect.",
+          notation": "Bass: 5 (sustained) | Upper voices: folk-like melody",
+          figuredBass": "Drone on 5",
+          audioPattern": ["[G3,G4,B4,D5]", "[G3,G4,D5,G5]", "[G3,G4,B4,D5]"],
         },
       ],
       exercises: [
@@ -3425,7 +3420,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "quieszenza-ex-1",
           title: "Basic Quieszenza Schema",
-          description: "Bass: F-E-D-C (in C major). Harmony: IV-iii-ii-I. The descending bass creates a gentle resolution.",
+          description": "Bass: F-E-D-C (in C major). Harmony: IV-iii-ii-I. The descending bass creates a gentle resolution.",
           bassPattern: "F3-E3-D3-C3",
           audioPattern: ["F3", "E3", "D3", "C3"],
         },
@@ -3469,7 +3464,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "The Quieszenza schema, meaning 'rest' or 'calm,' is a fundamental closing pattern in Baroque and Galant music. Its smooth descending bass line (4-3-2-1) and direct resolution to the tonic create a strong sense of finality and peace. Composers utilized this schema to bring phrases and entire pieces to a gentle and satisfying conclusion, reinforcing the harmonic structure and providing a sense of closure for the listener.",
+        "The Quieszenza schema was a common closing gesture in Galant music, providing a gentle and peaceful conclusion to phrases and movements.",
     },
   },
   {
@@ -3690,16 +3685,16 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "griffe2-ex-1",
           title: "Adlung Pattern: Scalar Sequence",
-          description: "A pattern based on ascending or descending scales, repeated in sequence.",
-          notation: "Example: Ascending scale fragment repeated.",
-          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[E3,E4,G4,B4]"],
+          description": "A pattern based on ascending or descending scales, repeated in sequence.",
+          notation": "Example: Ascending scale fragment repeated.",
+          audioPattern": ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[E3,E4,G4,B4]"],
         },
         {
           id: "griffe2-ex-2",
           title: "Adlung Pattern: Cadential Module",
-          description: "A pattern specifically designed to lead to a cadence.",
-          notation: "Example: A sequence leading to V-I.",
-          audioPattern: ["[G3,G4,B4,D5]", "[C3,C4,E4,G4]"],
+          description": "A pattern specifically designed to lead to a cadence.",
+          notation": "Example: A sequence leading to V-I.",
+          audioPattern": ["[G3,G4,B4,D5]", "[C3,C4,E4,G4]"],
         },
       ],
       exercises: [
@@ -3732,7 +3727,7 @@ export const CURRICULUM: Lesson[] = [
         },
       ],
       historicalContext:
-        "Jacob Adlung's 'Anweisung zum Fantasieren' (c. 1726-27) represents a significant contribution to German keyboard pedagogy, offering a systematic approach to improvisation through a collection of 28 sequential patterns. These patterns provided aspiring musicians with concrete models for constructing harmonic progressions and melodic lines, bridging the gap between theoretical knowledge and practical application. Adlung's work ensured that the art of improvisation remained a core component of musical training in the German tradition.",
+        "Friedrich Erhardt Niedt's 'Musicalische Handleitung' (c. 1700-1721) was a seminal work in German keyboard pedagogy, developing the concept of 'Griffe' or grips. These standardized hand positions provided a framework for improvising accompaniments and realizing figured bass, making complex harmonic progressions more accessible. Griffe were a cornerstone of German organ and harpsichord training, allowing musicians to improvise fluently within established harmonic conventions.",
     },
   },
   {
@@ -3891,7 +3886,7 @@ export const CURRICULUM: Lesson[] = [
     difficulty: "mastery",
     level: 5,
     prerequisites: ["adv-12-fenaroli-book2-3"],
-    xpReward: 100,
+    xpReward: 75,
     content: {
       theory:
         "Fenaroli Book IV: The pinnacle of partimenti pedagogy. Complex modulations, chromatic harmony, and sophisticated voice leading. These partimenti are essentially fugues in bass-line form. Book IV was intended only for advanced students preparing for professional careers as composers and maestri di cappella. The partimenti in Book IV often feature intricate fugal subjects embedded within the bass line, requiring the realization to include counter-subjects and episodes. They demand a deep understanding of counterpoint, harmony, and modulation, preparing students for the highest levels of musical composition.",
@@ -3899,16 +3894,16 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-1",
           description: "Fenaroli Book IV, No. 1 - Fugal partimento",
-          notation: "Bass: C G C D E F G C | Figures: - - - 6 6 6/5 7 -",
-          audioPattern: ["C3", "G3", "C3", "D3", "E3", "F3", "G3", "C3"],
-          figuredBass: "- - - 6 6 6/5 7 -",
+          notation": "Bass: C G C D E F G C | Figures: - - - 6 6 6/5 7 -",
+          audioPattern": ["C3", "G3", "C3", "D3", "E3", "F3", "G3", "C3"],
+          figuredBass": "- - - 6 6 6/5 7 -",
         },
         {
           id: "ex-2",
           description: "Fenaroli Book IV, No. 5 - Chromatic modulation",
-          notation: "Bass: C C# D Eb E F F# G | Figures: - #6 6 b6 6 6 #6 -",
-          audioPattern: ["C3", "C#3", "D3", "Eb3", "E3", "F3", "F#3", "G3"],
-          figuredBass: "- #6 6 b6 6 6 #6 -",
+          notation": "Bass: C C# D Eb E F F# G | Figures: - #6 6 b6 6 6 #6 -",
+          audioPattern": ["C3", "C#3", "D3", "Eb3", "E3", "F3", "F#3", "G3"],
+          figuredBass": "- #6 6 b6 6 6 #6 -",
         },
       ],
       exercises: [
@@ -3946,8 +3941,8 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-1",
           description: "Improvise a fugal exposition in C major. Subject: C-D-E-F-G. Answer: G-A-B-C-D.",
-          notation: "Subject and Answer presented",
-          audioPattern: ["C3-D3-E3-F3-G3", "G3-A3-B3-C4-D4"],
+          notation": "Subject and Answer presented",
+          audioPattern": ["C3-D3-E3-F3-G3", "G3-A3-B3-C4-D4"],
         },
       ],
       exercises: [
@@ -3983,9 +3978,9 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description: "Improvise a fugal episode modulating from C major to G major.",
-          notation: "Sequential use of subject fragment",
-          audioPattern: ["[C4,D4,E4]", "[D4,E4,F4]", "[E4,F4,G4]"],
+          description": "Improvise a fugal episode modulating from C major to G major.",
+          notation": "Sequential use of subject fragment",
+          audioPattern": ["[C4,D4,E4]", "[D4,E4,F4]", "[E4,F4,G4]"],
         },
       ],
       exercises: [
@@ -4021,9 +4016,9 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description: "Improvise a short imitative passage in C major. Subject: C-E-G. Imitation: G-C-E.",
-          notation: "Subject and imitation in different voices",
-          audioPattern: ["C4-E4-G4", "G4-C5-E5"],
+          description": "Improvise a short imitative passage in C major. Subject: C-E-G. Imitation: G-C-E.",
+          notation": "Subject and imitation in different voices",
+          audioPattern": ["C4-E4-G4", "G4-C5-E5"],
         },
       ],
       exercises: [
@@ -4101,16 +4096,16 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "ex-1",
           description: "Durante Partimento - Diminished seventh chains",
-          notation: "Bass: C B Bb A Ab G | Figures: - 6/5 6/5 6/5 6/5 -",
-          audioPattern: ["C3", "B2", "Bb2", "A2", "Ab2", "G2"],
-          figuredBass: "- 6/5 6/5 6/5 6/5 -",
+          notation": "Bass: C B Bb A Ab G | Figures: - 6/5 6/5 6/5 6/5 -",
+          audioPattern": ["C3", "B2", "Bb2", "A2", "Ab2", "G2"],
+          figuredBass": "- 6/5 6/5 6/5 6/5 -",
         },
         {
           id: "ex-2",
-          description: "Durante Partimento - Chromatic modulation",
-          notation: "Bass: C C# D Eb E F | Figures: - #6 6 b6 6 -",
-          audioPattern: ["C3", "C#3", "D3", "Eb3", "E3", "F3"],
-          figuredBass: "- #6 6 b6 6 -",
+          description": "Durante Partimento - Chromatic modulation",
+          notation": "Bass: C C# D Eb E F | Figures: - #6 6 b6 6 -",
+          audioPattern": ["C3", "C#3", "D3", "Eb3", "E3", "F3"],
+          figuredBass": "- #6 6 b6 6 -",
         },
       ],
       exercises: [
@@ -4146,10 +4141,10 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description: "Insanguine Partimento - Demonstrating Rule of the Octave",
-          notation: "Bass: Ascending scale | Figures: Following Rule of the Octave",
-          audioPattern: ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"],
-          figuredBass: "Rule of the Octave figures",
+          description": "Insanguine Partimento - Demonstrating Rule of the Octave",
+          notation": "Bass: Ascending scale | Figures: Following Rule of the Octave",
+          audioPattern": ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"],
+          figuredBass": "Rule of the Octave figures",
         },
       ],
       exercises: [
@@ -4185,15 +4180,15 @@ export const CURRICULUM: Lesson[] = [
       examples: [
         {
           id: "ex-1",
-          description: "Sala's explanation of voice leading principles",
-          notation: "Theoretical explanation of voice leading",
-          audioPattern: [],
+          description": "Sala's explanation of voice leading principles",
+          notation": "Theoretical explanation of voice leading",
+          audioPattern": [],
         },
         {
           id: "ex-2",
-          description: "Sala's rules for harmonic progression",
-          notation: "Theoretical explanation of chord functions",
-          audioPattern: [],
+          description": "Sala's rules for harmonic progression",
+          notation": "Theoretical explanation of chord functions",
+          audioPattern": [],
         },
       ],
       exercises: [
@@ -4210,10 +4205,6 @@ export const CURRICULUM: Lesson[] = [
         "Nicola Sala's comprehensive treatise served as the definitive theoretical text for partimenti pedagogy, solidifying the principles that underpinned improvisational and compositional training in the Neapolitan conservatories. His work provided a rigorous academic framework for the practical exercises, ensuring that generations of musicians possessed a deep understanding of musical structure and theory.",
     },
   },
-
-  // ============================================
-  // LEVEL 4: ADVANCED PATTERNS
-  // ============================================
   {
     id: "adv-1-fenaroli-schema",
     title: "Galant Schema: Fenaroli",
@@ -4231,18 +4222,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "fenaroli-schema-ex-1",
           title: "Basic Fenaroli Schema",
-          description: "Bass: B-C-B-C (in C major). Harmony: V7 - I - V7 - I",
-          notation: "Bass: 7-1-7-1 | Harmony: V7 - I - V7 - I",
-          figuredBass: "7/5/3 - 5/3 - 7/5/3 - 5/3",
-          audioPattern: ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: B-C-B-C (in C major). Harmony: V7 - I - V7 - I",
+          notation": "Bass: 7-1-7-1 | Harmony: V7 - I - V7 - I",
+          figuredBass": "7/5/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern": ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
         {
           id: "fenaroli-schema-ex-2",
           title: "Fenaroli with Soprano Suspensions",
-          description: "Bass: B-C-B-C | Soprano: F-E-F-E (creating suspensions over the dominant).",
-          notation: "Bass: 7-1-7-1 | Soprano: 7-6-7-6",
-          figuredBass: "7/5/3 - 5/3 - 7/5/3 - 5/3",
-          audioPattern: ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: B-C-B-C | Soprano: F-E-F-E (creating suspensions over the dominant).",
+          notation": "Bass: 7-1-7-1 | Soprano: 7-6-7-6",
+          figuredBass": "7/5/3 - 5/3 - 7/5/3 - 5/3",
+          audioPattern": ["[B2,B3,D4,F4]", "[C2,C3,E3,G3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
       ],
       exercises: [
@@ -4301,18 +4292,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "indugio-ex-1",
           title: "Basic Indugio Schema",
-          description: "Bass: F (sustained) | Upper voices move through I6 - V/V - IV. (In C major)",
-          notation: "Bass: 4 (sustained) | Upper voices: shifting harmonies",
-          figuredBass: "Pedal point on 4 with 6/3 or 6/5",
-          audioPattern: ["[F2,F3,A3,C4]", "[F2,F3,C4,E4]", "[F2,F3,A3,C4]"],
+          description": "Bass: F (sustained) | Upper voices move through I6 - V/V - IV. (In C major)",
+          notation": "Bass: 4 (sustained) | Upper voices: shifting harmonies",
+          figuredBass": "Pedal point on 4 with 6/3 or 6/5",
+          audioPattern": ["[F2,F3,A3,C4]", "[F2,F3,C4,E4]", "[F2,F3,A3,C4]"],
         },
         {
           id: "indugio-ex-2",
           title: "Indugio with Suspensions",
-          description: "Bass: F (sustained) | Upper voices create suspensions over the pedal point.",
-          notation: "Bass: 4 (sustained) | Upper voices: suspensions resolving",
-          figuredBass: "Pedal point with suspensions",
-          audioPattern: ["[F2,F3,A3,C4]", "[F2,F3,Bb4,D5]", "[F2,F3,A3,C4]"],
+          description": "Bass: F (sustained) | Upper voices create suspensions over the pedal point.",
+          notation": "Bass: 4 (sustained) | Upper voices: suspensions resolving",
+          figuredBass": "Pedal point with suspensions",
+          audioPattern": ["[F2,F3,A3,C4]", "[F2,F3,Bb4,D5]", "[F2,F3,A3,C4]"],
         },
       ],
       exercises: [
@@ -4366,18 +4357,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "jupiter-ex-1",
           title: "Basic Jupiter Schema",
-          description: "Bass: C-D-F-E (in C major). Harmony: I - V6/3 - Cadential 6/4 - V",
-          notation: "Bass: 1-2-4-3 | Harmony: I - V6/3 - Cadential 6/4 - V",
-          figuredBass: "5/3 - 6/3 - 6/4 - 5/3",
-          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
+          description": "Bass: C-D-F-E (in C major). Harmony: I - V6/3 - Cadential 6/4 - V",
+          notation": "Bass: 1-2-4-3 | Harmony: I - V6/3 - Cadential 6/4 - V",
+          figuredBass": "5/3 - 6/3 - 6/4 - 5/3",
+          audioPattern": ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
         },
         {
           id: "jupiter-ex-2",
           title: "Jupiter with Descending Soprano",
-          description: "Bass: C-D-F-E | Soprano: G-A-C-B. Creating contrary motion.",
-          notation: "Bass: 1-2-4-3 | Soprano: 5-6-8-7",
-          figuredBass: "5/3 - 6/3 - 6/4 - 5/3",
-          audioPattern: ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
+          description": "Bass: C-D-F-E | Soprano: G-A-C-B. Creating contrary motion.",
+          notation": "Bass: 1-2-4-3 | Soprano: 5-6-8-7",
+          figuredBass": "5/3 - 6/3 - 6/4 - 5/3",
+          audioPattern": ["[C3,C4,E4,G4]", "[D3,D4,F4,A4]", "[F2,F3,A3,C4]", "[E2,E3,G3,B3]"],
         },
       ],
       exercises: [
@@ -4440,18 +4431,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "aprile-ex-1",
           title: "Basic Aprile Schema",
-          description: "Bass: F-E-B-C (in C major). Harmony: IV - V6/3 - V7 - I",
-          notation: "Bass: 4-3-7-1 | Harmony: IV - V6/3 - V7 - I",
-          figuredBass: "5/3 - 6/3 - 7/5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: F-E-B-C (in C major). Harmony: IV - V6/3 - V7 - I",
+          notation": "Bass: 4-3-7-1 | Harmony: IV - V6/3 - V7 - I",
+          figuredBass": "5/3 - 6/3 - 7/5/3 - 5/3",
+          audioPattern": ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
         {
           id: "aprile-ex-2",
           title: "Aprile with Soprano Descent",
-          description: "Bass: F-E-B-C | Soprano: A-G-D-E. Creating contrary motion.",
-          notation: "Bass: 4-3-7-1 | Soprano: 6-5-2-3",
-          figuredBass: "5/3 - 6/3 - 7/5/3 - 5/3",
-          audioPattern: ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
+          description": "Bass: F-E-B-C | Soprano: A-G-D-E. Creating contrary motion.",
+          notation": "Bass: 4-3-7-1 | Soprano: 6-5-2-3",
+          figuredBass": "5/3 - 6/3 - 7/5/3 - 5/3",
+          audioPattern": ["[F2,F3,A3,C4]", "[E2,E3,G3,B3]", "[B2,B3,D4,F4]", "[C2,C3,E3,G3]"],
         },
       ],
       exercises: [
@@ -4511,18 +4502,18 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "pastorella-ex-1",
           title: "Basic Pastorella Schema",
-          description: "Bass: C (sustained) | Upper voices: simple melody evoking a drone effect.",
-          notation: "Bass: 1 (sustained) | Upper voices: folk-like melody",
-          figuredBass: "Drone on 1",
-          audioPattern: ["[C3,C4,E4,G4]", "[C3,C4,G4,C5]", "[C3,C4,E4,G4]"],
+          description": "Bass: C (sustained) | Upper voices: simple melody evoking a drone effect.",
+          notation": "Bass: 1 (sustained) | Upper voices: folk-like melody",
+          figuredBass": "Drone on 1",
+          audioPattern": ["[C3,C4,E4,G4]", "[C3,C4,G4,C5]", "[C3,C4,E4,G4]"],
         },
         {
           id: "pastorella-ex-2",
           title: "Pastorella with Drone on Dominant",
-          description: "Bass: G (sustained) | Upper voices: simple melody evoking a drone effect.",
-          notation: "Bass: 5 (sustained) | Upper voices: folk-like melody",
-          figuredBass: "Drone on 5",
-          audioPattern: ["[G3,G4,B4,D5]", "[G3,G4,D5,G5]", "[G3,G4,B4,D5]"],
+          description": "Bass: G (sustained) | Upper voices: simple melody evoking a drone effect.",
+          notation": "Bass: 5 (sustained) | Upper voices: folk-like melody",
+          figuredBass": "Drone on 5",
+          audioPattern": ["[G3,G4,B4,D5]", "[G3,G4,D5,G5]", "[G3,G4,B4,D5]"],
         },
       ],
       exercises: [
@@ -4597,7 +4588,7 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "quieszenza-ex-1",
           title: "Basic Quieszenza Schema",
-          description: "Bass: F-E-D-C (in C major). Harmony: IV-iii-ii-I. The descending bass creates a gentle resolution.",
+          description": "Bass: F-E-D-C (in C major). Harmony: IV-iii-ii-I. The descending bass creates a gentle resolution.",
           bassPattern: "F3-E3-D3-C3",
           audioPattern: ["F3", "E3", "D3", "C3"],
         },
@@ -4606,4 +4597,12 @@ export const CURRICULUM: Lesson[] = [
         {
           id: "quieszenza-1",
           type: "identify",
-          prompt: "What is the characteristic
+          prompt: "What is the characteristic bass motion of the Quieszenza schema?",
+          options: ["Ascending stepwise", "Descending stepwise", "Leaping by fourths", "Alternating notes"],
+          correctAnswer: "Descending stepwise",
+          hints: ["Quieszenza means 'rest' or 'calm'", "The bass line moves smoothly downwards"],
+        },
+        {
+          id: "quieszenza-2",
+          type: "identify",
+          prompt: "In C major, what are the bass notes for the
