@@ -2,7 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { useProgress } from "@/lib/progress-context"
-import { CURRICULUM, SKILL_LEVELS } from "@/lib/curriculum"
+import { CURRICULUM } from "@/lib/curriculum-helpers"
+import { SKILL_LEVELS } from "@/lib/curriculum"
 import { Trophy, Target, Flame, Clock, BookOpen, Award, TrendingUp, Calendar } from "lucide-react"
 import { AchievementsShowcase } from "@/components/achievements-showcase"
 import { StreakDisplay } from "@/components/streak-display"
@@ -109,7 +110,7 @@ export function ProgressDashboard() {
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader>
             <CardTitle className="text-sm font-medium">Practice Time</CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>

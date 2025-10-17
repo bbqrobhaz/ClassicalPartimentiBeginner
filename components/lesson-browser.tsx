@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle2, Lock, Search, BookOpen, Flag } from "lucide-react"
-import { CURRICULUM, getAvailableLessons } from "@/lib/curriculum"
+import { CURRICULUM, getAvailableLessons } from "@/lib/curriculum-helpers"
 import { useProgress } from "@/lib/progress-context"
 import type { Lesson } from "@/lib/types"
 

@@ -36,11 +36,9 @@ import {
   BarChart3,
   Piano,
 } from "lucide-react"
-import { useProgress } from "@/lib/progress-context"
-import { CURRICULUM, getNextLesson } from "@/lib/curriculum"
+import { CURRICULUM, getNextLesson } from "@/lib/curriculum-helpers"
 import type { Lesson } from "@/lib/types"
-
-const VirtualPiano = lazy(() => import("@/components/virtual-piano"))
+import { useProgress } from "@/lib/progress-context"
 
 export default function PartimentiTrainer() {
   const [activeTab, setActiveTab] = useState("lessons")
@@ -523,3 +521,5 @@ export default function PartimentiTrainer() {
     </div>
   )
 }
+
+const VirtualPiano = lazy(() => import("@/components/virtual-piano"))
