@@ -59,31 +59,11 @@ class AdvancedAudioEngine {
 
     console.log(`[v0] Playing chord with REAL samples: ${frequencies.map((f) => f.toFixed(1)).join(", ")}Hz`)
 
-    const noteData = frequencies.map((freq) => {
-      const { note, octave } = this.frequencyToNote(freq)
-      return { note, octave, frequency: freq }
-    })
-
-    // Load all samples first
-    console.log(`[v0] Pre-loading ${noteData.length} samples for synchronized playback...`)
-    const bufferPromises = noteData.map(({ note, octave }) => this.realSamples!.getPianoSample(note, octave))
-
-    let buffers: AudioBuffer[]
-    try {
-      buffers = await Promise.all(bufferPromises)
-      console.log(`[v0] ✓ All ${buffers.length} samples loaded, starting synchronized playback`)
-    } catch (error) {
-      console.error(`[v0] ✗ Failed to load one or more samples:`, error)
-      return
-    }
-
-    // Now play all notes at the exact same time
-    const startTime = this.audioContext.currentTime + 0.01 // Small delay to ensure all are scheduled
-    const playbackPromises = buffers.map((buffer, index) => {
-      return this.playBufferAtTime(buffer, startTime, duration * 0.9, 0.6, noteData[index].note, noteData[index].octave)
-    })
-
-    const results = await Promise.allSettled(playbackPromises)
+    const results = await Promise.allSettled(
+      frequencies.map((freq) => {
+        return this.playRealPianoNote(freq, duration * 0.9, 0.6)
+      }),
+    )
 
     const succeeded = results.filter((r) => r.status === "fulfilled").length
     const failed = results.filter((r) => r.status === "rejected").length
@@ -181,48 +161,7 @@ class AdvancedAudioEngine {
     }
   }
 
-  private async playBufferAtTime(
-    buffer: AudioBuffer,
-    startTime: number,
-    duration: number,
-    velocity: number,
-    note: string,
-    octave: number,
-  ): Promise<void> {
-    if (!this.audioContext) return
-
-    try {
-      const source = this.audioContext.createBufferSource()
-      source.buffer = buffer
-
-      const gainNode = this.audioContext.createGain()
-      gainNode.gain.setValueAtTime(velocity, startTime)
-      gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration)
-
-      source.connect(gainNode)
-      gainNode.connect(this.audioContext.destination)
-
-      this.activeAudioNodes.push(source, gainNode)
-
-      source.start(startTime)
-      source.stop(startTime + duration)
-
-      source.onended = () => {
-        try {
-          source.disconnect()
-          gainNode.disconnect()
-        } catch (e) {}
-        this.activeAudioNodes = this.activeAudioNodes.filter((node) => node !== source && node !== gainNode)
-      }
-
-      console.log(`[v0] ✓ Scheduled ${note}${octave} to start at ${startTime.toFixed(3)}s`)
-    } catch (error) {
-      console.error(`[v0] ✗ Failed to schedule ${note}${octave}:`, error)
-      throw error
-    }
-  }
-
-  private noteToFrequency(note: string, octave: number): number {
+  noteToFrequency(note: string, octave: number): number {
     const A4 = 440
     const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
     const noteIndex = notes.indexOf(note)
@@ -260,6 +199,63 @@ class AdvancedAudioEngine {
     })
     this.activeAudioNodes = []
     console.log("[v0] All audio stopped")
+  }
+
+  async playMetronomeClick(isAccent = false): Promise<void> {
+    if (!this.audioContext) return
+
+    const oscillator = this.audioContext.createOscillator()
+    const gainNode = this.audioContext.createGain()
+
+    // Accent clicks are higher pitched and louder
+    oscillator.frequency.value = isAccent ? 1200 : 800
+    gainNode.gain.setValueAtTime(isAccent ? 0.3 : 0.2, this.audioContext.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.1)
+
+    oscillator.connect(gainNode)
+    gainNode.connect(this.audioContext.destination)
+
+    oscillator.start(this.audioContext.currentTime)
+    oscillator.stop(this.audioContext.currentTime + 0.1)
+
+    console.log(`[v0] Metronome click: ${isAccent ? "ACCENT" : "normal"}`)
+  }
+
+  async playBassPatternWithMetronome(bassNotes: string[], beatsPerNote = 4, tempo = 80): Promise<void> {
+    if (!this.audioContext || !this.realSamples) return
+
+    const beatDuration = 60 / tempo // Duration of one beat in seconds
+    const noteDuration = beatDuration * beatsPerNote
+
+    console.log(
+      `[v0] Starting play-along: ${bassNotes.length} bass notes, ${beatsPerNote} beats each, tempo ${tempo} BPM`,
+    )
+
+    console.log("[v0] Count-in: 4 metronome clicks")
+    for (let i = 0; i < 4; i++) {
+      await this.playMetronomeClick(i === 0) // First click is accented
+      await new Promise((resolve) => setTimeout(resolve, beatDuration * 1000))
+    }
+
+    for (let i = 0; i < bassNotes.length; i++) {
+      const note = bassNotes[i]
+      console.log(`[v0] Playing bass note ${i + 1}/${bassNotes.length}: ${note} for ${beatsPerNote} beats`)
+
+      // Parse note (e.g., "C3" -> note: "C", octave: 3)
+      const noteName = note.slice(0, -1)
+      const octave = Number.parseInt(note.slice(-1))
+      const frequency = this.noteToFrequency(noteName, octave)
+
+      // Play the bass note for its full duration
+      await this.playRealPianoNote(frequency, noteDuration, 0.5)
+
+      // This ensures each bass note sustains for the full 4 beats
+      if (i < bassNotes.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, noteDuration * 1000))
+      }
+    }
+
+    console.log("[v0] ✓ Play-along completed")
   }
 }
 
