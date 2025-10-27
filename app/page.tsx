@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, lazy, Suspense } from "react"
+import { useState, useEffect } from "react"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -11,52 +11,15 @@ import { GalantSchemataTrainer } from "@/components/galant-schemata-trainer"
 import { CadenceTrainer } from "@/components/cadence-trainer"
 import { SuspensionTrainer } from "@/components/suspension-trainer"
 import { DiminutionTrainer } from "@/components/diminution-trainer"
-import { AchievementNotification } from "@/components/achievement-notification"
-import { LevelUpNotification } from "@/components/level-up-notification"
-import { XPProgressBar } from "@/components/xp-progress-bar"
-import { LessonBrowser } from "@/components/lesson-browser"
-import { LessonViewer } from "@/components/lesson-viewer"
-import { PracticeModeSelector, type PracticeMode } from "@/components/practice-mode-selector"
-import { ListenMode } from "@/components/listen-mode"
-import { IdentifyMode } from "@/components/identify-mode"
-import { ComposeMode } from "@/components/compose-mode"
 import { audioEngine } from "@/lib/audio-engine"
-import { ProgressDashboard } from "@/components/progress-dashboard"
-import { DeveloperPanel } from "@/components/developer-panel"
-import {
-  Music2,
-  BookOpen,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Award,
-  Headphones,
-  Clock,
-  Flame,
-  GraduationCap,
-  BarChart3,
-  Piano,
-} from "lucide-react"
+import { Music2, BookOpen, Sparkles, Target, TrendingUp, Award, Headphones, Clock, Flame } from "lucide-react"
 import { useProgress } from "@/lib/progress-context"
-import { CURRICULUM, getNextLesson } from "@/lib/curriculum"
-import type { Lesson } from "@/lib/types"
-
-const VirtualPiano = lazy(() => import("@/components/virtual-piano"))
 
 export default function PartimentiTrainer() {
-  const [activeTab, setActiveTab] = useState("lessons")
+  const [activeTab, setActiveTab] = useState("intervals")
   const [isInitialized, setIsInitialized] = useState(false)
   const [initError, setInitError] = useState<string | null>(null)
-  const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null)
-  const [practiceMode, setPracticeMode] = useState<PracticeMode | null>(null)
-  const {
-    progress,
-    checkAndUnlockAchievements,
-    newAchievement,
-    newLevel,
-    clearAchievementNotification,
-    clearLevelNotification,
-  } = useProgress()
+  const { progress, checkAndUnlockAchievements } = useProgress()
 
   useEffect(() => {
     const initializeAudio = async () => {
@@ -88,60 +51,10 @@ export default function PartimentiTrainer() {
   }
 
   const totalCompleted = progress.lessonsCompleted.reduce((sum, lp) => sum + (lp.completed ? 1 : 0), 0)
-  const completedLessonIds = progress.lessonsCompleted.filter((lp) => lp.completed).map((lp) => lp.lessonId)
-
-  const handleLessonComplete = () => {
-    checkAndUnlockAchievements()
-  }
-
-  const handleNextLesson = () => {
-    if (!selectedLesson) return
-    const nextLesson = getNextLesson(selectedLesson.id, completedLessonIds)
-    if (nextLesson) {
-      setSelectedLesson(nextLesson)
-    }
-  }
-
-  const handlePreviousLesson = () => {
-    if (!selectedLesson) return
-    const currentIndex = CURRICULUM.findIndex((l) => l.id === selectedLesson.id)
-    if (currentIndex > 0) {
-      setSelectedLesson(CURRICULUM[currentIndex - 1])
-    }
-  }
-
-  const hasNextLesson = selectedLesson ? getNextLesson(selectedLesson.id, completedLessonIds) !== null : false
-  const hasPreviousLesson = selectedLesson ? CURRICULUM.findIndex((l) => l.id === selectedLesson.id) > 0 : false
+  const totalAttempts = progress.lessonsCompleted.reduce((sum, lp) => sum + lp.attempts, 0)
+  const accuracy = totalAttempts > 0 ? Math.round((totalCompleted / totalAttempts) * 100) : 0
 
   const trainingModules = [
-    {
-      id: "dashboard",
-      name: "Progress Dashboard",
-      description: "View your learning analytics and achievements",
-      icon: BarChart3,
-      difficulty: "Overview",
-    },
-    {
-      id: "lessons",
-      name: "Structured Lessons",
-      description: "Follow the complete curriculum from foundations to mastery",
-      icon: GraduationCap,
-      difficulty: "All Levels",
-    },
-    {
-      id: "piano",
-      name: "Virtual Piano",
-      description: "Interactive piano for practicing and testing intervals",
-      icon: Piano,
-      difficulty: "All Levels",
-    },
-    {
-      id: "practice",
-      name: "Practice Modes",
-      description: "Listen, identify, play, and compose with learned patterns",
-      icon: Headphones,
-      difficulty: "All Levels",
-    },
     {
       id: "intervals",
       name: "Interval Recognition",
@@ -188,9 +101,6 @@ export default function PartimentiTrainer() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AchievementNotification achievement={newAchievement} onDismiss={clearAchievementNotification} />
-      <LevelUpNotification newLevel={newLevel} onDismiss={clearLevelNotification} />
-
       {initError && (
         <div className="bg-destructive/10 border-b border-destructive/20">
           <div className="container mx-auto px-4 py-3">
@@ -199,6 +109,7 @@ export default function PartimentiTrainer() {
         </div>
       )}
 
+      {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -237,17 +148,13 @@ export default function PartimentiTrainer() {
               </div>
             </div>
           </div>
-          <div className="mt-4">
-            <XPProgressBar currentLevel={progress.currentLevel} totalXP={progress.totalXP} />
-          </div>
         </div>
       </header>
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <DeveloperPanel />
-
             <Card>
               <CardHeader>
                 <CardTitle className="font-serif text-xl">Training Modules</CardTitle>
@@ -258,12 +165,7 @@ export default function PartimentiTrainer() {
                   return (
                     <Button
                       key={module.id}
-                      onClick={() => {
-                        setActiveTab(module.id)
-                        if (module.id === "lessons") {
-                          setSelectedLesson(null)
-                        }
-                      }}
+                      onClick={() => setActiveTab(module.id)}
                       variant="ghost"
                       className={`
                         w-full justify-start gap-3 p-4 h-auto
@@ -277,13 +179,11 @@ export default function PartimentiTrainer() {
                       `}
                     >
                       <Icon className="w-5 h-5 flex-shrink-0" />
-                      <div className="text-left flex-1 min-w-0">
-                        <div className="font-semibold text-sm whitespace-normal">{module.name}</div>
-                        <div className="text-xs text-muted-foreground line-clamp-2 w-full whitespace-normal">
-                          {module.description}
-                        </div>
+                      <div className="text-left flex-1">
+                        <div className="font-semibold text-sm">{module.name}</div>
+                        <div className="text-xs text-muted-foreground line-clamp-2">{module.description}</div>
                       </div>
-                      <Badge variant="outline" className="text-xs flex-shrink-0">
+                      <Badge variant="outline" className="text-xs">
                         {module.difficulty}
                       </Badge>
                     </Button>
@@ -320,116 +220,9 @@ export default function PartimentiTrainer() {
             </Card>
           </div>
 
+          {/* Main Content */}
           <div className="lg:col-span-3">
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsContent value="dashboard" className="mt-0">
-                <ProgressDashboard />
-              </TabsContent>
-
-              <TabsContent value="lessons" className="mt-0">
-                {selectedLesson ? (
-                  <LessonViewer
-                    lesson={selectedLesson}
-                    onComplete={handleLessonComplete}
-                    onNext={handleNextLesson}
-                    onPrevious={handlePreviousLesson}
-                    hasNext={hasNextLesson}
-                    hasPrevious={hasPreviousLesson}
-                  />
-                ) : (
-                  <LessonBrowser onSelectLesson={setSelectedLesson} />
-                )}
-              </TabsContent>
-
-              <TabsContent value="piano" className="mt-0">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="font-serif text-2xl">Virtual Piano</CardTitle>
-                    <CardDescription className="text-base">
-                      Practice playing notes, test intervals, and explore the keyboard. Click keys with your mouse or
-                      use your computer keyboard (A-; keys map to piano keys).
-                    </CardDescription>
-                  </CardHeader>
-                  <div className="p-6 space-y-6">
-                    <Suspense
-                      fallback={<div className="text-center py-12 text-muted-foreground">Loading virtual piano...</div>}
-                    >
-                      <VirtualPiano startOctave={3} numOctaves={2} showLabels={true} />
-                    </Suspense>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <Card className="bg-muted/30">
-                        <CardHeader>
-                          <CardTitle className="text-lg">Keyboard Shortcuts</CardTitle>
-                        </CardHeader>
-                        <div className="p-4 space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">White keys:</span>
-                            <span className="font-mono">A S D F G H J K L ;</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Black keys:</span>
-                            <span className="font-mono">W E T Y U O P</span>
-                          </div>
-                          <div className="pt-2 mt-2 border-t border-border">
-                            <p className="text-xs text-muted-foreground italic">
-                              Note: Computer keyboard hardware limitations may prevent some key combinations from
-                              registering simultaneously, which can affect chord playing.
-                            </p>
-                          </div>
-                        </div>
-                      </Card>
-
-                      <Card className="bg-muted/30">
-                        <CardHeader>
-                          <CardTitle className="text-lg">Practice Ideas</CardTitle>
-                        </CardHeader>
-                        <div className="p-4 space-y-2 text-sm text-muted-foreground">
-                          <div>• Play scales and arpeggios</div>
-                          <div>• Test intervals you're learning</div>
-                          <div>• Practice cadence patterns</div>
-                          <div>• Experiment with melodic lines</div>
-                        </div>
-                      </Card>
-                    </div>
-
-                    <Suspense fallback={<div className="text-center py-6 text-muted-foreground">Loading...</div>}>
-                      <VirtualPiano startOctave={4} numOctaves={1} showLabels={false} compact={true} />
-                    </Suspense>
-                  </div>
-                </Card>
-              </TabsContent>
-
-              <TabsContent value="practice" className="mt-0">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="font-serif text-2xl">Practice Modes</CardTitle>
-                    <CardDescription className="text-base">
-                      Choose a practice mode to reinforce your learning with interactive exercises
-                    </CardDescription>
-                  </CardHeader>
-                  <div className="p-6">
-                    {!practiceMode ? (
-                      <PracticeModeSelector onSelectMode={setPracticeMode} />
-                    ) : (
-                      <div className="space-y-4">
-                        <Button variant="outline" onClick={() => setPracticeMode(null)}>
-                          ← Back to Practice Modes
-                        </Button>
-                        {practiceMode === "listen" && <ListenMode lessons={CURRICULUM} />}
-                        {practiceMode === "identify" && <IdentifyMode lessons={CURRICULUM} />}
-                        {practiceMode === "compose" && <ComposeMode lessons={CURRICULUM} />}
-                        {practiceMode === "play" && (
-                          <div className="text-center py-12 text-muted-foreground">
-                            Play Mode coming soon - practice playing patterns with real-time feedback
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              </TabsContent>
-
               <TabsContent value="intervals" className="mt-0">
                 <Card>
                   <CardHeader>

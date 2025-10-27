@@ -164,25 +164,3 @@ export function unlockAchievement(progress: UserProgress, achievementId: string)
     achievements: newAchievements,
   }
 }
-
-export function setDeveloperMode(enabled: boolean): void {
-  if (typeof window === "undefined") return
-  localStorage.setItem("baroque-dev-mode", enabled ? "true" : "false")
-}
-
-export function isDeveloperMode(): boolean {
-  if (typeof window === "undefined") return false
-  return localStorage.getItem("baroque-dev-mode") === "true"
-}
-
-export function setXPAndStreak(xp: number, streak: number): void {
-  if (typeof window === "undefined") return
-  const progress = loadProgress()
-  const updatedProgress = {
-    ...progress,
-    totalXP: xp,
-    streak: streak,
-    longestStreak: Math.max(streak, progress.longestStreak),
-  }
-  saveProgress(updatedProgress)
-}

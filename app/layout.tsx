@@ -1,5 +1,4 @@
 import type React from "react"
-import type { Metadata } from "next"
 import { Cormorant_Garamond, Lato } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -18,12 +17,7 @@ const lato = Lato({
   variable: "--font-lato",
 })
 
-export const metadata: Metadata = {
-  title: "Partimenti Ear Trainer",
-  description:
-    "Master classical music theory through Partimenti, galant schemata, and baroque improvisation techniques",
-  generator: "v0.app",
-}
+// Metadata will be handled by Next.js defaults
 
 export default function RootLayout({
   children,
@@ -43,3 +37,7 @@ export default function RootLayout({
     </html>
   )
 }
+
+export const metadata = {
+      generator: 'v0.app'
+    };
