@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { createContext, useContext, useEffect, useState, useCallback } from "react"
-import type { UserProgress } from "./types"
+import type { UserProgress, Achievement, SkillLevel } from "./types"
 import {
   loadProgress,
   saveProgress,
@@ -20,6 +20,10 @@ interface ProgressContextType {
   recordLessonCompletion: (lessonId: string, score: number, timeSpent: number) => void
   checkAndUnlockAchievements: () => void
   resetProgress: () => void
+  newAchievement: Achievement | null
+  newLevel: SkillLevel | null
+  clearAchievementNotification: () => void
+  clearLevelNotification: () => void
 }
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined)
@@ -27,8 +31,9 @@ const ProgressContext = createContext<ProgressContextType | undefined>(undefined
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [progress, setProgress] = useState<UserProgress>(getDefaultProgress())
   const [isLoaded, setIsLoaded] = useState(false)
+  const [newAchievement, setNewAchievement] = useState<Achievement | null>(null)
+  const [newLevel, setNewLevel] = useState<SkillLevel | null>(null)
 
-  // Load progress on mount
   useEffect(() => {
     const loaded = loadProgress()
     const withStreak = updateStreak(loaded)
@@ -37,7 +42,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setIsLoaded(true)
   }, [])
 
-  // Save progress whenever it changes
   useEffect(() => {
     if (isLoaded) {
       saveProgress(progress)
@@ -49,7 +53,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const addExperience = useCallback((xp: number) => {
-    setProgress((prev) => addXP(prev, xp))
+    setProgress((prev) => {
+      const oldLevel = prev.currentLevel.level
+      const updated = addXP(prev, xp)
+      if (updated.currentLevel.level > oldLevel) {
+        setNewLevel(updated.currentLevel)
+      }
+      return updated
+    })
   }, [])
 
   const recordLessonCompletion = useCallback((lessonId: string, score: number, timeSpent: number) => {
@@ -67,11 +78,22 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       // Check first lesson achievement
       if (prev.lessonsCompleted.length >= 1 && !prev.achievements.find((a) => a.id === "first-lesson")?.unlockedAt) {
         updated = unlockAchievement(updated, "first-lesson")
+        const achievement = updated.achievements.find((a) => a.id === "first-lesson")
+        if (achievement) setNewAchievement(achievement)
       }
 
       // Check week streak achievement
       if (prev.streak >= 7 && !prev.achievements.find((a) => a.id === "week-streak")?.unlockedAt) {
         updated = unlockAchievement(updated, "week-streak")
+        const achievement = updated.achievements.find((a) => a.id === "week-streak")
+        if (achievement) setNewAchievement(achievement)
+      }
+
+      // Check month streak achievement
+      if (prev.streak >= 30 && !prev.achievements.find((a) => a.id === "month-streak")?.unlockedAt) {
+        updated = unlockAchievement(updated, "month-streak")
+        const achievement = updated.achievements.find((a) => a.id === "month-streak")
+        if (achievement) setNewAchievement(achievement)
       }
 
       // Update achievement progress
@@ -83,10 +105,12 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
             return { ...achievement, progress: Math.min(prev.lessonsCompleted.length, 1) }
           case "week-streak":
             return { ...achievement, progress: Math.min(prev.streak, 7) }
+          case "month-streak":
+            return { ...achievement, progress: Math.min(prev.streak, 30) }
           case "rule-master":
             return {
               ...achievement,
-              progress: prev.lessonsCompleted.filter((lp) => lp.lessonId.startsWith("foundations-5")).length,
+              progress: prev.lessonsCompleted.filter((lp) => lp.lessonId.startsWith("found-6")).length,
             }
           default:
             return achievement
@@ -103,6 +127,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     saveProgress(fresh)
   }, [])
 
+  const clearAchievementNotification = useCallback(() => {
+    setNewAchievement(null)
+  }, [])
+
+  const clearLevelNotification = useCallback(() => {
+    setNewLevel(null)
+  }, [])
+
   return (
     <ProgressContext.Provider
       value={{
@@ -112,6 +144,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         recordLessonCompletion,
         checkAndUnlockAchievements,
         resetProgress,
+        newAchievement,
+        newLevel,
+        clearAchievementNotification,
+        clearLevelNotification,
       }}
     >
       {children}
